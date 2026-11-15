@@ -1,0 +1,335 @@
+<!doctype html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex, nofollow">
+<meta name="theme-color" content="#f4f1ec">
+<title>Помощник штукатурной бригады: смета, КП и договор в Telegram</title>
+<meta name="description" content="Образец под заказ: руководитель отправляет план в Telegram и получает смету, КП и договор по своим расценкам и шаблонам.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:#f4f1ec; --card:#fff; --ink:#24211d; --muted:#6a645b; --line:#e2ddd4;
+  --accent:#b4532a; --accent-soft:#f6e3d8; --ok:#2f6b4a; --ok-soft:#e1efe6;
+  --chat:#d9e3ea; --in:#fff; --out:#e3f6d6; --tg:#3a8bd1;
+  --r:18px;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+@media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}*{transition:none!important;animation:none!important}}
+body{margin:0;background:var(--bg);color:var(--ink);font:16px/1.55 Manrope,system-ui,sans-serif;-webkit-font-smoothing:antialiased}
+.wrap{max-width:1120px;margin:0 auto;padding:0 20px}
+header.top{border-bottom:1px solid var(--line)}
+header.top .wrap{display:flex;justify-content:space-between;align-items:center;gap:12px;flex-wrap:wrap;padding-top:14px;padding-bottom:14px}
+.brand{font-weight:800;letter-spacing:-.01em}
+.note{font-size:13px;color:var(--muted)}
+h1{font-size:clamp(30px,5vw,48px);line-height:1.08;letter-spacing:-.025em;margin:36px 0 12px;text-wrap:balance;max-width:820px}
+.lead{font-size:18px;color:var(--muted);max-width:720px;margin:0 0 28px}
+h2{font-size:clamp(24px,3.4vw,34px);letter-spacing:-.02em;line-height:1.15;margin:0 0 18px;text-wrap:balance}
+section{padding:56px 0}
+section.alt{background:#fbfaf7;border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
+
+/* demo layout */
+.demo{display:grid;grid-template-columns:390px 1fr;gap:36px;align-items:start;padding-bottom:40px}
+.phone{background:#1d1b19;border-radius:38px;padding:12px;box-shadow:0 2px 6px rgba(0,0,0,.06),0 24px 60px rgba(40,30,20,.18);position:sticky;top:16px}
+.screen{background:var(--chat);border-radius:28px;overflow:hidden;height:min(720px,calc(100vh - 56px));display:flex;flex-direction:column}
+.tgbar{background:#fff;padding:12px 14px;display:flex;gap:10px;align-items:center;border-bottom:1px solid #e6e9ec}
+.ava{width:38px;height:38px;border-radius:50%;background:var(--accent);color:#fff;display:grid;place-items:center;font-weight:800;font-size:15px;flex:none}
+.tgbar b{display:block;font-size:15px;line-height:1.2}
+.tgbar span{font-size:12px;color:#7d8790}
+.feed{flex:1;overflow-y:auto;padding:14px 10px 8px;display:flex;flex-direction:column;gap:8px;scroll-behavior:smooth}
+.msg{max-width:88%;padding:8px 11px 9px;border-radius:14px;font-size:14px;line-height:1.45;box-shadow:0 1px 1px rgba(0,0,0,.06);animation:pop .35s cubic-bezier(.34,1.56,.64,1)}
+@keyframes pop{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:none}}
+.msg.in{background:var(--in);align-self:flex-start;border-bottom-left-radius:4px}
+.msg.out{background:var(--out);align-self:flex-end;border-bottom-right-radius:4px}
+.msg small{display:block;color:#8a949c;font-size:11px;text-align:right;margin-top:2px}
+.msg table{border-collapse:collapse;width:100%;font-size:12.5px;margin:6px 0 2px}
+.msg td{padding:3px 0;border-bottom:1px dashed #e4e7ea;vertical-align:top}
+.msg td:last-child{text-align:right;white-space:nowrap;padding-left:8px}
+.msg .tot td{border:0;font-weight:800;padding-top:6px}
+.plus{color:var(--ok);font-weight:700}
+.file{display:flex;gap:10px;align-items:center}
+.file i{width:40px;height:40px;border-radius:10px;background:var(--tg);color:#fff;display:grid;place-items:center;font-style:normal;font-weight:800;font-size:11px;flex:none}
+.file i.docx{background:#2b5797}
+.file b{display:block;font-size:13.5px}
+.file span{font-size:12px;color:#7d8790}
+.planimg{display:block;width:100%;border-radius:10px;background:#fff}
+.kb{align-self:flex-start;display:flex;flex-wrap:wrap;gap:6px;max-width:92%}
+.kb button{font:600 13px Manrope,sans-serif;background:rgba(255,255,255,.75);color:#1f5f93;border:0;border-radius:10px;padding:9px 12px;cursor:pointer;transition:transform .3s cubic-bezier(.34,1.56,.64,1),background .3s}
+.kb button:hover{background:#fff;transform:translateY(-1px)}
+.kb button.next{background:#fff;box-shadow:0 0 0 2px var(--accent) inset;color:var(--accent)}
+.kb button:focus-visible,.btn:focus-visible,.steps button:focus-visible{outline:3px solid var(--accent);outline-offset:2px}
+.typing{align-self:flex-start;background:#fff;border-radius:14px;padding:9px 12px;font-size:13px;color:#7d8790}
+.input{background:#fff;padding:10px 14px;font-size:13px;color:#a2a9b0;border-top:1px solid #e6e9ec}
+
+.side h3{font-size:13px;letter-spacing:.12em;text-transform:uppercase;color:var(--accent);margin:0 0 8px}
+.side h4{font-size:24px;line-height:1.2;letter-spacing:-.015em;margin:0 0 10px}
+.side p{margin:0 0 12px;color:#3c3832}
+.steps{display:flex;flex-wrap:wrap;gap:6px;margin:0 0 22px;padding:0;list-style:none}
+.steps button{font:600 13px Manrope,sans-serif;border:1px solid var(--line);background:#fff;color:var(--muted);border-radius:100px;padding:6px 12px;cursor:pointer}
+.steps button[aria-current="step"]{background:var(--ink);color:#fff;border-color:var(--ink)}
+.steps button.done{color:var(--ink)}
+.under{background:#fff;border:1px solid var(--line);border-radius:var(--r);padding:18px 20px;margin-top:16px}
+.under b{display:block;font-size:13px;color:var(--muted);font-weight:600;margin-bottom:4px}
+.doc{background:#fff;border-radius:6px;box-shadow:0 1px 3px rgba(0,0,0,.05),0 12px 36px rgba(40,30,20,.12);padding:26px 28px;margin-top:16px;font-size:13px;line-height:1.5}
+.doc .dh{display:flex;justify-content:space-between;gap:12px;border-bottom:2px solid var(--ink);padding-bottom:10px;margin-bottom:12px}
+.doc .dh b{font-size:15px}
+.doc table{border-collapse:collapse;width:100%;margin:8px 0}
+.doc th,.doc td{border-bottom:1px solid var(--line);padding:5px 4px;text-align:left;font-size:12.5px}
+.doc td.n,.doc th.n{text-align:right;white-space:nowrap}
+.doc .sum{font-weight:800;font-size:15px;text-align:right;margin-top:6px}
+.doc .muted{color:var(--muted);font-size:12px}
+.obj{display:grid;gap:8px;margin-top:14px}
+.obj div{display:flex;justify-content:space-between;gap:10px;background:#fff;border:1px solid var(--line);border-radius:12px;padding:10px 14px;font-size:14px}
+.obj span{color:var(--muted);white-space:nowrap}
+.restart{margin-top:18px;font:600 14px Manrope,sans-serif;background:none;border:0;color:var(--accent);cursor:pointer;padding:0;text-decoration:underline}
+
+/* sections */
+.flow{display:grid;grid-template-columns:repeat(5,1fr);gap:12px;counter-reset:f}
+.flow div{background:#fff;border:1px solid var(--line);border-radius:var(--r);padding:18px 16px;position:relative}
+.flow div::before{counter-increment:f;content:counter(f);display:grid;place-items:center;width:28px;height:28px;border-radius:50%;background:var(--accent-soft);color:var(--accent);font-weight:800;font-size:14px;margin-bottom:10px}
+.flow b{display:block;margin-bottom:4px;line-height:1.3}
+.flow p{margin:0;font-size:14px;color:var(--muted)}
+.key{margin-top:22px;background:var(--ok-soft);border-radius:var(--r);padding:18px 22px;max-width:820px}
+.key b{color:var(--ok)}
+.cols{display:grid;grid-template-columns:1fr 1fr;gap:24px}
+.card{background:#fff;border:1px solid var(--line);border-radius:var(--r);padding:24px 26px;transition:transform .4s cubic-bezier(.34,1.56,.64,1),box-shadow .4s}
+.card:hover{transform:translateY(-3px);box-shadow:0 4px 8px rgba(0,0,0,.03),0 16px 40px rgba(40,30,20,.08)}
+.card h3{margin:0 0 6px;font-size:20px}
+.card .price{font-size:28px;font-weight:800;letter-spacing:-.02em;margin:4px 0 10px}
+.card ul{margin:0;padding-left:18px}
+.card li{margin:4px 0}
+.card .term{color:var(--muted);font-size:14px;margin:0 0 8px}
+.month{border-collapse:collapse;width:100%;max-width:720px;margin-top:6px}
+.month td{padding:10px 0;border-bottom:1px solid var(--line)}
+.month td:last-child{text-align:right;font-weight:700;white-space:nowrap;padding-left:12px}
+.month tr.t td{border:0;font-size:18px;font-weight:800}
+.need{columns:2;column-gap:32px;padding-left:18px;margin:0}
+.need li{margin:0 0 8px;break-inside:avoid}
+footer{padding:28px 0 40px;color:var(--muted);font-size:13px}
+
+@media (max-width:900px){
+  .demo{grid-template-columns:1fr}
+  .phone{position:static;max-width:400px;margin:0 auto}
+  .screen{height:620px}
+  .flow{grid-template-columns:1fr 1fr}
+  .cols{grid-template-columns:1fr}
+  .need{columns:1}
+}
+@media (max-width:520px){
+  .wrap{padding:0 16px}
+  .phone{padding:8px;border-radius:30px}
+  .screen{border-radius:24px}
+  .flow{grid-template-columns:1fr}
+  .doc{padding:18px 16px}
+}
+</style>
+</head>
+<body>
+<header class="top"><div class="wrap">
+  <div class="brand">Образец под ваш заказ</div>
+  <div class="note">Бригада «Ровный слой» и все цены вымышленные</div>
+</div></header>
+
+<main>
+<div class="wrap">
+  <h1>План в Telegram, через минуту смета и КП, после замера договор</h1>
+  <p class="lead">Ниже работает переписка с ботом: нажимайте кнопки в чате или шаги справа. Расчёт идёт по вашему прайсу, документы собираются по вашим шаблонам, а все версии хранятся в папке объекта.</p>
+
+  <div class="demo">
+    <div class="phone" aria-label="Переписка с ботом">
+      <div class="screen">
+        <div class="tgbar"><div class="ava">РС</div><div><b>Сметы «Ровный слой»</b><span>бот</span></div></div>
+        <div class="feed" id="feed" aria-live="polite"></div>
+        <div class="input">Сообщение</div>
+      </div>
+    </div>
+
+    <div class="side">
+      <ol class="steps" id="steps"></ol>
+      <div id="panel"></div>
+    </div>
+  </div>
+</div>
+
+<section class="alt" id="how">
+  <div class="wrap">
+    <h2>Как устроена система</h2>
+    <div class="flow">
+      <div><b>Telegram-бот</b><p>Пишете с телефона: план фото или PDF, голосом или текстом уточнения после замера.</p></div>
+      <div><b>Чтение плана</b><p>Модель находит помещения, размеры, окна и двери и считает площадь стен. Вы видите цифры и правите их до расчёта.</p></div>
+      <div><b>Расчёт по прайсу</b><p>Расценки и расход материалов лежат в таблице. Меняете цену в ячейке, и следующая смета идёт уже по ней.</p></div>
+      <div><b>Документы</b><p>Смета, КП и договор заполняются по вашим образцам в Word и приходят в чат файлом, можно сразу переслать заказчику.</p></div>
+      <div><b>Папка объекта</b><p>Каждый объект получает папку и строку в реестре: версии смет, КП, договор, фото замера, статус.</p></div>
+    </div>
+    <p class="key"><b>Суммы считает программа, а не нейросеть.</b> Модель только читает план и понимает ваши уточнения, а умножение площади на расценку делает обычный код по таблице. Поэтому смета не «придумывает» цифры, и её всегда можно проверить построчно.</p>
+  </div>
+</section>
+
+<section id="price">
+  <div class="wrap">
+    <h2>Этапы, сроки и стоимость</h2>
+    <div class="cols">
+      <div class="card">
+        <h3>Этап 1. Смета и КП по плану</h3>
+        <p class="term">8 рабочих дней</p>
+        <div class="price">45 000 руб.</div>
+        <ul>
+          <li>прайс и нормы расхода в таблице по вашим сметам;</li>
+          <li>бот: план, уточнения, смета, КП в PDF и Word;</li>
+          <li>реестр объектов и папка на каждый объект;</li>
+          <li>проверка на 5-10 ваших прошлых объектах: сверяем с тем, что вы считали руками.</li>
+        </ul>
+      </div>
+      <div class="card">
+        <h3>Этап 2. Замер, пересчёт и договор</h3>
+        <p class="term">6 рабочих дней</p>
+        <div class="price">30 000 руб.</div>
+        <ul>
+          <li>правки после замера текстом или голосом, новая версия сметы с разницей к прошлой;</li>
+          <li>договор по вашему образцу с суммой, сроками и предоплатой;</li>
+          <li>статусы объекта и поиск по адресу или заказчику;</li>
+          <li>видеоинструкция и две недели сопровождения после запуска.</li>
+        </ul>
+      </div>
+    </div>
+    <p style="margin-top:20px;max-width:760px">Итого 75 000 руб. за 14 рабочих дней. Оплата по этапам: после первого этапа вы уже считаете сметы в боте, второй можно заказать позже.</p>
+
+    <h2 style="margin-top:44px">Расходы после запуска</h2>
+    <table class="month">
+      <tr><td>Сервер для бота в России, самый маленький тариф</td><td>300-500 руб. в месяц</td></tr>
+      <tr><td>Модель для чтения планов (российская, YandexGPT или GigaChat) при 20-30 объектах в месяц</td><td>300-1 000 руб. в месяц</td></tr>
+      <tr><td>Таблица, папки объектов, Telegram</td><td>бесплатно</td></tr>
+      <tr class="t"><td>Всего</td><td>до 1 500 руб. в месяц</td></tr>
+    </table>
+    <p class="note" style="margin-top:10px">Все аккаунты оформлены на вас, доступы и код передаю. Менять расценки, тексты КП и договора вы сможете сами, без программиста.</p>
+  </div>
+</section>
+
+<section class="alt" id="need">
+  <div class="wrap">
+    <h2>Что нужно от вас для старта</h2>
+    <ul class="need">
+      <li>2-3 сметы, КП и договор, по которым вы работаете сейчас;</li>
+      <li>прайс: работы, материалы, наценки и минимальная сумма заказа;</li>
+      <li>5-10 планов прошлых объектов с итоговыми суммами для проверки;</li>
+      <li>кто ещё будет пользоваться ботом, кроме руководителя;</li>
+      <li>где удобнее хранить документы: Google Диск или Яндекс Диск.</li>
+    </ul>
+  </div>
+</section>
+</main>
+
+<footer><div class="wrap">Образец собран до договора, чтобы показать, как это будет выглядеть. Компания, адреса и цены условные.</div></footer>
+
+<script>
+const PRICE = {prime:45, beacons:110, plaster:480, thick:180, slope:1500, corner:120, bag:520};
+const fmt = n => Math.round(n).toLocaleString('ru-RU').replace(/ /g,' ') + ' руб.';
+const m2 = n => n.toFixed(1).replace('.', ',');
+const ROOMS1 = [['Зал',52.4],['Спальня',38.6],['Кухня',27.4],['Коридор',31.2]];
+const ROOMS2 = [['Зал',52.4],['Спальня',38.6],['Кухня',29.8],['Коридор',31.2]];
+
+function calc(rooms, slopes, thickRoom){
+  const area = rooms.reduce((s,r)=>s+r[1],0);
+  const thick = thickRoom ? rooms.find(r=>r[0]===thickRoom)[1] : 0;
+  const bags = Math.ceil(area*13/30 + thick*4/30);
+  const rows = [
+    ['Грунтование стен', m2(area)+' м²', area*PRICE.prime],
+    ['Установка маяков', m2(area)+' м²', area*PRICE.beacons],
+    ['Штукатурка гипсовая машинная, слой до 20 мм', m2(area)+' м²', area*PRICE.plaster],
+  ];
+  if (thick) rows.push(['Доплата за слой 20-30 мм ('+thickRoom.toLowerCase()+')', m2(thick)+' м²', thick*PRICE.thick]);
+  rows.push(['Оконные откосы', slopes+' шт.', slopes*PRICE.slope]);
+  rows.push(['Перфоуголок на углы', '18 п. м', 18*PRICE.corner]);
+  rows.push(['Смесь гипсовая, мешок 30 кг', bags+' меш.', bags*PRICE.bag]);
+  return {area, rows, total: rows.reduce((s,r)=>s+r[2],0)};
+}
+const V1 = calc(ROOMS1, 4, null);
+const V2 = calc(ROOMS2, 6, 'Зал');
+
+const planSVG = `<svg class="planimg" viewBox="0 0 300 190" role="img" aria-label="План квартиры"><rect width="300" height="190" fill="#fff"/><g fill="none" stroke="#3a3a3a" stroke-width="4"><rect x="10" y="10" width="280" height="170"/><line x1="150" y1="10" x2="150" y2="110"/><line x1="10" y1="110" x2="210" y2="110"/><line x1="210" y1="110" x2="210" y2="180"/><line x1="150" y1="60" x2="290" y2="60"/></g><g fill="#fff" stroke="none"><rect x="40" y="6" width="60" height="8"/><rect x="190" y="6" width="50" height="8"/><rect x="286" y="90" width="8" height="40"/></g><g stroke="#7aa7d6" stroke-width="2"><line x1="40" y1="10" x2="100" y2="10"/><line x1="190" y1="10" x2="240" y2="10"/><line x1="290" y1="90" x2="290" y2="130"/></g><g font-family="Manrope,sans-serif" font-size="11" fill="#555"><text x="55" y="62">Зал 5,2×4,6</text><text x="185" y="40">Кухня 3,4×2,6</text><text x="180" y="90">Спальня 3,9×3,2</text><text x="60" y="150">Коридор 6,8×1,9</text><text x="225" y="150">С/у</text></g></svg>`;
+
+function rowsTable(c, diff){
+  let h = '<table>';
+  c.rows.forEach(r=>{ h += `<tr><td>${r[0]}<br><span style="color:#8a949c">${r[1]}</span></td><td>${fmt(r[2])}</td></tr>`; });
+  h += `<tr class="tot"><td>Итого</td><td>${fmt(c.total)}</td></tr>`;
+  if (diff) h += `<tr><td colspan="2" class="plus">К первой версии: +${fmt(c.total - V1.total)}</td></tr>`;
+  return h + '</table>';
+}
+function docTable(c){
+  let h = '<table><tr><th>Работа</th><th class="n">Объём</th><th class="n">Сумма</th></tr>';
+  c.rows.forEach(r=>{ h += `<tr><td>${r[0]}</td><td class="n">${r[1]}</td><td class="n">${fmt(r[2])}</td></tr>`; });
+  return h + `</table><div class="sum">Итого ${fmt(c.total)}</div>`;
+}
+
+const STEPS = [
+  { name:'Новый объект',
+    chat:[['out','Новый объект'],['in','Адрес и имя заказчика?'],['out','Химки, Молодёжная 12, кв. 48. Заказчик Сергей, +7 9•• •• 41']],
+    kb:[['Отправить план','next']],
+    panel:`<h3>Шаг 1</h3><h4>Объект заводится одной фразой</h4><p>Бот создаёт карточку объекта и папку для документов. Адрес и заказчика можно продиктовать голосом.</p><div class="under"><b>Что под капотом</b>Строка в реестре объектов, папка «Химки, Молодёжная 12-48», статус «расчёт».</div>` },
+  { name:'План',
+    chat:[['out', planSVG + '<small>план.jpg</small>'],['typing','Читаю план…'],
+      ['in', 'Нашла 4 помещения под штукатурку, санузел пропускаю (плитка):<table>'+ROOMS1.map(r=>`<tr><td>${r[0]}</td><td>${m2(r[1])} м²</td></tr>`).join('')+`<tr class="tot"><td>Стены за вычетом окон и дверей</td><td>${m2(V1.area)} м²</td></tr></table>Высоту потолков на плане не вижу. Какая высота и какая штукатурка?`]],
+    kb:[['2,70 м, гипсовая машинная','next'],['Поправить площади','']],
+    panel:`<h3>Шаг 2</h3><h4>Модель читает план и показывает, что поняла</h4><p>Площади по помещениям видны до расчёта: если что-то распозналось не так, вы поправляете цифру сообщением. Чего на плане нет, бот спрашивает.</p><div class="under"><b>Что под капотом</b>Российская модель с распознаванием изображений. Подбираем её на ваших прошлых планах на первом этапе: проверяем, где ошибается, и учим бота переспрашивать именно там.</div>` },
+  { name:'Смета',
+    chat:[['out','2,70 м, гипсовая машинная'],['in','<b>Смета v1</b>'+rowsTable(V1)]],
+    kb:[['📄 КП для заказчика','next'],['Изменить','']],
+    panel:`<h3>Шаг 3</h3><h4>Смета по вашим расценкам</h4><p>Каждая строка считается из площади и цены в таблице. Смесь считается по норме расхода, минимальная сумма заказа и наценки подставляются сами.</p><div class="under"><b>Ваша таблица расценок</b>Грунтование ${PRICE.prime} руб./м², маяки ${PRICE.beacons} руб./м², штукатурка ${PRICE.plaster} руб./м², откос ${PRICE.slope} руб. Поменяли цену в таблице, и следующая смета посчитается уже по ней.</div>` },
+  { name:'КП',
+    chat:[['out','КП для заказчика'],['in','<div class="file"><i>PDF</i><div><b>КП_Молодёжная12_v1.pdf</b><span>2 стр. · сохранено в папку объекта</span></div></div>'],['in','Переслать Сергею можно прямо из чата. Когда будет замер, напишите, что изменилось.']],
+    kb:[['Внести замер','next']],
+    panel:()=>`<h3>Шаг 4</h3><h4>КП по вашему образцу</h4><p>Логотип, реквизиты, тексты про гарантию и сроки берутся из вашего шаблона. Бот меняет только адрес, объёмы и суммы.</p><div class="doc"><div class="dh"><b>Коммерческое предложение</b><span class="muted">№ 48/11 · v1</span></div><p class="muted">Штукатурка стен, Химки, Молодёжная 12, кв. 48. Заказчик: Сергей.</p>${docTable(V1)}<p class="muted">Срок работ 10 рабочих дней. Гарантия 2 года. Цена действительна 14 дней.</p></div>` },
+  { name:'Замер',
+    chat:[['out','🎤 Голосовое 0:14<br><i style="color:#5d6b64">«Замерил. Кухня стены 29,8. В спальне ещё два откоса. В зале завал до 3 см»</i>'],['typing','Пересчитываю…'],
+      ['in','<b>Смета v2</b> после замера'+rowsTable(V2,true)]],
+    kb:[['📄 Новое КП','' ],['📝 Договор','next']],
+    panel:`<h3>Шаг 5</h3><h4>После замера правки голосом</h4><p>Бот понимает уточнения обычными словами, пересчитывает и показывает разницу к прошлой версии. Первая версия не затирается, в папке лежат обе.</p><div class="under"><b>Что изменилось</b>Кухня 27,4 → 29,8 м², откосов 4 → 6, в зале доплата за слой 20-30 мм. Смесь досчиталась сама.</div>` },
+  { name:'Договор',
+    chat:[['out','Договор'],['in','Предоплата и срок как обычно: 30%, 12 рабочих дней?'],['out','Да'],['in','<div class="file"><i class="docx">DOCX</i><div><b>Договор_Молодёжная12.docx</b><span>смета v2 приложением · в папке объекта</span></div></div>']],
+    kb:[['📁 Карточка объекта','next']],
+    panel:()=>`<h3>Шаг 6</h3><h4>Договор из вашего образца</h4><p>Сумма, сроки, предоплата и смета приложением подставляются в ваш текст договора. Word можно поправить руками перед подписью.</p><div class="doc"><div class="dh"><b>Договор подряда № 48/11</b><span class="muted">черновик</span></div><p>1.1. Подрядчик выполняет штукатурку стен по адресу: г. Химки, ул. Молодёжная, д. 12, кв. 48.</p><p>2.1. Стоимость работ и материалов: <b>${fmt(V2.total)}</b> по смете (Приложение 1).</p><p>2.2. Предоплата 30%: <b>${fmt(V2.total*0.3)}</b>.</p><p>3.1. Срок выполнения: 12 рабочих дней с даты предоплаты.</p><p class="muted">Остальные пункты из вашего образца без изменений.</p></div>` },
+  { name:'Объект',
+    chat:[['out','Карточка объекта'],['in',`<b>Химки, Молодёжная 12-48</b><br>Сергей · статус: договор отправлен<table><tr><td>Смета v1 · 14.11</td><td>${fmt(V1.total)}</td></tr><tr><td>КП v1 · 14.11</td><td>PDF</td></tr><tr><td>Замер · 17.11</td><td>голос, 3 фото</td></tr><tr><td>Смета v2 · 17.11</td><td>${fmt(V2.total)}</td></tr><tr><td>Договор · 17.11</td><td>DOCX</td></tr></table>`]],
+    kb:[],
+    panel:()=>`<h3>Шаг 7</h3><h4>История каждого объекта в одном месте</h4><p>Объект находится по адресу или имени заказчика. В реестре видно, сколько объектов на расчёте, сколько ждут замера и на какую сумму подписаны договоры за месяц.</p><div class="obj"><div>Химки, Молодёжная 12-48<span>договор · ${fmt(V2.total)}</span></div><div>Москва, Профсоюзная 88-112<span>ждёт замера</span></div><div>Одинцово, Чистяков 4-19<span>КП отправлено</span></div><div>Красногорск, Ильинский 7-3<span>в работе</span></div></div><button class="restart" onclick="go(0,true)">Пройти с начала</button>` },
+];
+
+const feed = document.getElementById('feed'), panel = document.getElementById('panel'), stepsEl = document.getElementById('steps');
+let cur = -1, timers = [];
+STEPS.forEach((s,i)=>{ const li=document.createElement('li'); const b=document.createElement('button'); b.type='button'; b.textContent=(i+1)+'. '+s.name; b.onclick=()=>go(i,true); li.appendChild(b); stepsEl.appendChild(li); });
+
+function add(kind, html){
+  const d = document.createElement('div');
+  d.className = kind==='typing' ? 'typing' : 'msg '+kind;
+  d.innerHTML = html; feed.appendChild(d); feed.scrollTop = feed.scrollHeight; return d;
+}
+function kb(list){
+  if (!list.length) return;
+  const d = document.createElement('div'); d.className='kb';
+  list.forEach(([t,cls])=>{ const b=document.createElement('button'); b.type='button'; b.textContent=t; if(cls){b.className=cls; b.onclick=()=>{ d.remove(); go(cur+1); };} else b.onclick=()=>{ b.textContent='в демо не показано'; }; d.appendChild(b); });
+  feed.appendChild(d); feed.scrollTop = feed.scrollHeight;
+}
+function render(i, instant){
+  const s = STEPS[i]; let t = 0;
+  const reduce = instant || matchMedia('(prefers-reduced-motion: reduce)').matches;
+  s.chat.forEach(([k,h])=>{
+    if (k==='typing'){ if(reduce) return; timers.push(setTimeout(()=>{ const ty=add('typing',h); timers.push(setTimeout(()=>ty.remove(),900)); }, t)); t+=900; return; }
+    if (reduce) add(k,h); else { timers.push(setTimeout(()=>add(k,h), t)); t+=450; }
+  });
+  if (reduce) kb(s.kb); else timers.push(setTimeout(()=>kb(s.kb), t));
+}
+function go(i, jump){
+  timers.forEach(clearTimeout); timers=[];
+  if (jump){ feed.innerHTML=''; for(let k=0;k<i;k++){ render(k,true); feed.querySelectorAll('.kb').forEach(e=>e.remove()); } }
+  cur = i; render(i, false);
+  const p = STEPS[i].panel; panel.innerHTML = typeof p==='function' ? p() : p;
+  [...stepsEl.querySelectorAll('button')].forEach((b,k)=>{ b.toggleAttribute('aria-current', k===i); if(k===i) b.setAttribute('aria-current','step'); b.classList.toggle('done', k<i); });
+}
+go(0);
+</script>
+</body>
+</html>
