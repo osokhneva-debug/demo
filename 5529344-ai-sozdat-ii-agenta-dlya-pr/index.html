@@ -1,0 +1,385 @@
+<!doctype html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex, nofollow">
+<meta name="theme-color" content="#f7f3ec">
+<title>AI-агент для продаж в Telegram (пример)</title>
+<meta name="description" content="Пример AI-агента для продаж в Telegram: отвечает по каталогу, выясняет потребность, записывает заявку в Google Таблицу и передаёт менеджеру.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,600;9..144,700;9..144,800&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:#f7f3ec; --bg-alt:#efe8dc; --card:#ffffff; --ink:#221d18; --muted:#62584d; --line:#e2d9ca;
+  --accent:#8a4f24; --accent-light:#c98a52; --accent-ink:#ffffff;
+  --dark:#1e1a16; --dark-card:#2a241e;
+  --chat-bg:#e4ddd0; --in:#ffffff; --out:#e6f4d7; --hot:#f8d9c4; --ok:#dcefd9;
+  --radius:18px;
+  --shadow:0 1px 3px rgba(34,29,24,.05),0 4px 24px rgba(34,29,24,.07);
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+@media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}*{transition:none!important}}
+body{margin:0;background:var(--bg);color:var(--ink);font:16px/1.65 Inter,system-ui,sans-serif;-webkit-font-smoothing:antialiased;overflow-x:hidden}
+body::after{content:"";position:fixed;inset:0;z-index:9998;pointer-events:none;opacity:.025;background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E")}
+a{color:var(--accent)}
+h1,h2,h3{font-family:Fraunces,Georgia,serif;text-wrap:balance;margin:0}
+.wrap{max-width:1100px;margin:0 auto;padding:0 24px}
+.label{display:block;font-size:12px;font-weight:700;letter-spacing:.2em;text-transform:uppercase;color:var(--accent);margin-bottom:12px}
+header.top{padding:18px 0;border-bottom:1px solid var(--line)}
+header.top .wrap{display:flex;justify-content:space-between;align-items:center;gap:12px;flex-wrap:wrap}
+header.top b{font-weight:700}
+.badge{font-size:13px;color:var(--muted)}
+
+.hero{position:relative;padding:clamp(48px,8vw,96px) 0 clamp(40px,6vw,72px);overflow:hidden}
+.mesh::before{content:"";position:absolute;inset:0;pointer-events:none;background:radial-gradient(ellipse 50% 55% at 18% 25%,rgba(138,79,36,.08),transparent 70%),radial-gradient(ellipse 40% 50% at 85% 70%,rgba(201,138,82,.08),transparent 70%)}
+.hero .wrap{position:relative}
+.quote{font-size:15px;color:var(--muted);border-left:3px solid var(--accent-light);padding:2px 0 2px 14px;margin:0 0 22px;max-width:60ch}
+.hero h1{font-size:clamp(32px,5.6vw,60px);line-height:1.05;letter-spacing:-.03em;font-weight:800;max-width:20ch;margin-bottom:20px}
+.lead{font-size:clamp(17px,2vw,20px);color:var(--muted);max-width:56ch;margin:0 0 30px}
+.cta{display:flex;flex-wrap:wrap;gap:12px}
+.btn{position:relative;overflow:hidden;display:inline-flex;align-items:center;justify-content:center;min-height:50px;padding:0 24px;border-radius:13px;font-weight:600;text-decoration:none;border:2px solid var(--accent);transition:transform .35s cubic-bezier(.34,1.56,.64,1),box-shadow .35s}
+.btn.primary{background:var(--accent);color:var(--accent-ink);box-shadow:0 4px 16px rgba(138,79,36,.25)}
+.btn.primary:hover{transform:translateY(-2px);box-shadow:0 8px 28px rgba(138,79,36,.35)}
+.btn.ghost{color:var(--accent);background:transparent}
+.btn.ghost:hover{background:rgba(138,79,36,.06)}
+.btn::after{content:"";position:absolute;top:0;left:-60%;width:40%;height:100%;background:linear-gradient(90deg,transparent,rgba(255,255,255,.18),transparent);transform:skewX(-20deg);transition:left .6s}
+.btn:hover::after{left:120%}
+.btn:focus-visible,.tab:focus-visible{outline:3px solid #e0a040;outline-offset:2px}
+.facts{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:16px;margin-top:44px}
+.fact{background:var(--card);border:1px solid var(--line);border-radius:var(--radius);padding:20px 22px;box-shadow:var(--shadow)}
+.fact b{display:block;font-family:Fraunces,Georgia,serif;font-size:26px;line-height:1.2;margin-bottom:4px}
+.fact span{color:var(--muted);font-size:14px;line-height:1.5}
+
+section{padding:clamp(56px,9vw,104px) 0}
+section.alt{background:var(--bg-alt)}
+h2{font-size:clamp(28px,4.4vw,46px);line-height:1.1;letter-spacing:-.02em;font-weight:700;margin-bottom:12px}
+.sub{color:var(--muted);margin:0 0 30px;max-width:64ch}
+
+.tabs{display:inline-flex;flex-wrap:wrap;background:var(--card);border:1px solid var(--line);border-radius:14px;padding:4px;margin-bottom:22px;gap:2px}
+.tab{border:0;background:transparent;font:inherit;font-weight:600;padding:10px 18px;border-radius:10px;cursor:pointer;color:var(--muted);min-height:44px;transition:background .3s}
+.tab[aria-selected="true"]{background:var(--accent);color:#fff}
+.chats{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:20px;align-items:start}
+.chat{background:var(--chat-bg);border-radius:var(--radius);overflow:hidden;border:1px solid var(--line);box-shadow:var(--shadow)}
+.chat-head{background:var(--card);padding:12px 16px;display:flex;gap:10px;align-items:center;border-bottom:1px solid var(--line)}
+.ava{width:38px;height:38px;border-radius:50%;background:var(--accent);color:#fff;display:grid;place-items:center;font-weight:700;font-size:15px;flex:none}
+.ava.m2{background:#3f5a4a}
+.chat-head b{display:block;font-size:15px;line-height:1.3}
+.chat-head small{color:var(--muted);font-size:12px}
+.msgs{padding:14px;display:flex;flex-direction:column;gap:8px}
+.step{align-self:center;background:var(--dark);color:#f3ece2;font-size:12px;font-weight:600;padding:3px 12px;border-radius:100px;margin:6px 0 2px;text-align:center}
+.date{align-self:center;background:rgba(34,29,24,.18);color:#fff;font-size:12px;padding:2px 10px;border-radius:100px}
+.m{max-width:86%;padding:9px 12px;border-radius:14px;font-size:14.5px;line-height:1.45;box-shadow:0 1px 0 rgba(34,29,24,.07);overflow-wrap:anywhere}
+.m.in{background:var(--in);align-self:flex-start;border-bottom-left-radius:4px}
+.m.out{background:var(--out);align-self:flex-end;border-bottom-right-radius:4px}
+.m small{display:block;text-align:right;color:var(--muted);font-size:11px;margin-top:2px}
+.m p{margin:0 0 6px}
+.m .tag{display:inline-block;font-size:11px;font-weight:700;letter-spacing:.04em;text-transform:uppercase;background:var(--hot);color:#7a3410;padding:1px 8px;border-radius:100px;margin-bottom:4px}
+.item{display:flex;gap:10px;align-items:center;background:#f6f1e9;border-radius:10px;padding:8px;margin:6px 0}
+.item svg{flex:none;width:44px;height:44px}
+.item b{display:block;font-size:14px}
+.item span{font-size:13px;color:var(--muted)}
+.kb{display:flex;gap:6px;flex-wrap:wrap;margin-top:6px}
+.kb span{background:#efe7da;border-radius:8px;padding:6px 10px;font-size:13px;font-weight:600;color:var(--accent)}
+.contact{display:flex;gap:8px;align-items:center;font-weight:600}
+.contact svg{width:18px;height:18px;flex:none}
+.cap{font-size:13px;color:var(--muted);padding:0 16px 16px;margin:0}
+[hidden]{display:none!important}
+
+.sheet{background:var(--card);border:1px solid var(--line);border-radius:var(--radius);overflow:hidden;margin-top:28px;box-shadow:var(--shadow)}
+.sheet-title{display:flex;gap:10px;align-items:center;padding:12px 16px;border-bottom:1px solid var(--line);font-weight:600;font-size:14px}
+.sheet-title svg{width:20px;height:20px;flex:none}
+.sheet-scroll{overflow-x:auto}
+table{border-collapse:collapse;width:100%;min-width:720px;font-size:14px}
+th,td{padding:9px 12px;border-bottom:1px solid var(--line);text-align:left;white-space:nowrap}
+th{background:#3a2a1d;color:#fff;font-weight:600;font-size:13px}
+td.num{text-align:right;font-variant-numeric:tabular-nums}
+tr.hot td{background:var(--hot)}
+tr.done td{background:var(--ok)}
+.legend{display:flex;gap:18px;flex-wrap:wrap;padding:12px 16px;font-size:13px;color:var(--muted)}
+.legend i{display:inline-block;width:12px;height:12px;border-radius:3px;margin-right:6px;vertical-align:-1px}
+
+.parts{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:20px}
+.card{background:var(--card);border:1px solid var(--line);border-radius:var(--radius);padding:28px;box-shadow:var(--shadow);transition:transform .4s cubic-bezier(.34,1.56,.64,1),box-shadow .4s}
+.card:hover{transform:translateY(-4px);box-shadow:0 4px 8px rgba(34,29,24,.04),0 16px 48px rgba(34,29,24,.1)}
+.card svg{width:30px;height:30px;color:var(--accent);margin-bottom:14px}
+.card h3{font-size:21px;font-weight:700;margin-bottom:8px}
+.card p{margin:0;color:var(--muted);font-size:15px}
+
+.dark{background:var(--dark);color:#f3ece2}
+.dark h2{color:#fff}
+.dark .sub{color:#c9bcab}
+.dark .label{color:var(--accent-light)}
+.stages{display:grid;gap:14px}
+.stage{display:grid;grid-template-columns:52px minmax(0,1fr) auto;gap:18px;align-items:start;background:var(--dark-card);border:1px solid rgba(255,255,255,.08);border-radius:var(--radius);padding:24px}
+.stage .n{font-family:Fraunces,Georgia,serif;font-size:34px;line-height:1;color:var(--accent-light)}
+.stage h3{font-size:21px;color:#fff;margin-bottom:6px}
+.stage p{margin:0;color:#c9bcab;font-size:15px}
+.stage .meta{text-align:right;white-space:nowrap}
+.stage .meta b{display:block;font-size:20px;color:#fff;font-variant-numeric:tabular-nums}
+.stage .meta span{font-size:14px;color:#c9bcab}
+.total{display:flex;justify-content:space-between;align-items:baseline;flex-wrap:wrap;gap:10px;border-top:1px solid rgba(255,255,255,.15);margin-top:10px;padding-top:22px}
+.total span{color:#c9bcab}
+.total b{font-family:Fraunces,Georgia,serif;font-size:clamp(28px,4vw,40px);color:#fff}
+.note{font-size:14px;color:#c9bcab;margin:16px 0 0}
+
+.grid2{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:20px}
+.list{margin:0;padding:0;list-style:none}
+.list li{position:relative;padding:12px 0 12px 30px;border-bottom:1px solid var(--line);font-size:15px}
+.list li:last-child{border-bottom:0}
+.list li::before{content:"";position:absolute;left:4px;top:20px;width:10px;height:10px;border-radius:50%;border:2px solid var(--accent)}
+.cost{display:grid;gap:10px;margin-top:4px}
+.cost div{display:flex;justify-content:space-between;gap:14px;font-size:15px;padding:10px 0;border-bottom:1px solid var(--line)}
+.cost div:last-child{border-bottom:0}
+.cost b{white-space:nowrap}
+.cost-note{color:var(--muted);margin:14px 0 0;font-size:14px}
+
+.qs{display:grid;gap:16px;counter-reset:q}
+.q{background:var(--card);border:1px solid var(--line);border-radius:var(--radius);padding:24px 26px 24px 70px;position:relative;box-shadow:var(--shadow)}
+.q::before{counter-increment:q;content:counter(q);position:absolute;left:24px;top:20px;font-family:Fraunces,Georgia,serif;font-size:30px;line-height:1;color:var(--accent)}
+.q b{display:block;font-size:17px;margin-bottom:4px}
+.q span{color:var(--muted);font-size:15px}
+
+footer{padding:34px 0 60px;color:var(--muted);font-size:14px;border-top:1px solid var(--line)}
+
+@media (max-width:860px){
+  .parts{grid-template-columns:1fr 1fr}
+}
+@media (max-width:768px){
+  .wrap{padding:0 18px}
+  .facts,.chats,.grid2,.parts{grid-template-columns:1fr}
+  .tabs{display:flex;width:100%}
+  .tab{flex:1 1 auto;padding:10px 12px}
+  .btn{flex:1 1 100%}
+  .card:hover{transform:none}
+  .stage{grid-template-columns:36px minmax(0,1fr);padding:20px}
+  .stage .n{font-size:26px}
+  .stage .meta{grid-column:2;text-align:left;display:flex;gap:12px;align-items:baseline}
+  .stage .meta b{display:inline}
+  .q{padding:20px 20px 20px 56px}
+  .q::before{left:18px}
+}
+</style>
+</head>
+<body>
+<header class="top"><div class="wrap"><b>AI-агент для продаж в Telegram</b><span class="badge">пример до договора, данные вымышленные</span></div></header>
+
+<main>
+<div class="hero mesh"><div class="wrap">
+  <p class="quote">«Нужно создать агента для продаж в телеграм, предложите, пожалуйста, решения, стоимость и сроки».</p>
+  <h1>Агент в Telegram отвечает по прайсу и передаёт менеджеру готовую заявку</h1>
+  <p class="lead">Отвечает клиентам по вашему каталогу и ценам, выясняет, что человеку нужно, подбирает варианты и передаёт менеджеру готовую заявку с контактом. Заявки копятся в Google Таблице на вашем аккаунте.</p>
+  <div class="cta">
+    <a class="btn primary" href="#how">Посмотреть переписку</a>
+    <a class="btn ghost" href="#price">Этапы, сроки и цена</a>
+  </div>
+  <div class="facts">
+    <div class="fact"><b>27 000 руб.</b><span>за всю работу, по этапам ниже</span></div>
+    <div class="fact"><b>6 рабочих дней</b><span>до запуска на ваших клиентах</span></div>
+    <div class="fact"><b>Данные у вас</b><span>таблица в вашем Google, модель YandexGPT или GigaChat на вашем ключе</span></div>
+  </div>
+</div></div>
+
+<section id="how"><div class="wrap">
+  <span class="label">Как это работает</span>
+  <h2>Один диалог с клиентом от вопроса до заявки</h2>
+  <p class="sub">Вымышленная мебельная мастерская «Кедровый двор» продаёт кухни и шкафы из массива. Переключите вкладку, чтобы увидеть тот же диалог глазами менеджера.</p>
+  <div class="tabs" role="tablist" aria-label="Чей чат показать">
+    <button class="tab" role="tab" id="t-client" aria-controls="p-client" aria-selected="true">Клиент</button>
+    <button class="tab" role="tab" id="t-manager" aria-controls="p-manager" aria-selected="false" tabindex="-1">Менеджер</button>
+    <button class="tab" role="tab" id="t-silent" aria-controls="p-silent" aria-selected="false" tabindex="-1">Клиент замолчал</button>
+  </div>
+
+  <div id="p-client" role="tabpanel" aria-labelledby="t-client" class="chats">
+    <div class="chat">
+      <div class="chat-head"><div class="ava">К</div><div><b>Кедровый двор</b><small>бот мастерской</small></div></div>
+      <div class="msgs">
+        <span class="date">12 ноября</span>
+        <span class="step">Шаг 1. Вопрос клиента</span>
+        <div class="m out">Здравствуйте, сколько стоит кухня из дуба? Кухня маленькая, 2,4 метра<small>19:41</small></div>
+        <span class="step">Шаг 2. Ответ по прайсу и уточнение</span>
+        <div class="m in"><p>Здравствуйте! Кухни из массива дуба у нас от 38 000 руб. за погонный метр, на 2,4 м это от 91 200 руб. без техники и столешницы.</p><p>Чтобы подобрать точнее: какой фасад ближе, гладкий или с филёнкой? И нужна ли встроенная техника?</p><small>19:41</small></div>
+        <div class="m out">гладкий, светлый. техника своя есть, встраивать не надо<small>19:44</small></div>
+        <span class="step">Шаг 3. Подбор из каталога</span>
+        <div class="m in"><p>Под светлый гладкий фасад подойдут две модели:</p>
+          <div class="item"><svg viewBox="0 0 44 44" aria-hidden="true"><rect x="2" y="2" width="40" height="40" rx="8" fill="#ead7bd"/><rect x="8" y="10" width="13" height="26" rx="2" fill="#f7ecdc" stroke="#b98a5c"/><rect x="23" y="10" width="13" height="26" rx="2" fill="#f7ecdc" stroke="#b98a5c"/></svg><div><b>«Сканди», дуб беленый</b><span>от 91 200 руб., 25 рабочих дней</span></div></div>
+          <div class="item"><svg viewBox="0 0 44 44" aria-hidden="true"><rect x="2" y="2" width="40" height="40" rx="8" fill="#d9bf99"/><rect x="8" y="10" width="28" height="11" rx="2" fill="#efdcc0" stroke="#a6774a"/><rect x="8" y="23" width="28" height="13" rx="2" fill="#efdcc0" stroke="#a6774a"/></svg><div><b>«Прованс-лайт», дуб натуральный</b><span>от 98 400 руб., 30 рабочих дней</span></div></div>
+          <p>Замер бесплатный, после него технолог сделает точный расчёт. Записать вас на замер?</p>
+          <div class="kb"><span>Записаться на замер</span><span>Есть вопрос</span></div><small>19:44</small></div>
+        <div class="m out">Записаться на замер<small>19:46</small></div>
+      </div>
+      <p class="cap">Цены, сроки и модели бот берёт с листа «Каталог». Поменяли цену в таблице, бот называет новую.</p>
+    </div>
+    <div class="chat">
+      <div class="chat-head"><div class="ava">К</div><div><b>Кедровый двор</b><small>бот мастерской</small></div></div>
+      <div class="msgs">
+        <span class="step">Шаг 4. Контакт и удобное время</span>
+        <div class="m in">Отлично! Поделитесь номером кнопкой ниже и напишите, в какие дни удобно принять замерщика.<div class="kb"><span>Отправить номер</span></div><small>19:46</small></div>
+        <div class="m out"><span class="contact"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path d="M5 4h4l2 5-2.5 1.5a11 11 0 0 0 5 5L15 13l5 2v4a2 2 0 0 1-2 2A16 16 0 0 1 3 6a2 2 0 0 1 2-2"/></svg>Ирина, +7 900 000-00-00</span><small>19:47</small></div>
+        <div class="m out">в субботу до обеда<small>19:47</small></div>
+        <span class="step">Шаг 5. Вопрос вне прайса</span>
+        <div class="m out">а можно столешницу из камня?<small>19:48</small></div>
+        <div class="m in">Каменных столешниц нет в моём прайсе, поэтому не буду гадать с ценой. Передала вопрос менеджеру, он ответит вам здесь же.<small>19:48</small></div>
+        <span class="step">Шаг 6. Итог для клиента</span>
+        <div class="m in"><p>Записала заявку: кухня 2,4 м, гладкий светлый фасад, без встройки, замер в субботу до 13:00, вопрос про каменную столешницу.</p><p>Менеджер Олег свяжется с вами завтра, чтобы подтвердить время.</p><small>19:48</small></div>
+      </div>
+      <p class="cap">Если ответа нет на листе «Знания», агент передаёт вопрос менеджеру.</p>
+    </div>
+  </div>
+
+  <div id="p-manager" role="tabpanel" aria-labelledby="t-manager" class="chats" hidden>
+    <div class="chat">
+      <div class="chat-head"><div class="ava m2">З</div><div><b>Заявки «Кедровый двор»</b><small>чат менеджера с ботом</small></div></div>
+      <div class="msgs">
+        <span class="date">12 ноября</span>
+        <div class="m in"><span class="tag">Горячая заявка</span><p><b>Ирина</b>, +7 900 000-00-00</p><p>Кухня 2,4 м, дуб, гладкий светлый фасад, техника своя.<br>Интерес: «Сканди», «Прованс-лайт».<br>Замер: суббота, до 13:00.<br>Бюджет не назван, ориентир от 91 200 руб.</p><div class="kb"><span>Взять в работу</span><span>Открыть диалог</span></div><small>19:48</small></div>
+        <div class="m in"><span class="tag">Нужен ответ</span><p>Ирина спрашивает: «а можно столешницу из камня?» В прайсе нет. Ответьте сообщением, бот перешлёт клиенту.</p><small>19:48</small></div>
+        <div class="m out">Можно, искусственный камень от 14 000 руб. за п.м., точно посчитаем на замере<small>20:05</small></div>
+        <div class="m in">Отправила Ирине. Добавить ответ на лист «Знания», чтобы в следующий раз отвечать самой?<div class="kb"><span>Добавить</span><span>Не надо</span></div><small>20:05</small></div>
+      </div>
+      <p class="cap">Суть заявки приходит менеджеру одним сообщением, читать всю переписку не нужно.</p>
+    </div>
+    <div class="chat">
+      <div class="chat-head"><div class="ava m2">З</div><div><b>Заявки «Кедровый двор»</b><small>чат менеджера с ботом</small></div></div>
+      <div class="msgs">
+        <span class="date">13 ноября</span>
+        <div class="m in"><p><b>Заявки за 12 ноября</b></p><p>Новых диалогов: 9<br>Заявок с контактом: 4<br>Записались на замер: 2<br>Ждут ответа менеджера: 1</p><div class="kb"><span>Открыть таблицу</span></div><small>09:00</small></div>
+        <div class="m out">Взять в работу: Ирина<small>09:12</small></div>
+        <div class="m in">Заявка Ирины за вами, статус «В работе» в таблице проставлен.<small>09:12</small></div>
+      </div>
+      <p class="cap">Утренняя сводка по вчерашним диалогам. Цифры вымышленные.</p>
+    </div>
+  </div>
+
+  <div id="p-silent" role="tabpanel" aria-labelledby="t-silent" class="chats" hidden>
+    <div class="chat">
+      <div class="chat-head"><div class="ava">К</div><div><b>Кедровый двор</b><small>бот мастерской</small></div></div>
+      <div class="msgs">
+        <span class="date">10 ноября</span>
+        <div class="m out">шкаф-купе 2 м в прихожую сколько будет?<small>21:10</small></div>
+        <div class="m in">Шкаф-купе из массива сосны шириной 2 м от 64 000 руб., из дуба от 86 000 руб. Какая высота потолка в прихожей?<small>21:10</small></div>
+        <span class="date">11 ноября</span>
+        <span class="step">Через сутки без ответа</span>
+        <div class="m in">Добрый день, Павел! Вчера вы спрашивали про шкаф-купе на 2 м. Если удобно, замерщик приедет бесплатно и посчитает точно. Подобрать время?<div class="kb"><span>Да, подобрать</span><span>Пока не нужно</span></div><small>12:00</small></div>
+        <div class="m out">Пока не нужно<small>12:31</small></div>
+        <div class="m in">Хорошо, больше не беспокою. Если вернётесь к шкафу, просто напишите сюда.<small>12:31</small></div>
+      </div>
+      <p class="cap">Одно напоминание через сутки, текст и время на листе «Настройки». Отказ записывается в таблицу.</p>
+    </div>
+    <div class="chat">
+      <div class="chat-head"><div class="ava m2">З</div><div><b>Заявки «Кедровый двор»</b><small>чат менеджера с ботом</small></div></div>
+      <div class="msgs">
+        <span class="date">11 ноября</span>
+        <div class="m in"><p>Павел ответил на напоминание «Пока не нужно». Статус «Отложено», повторно бот не пишет.</p><small>12:31</small></div>
+      </div>
+      <p class="cap">Сколько раз и через сколько часов напоминать, вы задаёте на листе «Настройки».</p>
+    </div>
+  </div>
+
+  <div class="sheet">
+    <div class="sheet-title"><svg viewBox="0 0 24 24" fill="none" stroke="#2f7d4f" stroke-width="1.8" aria-hidden="true"><rect x="4" y="3" width="16" height="18" rx="2"/><path d="M4 9h16M4 15h16M10 9v12"/></svg>Google Таблица, лист «Заявки»</div>
+    <div class="sheet-scroll">
+      <table>
+        <thead><tr><th>Дата</th><th>Клиент</th><th>Телефон</th><th>Что нужно</th><th>Ориентир, руб.</th><th>Этап</th><th>Менеджер</th></tr></thead>
+        <tbody>
+          <tr class="hot"><td>12.11</td><td>Ирина</td><td>+7 900 000-00-00</td><td>Кухня 2,4 м, дуб, замер сб</td><td class="num">91 200</td><td>Замер назначен</td><td>Олег</td></tr>
+          <tr><td>12.11</td><td>Анатолий</td><td>+7 900 000-00-01</td><td>Стол обеденный 1,6 м</td><td class="num">42 000</td><td>Ждёт ответа</td><td>Олег</td></tr>
+          <tr class="done"><td>11.11</td><td>Светлана</td><td>+7 900 000-00-02</td><td>Шкаф в детскую</td><td class="num">58 500</td><td>Договор</td><td>Мария</td></tr>
+          <tr><td>10.11</td><td>Павел</td><td>не оставил</td><td>Шкаф-купе 2 м</td><td class="num">64 000</td><td>Отложено</td><td>-</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="legend"><span><i style="background:var(--hot)"></i>клиент оставил телефон и записан на замер</span><span><i style="background:var(--ok)"></i>заявка дошла до договора</span></div>
+  </div>
+</div></section>
+
+<section class="alt"><div class="wrap">
+  <span class="label">Из чего состоит</span>
+  <h2>Из пяти частей, без платных серверов</h2>
+  <p class="sub">Платных серверов нет. Бот, таблица и ключ модели оформлены на вас, после сдачи всё работает без моего участия.</p>
+  <div class="parts">
+    <div class="card"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><rect x="4" y="3" width="16" height="18" rx="2"/><path d="M4 9h16M4 15h16M10 9v12"/></svg><h3>Таблица с каталогом и знаниями</h3><p>Товары, цены, сроки, ответы на частые вопросы и тексты бота. Правите сами с телефона, агент берёт данные только отсюда.</p></div>
+    <div class="card"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><path d="M21 4 3 11l6 2 2 6 3-4 5 4z"/><path d="m9 13 8-6"/></svg><h3>Telegram-бот</h3><p>Принимает сообщения, показывает кнопки, просит номер телефона кнопкой.</p></div>
+    <div class="card"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><path d="M4 6h16M4 12h10M4 18h7"/><circle cx="18" cy="16" r="3"/><path d="m20.2 18.2 1.8 1.8"/></svg><h3>Модель YandexGPT или GigaChat</h3><p>Пишет ответы по данным из таблицы. Инструкция запрещает называть цены и сроки, которых нет в каталоге.</p></div>
+    <div class="card"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><circle cx="9" cy="8" r="3.5"/><path d="M3 20c0-3.3 2.7-6 6-6s6 2.7 6 6"/><path d="M16 7h5M16 11h5"/></svg><h3>Лист «Заявки» и чат менеджера</h3><p>Каждая заявка строкой в таблице и карточкой в Telegram менеджеру.</p></div>
+    <div class="card"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><circle cx="12" cy="12" r="8.5"/><path d="M12 7v5l3 2"/></svg><h3>Скрипт внутри таблицы</h3><p>Apps Script связывает бота, таблицу и модель, по расписанию шлёт напоминания замолчавшим и утреннюю сводку.</p></div>
+  </div>
+</div></section>
+
+<section id="price" class="dark"><div class="wrap">
+  <span class="label">Этапы, сроки и цена</span>
+  <h2>Три этапа, оплата после каждого</h2>
+  <p class="sub">После каждого этапа вы видите результат и только потом платите за следующий.</p>
+  <div class="stages">
+    <div class="stage"><div class="n">1</div><div><h3>Сценарий и база знаний</h3><p>Разбираю ваш прайс и частые вопросы клиентов, собираю таблицу с листами «Каталог», «Знания», «Заявки», «Настройки». Согласуем, что агент спрашивает и когда зовёт менеджера.</p></div><div class="meta"><b>5 000 руб.</b><span>1 день</span></div></div>
+    <div class="stage"><div class="n">2</div><div><h3>Агент в Telegram</h3><p>Бот на Apps Script, подключение YandexGPT или GigaChat, ответы по каталогу, подбор, сбор контакта, запись заявки, карточка менеджеру, напоминание замолчавшим, утренняя сводка.</p></div><div class="meta"><b>14 000 руб.</b><span>3 дня</span></div></div>
+    <div class="stage"><div class="n">3</div><div><h3>Проверка и запуск</h3><p>Прогоняю 30-40 типичных вопросов ваших клиентов, правлю ответы, запускаю на живом потоке, записываю видеоинструкцию: как менять цены, тексты и кому уходят заявки.</p></div><div class="meta"><b>8 000 руб.</b><span>2 дня</span></div></div>
+  </div>
+  <div class="total"><span>Итого</span><b>27 000 руб. / 6 дней</b></div>
+  <p class="note">Похожий проект, таблицу и Telegram-бота для тренера по питанию, я оценивала в 30 000 руб. за 7 дней. Если понадобится связка с amoCRM или Битрикс24, посчитаю отдельно.</p>
+</div></section>
+
+<section><div class="wrap">
+  <span class="label">Что нужно от вас</span>
+  <h2>Доступы, данные и расходы после запуска</h2>
+  <div class="grid2">
+    <div class="card">
+      <h3>Попрошу</h3>
+      <ul class="list">
+        <li>Прайс или каталог в любом виде: таблица, файл, ссылка на сайт</li>
+        <li>20-30 вопросов, которые клиенты задают чаще всего, и ваши ответы</li>
+        <li>Google-аккаунт, где будет жить таблица, с доступом редактора для меня на время работы</li>
+        <li>Ключ Yandex Cloud или GigaChat API на ваше имя, помогу завести</li>
+        <li>Telegram менеджеров, которым приходят заявки</li>
+      </ul>
+    </div>
+    <div class="card">
+      <h3>Стоит в месяц</h3>
+      <div class="cost">
+        <div><span>Google Таблица и Apps Script</span><b>0 руб.</b></div>
+        <div><span>Telegram-бот</span><b>0 руб.</b></div>
+        <div><span>YandexGPT или GigaChat, оплата за объём текста</span><b>300-1 500 руб.</b></div>
+      </div>
+      <p class="cost-note">Расход на модель указан ориентиром для нескольких сотен диалогов в месяц. Точнее посчитаю, когда узнаю ваш поток обращений.</p>
+    </div>
+  </div>
+</div></section>
+
+<section class="alt"><div class="wrap">
+  <span class="label">Вопросы</span>
+  <h2>Три вопроса, от которых зависит сценарий</h2>
+  <div class="qs">
+    <div class="q"><b>Что вы продаёте и где сейчас живёт прайс?</b><span>От числа позиций и формата каталога зависит, как агент будет подбирать варианты.</span></div>
+    <div class="q"><b>Чем должен закончиться удачный диалог?</b><span>Заявка менеджеру, запись на встречу или замер, оплата по ссылке: под каждый итог свой сценарий.</span></div>
+    <div class="q"><b>Заявки достаточно вести в Google Таблице или нужна ваша CRM?</b><span>С таблицей укладываемся в 6 дней, связку с CRM посчитаю отдельно.</span></div>
+  </div>
+</div></section>
+</main>
+
+<footer><div class="wrap">Пример подготовлен для заказа на FL.ru. Данные вымышленные.</div></footer>
+
+<script>
+(function(){
+  var tabs=[].slice.call(document.querySelectorAll('[role="tab"]'));
+  function select(t){
+    tabs.forEach(function(x){
+      var on=x===t;
+      x.setAttribute('aria-selected',on?'true':'false');
+      x.tabIndex=on?0:-1;
+      document.getElementById(x.getAttribute('aria-controls')).hidden=!on;
+    });
+  }
+  tabs.forEach(function(t,i){
+    t.addEventListener('click',function(){select(t)});
+    t.addEventListener('keydown',function(e){
+      if(e.key==='ArrowRight'||e.key==='ArrowLeft'){
+        var n=tabs[(i+(e.key==='ArrowRight'?1:tabs.length-1))%tabs.length];select(n);n.focus();
+      }
+    });
+  });
+})();
+</script>
+</body>
+</html>
