@@ -1,0 +1,844 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex, nofollow">
+<meta name="theme-color" content="#0D1316">
+<title>Стоматология «Эмаль» в Екатеринбурге (демо)</title>
+<meta name="description" content="Концепт главной страницы стоматологии: 3D-челюсть на первом экране, подбор лечения по жалобе, сборка импланта на скролле.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Unbounded:wght@300;400;500;600&family=Manrope:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+:root{
+  --ink:#0D1316;--ink2:#141D21;--ink3:#1B262B;--line:rgba(255,255,255,.1);
+  --porc:#F4F1EB;--paper:#FFFFFF;--text:#12191C;--muted:#55636A;
+  --on-dark:#E8EEF0;--on-dark-m:#9FB0B6;
+  --mint:#6EE7C8;--mint-d:#0B7A61;--coral:#FF9C7A;
+  --head:'Unbounded',system-ui,sans-serif;--body:'Manrope',system-ui,sans-serif;
+  --ease:cubic-bezier(.34,1.56,.64,1);--soft:cubic-bezier(.2,.8,.2,1);
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth;-webkit-text-size-adjust:100%}
+body{margin:0;background:var(--ink);color:var(--on-dark);font-family:var(--body);font-size:16px;line-height:1.65;-webkit-font-smoothing:antialiased;overflow-x:hidden}
+body::after{content:'';position:fixed;inset:0;z-index:9998;pointer-events:none;opacity:.03;background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E")}
+a{color:inherit}
+a,button,input,select,label,summary{touch-action:manipulation}
+button{font-family:inherit;cursor:pointer}
+:focus-visible{outline:2px solid var(--mint);outline-offset:3px;border-radius:6px}
+.light :focus-visible{outline-color:var(--mint-d)}
+h1,h2,h3{font-family:var(--head);font-weight:500;margin:0;text-wrap:balance;letter-spacing:-.02em}
+h2{font-size:clamp(28px,4.4vw,52px);line-height:1.08}
+h3{font-size:19px;line-height:1.25;font-weight:500}
+p{margin:0}
+.wrap{max-width:1180px;margin:0 auto;padding:0 24px}
+.label{font-size:12px;font-weight:700;letter-spacing:.22em;text-transform:uppercase;color:var(--mint)}
+.light .label{color:var(--mint-d)}
+.sec{padding:clamp(72px,11vw,140px) 0;position:relative}
+.light{background:var(--porc);color:var(--text)}
+.muted{color:var(--on-dark-m)}
+.light .muted{color:var(--muted)}
+.skip{position:absolute;left:-999px;top:8px;background:var(--mint);color:var(--ink);padding:8px 14px;z-index:100}
+.skip:focus{left:8px}
+
+/* buttons */
+.btn{position:relative;overflow:hidden;display:inline-flex;align-items:center;justify-content:center;gap:10px;padding:16px 26px;border-radius:14px;border:0;font:600 15px/1 var(--body);text-decoration:none;transition:transform .35s var(--ease),box-shadow .35s}
+.btn::after{content:'';position:absolute;top:0;left:-80%;width:50%;height:100%;background:linear-gradient(90deg,transparent,rgba(255,255,255,.35),transparent);transform:skewX(-20deg);transition:left .6s}
+.btn:hover::after{left:130%}
+.btn:hover{transform:translateY(-2px)}
+.btn-mint{background:var(--mint);color:var(--ink);box-shadow:0 6px 24px rgba(110,231,200,.25)}
+.btn-mint:hover{box-shadow:0 10px 34px rgba(110,231,200,.4)}
+.btn-ghost{background:transparent;color:var(--on-dark);border:1px solid rgba(255,255,255,.22)}
+.btn-dark{background:var(--ink);color:#fff}
+
+/* header */
+.hdr{position:fixed;top:0;left:0;right:0;z-index:50;transition:background .3s,border-color .3s;border-bottom:1px solid transparent}
+.hdr.solid{background:rgba(13,19,22,.82);backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);border-color:var(--line)}
+.hdr .wrap{display:flex;align-items:center;gap:28px;height:68px}
+.logo{display:flex;align-items:center;gap:10px;text-decoration:none;font:500 20px/1 var(--head);letter-spacing:-.02em}
+.logo svg{width:26px;height:30px}
+.nav{display:flex;gap:26px;margin-left:auto;font-size:14px;font-weight:500}
+.nav a{text-decoration:none;color:var(--on-dark-m);transition:color .2s}
+.nav a:hover{color:#fff}
+.hdr-phone{font-weight:600;font-size:14px;text-decoration:none;white-space:nowrap}
+.hdr .btn{padding:12px 18px;font-size:14px}
+.burger{display:none;width:44px;height:44px;border-radius:12px;border:1px solid var(--line);background:transparent;color:#fff;align-items:center;justify-content:center}
+.mnav{position:fixed;inset:0;z-index:60;background:var(--ink);padding:90px 28px 40px;display:flex;flex-direction:column;gap:22px;transform:translateX(100%);transition:transform .45s var(--soft)}
+.mnav.open{transform:none}
+.mnav a{font:500 26px/1.2 var(--head);text-decoration:none}
+.mnav .close{position:absolute;top:14px;right:20px}
+
+/* HERO */
+.hero{position:relative;min-height:100vh;min-height:100svh;padding:110px 0 60px;overflow:hidden;background:
+  radial-gradient(ellipse 55% 60% at 72% 48%,rgba(110,231,200,.13),transparent 70%),
+  radial-gradient(ellipse 40% 40% at 10% 90%,rgba(255,156,122,.07),transparent 70%),var(--ink)}
+.hero .wrap{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.12fr);gap:32px;align-items:center}
+.orbit{position:absolute;border:1px solid rgba(110,231,200,.12);border-radius:50%;pointer-events:none}
+.hero-txt{position:relative;z-index:2;display:flex;flex-direction:column;gap:22px}
+.eyebrow{display:inline-flex;align-items:center;gap:10px;font-size:13px;font-weight:600;color:var(--on-dark-m)}
+.eyebrow i{width:8px;height:8px;border-radius:50%;background:var(--mint);box-shadow:0 0 0 4px rgba(110,231,200,.18);animation:pulse 2.4s infinite}
+@keyframes pulse{50%{box-shadow:0 0 0 9px rgba(110,231,200,0)}}
+.hero h1{font-size:clamp(30px,4.6vw,60px);line-height:1.04;font-weight:500}
+.hero h1 em{font-style:normal;color:var(--mint)}
+.lead{font-size:18px;color:var(--on-dark-m);max-width:470px}
+.q{font-size:13px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:var(--on-dark-m);margin-bottom:-8px}
+.chips{display:flex;flex-wrap:wrap;gap:8px}
+.chip{padding:11px 16px;border-radius:100px;border:1px solid rgba(255,255,255,.16);background:rgba(255,255,255,.03);color:var(--on-dark);font:600 14px/1 var(--body);transition:background .25s,border-color .25s,color .25s,transform .3s var(--ease)}
+.chip:hover{border-color:rgba(110,231,200,.6);transform:translateY(-2px)}
+.chip[aria-pressed="true"]{background:var(--mint);border-color:var(--mint);color:var(--ink)}
+.card{position:relative;border:1px solid var(--line);background:linear-gradient(160deg,rgba(255,255,255,.06),rgba(255,255,255,.015));border-radius:20px;padding:20px 22px;display:grid;gap:8px;max-width:500px;transition:opacity .3s,transform .3s}
+.card.swap{opacity:0;transform:translateY(8px)}
+.card .tag{font-size:12px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--coral)}
+.card h3{font-size:18px}
+.card p{font-size:15px;color:var(--on-dark-m)}
+.card .meta{display:flex;gap:18px;flex-wrap:wrap;margin-top:4px;font-size:14px}
+.card .meta b{font:500 18px/1 var(--head);color:var(--mint)}
+.hero-cta{display:flex;gap:12px;flex-wrap:wrap}
+
+.stage{position:relative;height:min(600px,70vh);min-height:420px;perspective:1100px;perspective-origin:50% 40%;touch-action:pan-y;user-select:none;-webkit-user-select:none}
+.jaw{position:absolute;left:50%;top:50%;width:0;height:0;transform-style:preserve-3d}
+.arch{position:absolute;left:0;top:0;transform-style:preserve-3d}
+.tooth{position:absolute;left:0;top:0;padding:0;border:0;background:none;transform-style:preserve-3d;transition:transform 1s var(--soft);-webkit-tap-highlight-color:transparent}
+.tooth:focus-visible{outline:none}
+.tooth:focus-visible .f{filter:drop-shadow(0 0 6px var(--mint))}
+.tooth .in{position:absolute;inset:0;transform-style:preserve-3d;transition:transform .8s var(--ease),opacity .6s}
+.tooth svg{position:absolute;inset:0;width:100%;height:100%;overflow:visible;transition:filter .5s}
+.tooth .b2{transform:translateZ(-6px)}
+.tooth .b1{transform:translateZ(-3px)}
+.lower .f{transform:scaleY(-1)}
+.lower .b1{transform:translateZ(-3px) scaleY(-1)}
+.lower .b2{transform:translateZ(-6px) scaleY(-1)}
+.tooth .crown{fill:url(#gCrown);transition:fill .4s}
+.tooth.bad .crown{fill:url(#gBad)}
+.tooth.hot .crown{fill:url(#gHot)}
+.tooth.hot .f{filter:drop-shadow(0 0 10px rgba(110,231,200,.75))}
+.tooth.bad .f{filter:drop-shadow(0 0 10px rgba(255,156,122,.7))}
+.tooth.gone .in{opacity:.08;transform:translateY(-60px) scale(.8)}
+.jaw.stain .f,.jaw.stain .b1{filter:sepia(.55) saturate(1.5) brightness(.92)}
+.hint{position:absolute;left:50%;bottom:6px;transform:translateX(-50%);font-size:13px;color:var(--on-dark-m);display:flex;align-items:center;gap:8px;white-space:nowrap}
+.hint svg{width:18px;height:18px}
+.tip{position:absolute;pointer-events:none;padding:6px 10px;border-radius:8px;background:rgba(13,19,22,.9);border:1px solid var(--line);font-size:12px;font-weight:600;opacity:0;transform:translate(-50%,-130%);transition:opacity .2s;white-space:nowrap}
+
+/* stats strip */
+.strip{border-top:1px solid var(--line);border-bottom:1px solid var(--line);background:var(--ink2)}
+.strip .wrap{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));}
+.stat{padding:30px 20px;border-left:1px solid var(--line)}
+.stat:first-child{border-left:0;padding-left:0}
+.stat b{display:block;font:400 clamp(28px,3.4vw,40px)/1 var(--head);color:#fff;letter-spacing:-.03em}
+.stat span{display:block;margin-top:10px;font-size:14px;color:var(--on-dark-m);line-height:1.4}
+
+/* services */
+.head{display:flex;justify-content:space-between;align-items:end;gap:24px;flex-wrap:wrap;margin-bottom:48px}
+.head > div{display:grid;gap:14px;max-width:640px}
+.bento{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:20px;perspective:1200px}
+.svc{position:relative;background:var(--paper);border-radius:20px;padding:30px;display:flex;flex-direction:column;gap:14px;box-shadow:0 1px 3px rgba(0,0,0,.04),0 4px 24px rgba(0,0,0,.06);transform-style:preserve-3d;transition:transform .5s var(--soft),box-shadow .4s;min-height:260px;text-decoration:none;color:inherit}
+.svc:hover{box-shadow:0 4px 8px rgba(0,0,0,.04),0 20px 50px rgba(0,0,0,.12)}
+.svc .ico{width:52px;height:52px;border-radius:14px;background:#E7F6F1;display:grid;place-items:center;transform:translateZ(30px)}
+.svc .ico svg{width:28px;height:28px;stroke:var(--mint-d);fill:none;stroke-width:1.6;stroke-linecap:round;stroke-linejoin:round}
+.svc p{color:var(--muted);font-size:15px}
+.svc .price{margin-top:auto;display:flex;justify-content:space-between;align-items:baseline;border-top:1px solid #E6E1D8;padding-top:16px;transform:translateZ(20px)}
+.svc .price b{font:500 20px/1 var(--head)}
+.svc .price span{font-size:13px;color:var(--muted)}
+.svc.big{grid-column:span 2;background:var(--ink);color:var(--on-dark);overflow:hidden}
+.svc.big p{color:var(--on-dark-m)}
+.svc.big .ico{background:rgba(110,231,200,.12)}
+.svc.big .ico svg{stroke:var(--mint)}
+.svc.big .price{border-color:var(--line)}
+.svc.big .price span{color:var(--on-dark-m)}
+.svc.big .price b{color:var(--mint)}
+.svc .ghost{position:absolute;right:-30px;bottom:-40px;width:240px;opacity:.9;transform:translateZ(10px);pointer-events:none}
+
+/* implant scroll */
+.implant{height:330vh;position:relative;background:var(--ink)}
+.pin{position:sticky;top:0;height:100vh;height:100svh;overflow:hidden;display:flex;align-items:center;background:radial-gradient(ellipse 50% 60% at 70% 55%,rgba(110,231,200,.1),transparent 70%)}
+.pin .wrap{width:100%;display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:40px;align-items:center}
+.steps{list-style:none;margin:28px 0 0;padding:0;display:grid;gap:8px}
+.step{padding:16px 18px 16px 20px;border-left:2px solid var(--line);transition:border-color .4s,opacity .4s;opacity:.4}
+.step.on{border-color:var(--mint);opacity:1}
+.step b{display:block;font:500 16px/1.3 var(--head);color:#fff;margin-bottom:4px}
+.step span{font-size:15px;color:var(--on-dark-m)}
+.scene{width:100%;max-width:470px;justify-self:center;height:auto;overflow:visible}
+.bar{height:3px;background:var(--line);border-radius:3px;margin-top:22px;overflow:hidden;max-width:420px}
+.bar i{display:block;height:100%;width:100%;background:var(--mint);transform-origin:0 50%;transform:scaleX(0)}
+
+/* before / after */
+.ba-grid{display:grid;grid-template-columns:minmax(0,.85fr) minmax(0,1.15fr);gap:56px;align-items:center}
+.ba{position:relative;border-radius:24px;overflow:hidden;background:linear-gradient(160deg,#F2C9BE,#E3A79C);aspect-ratio:16/10;max-width:100%}
+.ba svg{position:absolute;inset:0;width:100%;height:100%}
+.ba .after{clip-path:inset(0 0 0 var(--x,50%))}
+.ba .handle{position:absolute;top:0;bottom:0;left:var(--x,50%);width:2px;background:#fff;transform:translateX(-1px);pointer-events:none}
+.ba .handle::after{content:'';position:absolute;top:50%;left:50%;width:46px;height:46px;margin:-23px 0 0 -23px;border-radius:50%;background:#fff url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%2312191C' stroke-width='2' stroke-linecap='round'%3E%3Cpath d='M9 6l-5 6 5 6M15 6l5 6-5 6'/%3E%3C/svg%3E") center/22px no-repeat;box-shadow:0 6px 20px rgba(0,0,0,.2)}
+.ba input{position:absolute;inset:0;width:100%;height:100%;opacity:0;cursor:ew-resize;margin:0}
+.ba .lbl{position:absolute;top:16px;padding:6px 12px;border-radius:100px;background:rgba(18,25,28,.7);color:#fff;font-size:12px;font-weight:700;letter-spacing:.1em;text-transform:uppercase}
+.ba-list{list-style:none;padding:0;margin:26px 0 0;display:grid;gap:12px}
+.ba-list li{display:flex;gap:12px;align-items:baseline;font-size:15px}
+.ba-list b{font:500 15px var(--head);color:var(--mint-d);min-width:84px}
+
+/* doctors */
+.docs{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:24px}
+.doc{background:var(--paper);border-radius:20px;overflow:hidden;box-shadow:0 1px 3px rgba(0,0,0,.04),0 4px 24px rgba(0,0,0,.06);transition:transform .4s var(--ease),box-shadow .4s}
+.doc:hover{transform:translateY(-6px);box-shadow:0 4px 8px rgba(0,0,0,.04),0 20px 50px rgba(0,0,0,.12)}
+.doc svg{display:block;width:100%;height:auto;aspect-ratio:300/250}
+.doc .body{padding:22px 24px 26px;display:grid;gap:6px}
+.doc .role{font-size:14px;color:var(--muted)}
+.doc .fact{margin-top:8px;font-size:14px;font-weight:600;color:var(--mint-d)}
+
+/* reviews */
+.revs{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:20px}
+.rev{border:1px solid var(--line);background:var(--ink2);border-radius:20px;padding:28px;display:flex;flex-direction:column;gap:16px}
+.rev .stars{color:var(--mint);letter-spacing:3px;font-size:15px}
+.rev p{font-size:16px}
+.rev .who{margin-top:auto;font-size:14px;color:var(--on-dark-m)}
+.rev .who b{color:#fff;font-weight:600}
+.badge{display:inline-block;font-size:11px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;padding:4px 10px;border-radius:100px;border:1px solid var(--line);color:var(--on-dark-m)}
+
+/* booking */
+.book{display:grid;grid-template-columns:minmax(0,.9fr) minmax(0,1.1fr);gap:56px;align-items:start}
+.form{background:var(--paper);border-radius:24px;padding:clamp(22px,3.5vw,40px);box-shadow:0 1px 3px rgba(0,0,0,.04),0 10px 40px rgba(0,0,0,.08);display:grid;gap:22px}
+.form fieldset{border:0;margin:0;padding:0;display:grid;gap:10px;min-width:0}
+.form legend{font-size:13px;font-weight:700;color:var(--muted);letter-spacing:.06em;text-transform:uppercase;margin-bottom:10px;padding:0}
+.opts{display:flex;flex-wrap:wrap;gap:8px}
+.opt{padding:11px 14px;border-radius:12px;border:1px solid #DDD7CC;background:#fff;color:var(--text);font:600 14px/1.2 var(--body);transition:background .2s,border-color .2s,color .2s}
+.opt:hover{border-color:var(--mint-d)}
+.opt[aria-pressed="true"]{background:var(--ink);border-color:var(--ink);color:#fff}
+.opt small{display:block;font-weight:500;font-size:12px;opacity:.7;margin-top:2px}
+.opt[disabled]{opacity:.35;text-decoration:line-through;cursor:not-allowed}
+.fields{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.form input[type=text],.form input[type=tel]{width:100%;padding:15px 16px;border-radius:12px;border:1px solid #DDD7CC;font:500 16px var(--body);background:#FBFAF7;color:var(--text);transition:border-color .2s,box-shadow .2s}
+.form input:focus{outline:none;border-color:var(--mint-d);box-shadow:0 0 0 3px rgba(11,122,97,.15)}
+.form .note{font-size:13px;color:var(--muted)}
+.done{display:none;text-align:center;padding:30px 10px;gap:12px}
+.form.sent .done{display:grid}
+.form.sent > :not(.done){display:none}
+.contacts{display:grid;gap:18px;margin-top:30px}
+.contacts div{display:grid;gap:2px}
+.contacts span{font-size:13px;color:var(--muted)}
+.contacts b{font-weight:600;font-size:17px}
+
+/* agency */
+.agency .grid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:18px;margin-top:44px}
+.agency .it{border:1px solid var(--line);border-radius:18px;padding:24px;display:grid;gap:10px;align-content:start;background:rgba(255,255,255,.02)}
+.agency .it b{font:500 15px/1.3 var(--head);color:#fff}
+.agency .it span{font-size:14px;color:var(--on-dark-m)}
+.agency .it i{font:400 34px/1 var(--head);color:var(--mint);font-style:normal}
+
+footer{border-top:1px solid var(--line);padding:40px 0 50px;font-size:14px;color:var(--on-dark-m)}
+footer .wrap{display:flex;justify-content:space-between;gap:20px;flex-wrap:wrap}
+
+/* reveal */
+.rv{opacity:0;transform:translateY(40px);transition:opacity .9s var(--soft),transform .9s var(--soft)}
+.rv.vis{opacity:1;transform:none}
+.rv.d1{transition-delay:.12s}.rv.d2{transition-delay:.24s}.rv.d3{transition-delay:.36s}
+
+@media (max-width:1020px){
+  .nav,.hdr-phone{display:none}
+  .burger{display:inline-flex;margin-left:auto}
+  .bento{grid-template-columns:1fr 1fr}
+  .agency .grid{grid-template-columns:1fr 1fr}
+}
+@media (max-width:768px){
+  body{font-size:16px}
+  .hdr .wrap{height:60px;gap:12px}
+  .hdr .btn{padding:11px 14px}
+  .hero{padding:72px 0 36px;min-height:0}
+  .hero .wrap{grid-template-columns:1fr;gap:6px}
+  .hero-txt{display:contents}
+  .hero-txt > *{order:1}
+  .eyebrow{font-size:12px}
+  .hero h1{font-size:28px;margin-top:6px}
+  .lead{display:none}
+  .stage{order:2;height:244px;min-height:0;margin:0 -24px}
+  .q{order:3;margin:2px 0 4px}
+  .chips{order:4;flex-wrap:nowrap;overflow-x:auto;margin:0 -24px;padding:2px 24px 6px;scrollbar-width:none}
+  .chips::-webkit-scrollbar{display:none}
+  .chip{white-space:nowrap;padding:11px 14px}
+  .card{order:5;padding:16px 18px;margin-top:6px}
+  .card p{font-size:14px}
+  .hero-cta{order:6;margin-top:10px}
+  .hero-cta .btn{flex:1 1 100%}
+  .hero-cta .btn-ghost{display:none}
+  .hint{display:none}
+  .strip .wrap{grid-template-columns:1fr 1fr}
+  .stat{padding:22px 14px}
+  .stat:nth-child(3){border-left:0;padding-left:0}
+  .stat:nth-child(n+3){border-top:1px solid var(--line)}
+  .bento,.docs,.revs,.ba-grid,.book{grid-template-columns:1fr}
+  .svc.big{grid-column:auto}
+  .svc{min-height:0}
+  .implant{height:300vh}
+  .pin{align-items:flex-start;padding-top:76px}
+  .pin .wrap{grid-template-columns:1fr;gap:4px}
+  .pin h2{font-size:24px}
+  .steps{margin-top:14px;gap:0}
+  .step{display:none;padding:10px 0 10px 16px;opacity:1}
+  .step.on{display:block}
+  .scene{max-width:min(330px,46vh)}
+  .ba-grid{gap:30px}
+  .fields{grid-template-columns:1fr}
+  .agency .grid{grid-template-columns:1fr}
+  .btn{width:100%}
+  .hdr .btn{width:auto}
+}
+@media (prefers-reduced-motion:reduce){
+  *,*::before,*::after{animation:none!important;transition-duration:.01ms!important;scroll-behavior:auto!important}
+  .rv{opacity:1;transform:none}
+}
+</style>
+</head>
+<body>
+<a class="skip" href="#main">К содержимому</a>
+
+<!-- shared gradients for teeth -->
+<svg width="0" height="0" style="position:absolute" aria-hidden="true" focusable="false">
+  <defs>
+    <linearGradient id="gCrown" x1="0" x2="1" y1="0" y2="0">
+      <stop offset="0" stop-color="#BDB3A2"/><stop offset=".28" stop-color="#F3EFE7"/><stop offset=".5" stop-color="#FFFFFF"/><stop offset=".76" stop-color="#E8E1D4"/><stop offset="1" stop-color="#ABA08D"/>
+    </linearGradient>
+    <linearGradient id="gHot" x1="0" x2="1" y1="0" y2="0">
+      <stop offset="0" stop-color="#5FCBB0"/><stop offset=".3" stop-color="#E4FFF8"/><stop offset=".5" stop-color="#FFFFFF"/><stop offset=".76" stop-color="#C6F5E8"/><stop offset="1" stop-color="#4FB89D"/>
+    </linearGradient>
+    <linearGradient id="gBad" x1="0" x2="1" y1="0" y2="0">
+      <stop offset="0" stop-color="#C9765C"/><stop offset=".3" stop-color="#FFD9C9"/><stop offset=".5" stop-color="#FFE9DF"/><stop offset=".76" stop-color="#F7BBA4"/><stop offset="1" stop-color="#B9654C"/>
+    </linearGradient>
+    <linearGradient id="gRoot" x1="0" x2="0" y1="0" y2="1">
+      <stop offset="0" stop-color="#E7DCC8" stop-opacity="0"/><stop offset=".75" stop-color="#D9CCB4" stop-opacity=".55"/><stop offset="1" stop-color="#E3D8C4" stop-opacity=".9"/>
+    </linearGradient>
+    <linearGradient id="gTi" x1="0" x2="1" y1="0" y2="0">
+      <stop offset="0" stop-color="#5D6A70"/><stop offset=".35" stop-color="#D8E0E3"/><stop offset=".55" stop-color="#F4F7F8"/><stop offset="1" stop-color="#6E7B81"/>
+    </linearGradient>
+    <linearGradient id="gBone" x1="0" x2="0" y1="0" y2="1">
+      <stop offset="0" stop-color="#E9DDC7"/><stop offset="1" stop-color="#C9B593"/>
+    </linearGradient>
+    <linearGradient id="gGum" x1="0" x2="0" y1="0" y2="1">
+      <stop offset="0" stop-color="#F0A3A0"/><stop offset="1" stop-color="#D9807F"/>
+    </linearGradient>
+    <linearGradient id="scanG" x1="0" x2="0" y1="0" y2="1">
+      <stop offset="0" stop-color="#6EE7C8" stop-opacity="0"/><stop offset="1" stop-color="#6EE7C8" stop-opacity=".22"/>
+    </linearGradient>
+  </defs>
+</svg>
+
+<header class="hdr" id="hdr">
+  <div class="wrap">
+    <a class="logo" href="#top" aria-label="Эмаль, на главную">
+      <svg viewBox="0 0 26 30" fill="none" aria-hidden="true"><path d="M13 4.5C10 1.5 3 1.5 2 7c-.8 4.5 1.4 8 2.4 12.5.8 3.6 1.3 8 3.6 8 2.6 0 2.4-7 5-7s2.4 7 5 7c2.3 0 2.8-4.4 3.6-8C22.6 15 24.8 11.5 24 7c-1-5.5-8-5.5-11-2.5Z" stroke="#6EE7C8" stroke-width="1.8" stroke-linejoin="round"/></svg>
+      эмаль
+    </a>
+    <nav class="nav" aria-label="Разделы">
+      <a href="#services">Услуги и цены</a>
+      <a href="#implant">Имплантация</a>
+      <a href="#smile">До и после</a>
+      <a href="#doctors">Врачи</a>
+      <a href="#reviews">Отзывы</a>
+    </nav>
+    <a class="hdr-phone" href="tel:+73430000000">+7 343 000-00-00</a>
+    <a class="btn btn-mint" href="#book">Записаться</a>
+    <button class="burger" aria-label="Открыть меню" onclick="toggleMenu(true)">
+      <svg width="20" height="20" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" aria-hidden="true"><path d="M3 6h14M3 14h14"/></svg>
+    </button>
+  </div>
+</header>
+<div class="mnav" id="mnav" aria-hidden="true">
+  <button class="burger close" aria-label="Закрыть меню" onclick="toggleMenu(false)" style="display:inline-flex">
+    <svg width="20" height="20" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" aria-hidden="true"><path d="M4 4l12 12M16 4L4 16"/></svg>
+  </button>
+  <a href="#services" onclick="toggleMenu(false)">Услуги и цены</a>
+  <a href="#implant" onclick="toggleMenu(false)">Имплантация</a>
+  <a href="#smile" onclick="toggleMenu(false)">До и после</a>
+  <a href="#doctors" onclick="toggleMenu(false)">Врачи</a>
+  <a href="#reviews" onclick="toggleMenu(false)">Отзывы</a>
+  <a href="#book" onclick="toggleMenu(false)">Запись</a>
+  <a href="tel:+73430000000" style="font-size:18px;color:var(--mint)">+7 343 000-00-00</a>
+</div>
+
+<main id="main">
+<!-- HERO -->
+<section class="hero" id="top">
+  <div class="orbit" style="width:760px;height:760px;right:-120px;top:50%;margin-top:-360px" aria-hidden="true"></div>
+  <div class="orbit" style="width:1100px;height:1100px;right:-290px;top:50%;margin-top:-530px;opacity:.5" aria-hidden="true"></div>
+  <div class="wrap">
+    <div class="hero-txt">
+      <div class="eyebrow"><i></i>Стоматология «Эмаль», Екатеринбург</div>
+      <h1>Покажите, что беспокоит. <em>Покажем, как вылечим.</em></h1>
+      <p class="lead">Нажмите на жалобу или на любой зуб: увидите лечение, число визитов и цену до звонка в клинику.</p>
+      <div class="q" id="qLbl">Что беспокоит?</div>
+      <div class="chips" role="group" aria-labelledby="qLbl" id="chips">
+        <button class="chip" data-k="pain" aria-pressed="true">Болит зуб</button>
+        <button class="chip" data-k="chip" aria-pressed="false">Скол или тёмный зуб</button>
+        <button class="chip" data-k="missing" aria-pressed="false">Нет зуба</button>
+        <button class="chip" data-k="crooked" aria-pressed="false">Кривые зубы</button>
+        <button class="chip" data-k="white" aria-pressed="false">Хочу белее</button>
+      </div>
+      <div class="card" id="card" aria-live="polite">
+        <div class="tag" id="cTag">Зуб 3.6 · первый моляр</div>
+        <h3 id="cTitle">Лечение каналов под микроскопом</h3>
+        <p id="cDesc">Снимаем боль в первый визит и сохраняем зуб, а не удаляем.</p>
+        <div class="meta"><span>Визиты: <b id="cVis">1-2</b></span><span>Цена: <b id="cPrice">от 6 900 руб.</b></span></div>
+      </div>
+      <div class="hero-cta">
+        <a class="btn btn-mint" href="#book" id="heroBtn">Записаться на бесплатный осмотр</a>
+        <a class="btn btn-ghost" href="#services">Все услуги и цены</a>
+      </div>
+    </div>
+    <div class="stage" id="stage" aria-label="3D-модель зубов: нажмите на зуб">
+      <div class="jaw" id="jaw"><div class="arch upper" id="up"></div><div class="arch lower" id="lo"></div></div>
+      <div class="tip" id="tip"></div>
+      <div class="hint"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" aria-hidden="true"><path d="M8 13V6a2 2 0 1 1 4 0v5m0-1V4.5a2 2 0 1 1 4 0V11m0-3a2 2 0 1 1 4 0v6a7 7 0 0 1-7 7h-1a7 7 0 0 1-5.5-2.7L3.5 14a2 2 0 0 1 3-2.5L8 13"/></svg>28 зубов можно повернуть, у каждого своё лечение</div>
+    </div>
+  </div>
+</section>
+
+<div class="strip">
+  <div class="wrap">
+    <div class="stat rv"><b><span data-count="0">0</span> руб.</b><span>осмотр и 3D-снимок при записи с сайта</span></div>
+    <div class="stat rv d1"><b><span data-count="4800">0</span>+</b><span>имплантов поставили с 2014 года</span></div>
+    <div class="stat rv d2"><b>40 мин</b><span>длится установка импланта по 3D-шаблону</span></div>
+    <div class="stat rv d3"><b>4,9</b><span>средняя оценка на картах (пример)</span></div>
+  </div>
+</div>
+
+<!-- SERVICES -->
+<section class="sec light" id="services">
+  <div class="wrap">
+    <div class="head rv">
+      <div><div class="label">Услуги и цены</div><h2>Цена известна до кресла, а не после</h2></div>
+      <p class="muted" style="max-width:360px">Пишем стоимость в плане лечения и не меняем её по ходу. Рассрочка 0% до 12 месяцев.</p>
+    </div>
+    <div class="bento">
+      <a class="svc big rv" href="#implant">
+        <div class="ico"><svg viewBox="0 0 24 24"><path d="M8 3h8l-1 4H9z"/><path d="M9 7h6M9.5 10h5M10 13h4M10.5 16h3M11 19h2M12 19v2"/></svg></div>
+        <h3>Имплантация под ключ</h3>
+        <p>КТ, план в 3D, имплант за один визит и коронка через 3 месяца. Гарантия на имплант пожизненная.</p>
+        <div class="price"><span>имплант + коронка</span><b>от 42 000 руб.</b></div>
+        <svg class="ghost" viewBox="0 0 200 200" aria-hidden="true"><circle cx="100" cy="100" r="90" fill="none" stroke="rgba(110,231,200,.15)"/><circle cx="100" cy="100" r="60" fill="none" stroke="rgba(110,231,200,.1)"/></svg>
+      </a>
+      <a class="svc rv d1" href="#book">
+        <div class="ico"><svg viewBox="0 0 24 24"><path d="M12 5C10 3 5 3 4.5 7c-.4 3 1 5.5 1.6 8.5.5 2.5.9 5.5 2.4 5.5 1.8 0 1.6-4.5 3.5-4.5s1.7 4.5 3.5 4.5c1.5 0 1.9-3 2.4-5.5.6-3 2-5.5 1.6-8.5C19 3 14 3 12 5z"/><path d="M9 9.5l2 2 4-4"/></svg></div>
+        <h3>Лечение без боли</h3>
+        <p>Компьютерная анестезия и микроскоп. Если страшно, лечим во сне.</p>
+        <div class="price"><span>кариес</span><b>от 4 900 руб.</b></div>
+      </a>
+      <a class="svc rv" href="#smile">
+        <div class="ico"><svg viewBox="0 0 24 24"><path d="M3 9c3 2 6 3 9 3s6-1 9-3"/><path d="M4 10c1 5 4.5 8 8 8s7-3 8-8"/><path d="M8 11.5v2.5M12 12v3M16 11.5v2.5"/></svg></div>
+        <h3>Элайнеры и брекеты</h3>
+        <p>Прозрачные капы без металла. Финальную улыбку покажем в 3D до начала.</p>
+        <div class="price"><span>курс</span><b>от 159 000 руб.</b></div>
+      </a>
+      <a class="svc rv d1" href="#smile">
+        <div class="ico"><svg viewBox="0 0 24 24"><path d="M12 3l1.8 4.2L18 9l-4.2 1.8L12 15l-1.8-4.2L6 9l4.2-1.8z"/><path d="M18 15l.8 1.7 1.7.8-1.7.8L18 20l-.8-1.7-1.7-.8 1.7-.8z"/></svg></div>
+        <h3>Виниры и отбеливание</h3>
+        <p>Цвет и форму примеряем на временных винирах, пока вы не скажете «да».</p>
+        <div class="price"><span>винир</span><b>от 28 000 руб.</b></div>
+      </a>
+      <a class="svc rv d2" href="#doctors">
+        <div class="ico"><svg viewBox="0 0 24 24"><circle cx="12" cy="8" r="4"/><path d="M5 21c.5-4 3.3-6 7-6s6.5 2 7 6"/><path d="M15.5 4.5l2-2"/></svg></div>
+        <h3>Детская стоматология</h3>
+        <p>Первый визит знакомство без бормашины. Мультики на потолке.</p>
+        <div class="price"><span>приём</span><b>от 1 500 руб.</b></div>
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- IMPLANT SCROLL -->
+<section class="implant" id="implant">
+  <div class="pin">
+    <div class="wrap">
+      <div>
+        <div class="label">Имплантация, листайте вниз</div>
+        <h2 style="margin-top:14px">Новый зуб за три шага, которые вы увидите заранее</h2>
+        <ol class="steps" id="steps">
+          <li class="step on"><b>01 · КТ и план в 3D за 20 минут</b><span>Снимаем кость, ставим будущий имплант на экране и показываем вам, где он встанет.</span></li>
+          <li class="step"><b>02 · Имплант за 40 минут</b><span>По хирургическому шаблону, без разрезов и швов. Домой в тот же день.</span></li>
+          <li class="step"><b>03 · Коронка через 3 месяца</b><span>Циркониевая, под цвет соседних зубов. Жуёте как своим.</span></li>
+        </ol>
+        <div class="bar"><i id="bar"></i></div>
+      </div>
+      <svg class="scene" id="scene" viewBox="0 0 400 440" role="img" aria-label="Схема: имплант встаёт в кость, сверху коронка">
+        <defs>
+          <clipPath id="screwClip"><path d="M-22 0 H22 L16 112 Q0 128 -16 112 Z"/></clipPath>
+          <pattern id="pores" width="26" height="22" patternUnits="userSpaceOnUse"><circle cx="6" cy="6" r="2.4" fill="#B9A27D" opacity=".45"/><circle cx="19" cy="15" r="1.6" fill="#B9A27D" opacity=".4"/></pattern>
+        </defs>
+        <rect x="0" y="206" width="400" height="234" rx="26" fill="url(#gBone)"/>
+        <rect x="0" y="206" width="400" height="234" rx="26" fill="url(#pores)"/>
+        <g id="nbL"></g><g id="nbR"></g>
+        <path id="plan" d="M178 212 H222 L216 324 Q200 340 184 324 Z" fill="none" stroke="#6EE7C8" stroke-width="2" stroke-dasharray="6 5" opacity="0"/>
+        <g id="screw" transform="translate(200 212)">
+          <path d="M-22 0 H22 L16 112 Q0 128 -16 112 Z" fill="url(#gTi)"/>
+          <g clip-path="url(#screwClip)"><g id="threads" stroke="#56636A" stroke-width="2.2" opacity=".65"></g></g>
+        </g>
+        <rect x="0" y="194" width="400" height="22" rx="11" fill="url(#gGum)"/>
+        <path id="abut" d="M186 216 L189 180 H211 L214 216 Z" fill="url(#gTi)" opacity="0"/>
+        <g id="crownNew" opacity="0"></g>
+        <g id="scan" opacity="0"><rect x="10" y="0" width="380" height="3" fill="#6EE7C8"/><rect x="10" y="-40" width="380" height="40" fill="url(#scanG)"/></g>
+      </svg>
+    </div>
+  </div>
+</section>
+
+<!-- BEFORE / AFTER -->
+<section class="sec light" id="smile">
+  <div class="wrap ba-grid">
+    <div class="rv">
+      <div class="label">До и после</div>
+      <h2 style="margin:14px 0 18px">Потяните ползунок и посмотрите на улыбку через 11 месяцев</h2>
+      <p class="muted">Так мы показываем пациенту результат на консультации: в 3D, до первого рубля и первой капы.</p>
+      <ul class="ba-list">
+        <li><b>11 мес.</b><span>элайнеры выровняли зубной ряд</span></li>
+        <li><b>1 визит</b><span>отбеливание на 6 тонов</span></li>
+        <li><b>2 винира</b><span>восстановили сколы на передних зубах</span></li>
+      </ul>
+      <p class="muted" style="font-size:13px;margin-top:20px">Иллюстрация-пример. Здесь будут реальные фото пациентов клиники с их согласия.</p>
+    </div>
+    <div class="ba rv d1" id="ba">
+      <svg class="before" viewBox="0 0 640 400" aria-hidden="true" id="baBefore"></svg>
+      <svg class="after" viewBox="0 0 640 400" aria-hidden="true" id="baAfter"></svg>
+      <span class="lbl" style="left:16px">До</span><span class="lbl" style="right:16px">После</span>
+      <div class="handle"></div>
+      <input type="range" min="0" max="100" value="50" aria-label="Сравнить до и после" id="baRange">
+    </div>
+  </div>
+</section>
+
+<!-- DOCTORS -->
+<section class="sec light" id="doctors" style="padding-top:0">
+  <div class="wrap">
+    <div class="head rv"><div><div class="label">Врачи</div><h2>Те, кто будет у вас во рту, а не на рекламном баннере</h2></div></div>
+    <div class="docs">
+      <article class="doc rv">
+        <svg viewBox="0 0 300 250" aria-hidden="true"><rect width="300" height="250" fill="#DCEFE8"/><circle cx="235" cy="50" r="80" fill="#C7E8DD"/><path d="M40 250C40 190 90 170 150 170s110 20 110 80Z" fill="#fff"/><path d="M128 170l22 40 22-40Z" fill="#2E5560"/><rect x="137" y="140" width="26" height="36" rx="12" fill="#E9B998"/><ellipse cx="150" cy="108" rx="38" ry="45" fill="#F1C6A6"/><path d="M110 112c-6-46 22-64 46-62 30 2 44 26 36 58-8-18-26-28-44-30-14 6-26 16-38 34Z" fill="#3B2A22"/><path d="M110 112c-4 30 0 50 10 66 6-20 4-44-10-66Z" fill="#3B2A22"/></svg>
+        <div class="body"><h3>Анна Лебедева</h3><div class="role">Ортодонт, элайнеры и брекеты</div><div class="fact">14 лет практики · 900+ улыбок</div></div>
+      </article>
+      <article class="doc rv d1">
+        <svg viewBox="0 0 300 250" aria-hidden="true"><rect width="300" height="250" fill="#1B262B"/><circle cx="60" cy="40" r="90" fill="#22323A"/><path d="M40 250C40 190 90 170 150 170s110 20 110 80Z" fill="#E8EEF0"/><path d="M128 170l22 40 22-40Z" fill="#6EE7C8"/><rect x="137" y="140" width="26" height="36" rx="12" fill="#C8936F"/><ellipse cx="150" cy="108" rx="38" ry="45" fill="#D8A27E"/><path d="M112 100c0-30 18-44 38-44s38 14 38 44c-10-12-22-16-38-16s-28 4-38 16Z" fill="#20160F"/><path d="M122 132c8 14 18 20 28 20s20-6 28-20c-2 18-12 26-28 26s-26-8-28-26Z" fill="#20160F" opacity=".85"/></svg>
+        <div class="body"><h3>Тимур Сафин</h3><div class="role">Хирург-имплантолог, главный врач</div><div class="fact">3 000+ имплантов · стажировка в Цюрихе</div></div>
+      </article>
+      <article class="doc rv d2">
+        <svg viewBox="0 0 300 250" aria-hidden="true"><rect width="300" height="250" fill="#FBE3D9"/><circle cx="240" cy="200" r="90" fill="#F8D3C4"/><path d="M40 250C40 190 90 170 150 170s110 20 110 80Z" fill="#fff"/><path d="M128 170l22 40 22-40Z" fill="#E98B6E"/><rect x="137" y="140" width="26" height="36" rx="12" fill="#EDBFA0"/><ellipse cx="150" cy="108" rx="38" ry="45" fill="#F4CDB0"/><path d="M108 104c2-34 22-52 44-52 26 0 42 20 40 52-14-6-30-22-36-34-10 18-28 30-48 34Z" fill="#9A5B33"/><circle cx="150" cy="50" r="17" fill="#9A5B33"/></svg>
+        <div class="body"><h3>Мария Котова</h3><div class="role">Детский стоматолог</div><div class="fact">10 лет практики · лечит во сне</div></div>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- REVIEWS -->
+<section class="sec" id="reviews">
+  <div class="wrap">
+    <div class="head rv"><div><div class="label">Отзывы</div><h2>Пришли со страхом, ушли с улыбкой</h2></div><span class="badge">отзывы-примеры</span></div>
+    <div class="revs">
+      <div class="rev rv"><div class="stars" aria-label="5 из 5">★★★★★</div><p>«Десять лет откладывала имплант из-за страха. Мне показали на экране, где он встанет, и это сняло половину тревоги. Сама операция заняла меньше часа.»</p><div class="who"><b>Елена</b>, имплант 4.6</div></div>
+      <div class="rev rv d1"><div class="stars" aria-label="5 из 5">★★★★★</div><p>«Цену назвали в первый день и ни рубля сверху. Элайнеры ношу полгода, никто на работе не замечает.»</p><div class="who"><b>Артём</b>, элайнеры</div></div>
+      <div class="rev rv d2"><div class="stars" aria-label="5 из 5">★★★★★</div><p>«Сын теперь сам просится к Марии Сергеевне. Первый раз в жизни ребёнок ушёл от стоматолога с наклейкой, а не в слезах.»</p><div class="who"><b>Ольга</b>, мама Вани, 6 лет</div></div>
+    </div>
+  </div>
+</section>
+
+<!-- BOOKING -->
+<section class="sec light" id="book">
+  <div class="wrap book">
+    <div class="rv">
+      <div class="label">Запись</div>
+      <h2 style="margin:14px 0 18px">Первый визит бесплатно: осмотр, 3D-снимок и план с ценами</h2>
+      <p class="muted">Выберите время, администратор перезвонит за 10 минут и подтвердит запись.</p>
+      <div class="contacts">
+        <div><span>Адрес</span><b>Екатеринбург, ул. Малышева, 51</b></div>
+        <div><span>Часы</span><b>Ежедневно 8:00-22:00</b></div>
+        <div><span>Телефон</span><b>+7 343 000-00-00</b></div>
+      </div>
+    </div>
+    <form class="form rv d1" id="form" novalidate>
+      <fieldset><legend>Что беспокоит</legend><div class="opts" id="fWhat"></div></fieldset>
+      <fieldset><legend>День</legend><div class="opts" id="fDay"></div></fieldset>
+      <fieldset><legend>Время</legend><div class="opts" id="fTime"></div></fieldset>
+      <div class="fields">
+        <input type="text" name="name" placeholder="Имя" aria-label="Имя" autocomplete="name">
+        <input type="tel" name="phone" placeholder="+7 ___ ___-__-__" aria-label="Телефон" autocomplete="tel" required>
+      </div>
+      <button class="btn btn-dark" type="submit" id="fBtn">Записаться</button>
+      <p class="note">В демо заявка никуда не отправляется. На рабочем сайте уйдёт в CRM клиники и в Telegram администратору.</p>
+      <div class="done" role="status">
+        <svg width="56" height="56" viewBox="0 0 56 56" fill="none" aria-hidden="true" style="margin:0 auto"><circle cx="28" cy="28" r="27" stroke="#0B7A61" stroke-width="2"/><path d="M17 29l7 7 15-16" stroke="#0B7A61" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        <h3 id="doneT">Вы записаны</h3>
+        <p class="muted">Это демо: заявка никуда не ушла. На рабочем сайте администратор перезвонит за 10 минут.</p>
+      </div>
+    </form>
+  </div>
+</section>
+
+<!-- FOR AGENCY -->
+<section class="sec agency" style="padding-bottom:90px">
+  <div class="wrap">
+    <div class="head rv" style="margin-bottom:0"><div><div class="label">Для агентства</div><h2>Из чего сделан WOW на этой странице</h2></div><p class="muted" style="max-width:380px">Концепт под поток клиник: блоки переносятся, палитра и тексты меняются под каждую стоматологию.</p></div>
+    <div class="grid">
+      <div class="it rv"><i>01</i><b>3D-челюсть на чистом CSS</b><span>Без Three.js и тяжёлых моделей: страница открывается быстро даже на 4G.</span></div>
+      <div class="it rv d1"><i>02</i><b>Подбор лечения на первом экране</b><span>Пациент выбирает жалобу и сразу видит визиты и цену. Это заявка, а не только красота.</span></div>
+      <div class="it rv d2"><i>03</i><b>Сборка импланта на скролле</b><span>Самая страшная услуга превращается в понятную презентацию из трёх шагов.</span></div>
+      <div class="it rv d3"><i>04</i><b>До и после в одно движение</b><span>Ползунок вместо галереи из 40 фото, работает пальцем на телефоне.</span></div>
+    </div>
+  </div>
+</section>
+</main>
+
+<footer>
+  <div class="wrap">
+    <span>© 2026 «Эмаль», стоматология. Компания и врачи вымышленные. Лицензия ЛО-66-01-000000 (пример)</span>
+    <span>Демо-версия, подготовлено для заказа на FL.ru. Тексты и фото заменим на ваши</span>
+  </div>
+</footer>
+
+<script>
+const $=s=>document.querySelector(s), $$=s=>[...document.querySelectorAll(s)];
+const RM=matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+function toggleMenu(open){
+  const m=$('#mnav');m.classList.toggle('open',open);m.setAttribute('aria-hidden',!open);
+  document.body.style.overflow=open?'hidden':'';
+}
+addEventListener('scroll',()=>$('#hdr').classList.toggle('solid',scrollY>30),{passive:true});
+
+/* ---------- tooth geometry (front view, root on top, crown below; units = mm) ---------- */
+const TYPES={
+  I1:{w:8.6,c:10.5,r:13,e:'flat',n:.66,name:'центральный резец'},
+  I2:{w:6.6,c:9,r:13,e:'flat',n:.64,name:'боковой резец'},
+  C:{w:7.6,c:10,r:17,e:'cusp',n:.64,name:'клык'},
+  P1:{w:7,c:8.5,r:14,e:'pm',n:.7,name:'первый премоляр'},
+  P2:{w:6.8,c:8,r:14,e:'pm',n:.7,name:'второй премоляр'},
+  M1:{w:10,c:7.5,r:12,e:'mol',n:.82,roots:2,name:'первый моляр'},
+  M2:{w:9.2,c:7,r:11,e:'mol',n:.82,roots:2,name:'второй моляр'}
+};
+const ORDER=['I1','I2','C','P1','P2','M1','M2'];
+const LOWER_W={I1:5.4,I2:5.9,C:7,P1:7,P2:7.2,M1:11,M2:10.5};
+function geo(t){
+  const W=t.w,Lr=t.r,Hc=t.c,cx=W/2,n=W*t.n,b=Lr+Hc,H=b+1.6;
+  let root;
+  if(t.roots===2){
+    root=`M${cx-n/2} ${Lr+.6}C${cx-n/2} ${Lr*.5} ${cx-n*.4} ${Lr*.05} ${cx-n*.28} ${Lr*.05}C${cx-n*.12} ${Lr*.05} ${cx-n*.06} ${Lr*.5} ${cx} ${Lr*.62}C${cx+n*.06} ${Lr*.5} ${cx+n*.12} 0 ${cx+n*.3} 0C${cx+n*.44} 0 ${cx+n/2} ${Lr*.5} ${cx+n/2} ${Lr+.6}Z`;
+  } else {
+    root=`M${cx-n/2} ${Lr+.6}C${cx-n/2} ${Lr*.45} ${cx-n*.18} 0 ${cx} 0C${cx+n*.18} 0 ${cx+n/2} ${Lr*.45} ${cx+n/2} ${Lr+.6}Z`;
+  }
+  const L=cx-W/2,R=cx+W/2,k=.72;
+  let edge;
+  if(t.e==='flat') edge=`Q${cx} ${b+.5} ${cx+W/2*k} ${b}`;
+  else if(t.e==='cusp') edge=`Q${cx-W*.12} ${b+.4} ${cx} ${b+1.5}Q${cx+W*.12} ${b+.4} ${cx+W/2*k} ${b}`;
+  else if(t.e==='pm') edge=`Q${cx-W*.1} ${b+.6} ${cx} ${b+1.2}Q${cx+W*.1} ${b+.6} ${cx+W/2*k} ${b}`;
+  else edge=`Q${cx-W*.22} ${b+1.4} ${cx-W*.02} ${b+.3}Q${cx+W*.22} ${b+1.4} ${cx+W/2*k} ${b}`;
+  const crown=`M${cx-n/2} ${Lr}Q${L-.15} ${Lr+Hc*.12} ${L} ${Lr+Hc*.5}C${L} ${Lr+Hc*.82} ${cx-W/2*.86} ${b} ${cx-W/2*k} ${b}${edge}C${cx+W/2*.86} ${b} ${R} ${Lr+Hc*.82} ${R} ${Lr+Hc*.5}Q${R+.15} ${Lr+Hc*.12} ${cx+n/2} ${Lr}Z`;
+  const hl=`<ellipse cx="${cx-W*.16}" cy="${Lr+Hc*.45}" rx="${W*.1}" ry="${Hc*.28}" fill="#fff" opacity=".6"/>`;
+  return {W,H,root,crown,hl};
+}
+function svgOf(g,cls,body){return `<svg class="${cls}" viewBox="-.3 -.3 ${g.W+.6} ${g.H+.6}" preserveAspectRatio="none" aria-hidden="true">${body}</svg>`}
+
+/* ---------- 3D jaw ---------- */
+const stage=$('#stage'),jaw=$('#jaw');
+const teeth={};
+let built=false;
+function build(){
+  const sw=stage.clientWidth, sh=stage.clientHeight;
+  const s=Math.min(sw/70, sh/58);
+  const R=32;
+  ['up','lo'].forEach(arch=>{
+    const el=$('#'+arch);
+    const lower=arch==='lo';
+    [-1,1].forEach(side=>{
+      let cum=0;
+      ORDER.forEach((key,i)=>{
+        const base=TYPES[key]; const t=lower?{...base,w:LOWER_W[key],c:base.c*.92,r:base.r*1.05}:base;
+        const rr=lower?R*.94:R;
+        const th=(cum+t.w/2+.25)/rr*side; cum+=t.w+.5;
+        const q=lower?(side<0?4:3):(side<0?1:2);
+        const id=q+'.'+(i+1);
+        const g=geo(t);
+        let b=teeth[id];
+        if(!b){
+          b=document.createElement('button');b.className='tooth';b.dataset.id=id;b.dataset.name=base.name;
+          b.setAttribute('aria-label','Зуб '+id+', '+base.name);
+          b.innerHTML=`<span class="in">${svgOf(g,'b2',`<path d="${g.crown}" fill="#6b645a"/>`)}${svgOf(g,'b1',`<path d="${g.crown}" fill="#9d9587"/>`)}${svgOf(g,'f',`<path d="${g.root}" fill="url(#gRoot)"/><path class="crown" d="${g.crown}"/>${g.hl}`)}</span>`;
+          el.appendChild(b);teeth[id]=b;b._i=i;
+        }
+        const w=g.W*s,h=g.H*s;
+        const x=Math.sin(th)*rr*s, z=(Math.cos(th)-.55)*rr*s;
+        const gap=s*.5;
+        const y=lower?gap:-h-gap;
+        b.style.width=w+'px';b.style.height=h+'px';
+        b._final=`translate3d(${x-w/2}px,${y}px,${z}px) rotateY(${th}rad)`;
+      });
+    });
+  });
+  if(!built){
+    Object.values(teeth).forEach(b=>{
+      if(RM){b.style.transform=b._final;return}
+      const r=()=>Math.random()-.5;
+      b.style.transition='none';
+      b.style.transform=`translate3d(${r()*900}px,${r()*700}px,${400+Math.random()*500}px) rotateX(${r()*360}deg) rotateY(${r()*360}deg)`;
+      b.querySelector('.in').style.opacity=0;
+    });
+    requestAnimationFrame(()=>requestAnimationFrame(()=>{
+      Object.values(teeth).forEach(b=>{
+        if(RM)return;
+        b.style.transition=`transform .8s cubic-bezier(.2,.8,.2,1) ${b._i*.04}s`;
+        b.style.transform=b._final;b.querySelector('.in').style.opacity='';
+      });
+      setTimeout(()=>{Object.values(teeth).forEach(b=>b.style.transition='');apply('pain',true)},RM?0:1000);
+    }));
+    built=true;
+  } else Object.values(teeth).forEach(b=>b.style.transform=b._final);
+}
+
+/* rotation: pointer follow, touch drag, idle sway, scroll tilt */
+let tx=0,ty=0,cx=0,cy=0,drag=null,last=performance.now();
+stage.addEventListener('pointermove',e=>{
+  const r=stage.getBoundingClientRect();
+  if(drag){ty=drag.y0+(e.clientX-drag.x)*.35;ty=Math.max(-70,Math.min(70,ty));last=performance.now();return}
+  if(e.pointerType==='mouse'){ty=((e.clientX-r.left)/r.width-.5)*55;tx=-((e.clientY-r.top)/r.height-.5)*22;last=performance.now()}
+});
+stage.addEventListener('pointerdown',e=>{if(e.pointerType!=='mouse')drag={x:e.clientX,y0:ty}});
+addEventListener('pointerup',()=>{drag=null});
+addEventListener('pointercancel',()=>{drag=null});
+stage.addEventListener('pointerleave',e=>{if(e.pointerType==='mouse'){tx=0;ty=0}});
+function loop(t){
+  const idle=t-last>2500 && !drag;
+  const sy=idle&&!RM?Math.sin(t/1600)*22:0;
+  cx+=(tx-cx)*.07; cy+=((idle?sy:ty)-cy)*.06;
+  const sc=Math.min(scrollY/innerHeight,1);
+  jaw.style.transform=`translateY(${sc*80}px) rotateX(${8+cx+sc*28}deg) rotateY(${cy}deg)`;
+  requestAnimationFrame(loop);
+}
+
+/* tooltip */
+const tip=$('#tip');
+stage.addEventListener('pointerover',e=>{const b=e.target.closest('.tooth');if(!b)return;const r=stage.getBoundingClientRect(),br=b.getBoundingClientRect();tip.textContent='Зуб '+b.dataset.id+' · '+b.dataset.name;tip.style.left=(br.left+br.width/2-r.left)+'px';tip.style.top=(br.top-r.top)+'px';tip.style.opacity=1});
+stage.addEventListener('pointerout',e=>{if(e.target.closest('.tooth'))tip.style.opacity=0});
+
+/* complaints -> what happens to teeth + card */
+const FRONT=['1.1','1.2','1.3','2.1','2.2','2.3','3.1','3.2','3.3','4.1','4.2','4.3'];
+const DATA={
+  pain:{teeth:['3.6'],tag:'Зуб 3.6 · первый моляр',title:'Лечение каналов под микроскопом',desc:'Снимаем боль в первый визит и сохраняем зуб, а не удаляем.',vis:'1-2',price:'от 6 900 руб.',mode:'bad'},
+  chip:{teeth:['1.1'],tag:'Зуб 1.1 · центральный резец',title:'Реставрация или винир',desc:'Восстановим форму и цвет так, что соседний зуб не отличит.',vis:'1',price:'от 8 500 руб.',mode:'bad'},
+  missing:{teeth:['4.6'],tag:'Зуб 4.6 · первый моляр',title:'Имплант под ключ',desc:'Имплант за 40 минут по 3D-шаблону, коронка через 3 месяца.',vis:'3 этапа',price:'от 42 000 руб.',mode:'gone'},
+  crooked:{teeth:FRONT,tag:'Передние зубы',title:'Элайнеры вместо брекетов',desc:'Прозрачные капы. Финальную улыбку покажем в 3D до старта.',vis:'раз в 6-8 недель',price:'от 159 000 руб.',mode:'crook'},
+  white:{teeth:FRONT,tag:'Вся улыбка',title:'Отбеливание за один визит',desc:'До 8 тонов светлее за полтора часа, без чувствительности после.',vis:'1',price:'от 19 000 руб.',mode:'stain'}
+};
+let timer=null,firstRun=true;
+function setCard(d){
+  const c=$('#card');
+  const fill=()=>{$('#cTag').textContent=d.tag;$('#cTitle').textContent=d.title;$('#cDesc').textContent=d.desc;$('#cVis').textContent=d.vis;$('#cPrice').textContent=d.price;c.classList.remove('swap')};
+  if(firstRun){fill();firstRun=false;return}
+  c.classList.add('swap');setTimeout(fill,220);
+}
+function reset(){
+  clearTimeout(timer);jaw.classList.remove('stain');
+  Object.values(teeth).forEach(b=>{b.classList.remove('bad','hot','gone');b.querySelector('.in').style.transform=''});
+}
+function apply(k,silent){
+  const d=DATA[k];reset();
+  $$('.chip').forEach(c=>c.setAttribute('aria-pressed',c.dataset.k===k));
+  if(!silent)setCard(d);
+  const list=d.teeth.map(id=>teeth[id]);
+  const heal=()=>list.forEach(b=>{b.classList.remove('bad','gone');b.querySelector('.in').style.transform='';b.classList.add('hot')});
+  const wait=RM?0:1100;
+  if(d.mode==='bad'){list.forEach(b=>b.classList.add('bad'));timer=setTimeout(heal,wait)}
+  else if(d.mode==='gone'){list.forEach(b=>b.classList.add('gone'));timer=setTimeout(heal,wait+200)}
+  else if(d.mode==='crook'){
+    list.forEach((b,i)=>{const a=(i%2?1:-1)*(6+Math.random()*10);b.querySelector('.in').style.transform=`rotateZ(${a}deg) translateZ(${(i%3-1)*10}px) translateY(${(i%2?4:-3)}px)`});
+    timer=setTimeout(heal,wait+200);
+  } else {jaw.classList.add('stain');timer=setTimeout(()=>{jaw.classList.remove('stain');heal()},wait)}
+}
+$$('.chip').forEach(c=>c.addEventListener('click',()=>{firstRun=false;apply(c.dataset.k)}));
+stage.addEventListener('click',e=>{
+  const b=e.target.closest('.tooth');if(!b)return;
+  firstRun=false;reset();b.classList.add('hot');
+  $$('.chip').forEach(c=>c.setAttribute('aria-pressed','false'));
+  setCard({tag:'Зуб '+b.dataset.id+' · '+b.dataset.name,title:'Что с ним происходит?',desc:'Выберите жалобу выше или пришлите фото в мессенджер: врач ответит за 15 минут.',vis:'осмотр',price:'0 руб.'});
+});
+
+build();requestAnimationFrame(loop);
+let rz;addEventListener('resize',()=>{clearTimeout(rz);rz=setTimeout(build,150)});
+
+/* ---------- implant scroll scene ---------- */
+(function(){
+  const m=geo(TYPES.M1);
+  const nb=(g,x)=>{g.setAttribute('transform',`translate(${x-40} 301) scale(8 -8)`);g.innerHTML=`<path d="${m.root}" fill="#E6DAC4" stroke="#C9B48F" stroke-width=".15"/><path d="${m.crown}" fill="url(#gCrown)"/>${m.hl}`};
+  nb($('#nbL'),62);nb($('#nbR'),338);
+  const cn=$('#crownNew');
+  cn.innerHTML=`<g transform="translate(155 315) scale(9 -9)"><path d="${m.crown}" fill="url(#gHot)"/>${m.hl}</g>`;
+  const th=$('#threads');let s='';for(let y=-24;y<150;y+=11)s+=`<line x1="-26" y1="${y}" x2="26" y2="${y+7}"/>`;th.innerHTML=s;
+  const sec=$('#implant'),steps=$$('.step'),bar=$('#bar'),scan=$('#scan'),plan=$('#plan'),screw=$('#screw'),abut=$('#abut');
+  const cl=v=>Math.max(0,Math.min(1,v)), ez=v=>1-Math.pow(1-v,3);
+  function upd(){
+    const r=sec.getBoundingClientRect();const p=cl(-r.top/(r.height-innerHeight));
+    const p1=cl(p/.28),p2=cl((p-.33)/.28),p3=cl((p-.66)/.26);
+    steps.forEach((el,i)=>el.classList.toggle('on',i===(p<.33?0:p<.66?1:2)));
+    bar.style.transform=`scaleX(${p})`;
+    scan.setAttribute('opacity',p1>0&&p1<1?1:0);scan.setAttribute('transform',`translate(0 ${60+p1*300})`);
+    plan.setAttribute('opacity',p2>=1?0:Math.min(1,p1*1.5));
+    const e2=ez(p2);screw.setAttribute('transform',`translate(200 ${212-(1-e2)*300})`);screw.style.opacity=p2>0?1:0;
+    th.setAttribute('transform',`translate(0 ${-(p2*66)%11})`);
+    abut.setAttribute('opacity',p3>0?1:0);
+    const e3=ez(p3);cn.setAttribute('opacity',p3>0?1:0);cn.setAttribute('transform',`translate(0 ${-(1-e3)*260})`);
+    cn.style.filter=p3>=1?'drop-shadow(0 0 14px rgba(110,231,200,.7))':'none';
+  }
+  addEventListener('scroll',upd,{passive:true});addEventListener('resize',upd);upd();
+})();
+
+/* ---------- before / after smile ---------- */
+(function(){
+  const row=['P1','C','I2','I1','I1','I2','C','P1'];
+  const s=7.4;
+  function smile(after){
+    const tot=row.reduce((a,k)=>a+TYPES[k].w*s+3,0);
+    let x=320-tot/2, out='';
+    const sk=[5,-4,8,-7,6,-9,4,-3], dy=[2,-3,6,0,8,-2,3,1];
+    row.forEach((k,i)=>{
+      const t=TYPES[k],g=geo(t),w=g.W*s;
+      const top=148-t.r*s;
+      const rot=after?0:sk[i], off=after?0:dy[i], ox=after?0:(i===3?-4:i===4?6:0);
+      const fill=after?'url(#gCrown)':(i===4?'#D9C69C':'#E9D7A9');
+      out+=`<g transform="translate(${x+w/2+ox} ${top+off}) rotate(${rot} 0 ${t.r*s+30}) translate(${-w/2} 0) scale(${s})"><path d="${g.crown}" fill="${fill}"/>${after?g.hl:''}</g>`;
+      x+=w+3;
+    });
+    const mouth='M70 120 Q320 92 570 120 Q540 330 320 336 Q100 330 70 120Z';
+    return `<defs><clipPath id="m${after?1:0}"><path d="${mouth}"/></clipPath></defs>
+    <path d="${mouth}" fill="#3A1C1E"/>
+    <g clip-path="url(#m${after?1:0})"><ellipse cx="320" cy="300" rx="190" ry="60" fill="#B85C63"/>${out}<path d="M60 80 H580 V150 Q320 ${after?136:132} 60 150Z" fill="url(#gGum)"/></g>
+    <path d="M40 112 Q320 66 600 112 Q560 96 320 98 Q80 96 40 112Z" fill="#C9646A"/>
+    <path d="M60 128 Q320 380 580 128 Q560 370 320 372 Q80 370 60 128Z" fill="#C9646A"/>`;
+  }
+  $('#baBefore').innerHTML=smile(false);$('#baAfter').innerHTML=smile(true);
+  const ba=$('#ba'),rg=$('#baRange');
+  rg.addEventListener('input',()=>ba.style.setProperty('--x',rg.value+'%'));
+})();
+
+/* ---------- services tilt ---------- */
+if(!RM && matchMedia('(hover:hover)').matches){
+  $$('.svc').forEach(c=>{
+    c.addEventListener('mousemove',e=>{const r=c.getBoundingClientRect();const x=(e.clientX-r.left)/r.width-.5,y=(e.clientY-r.top)/r.height-.5;c.style.transform=`rotateY(${x*10}deg) rotateX(${-y*10}deg) translateY(-4px)`});
+    c.addEventListener('mouseleave',()=>c.style.transform='');
+  });
+}
+
+/* ---------- booking ---------- */
+(function(){
+  const what=['Болит зуб','Имплантация','Элайнеры','Виниры, отбеливание','Ребёнку','Пока не знаю'];
+  const fw=$('#fWhat');what.forEach((w,i)=>fw.insertAdjacentHTML('beforeend',`<button type="button" class="opt" aria-pressed="${i===0}">${w}</button>`));
+  const fd=$('#fDay'),dn=['вс','пн','вт','ср','чт','пт','сб'],now=new Date();
+  for(let i=0;i<5;i++){const d=new Date(now);d.setDate(now.getDate()+i);const l=i===0?'Сегодня':i===1?'Завтра':dn[d.getDay()][0].toUpperCase()+dn[d.getDay()][1];fd.insertAdjacentHTML('beforeend',`<button type="button" class="opt" aria-pressed="${i===1}">${l}<small>${d.getDate()}.${String(d.getMonth()+1).padStart(2,'0')}</small></button>`)}
+  const ft=$('#fTime');['9:00','10:30','12:00','14:30','16:00','18:30','20:00'].forEach((t,i)=>ft.insertAdjacentHTML('beforeend',`<button type="button" class="opt" ${i===2||i===5?'disabled':''} aria-pressed="${i===3}">${t}</button>`));
+  [fw,fd,ft].forEach(g=>g.addEventListener('click',e=>{const b=e.target.closest('.opt');if(!b||b.disabled)return;g.querySelectorAll('.opt').forEach(o=>o.setAttribute('aria-pressed',o===b))}));
+  $('#form').addEventListener('submit',e=>{
+    e.preventDefault();const f=e.target;
+    const day=fd.querySelector('[aria-pressed=true]'),tm=ft.querySelector('[aria-pressed=true]');
+    $('#doneT').textContent='Вы записаны: '+day.firstChild.textContent.toLowerCase()+', '+tm.textContent;
+    f.classList.add('sent');
+  });
+})();
+
+/* ---------- reveal + counters ---------- */
+const io=new IntersectionObserver(es=>es.forEach(e=>{
+  if(!e.isIntersecting)return;e.target.classList.add('vis');io.unobserve(e.target);
+  e.target.querySelectorAll('[data-count]').forEach(n=>{const to=+n.dataset.count;if(!to||RM){n.textContent=to.toLocaleString('ru-RU');return}let v=0;const st=to/35;const iv=setInterval(()=>{v+=st;if(v>=to){v=to;clearInterval(iv)}n.textContent=Math.round(v).toLocaleString('ru-RU')},25)});
+}),{threshold:.1,rootMargin:'0px 0px -60px 0px'});
+$$('.rv').forEach(el=>io.observe(el));
+</script>
+</body>
+</html>
