@@ -1,0 +1,993 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="robots" content="noindex, nofollow">
+<meta name="description" content="Регрессии, гипноз, МАК-сеансы и ченнелинг. Онлайн-запись, гайды, медитации и подарочные сертификаты.">
+<meta name="theme-color" content="#15101F">
+<title>Алина Ветрова, регрессолог и гипнолог (демо)</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500;1,600&family=Jost:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:#15101F; --bg-alt:#1B1428; --card:#241A35; --card-2:#2C2140;
+  --gold:#D4B27A; --gold-light:#EAD3A5; --rose:#D79BB4;
+  --text:#F3EBDD; --muted:#BDB2CB; --line:rgba(212,178,122,.22);
+  --paper:#F2EADC; --ink:#2A2038; --ink-muted:#5E5270;
+  --ok:#8FD0A8;
+  --font-head:'Cormorant Garamond',Georgia,serif; --font-body:'Jost',system-ui,sans-serif;
+  --ease:cubic-bezier(.34,1.56,.64,1);
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth;scroll-padding-top:84px}
+body{background:var(--bg);color:var(--text);font-family:var(--font-body);font-weight:300;font-size:16px;line-height:1.7;-webkit-font-smoothing:antialiased;overflow-x:hidden}
+body::after{content:'';position:fixed;inset:0;z-index:9998;pointer-events:none;opacity:.03;background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E")}
+img,svg{max-width:100%;display:block}
+a{color:inherit}
+button,a,summary,label{touch-action:manipulation}
+.skip{position:absolute;left:-999px;top:8px;z-index:100;background:var(--gold);color:#241A12;padding:10px 16px;border-radius:8px}
+.skip:focus{left:8px}
+button,input,select,textarea{font:inherit;color:inherit}
+:focus-visible{outline:2px solid var(--gold-light);outline-offset:3px}
+.wrap{max-width:1140px;margin:0 auto;padding:0 32px}
+section{padding:clamp(72px,10vw,120px) 0;position:relative}
+.alt{background:var(--bg-alt)}
+.label{font-size:12px;font-weight:600;letter-spacing:4px;text-transform:uppercase;color:var(--gold)}
+h1,h2,h3{font-family:var(--font-head);font-weight:600;text-wrap:balance}
+h1{font-size:clamp(44px,7vw,78px);line-height:1.04;letter-spacing:-.02em;font-weight:500}
+h2{font-size:clamp(34px,5vw,52px);line-height:1.1;letter-spacing:-.01em;margin:14px 0 18px}
+h3{font-size:26px;line-height:1.2}
+em{font-style:italic;color:var(--gold-light)}
+.lead{color:var(--muted);font-size:17px;max-width:640px}
+.sec-head{margin-bottom:48px}
+.sec-head.center{text-align:center}.sec-head.center .lead{margin:0 auto}
+
+/* nav */
+header{position:fixed;top:0;left:0;right:0;z-index:50;background:rgba(21,16,31,.82);backdrop-filter:blur(14px);border-bottom:1px solid var(--line)}
+.nav{display:flex;align-items:center;justify-content:space-between;height:68px;gap:16px}
+.logo{font-family:var(--font-head);font-size:24px;font-weight:600;text-decoration:none;display:flex;align-items:center;gap:10px;white-space:nowrap}
+.logo svg{width:26px;height:26px}
+.menu{display:flex;gap:22px;list-style:none;align-items:center}
+.menu a{text-decoration:none;font-size:14px;font-weight:400;color:var(--muted);transition:color .3s}
+.menu a:hover{color:var(--gold-light)}
+.burger{display:none;background:none;border:1px solid var(--line);border-radius:10px;width:44px;height:44px;cursor:pointer;align-items:center;justify-content:center}
+.burger span,.burger span::before,.burger span::after{display:block;width:20px;height:1.5px;background:var(--text);position:relative;content:''}
+.burger span::before{position:absolute;top:-6px}.burger span::after{position:absolute;top:6px}
+.mob{position:fixed;inset:0;z-index:60;background:var(--bg);padding:24px 32px;transform:translateX(100%);transition:transform .45s ease;display:flex;flex-direction:column;overflow-y:auto;visibility:hidden}
+.mob.open{transform:none;visibility:visible}
+.mob .close{align-self:flex-end;background:none;border:1px solid var(--line);border-radius:10px;width:44px;height:44px;font-size:22px;cursor:pointer}
+.mob a{font-family:var(--font-head);font-size:28px;text-decoration:none;padding:9px 0;border-bottom:1px solid var(--line)}
+
+/* buttons */
+.btn{position:relative;overflow:hidden;display:inline-flex;align-items:center;justify-content:center;gap:10px;padding:15px 28px;border-radius:12px;border:1px solid var(--gold);background:var(--gold);color:#241A12;font-weight:500;font-size:15px;letter-spacing:.3px;text-decoration:none;cursor:pointer;box-shadow:0 4px 16px rgba(212,178,122,.25);transition:transform .4s var(--ease),box-shadow .4s}
+.btn:hover{transform:translateY(-2px);box-shadow:0 8px 28px rgba(212,178,122,.35)}
+.btn::after{content:'';position:absolute;top:0;left:-60%;width:40%;height:100%;background:linear-gradient(90deg,transparent,rgba(255,255,255,.25),transparent);transform:skewX(-20deg);transition:left .6s}
+.btn:hover::after{left:120%}
+.btn.ghost{background:transparent;color:var(--gold-light);box-shadow:none}
+.btn.ghost:hover{background:rgba(212,178,122,.1)}
+.btn.sm{padding:10px 18px;font-size:14px;min-height:44px}
+.btn[disabled]{opacity:.45;cursor:not-allowed;transform:none}
+.demo-note{font-size:12.5px;color:var(--muted);display:block;margin-top:8px}
+
+/* hero */
+.hero{padding:132px 0 80px;overflow:hidden}
+.hero::before{content:'';position:absolute;inset:0;background:radial-gradient(ellipse 55% 55% at 78% 30%,rgba(215,155,180,.13),transparent 70%),radial-gradient(ellipse 50% 55% at 10% 80%,rgba(212,178,122,.09),transparent 70%);pointer-events:none}
+.hero-grid{display:grid;grid-template-columns:1.1fr .9fr;gap:56px;align-items:center;position:relative}
+.hero-grid>*{min-width:0}
+.hero h1 em{display:block}
+.hero p.lead{margin:22px 0 30px}
+.hero-cta{display:flex;gap:14px;flex-wrap:wrap}
+.hero-facts{display:flex;gap:32px;margin-top:40px;flex-wrap:wrap}
+.hero-facts div{font-size:13px;color:var(--muted);line-height:1.4}
+.hero-facts b{display:block;font-family:var(--font-head);font-size:34px;font-weight:600;color:var(--gold-light);line-height:1.1}
+.quick{background:linear-gradient(160deg,var(--card-2),var(--card));border:1px solid var(--line);border-radius:20px;padding:28px;position:relative}
+.quick h2{font-size:28px;margin:6px 0 4px}
+.quick .sub{font-size:14px;color:var(--muted);margin-bottom:16px}
+.field{display:flex;flex-direction:column;gap:6px;margin-bottom:14px}
+.field label,.fl{font-size:13px;font-weight:500;color:var(--gold-light);letter-spacing:.3px}
+.field input,.field select,.field textarea{background:rgba(255,255,255,.05);border:1px solid rgba(212,178,122,.28);border-radius:12px;padding:12px 14px;min-height:46px;width:100%;color:var(--text);transition:border-color .3s}
+.field select option{background:#241A35;color:#F3EBDD}
+.field input:focus,.field select:focus,.field textarea:focus{border-color:var(--gold-light);outline:none;box-shadow:0 0 0 3px rgba(212,178,122,.18)}
+.field textarea{min-height:88px;resize:vertical}
+.field input::placeholder,.field textarea::placeholder{color:#8E83A0}
+.chips{display:flex;flex-wrap:wrap;gap:8px}
+.chip{border:1px solid rgba(212,178,122,.35);background:transparent;border-radius:100px;padding:9px 14px;font-size:14px;cursor:pointer;min-height:44px;transition:background .3s,transform .4s var(--ease),border-color .3s}
+.chip:hover{border-color:var(--gold-light);transform:translateY(-2px)}
+.chip.on{background:var(--gold);color:#241A12;border-color:var(--gold);font-weight:500}
+.chip small{display:block;font-size:12px;opacity:.8;line-height:1.2}
+.chip.two{border-radius:12px;text-align:left;padding:8px 14px}
+.price-line{display:flex;justify-content:space-between;align-items:baseline;gap:12px;margin:14px 0 4px;border-top:1px solid var(--line);padding-top:14px}
+.price-line b{font-family:var(--font-head);font-size:30px;color:var(--gold-light);font-weight:600}
+.price-line span{font-size:13px;color:var(--muted)}
+
+/* about */
+.about-grid{display:grid;grid-template-columns:.9fr 1.1fr;gap:64px;align-items:center}
+.about-grid>*{min-width:0}
+.photos{display:grid;grid-template-columns:1.2fr 1fr;gap:16px}
+.photo{border-radius:18px;overflow:hidden;border:1px solid var(--line);position:relative;background:var(--card)}
+.photo svg{width:100%;height:100%}
+.photo.tall{grid-row:span 2;aspect-ratio:3/4.4}
+.photo.sq{aspect-ratio:1}
+.photo figcaption{position:absolute;left:0;right:0;bottom:0;padding:22px 12px 9px;font-size:12px;color:var(--text);background:linear-gradient(transparent,rgba(21,16,31,.88))}
+.about-text p{color:var(--muted);margin-bottom:16px}
+.about-text blockquote{font-family:var(--font-head);font-style:italic;font-size:25px;line-height:1.35;color:var(--gold-light);border-left:2px solid var(--gold);padding:4px 0 4px 20px;margin:26px 0}
+.about-list{list-style:none;display:grid;grid-template-columns:1fr 1fr;gap:12px 24px;margin-top:22px}
+.about-list li{font-size:15px;padding-left:22px;position:relative}
+.about-list li::before{content:'';position:absolute;left:0;top:.62em;width:8px;height:8px;border:1px solid var(--gold);transform:rotate(45deg)}
+
+/* certs */
+.certs{display:grid;grid-template-columns:repeat(3,1fr);gap:24px}
+.cert{background:var(--card);border:1px solid var(--line);border-radius:18px;padding:12px;transition:transform .4s var(--ease),border-color .3s}
+.cert:hover{transform:translateY(-5px);border-color:rgba(212,178,122,.5)}
+.cert-in{border:1px solid var(--line);border-radius:12px;padding:26px 22px;text-align:center;height:100%;background:radial-gradient(circle at 50% 0,rgba(212,178,122,.08),transparent 70%)}
+.cert svg{width:44px;height:44px;margin:0 auto 12px;color:var(--gold)}
+.cert .yr{font-size:12px;letter-spacing:3px;color:var(--gold);font-weight:600}
+.cert h3{font-size:22px;margin:8px 0}
+.cert p{font-size:14px;color:var(--muted);line-height:1.55}
+.edu{margin-top:44px;display:grid;grid-template-columns:repeat(2,1fr);gap:0 56px}
+.edu div{display:flex;gap:18px;padding:16px 0;border-bottom:1px solid var(--line);font-size:15px}
+.edu b{font-family:var(--font-head);color:var(--gold-light);font-size:20px;min-width:56px;font-weight:600}
+.note{font-size:13px;color:var(--muted);margin-top:20px}
+
+/* sessions */
+.sessions{display:grid;grid-template-columns:repeat(3,1fr);gap:24px}
+.sess{background:var(--card);border:1px solid var(--line);border-radius:18px;padding:34px 30px;display:flex;flex-direction:column;transition:transform .4s var(--ease),border-color .3s}
+.sess:hover{transform:translateY(-5px);border-color:rgba(212,178,122,.5)}
+.sess svg.ic{width:40px;height:40px;color:var(--gold);margin-bottom:18px}
+.sess h3{margin-bottom:10px}
+.sess p{font-size:15px;color:var(--muted);margin-bottom:14px}
+.sess dl{margin:auto 0 18px;font-size:14px;display:grid;gap:7px}
+.sess dt{color:var(--gold);font-size:11px;font-weight:600;letter-spacing:2.5px;text-transform:uppercase}
+.sess dd{margin-bottom:3px}
+.sess .foot{display:flex;justify-content:space-between;align-items:center;gap:12px;border-top:1px solid var(--line);padding-top:16px;flex-wrap:wrap}
+.sess .foot b{font-family:var(--font-head);font-size:26px;color:var(--gold-light);font-weight:600}
+.sess .foot span{display:block;font-size:12px;color:var(--muted)}
+.safe{margin-top:32px;padding:20px 24px;border:1px dashed var(--line);border-radius:14px;font-size:14px;color:var(--muted)}
+
+/* booking */
+.book-grid{display:grid;grid-template-columns:1.25fr .75fr;gap:32px;align-items:start}
+.book-grid>*{min-width:0}
+.panel{background:var(--card);border:1px solid var(--line);border-radius:20px;padding:30px}
+.steps{display:flex;gap:8px;margin-bottom:22px;flex-wrap:wrap;font-size:12px;color:var(--muted)}
+.steps span{padding:5px 12px;border:1px solid var(--line);border-radius:100px}
+.steps span.on{background:rgba(212,178,122,.16);color:var(--gold-light);border-color:var(--gold)}
+.types{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:24px}
+.mtabs{display:flex;gap:6px;margin-bottom:14px;flex-wrap:wrap}
+.mtabs button{background:none;border:1px solid var(--line);border-radius:10px;padding:8px 14px;cursor:pointer;font-size:14px;min-height:44px;text-transform:capitalize}
+.mtabs button.on{background:var(--gold);color:#241A12;border-color:var(--gold)}
+.cal{display:grid;grid-template-columns:repeat(7,1fr);gap:6px}
+.cal .dow{font-size:11px;letter-spacing:1.5px;text-transform:uppercase;color:var(--muted);text-align:center;padding-bottom:4px}
+.cal button,.cal i{aspect-ratio:1;min-height:40px;border-radius:10px;font-style:normal;font-size:14px;display:flex;align-items:center;justify-content:center}
+.cal button{border:1px solid transparent;background:transparent;color:#8A7F9C;cursor:default}
+.cal button.free{border-color:rgba(212,178,122,.45);color:var(--text);cursor:pointer;background:rgba(212,178,122,.07);transition:transform .4s var(--ease)}
+.cal button.free:hover{transform:scale(1.08)}
+.cal button.sel{background:var(--gold);color:#241A12;border-color:var(--gold);font-weight:600}
+.cal button.cl{border-color:rgba(215,155,180,.55);color:#E7BCD0;cursor:pointer;background:rgba(215,155,180,.12)}
+.slots{margin-top:22px}
+.slots .fl{display:block;margin-bottom:10px}
+.summary{position:sticky;top:90px}
+.summary h3{font-size:24px;margin-bottom:14px}
+.sum-row{display:flex;justify-content:space-between;gap:14px;padding:10px 0;border-bottom:1px solid var(--line);font-size:14.5px}
+.sum-row span:first-child{color:var(--muted)}
+.sum-row b{font-weight:500;text-align:right}
+.sum-total{display:flex;justify-content:space-between;align-items:baseline;margin:16px 0}
+.sum-total b{font-family:var(--font-head);font-size:34px;color:var(--gold-light);font-weight:600}
+.pay-methods{display:flex;gap:8px;flex-wrap:wrap;margin:8px 0 16px}
+.pay-methods span{font-size:12px;border:1px solid var(--line);border-radius:8px;padding:4px 10px;color:var(--muted)}
+.ok-box{display:none;background:rgba(143,208,168,.08);border:1px solid rgba(143,208,168,.4);border-radius:14px;padding:18px;margin-top:16px;font-size:14.5px}
+.ok-box.show{display:block}
+.ok-box h4,.ok-box h3{font-family:var(--font-head);font-size:22px;color:var(--ok);font-weight:600;margin-bottom:6px}
+.mail{background:var(--paper);color:var(--ink);border-radius:12px;padding:16px 18px;margin-top:12px;font-size:14px;line-height:1.55}
+.mail small{display:block;color:var(--ink-muted);font-size:12px;margin-bottom:6px}
+.err{color:#F0A6B8;font-size:13px;margin-top:6px;min-height:18px}
+
+/* cabinet */
+.cab{background:var(--card);border:1px solid var(--line);border-radius:20px;overflow:hidden}
+.cab-bar{display:flex;align-items:center;gap:12px;padding:14px 22px;background:rgba(255,255,255,.04);border-bottom:1px solid var(--line);font-size:13px;color:var(--muted);flex-wrap:wrap}
+.cab-bar .dots{display:flex;gap:6px}.cab-bar .dots i{width:10px;height:10px;border-radius:50%;background:var(--line)}
+.cab-bar b{color:var(--gold-light);font-weight:500}
+.cab-grid{display:grid;grid-template-columns:1fr 1fr;gap:0}
+.cab-grid>*{padding:28px;min-width:0}
+.cab-grid>*+*{border-left:1px solid var(--line)}
+.cab h3{font-size:22px;margin-bottom:6px}
+.cab .hint{font-size:13.5px;color:var(--muted);margin-bottom:14px}
+.price-row{display:grid;grid-template-columns:1fr 112px;gap:12px;align-items:center;padding:9px 0;border-bottom:1px solid var(--line);font-size:14.5px}
+.price-row input{background:rgba(255,255,255,.05);border:1px solid rgba(212,178,122,.28);border-radius:10px;padding:8px 10px;min-height:44px;width:100%;text-align:right}
+.bookings{margin-top:22px}
+.bk{padding:12px 14px;border:1px solid var(--line);border-radius:12px;margin-bottom:10px;font-size:13.5px;line-height:1.5;overflow-wrap:anywhere}
+.bk b{color:var(--gold-light);font-weight:500}
+.bk.new{border-color:var(--ok);background:rgba(143,208,168,.07)}
+.legend{display:flex;gap:16px;font-size:12.5px;color:var(--muted);margin:12px 0;flex-wrap:wrap}
+.legend i{display:inline-block;width:12px;height:12px;border-radius:4px;margin-right:6px;vertical-align:-1px;border:1px solid}
+.cab-actions{display:flex;gap:10px;flex-wrap:wrap;margin-top:14px}
+
+/* form anketa */
+.form-grid{display:grid;grid-template-columns:.8fr 1.2fr;gap:56px}
+.form-grid>*{min-width:0}
+.two-col{display:grid;grid-template-columns:1fr 1fr;gap:0 18px}
+.radios{display:flex;flex-wrap:wrap;gap:8px}
+.radios label{cursor:pointer;position:relative}
+.radios input{position:absolute;opacity:0;pointer-events:none}
+.radios span{display:inline-block;border:1px solid rgba(212,178,122,.35);border-radius:100px;padding:9px 16px;font-size:14px;min-height:44px;line-height:1.7;transition:background .3s}
+.radios input:checked+span{background:var(--gold);color:#241A12;border-color:var(--gold);font-weight:500}
+.radios input:focus-visible+span{outline:2px solid var(--gold-light);outline-offset:3px}
+.consent{display:flex;gap:12px;font-size:13.5px;color:var(--muted);margin:6px 0 18px;align-items:flex-start}
+.consent input{margin-top:5px;accent-color:var(--gold);width:18px;height:18px;flex:none}
+.steps-list{list-style:none;counter-reset:s;margin-top:28px}
+.steps-list li{counter-increment:s;display:flex;gap:16px;padding:14px 0;border-bottom:1px solid var(--line);font-size:15px;color:var(--muted)}
+.steps-list li::before{content:counter(s);font-family:var(--font-head);font-size:28px;color:var(--gold);line-height:1;min-width:28px}
+
+/* shop */
+.shop-title{display:flex;justify-content:space-between;align-items:end;gap:16px;margin:0 0 24px;flex-wrap:wrap}
+.shop-title h3{font-size:32px}
+.shop{display:grid;grid-template-columns:repeat(3,1fr);gap:24px;margin-bottom:64px}
+.prod{background:var(--card);border:1px solid var(--line);border-radius:18px;overflow:hidden;display:flex;flex-direction:column;transition:transform .4s var(--ease),border-color .3s}
+.prod:hover{transform:translateY(-5px);border-color:rgba(212,178,122,.5)}
+.prod .cover{aspect-ratio:16/10;position:relative;overflow:hidden;background:var(--card-2)}
+.prod .cover svg{width:100%;height:100%}
+.prod .tag{position:absolute;top:12px;left:12px;font-size:11px;font-weight:600;letter-spacing:2px;text-transform:uppercase;background:rgba(21,16,31,.8);border:1px solid var(--line);border-radius:100px;padding:4px 12px;color:var(--gold-light)}
+.prod .body{padding:22px 24px 24px;display:flex;flex-direction:column;flex:1}
+.prod h4{font-family:var(--font-head);font-size:24px;line-height:1.2;font-weight:600;margin-bottom:8px}
+.prod p{font-size:14.5px;color:var(--muted);margin-bottom:16px}
+.prod .foot{margin-top:auto;display:flex;justify-content:space-between;align-items:center;gap:10px;flex-wrap:wrap}
+.prod .foot b{font-family:var(--font-head);font-size:25px;color:var(--gold-light);font-weight:600}
+
+/* gift */
+.gift-grid{display:grid;grid-template-columns:1fr 1fr;gap:56px;align-items:center}
+.gift-grid>*{min-width:0}
+.gcard{background:linear-gradient(145deg,#F6EEDF,#E9DCC3);color:var(--ink);border-radius:20px;padding:12px;box-shadow:0 20px 60px rgba(0,0,0,.45);transition:transform .5s var(--ease)}
+.gcard:hover{transform:rotate(-1deg) scale(1.01)}
+.gcard-in{border:1.5px solid #B8935A;border-radius:12px;padding:34px 28px 28px;text-align:center;position:relative;overflow:hidden}
+.gcard-in::before{content:'';position:absolute;inset:6px;border:1px solid rgba(184,147,90,.45);border-radius:8px;pointer-events:none}
+.gcard .moon{width:54px;height:54px;margin:0 auto 6px;color:#8A6B3A}
+.gcard .brand{font-size:11px;letter-spacing:5px;text-transform:uppercase;color:#7A5C2E;font-weight:600}
+.gcard h3{font-size:clamp(34px,5vw,46px);font-weight:500;font-style:italic;margin:8px 0 2px;color:var(--ink)}
+.gcard .sum{font-family:var(--font-head);font-size:clamp(40px,6vw,56px);font-weight:600;color:#7A5C2E;line-height:1.1}
+.gcard .to{margin-top:12px;font-size:15px;color:var(--ink-muted);overflow-wrap:anywhere}
+.gcard .wish{font-family:var(--font-head);font-style:italic;font-size:19px;color:var(--ink);margin:10px 0 18px;min-height:52px;overflow-wrap:anywhere}
+.gcard .num{display:inline-block;border-top:1px solid rgba(184,147,90,.5);padding-top:10px;font-size:13px;letter-spacing:3px;color:#7A5C2E;font-weight:500}
+.amounts{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:16px}
+
+/* reviews */
+.reviews{display:grid;grid-template-columns:repeat(3,1fr);gap:24px}
+.rev{background:var(--card);border:1px solid var(--line);border-radius:18px;padding:30px 28px;position:relative}
+.rev::before{content:'«';position:absolute;top:6px;right:22px;font-family:var(--font-head);font-size:90px;line-height:1;color:rgba(212,178,122,.18)}
+.rev p{font-family:var(--font-head);font-size:21px;line-height:1.4;font-style:italic;margin-bottom:18px;position:relative}
+.rev .who{font-size:13.5px;color:var(--muted);border-top:1px solid var(--line);padding-top:14px}
+.rev .who b{color:var(--gold-light);font-weight:500;display:block}
+.stars{color:var(--gold);letter-spacing:3px;font-size:14px;margin-bottom:10px}
+.pill-ex{display:inline-block;font-size:11px;border:1px solid var(--line);border-radius:100px;padding:2px 10px;color:var(--muted);margin-left:6px}
+
+/* faq */
+.faq{max-width:820px;margin:0 auto}
+details{border-bottom:1px solid var(--line)}
+summary{list-style:none;cursor:pointer;padding:22px 44px 22px 0;font-family:var(--font-head);font-size:24px;line-height:1.25;font-weight:600;position:relative}
+summary::-webkit-details-marker{display:none}
+summary::after{content:'+';position:absolute;right:6px;top:18px;font-size:30px;color:var(--gold);transition:transform .4s var(--ease)}
+details[open] summary::after{transform:rotate(45deg)}
+details p{padding:0 44px 24px 0;color:var(--muted)}
+
+/* dev */
+.dev-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:24px}
+.dev{border-top:1px solid var(--gold);padding-top:18px}
+.dev h3{font-size:24px;margin-bottom:8px}
+.dev p{color:var(--muted);font-size:15px}
+
+/* legal */
+.paper{background:var(--paper);color:var(--ink)}
+.paper .label{color:#7A5C2E}
+.paper em{color:#7A5C2E}
+.paper .lead{color:var(--ink-muted)}
+.legal-grid{display:grid;grid-template-columns:.8fr 1.2fr;gap:48px}
+.legal-grid>*{min-width:0}
+.ltabs{display:flex;flex-direction:column;gap:6px}
+.ltabs button{text-align:left;background:none;border:1px solid rgba(42,32,56,.25);border-radius:12px;padding:13px 16px;cursor:pointer;color:var(--ink);font-size:15px;min-height:46px;transition:background .3s}
+.ltabs button.on{background:var(--ink);color:var(--paper);border-color:var(--ink)}
+.ldoc{background:#fff;border-radius:16px;padding:30px;font-size:15px;color:var(--ink);box-shadow:0 1px 3px rgba(0,0,0,.04),0 4px 24px rgba(42,32,56,.08);min-height:300px}
+.ldoc h3{font-size:26px;margin-bottom:12px}
+.ldoc p,.ldoc li{color:var(--ink-muted);margin-bottom:10px}
+.ldoc ol{padding-left:20px}
+.requis{margin-top:18px;font-size:13.5px;color:var(--ink-muted);border-top:1px solid rgba(42,32,56,.15);padding-top:14px}
+
+/* contacts */
+.contacts{display:grid;grid-template-columns:1fr 1fr;gap:56px;align-items:center}
+.contacts>*{min-width:0}
+.clist{list-style:none;margin-top:24px}
+.clist li{display:flex;gap:16px;padding:14px 0;border-bottom:1px solid var(--line);align-items:flex-start}
+.clist svg{width:22px;height:22px;color:var(--gold);flex:none;margin-top:3px}
+.clist small{display:block;font-size:12px;letter-spacing:2px;text-transform:uppercase;color:var(--gold)}
+.clist a{text-decoration:none;font-size:18px;overflow-wrap:anywhere}
+.cta-card{border:1px solid var(--line);border-radius:20px;padding:40px 32px;text-align:center;background:radial-gradient(circle at 50% 0,rgba(215,155,180,.12),transparent 70%),var(--card)}
+.cta-card svg{width:64px;height:64px;margin:0 auto 16px;color:var(--gold)}
+.cta-card h3{font-size:32px;margin-bottom:10px}
+.cta-card p{color:var(--muted);margin-bottom:22px}
+
+footer{padding:40px 0 48px;border-top:1px solid var(--line);font-size:13.5px;color:var(--muted)}
+footer .row{display:flex;justify-content:space-between;gap:24px;flex-wrap:wrap}
+footer .demo{margin-top:20px;padding:14px 18px;border:1px dashed var(--line);border-radius:12px;color:var(--gold-light)}
+
+/* dialog */
+dialog{margin:auto;background:var(--card);color:var(--text);border:1px solid var(--gold);border-radius:20px;padding:32px;width:min(460px,calc(100vw - 32px));max-height:calc(100vh - 32px);overflow-y:auto}
+dialog::backdrop{background:rgba(10,7,16,.75)}
+dialog h3{font-size:28px;margin-bottom:6px}
+dialog .dclose{float:right;background:none;border:1px solid var(--line);border-radius:10px;width:44px;height:44px;cursor:pointer;font-size:18px}
+
+.reveal{opacity:0;transform:translateY(36px);transition:opacity .9s ease,transform .9s ease}
+.reveal.visible{opacity:1;transform:none}
+
+@media (max-width:980px){
+  .menu{display:none}.burger{display:flex}
+  .nav>.btn{display:none}
+}
+@media (max-width:860px){
+  .wrap{padding:0 20px}
+  .hero{padding:92px 0 56px}
+  .hero-grid,.about-grid,.book-grid,.form-grid,.gift-grid,.legal-grid,.contacts,.cab-grid{grid-template-columns:1fr;gap:36px}
+  .hero-grid{gap:32px}
+  .cab-grid{gap:0}.cab-grid>*+*{border-left:0;border-top:1px solid var(--line)}
+  .certs,.sessions,.shop,.reviews,.dev-grid{grid-template-columns:1fr}
+  .edu,.about-list,.two-col{grid-template-columns:1fr}
+  .btn{width:100%}.btn.sm{width:auto}
+  .summary{position:static}
+  .panel{padding:22px 18px}
+  .quick{padding:22px 18px}
+  .hero-facts{gap:22px;margin-top:28px}
+  .hero-facts b{font-size:28px}
+  .hero p.lead{margin:16px 0 22px;font-size:16px}
+  .cab-grid>*{padding:22px 18px}
+  summary{font-size:21px}
+  .cal{gap:4px}
+  .logo{font-size:21px}
+}
+@media (prefers-reduced-motion:reduce){
+  *,*::before,*::after{transition-duration:.01ms!important;animation-duration:.01ms!important}
+  html{scroll-behavior:auto}
+  .reveal{opacity:1;transform:none}
+}
+</style>
+</head>
+<body>
+
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+  <defs>
+    <symbol id="moon" viewBox="0 0 48 48"><path d="M30 6a18 18 0 1 0 12 30A15 15 0 0 1 30 6z" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round"/><path d="M38 10l1 3 3 1-3 1-1 3-1-3-3-1 3-1z" fill="currentColor"/></symbol>
+    <symbol id="i-hyp" viewBox="0 0 48 48"><circle cx="24" cy="24" r="4" fill="none" stroke="currentColor" stroke-width="1.5"/><circle cx="24" cy="24" r="10" fill="none" stroke="currentColor" stroke-width="1.5" opacity=".7"/><circle cx="24" cy="24" r="17" fill="none" stroke="currentColor" stroke-width="1.5" opacity=".4"/></symbol>
+    <symbol id="i-reg" viewBox="0 0 48 48"><path d="M8 38c4-10 8-14 16-14s12-4 16-14" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/><circle cx="8" cy="38" r="3" fill="none" stroke="currentColor" stroke-width="1.5"/><circle cx="40" cy="10" r="3" fill="none" stroke="currentColor" stroke-width="1.5"/><path d="M20 12v8M16 16h8" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></symbol>
+    <symbol id="i-soul" viewBox="0 0 48 48"><path d="M24 6c-8 0-12 6-12 14v18l4-4 4 4 4-4 4 4 4-4 4 4V20c0-8-4-14-12-14z" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round"/><circle cx="19" cy="20" r="1.6" fill="currentColor"/><circle cx="29" cy="20" r="1.6" fill="currentColor"/></symbol>
+    <symbol id="i-mak" viewBox="0 0 48 48"><rect x="8" y="10" width="20" height="28" rx="3" fill="none" stroke="currentColor" stroke-width="1.5" transform="rotate(-8 18 24)"/><rect x="20" y="10" width="20" height="28" rx="3" fill="none" stroke="currentColor" stroke-width="1.5" transform="rotate(8 30 24)"/><path d="M30 20l1.5 3 3 1.5-3 1.5-1.5 3-1.5-3-3-1.5 3-1.5z" fill="currentColor"/></symbol>
+    <symbol id="i-eye" viewBox="0 0 48 48"><path d="M4 24c6-10 12-14 20-14s14 4 20 14c-6 10-12 14-20 14S10 34 4 24z" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round"/><circle cx="24" cy="24" r="6" fill="none" stroke="currentColor" stroke-width="1.5"/><circle cx="24" cy="24" r="1.8" fill="currentColor"/></symbol>
+    <symbol id="i-seal" viewBox="0 0 48 48"><circle cx="24" cy="20" r="12" fill="none" stroke="currentColor" stroke-width="1.5"/><path d="M17 30l-3 14 10-5 10 5-3-14" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round"/><path d="M19 20l4 4 7-8" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></symbol>
+    <symbol id="i-mail" viewBox="0 0 24 24"><rect x="3" y="5" width="18" height="14" rx="2" fill="none" stroke="currentColor" stroke-width="1.5"/><path d="M3 7l9 7 9-7" fill="none" stroke="currentColor" stroke-width="1.5"/></symbol>
+    <symbol id="i-phone" viewBox="0 0 24 24"><path d="M6 3h3l2 5-2 1.5a11 11 0 0 0 5.5 5.5L16 13l5 2v3a2 2 0 0 1-2 2A16 16 0 0 1 4 5a2 2 0 0 1 2-2z" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round"/></symbol>
+    <symbol id="i-chat" viewBox="0 0 24 24"><path d="M4 5h16v11H9l-5 4z" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round"/></symbol>
+    <symbol id="i-pin" viewBox="0 0 24 24"><path d="M12 21s7-6 7-11a7 7 0 0 0-14 0c0 5 7 11 7 11z" fill="none" stroke="currentColor" stroke-width="1.5"/><circle cx="12" cy="10" r="2.5" fill="none" stroke="currentColor" stroke-width="1.5"/></symbol>
+  </defs>
+</svg>
+
+<a class="skip" href="#about">К содержимому</a>
+<header>
+  <div class="wrap nav">
+    <a href="#top" class="logo"><svg style="color:var(--gold)"><use href="#moon"/></svg>Алина Ветрова</a>
+    <ul class="menu">
+      <li><a href="#about">Обо мне</a></li>
+      <li><a href="#sessions">Сеансы</a></li>
+      <li><a href="#booking">Запись</a></li>
+      <li><a href="#shop">Гайды и практики</a></li>
+      <li><a href="#gift">Сертификаты</a></li>
+      <li><a href="#reviews">Отзывы</a></li>
+      <li><a href="#contacts">Контакты</a></li>
+    </ul>
+    <a class="btn sm" href="#booking">Записаться</a>
+    <button class="burger" aria-label="Открыть меню" onclick="toggleMenu()"><span></span></button>
+  </div>
+</header>
+<nav class="mob" id="mob" aria-label="Мобильное меню">
+  <button class="close" aria-label="Закрыть меню" onclick="toggleMenu()">&times;</button>
+  <a href="#about" onclick="toggleMenu()">Обо мне</a>
+  <a href="#certs" onclick="toggleMenu()">Сертификаты</a>
+  <a href="#sessions" onclick="toggleMenu()">Виды сеансов</a>
+  <a href="#booking" onclick="toggleMenu()">Онлайн-запись</a>
+  <a href="#anketa" onclick="toggleMenu()">Анкета</a>
+  <a href="#shop" onclick="toggleMenu()">Гайды и практики</a>
+  <a href="#gift" onclick="toggleMenu()">Подарочный сертификат</a>
+  <a href="#reviews" onclick="toggleMenu()">Отзывы</a>
+  <a href="#faq" onclick="toggleMenu()">Вопросы</a>
+  <a href="#legal" onclick="toggleMenu()">Оферта</a>
+  <a href="#contacts" onclick="toggleMenu()">Контакты</a>
+</nav>
+
+<main id="top">
+
+<!-- HERO -->
+<section class="hero">
+  <div class="wrap hero-grid">
+    <div>
+      <span class="label">Регрессии · гипноз · МАК · ченнелинг</span>
+      <h1 style="margin-top:18px">Путь к себе <em>через тишину и память души</em></h1>
+      <p class="lead">Бережные сеансы для женщин, которые чувствуют, что ответы уже внутри. Выберите вид сеанса и свободную дату, запись займёт пару минут.</p>
+      <div class="hero-cta">
+        <a class="btn" href="#booking">Выбрать дату сеанса</a>
+        <a class="btn ghost" href="#sessions">С чего начать</a>
+      </div>
+      <div class="hero-facts">
+        <div><b>8 лет</b>практики</div>
+        <div><b>1 200+</b>проведённых сеансов</div>
+        <div><b>онлайн</b>и в кабинете</div>
+      </div>
+    </div>
+    <aside class="quick" aria-label="Быстрая запись">
+      <span class="label">Быстрая запись</span>
+      <h2>Ближайшие свободные окна</h2>
+      <p class="sub">Выберите сеанс, и мы покажем, когда можно прийти.</p>
+      <div class="field">
+        <label for="qType">Вид сеанса</label>
+        <select id="qType"></select>
+      </div>
+      <div class="chips" id="qSlots" aria-live="polite"></div>
+      <div class="price-line"><span id="qMeta"></span><b id="qPrice"></b></div>
+      <span class="demo-note">Окна берутся из расписания, которое хозяйка сайта ведёт в личном кабинете (ниже).</span>
+    </aside>
+  </div>
+</section>
+
+<!-- ABOUT -->
+<section id="about" class="alt reveal">
+  <div class="wrap about-grid">
+    <div class="photos">
+      <figure class="photo tall">
+        <svg viewBox="0 0 300 440" preserveAspectRatio="xMidYMid slice" role="img" aria-label="Портрет, иллюстрация (здесь будет фото)">
+          <defs>
+            <linearGradient id="g1" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#3A2A55"/><stop offset="1" stop-color="#1B1428"/></linearGradient>
+            <radialGradient id="g2" cx=".5" cy=".3" r=".6"><stop offset="0" stop-color="#D79BB4" stop-opacity=".35"/><stop offset="1" stop-color="#D79BB4" stop-opacity="0"/></radialGradient>
+          </defs>
+          <rect width="300" height="440" fill="url(#g1)"/><rect width="300" height="440" fill="url(#g2)"/>
+          <path d="M40 440V170a110 110 0 0 1 220 0v270" fill="none" stroke="#D4B27A" stroke-width="1.2" opacity=".7"/>
+          <path d="M58 440V176a92 92 0 0 1 184 0v264" fill="none" stroke="#D4B27A" stroke-width=".8" opacity=".4"/>
+          <circle cx="150" cy="190" r="38" fill="#E7C9B0"/>
+          <path d="M108 190c-6-50 20-68 44-68s52 18 44 68c-6-26-20-40-44-40s-38 14-44 40z" fill="#2A1C2E"/>
+          <path d="M104 190c-8 60 4 96 -8 130l20-6c10-30 6-70 8-110z" fill="#2A1C2E"/>
+          <path d="M196 190c8 60-4 96 8 130l-20-6c-10-30-6-70-8-110z" fill="#2A1C2E"/>
+          <path d="M64 440c4-80 40-118 86-118s82 38 86 118z" fill="#D4B27A"/>
+          <path d="M120 326l30 40 30-40" fill="none" stroke="#9A7A44" stroke-width="2"/>
+          <path d="M226 70a22 22 0 1 0 14 38 18 18 0 0 1-14-38z" fill="#EAD3A5"/>
+          <g fill="#EAD3A5"><circle cx="70" cy="80" r="1.6"/><circle cx="100" cy="46" r="1.2"/><circle cx="52" cy="130" r="1.2"/><circle cx="180" cy="40" r="1.4"/><circle cx="250" cy="150" r="1.2"/></g>
+        </svg>
+        <figcaption>Здесь будет ваше фото</figcaption>
+      </figure>
+      <figure class="photo sq">
+        <svg viewBox="0 0 200 200" preserveAspectRatio="xMidYMid slice" role="img" aria-label="Кабинет, иллюстрация">
+          <rect width="200" height="200" fill="#241A35"/>
+          <circle cx="100" cy="86" r="46" fill="#D79BB4" opacity=".14"/>
+          <path d="M60 150h80l-8-34H68z" fill="#3A2A55" stroke="#D4B27A" stroke-width="1"/>
+          <path d="M100 116c-8-16-6-30 0-42 6 12 8 26 0 42z" fill="#EAD3A5"/>
+          <path d="M100 116c-3-8-3-16 0-24 3 8 3 16 0 24z" fill="#D4B27A"/>
+          <path d="M30 170h140" stroke="#D4B27A" stroke-width="1" opacity=".6"/>
+          <circle cx="40" cy="40" r="1.4" fill="#EAD3A5"/><circle cx="160" cy="50" r="1.4" fill="#EAD3A5"/><circle cx="150" cy="30" r="1" fill="#EAD3A5"/>
+        </svg>
+        <figcaption>Кабинет</figcaption>
+      </figure>
+      <figure class="photo sq">
+        <svg viewBox="0 0 200 200" preserveAspectRatio="xMidYMid slice" role="img" aria-label="Карты, иллюстрация">
+          <rect width="200" height="200" fill="#2C2140"/>
+          <g stroke="#D4B27A" stroke-width="1" fill="#241A35"><rect x="44" y="44" width="62" height="92" rx="8" transform="rotate(-10 75 90)"/><rect x="92" y="40" width="62" height="92" rx="8" transform="rotate(8 120 86)"/></g>
+          <path d="M122 70l5 10 10 5-10 5-5 10-5-10-10-5 10-5z" fill="#EAD3A5"/>
+          <circle cx="70" cy="95" r="12" fill="none" stroke="#D79BB4" stroke-width="1.2"/>
+        </svg>
+        <figcaption>МАК-карты</figcaption>
+      </figure>
+    </div>
+    <div class="about-text">
+      <span class="label">Обо мне</span>
+      <h2>Здравствуйте, я Алина. Помогаю <em>услышать себя</em></h2>
+      <p>Я психолог по образованию, гипнолог и регрессолог, и восемь лет работаю с женщинами, которые приходят с тревогой, усталостью, повторяющимися сценариями в отношениях и вопросом «почему со мной так происходит».</p>
+      <p>Совмещаю психологический подход и практики работы с подсознанием: мягкий гипноз, регрессии, метафорические карты, а ченнелинг и общение с душами ушедших веду отдельными сеансами и всегда объясняю заранее, что это за формат и чего от него ждать.</p>
+      <blockquote>Я не обещаю чудес. Я создаю безопасное пространство, в котором вы сами находите ответ.</blockquote>
+      <ul class="about-list">
+        <li>Психолог, 8 лет практики</li>
+        <li>Гипнолог и регрессолог</li>
+        <li>Работаю онлайн и очно</li>
+        <li>Конфиденциально, без оценок</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- CERTS -->
+<section id="certs" class="reveal">
+  <div class="wrap">
+    <div class="sec-head center">
+      <span class="label">Сертификаты и обучение</span>
+      <h2>Образование, <em>которому можно доверять</em></h2>
+      <p class="lead">Здесь появятся сканы ваших дипломов и сертификатов, а пока в примере вымышленные названия.</p>
+    </div>
+    <div class="certs">
+      <div class="cert"><div class="cert-in"><svg><use href="#i-seal"/></svg><span class="yr">2017</span><h3>Диплом психолога</h3><p>Высшее образование, психологический факультет. Пример записи.</p></div></div>
+      <div class="cert"><div class="cert-in"><svg><use href="#i-seal"/></svg><span class="yr">2019</span><h3>Клинический гипноз</h3><p>Курс 120 часов, сертификат школы гипноза. Пример записи.</p></div></div>
+      <div class="cert"><div class="cert-in"><svg><use href="#i-seal"/></svg><span class="yr">2021</span><h3>Регрессивная терапия</h3><p>Профессиональная программа, 200 часов с практикой. Пример записи.</p></div></div>
+    </div>
+    <div class="edu">
+      <div><b>2022</b><span>МАК: метафорические ассоциативные карты, базовый и продвинутый курсы</span></div>
+      <div><b>2023</b><span>Работа с горем и утратой, этика сопровождения</span></div>
+      <div><b>2024</b><span>Ченнелинг и работа с подсознательными образами, авторская школа</span></div>
+      <div><b>2025</b><span>Супервизии и личная терапия: регулярно, раз в месяц</span></div>
+    </div>
+  </div>
+</section>
+
+<!-- SESSIONS -->
+<section id="sessions" class="alt reveal">
+  <div class="wrap">
+    <div class="sec-head">
+      <span class="label">Виды сеансов</span>
+      <h2>На что вы <em>записываетесь</em></h2>
+      <p class="lead">Если сомневаетесь, с чего начать, начните с МАК-сеанса: он самый мягкий и помогает понять запрос.</p>
+    </div>
+    <div class="sessions" id="sessGrid"></div>
+    <div class="safe"><b style="color:var(--gold-light);font-weight:500">Важно.</b> Сеансы не заменяют лечение и консультацию врача, я не работаю при острых психических состояниях и не даю медицинских прогнозов, а на первом контакте мы вместе решаем, подходит ли вам формат.</div>
+  </div>
+</section>
+
+<!-- BOOKING -->
+<section id="booking" class="reveal">
+  <div class="wrap">
+    <div class="sec-head">
+      <span class="label">Онлайн-запись</span>
+      <h2>Выберите <em>дату</em> и запишитесь</h2>
+      <p class="lead">Свободные даты хозяйка сайта выставляет сама. Выберите сеанс, день и время, оплатите, и подтверждение придёт на почту.</p>
+    </div>
+    <div class="book-grid">
+      <div class="panel">
+        <div class="steps"><span class="on">1 Сеанс</span><span class="on">2 Дата и время</span><span class="on">3 Контакты</span><span class="on">4 Оплата</span></div>
+        <span class="fl" style="display:block;margin-bottom:10px">1. Вид сеанса</span>
+        <div class="types" id="bTypes"></div>
+        <span class="fl" style="display:block;margin-bottom:10px">2. Дата</span>
+        <div class="mtabs" id="bMonths"></div>
+        <div class="cal" id="bCal"></div>
+        <div class="slots" id="bSlotsWrap" hidden>
+          <span class="fl">Время</span>
+          <div class="chips" id="bSlots"></div>
+        </div>
+      </div>
+      <div class="panel summary">
+        <h3>Ваша запись</h3>
+        <div class="sum-row"><span>Сеанс</span><b id="sType">-</b></div>
+        <div class="sum-row"><span>Дата</span><b id="sDate">выберите день</b></div>
+        <div class="sum-row"><span>Длительность</span><b id="sDur">-</b></div>
+        <div class="sum-total"><span>К оплате</span><b id="sPrice">-</b></div>
+        <form id="bForm" novalidate>
+          <div class="field"><label for="bName">Имя</label><input id="bName" autocomplete="name" placeholder="Как к вам обращаться"></div>
+          <div class="field"><label for="bMail">Почта</label><input id="bMail" type="email" autocomplete="email" placeholder="name@mail.ru"></div>
+          <div class="field"><label for="bTel">Телефон</label><input id="bTel" type="tel" autocomplete="tel" placeholder="+7 900 000-00-00"></div>
+          <div class="field"><label for="bCom">Комментарий к записи</label><textarea id="bCom" placeholder="Что важно знать заранее (по желанию)"></textarea></div>
+          <div class="pay-methods"><span>Карта</span><span>СБП</span><span>SberPay</span><span>Чек на почту</span></div>
+          <button class="btn" type="submit" id="bPay">Оплатить и записаться</button>
+          <div class="err" id="bErr" role="alert"></div>
+          <span class="demo-note">В демо без оплаты. В рабочей версии платёж проходит через интернет-эквайринг на ваш счёт, а чек формируется через «Бизнес чеки».</span>
+        </form>
+        <div class="ok-box" id="bOk" role="status"></div>
+        <p class="note">Отмена и перенос только в личной переписке: телефон и мессенджер придут в письме.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CABINET -->
+<section id="cabinet" class="alt reveal">
+  <div class="wrap">
+    <div class="sec-head">
+      <span class="label">Личный кабинет хозяйки сайта</span>
+      <h2>Цены и расписание <em>меняете сами</em></h2>
+      <p class="lead">Нажмите на день в календаре, чтобы открыть или закрыть его, или измените цену в поле, и всё сразу обновится в записи выше. Это демо-кабинет с тестовыми данными.</p>
+    </div>
+    <div class="cab">
+      <div class="cab-bar"><div class="dots"><i></i><i></i><i></i></div><span>Кабинет · <b>Расписание на 4 месяца вперёд</b></span></div>
+      <div class="cab-grid">
+        <div>
+          <h3>Расписание</h3>
+          <p class="hint">Ноябрь 2026 - март 2027. Время по умолчанию: 11:00, 14:00, 17:00, 19:00.</p>
+          <div class="mtabs" id="aMonths"></div>
+          <div class="cal" id="aCal"></div>
+          <div class="legend"><span><i style="border-color:rgba(212,178,122,.6);background:rgba(212,178,122,.1)"></i>открыт</span><span><i style="border-color:rgba(215,155,180,.6);background:rgba(215,155,180,.15)"></i>закрыт, нажмите, чтобы открыть</span></div>
+          <div class="cab-actions">
+            <button class="btn sm ghost" type="button" id="aFill">Открыть вт, чт, сб на 4 месяца</button>
+            <button class="btn sm ghost" type="button" id="aClear">Закрыть всё</button>
+          </div>
+        </div>
+        <div>
+          <h3>Цены</h3>
+          <p class="hint">Изменили цифру, и она сразу в карточках и записи.</p>
+          <div id="aPrices"></div>
+          <div class="bookings">
+            <h3 style="font-size:20px;margin-bottom:10px">Записи клиентов</h3>
+            <div id="aBookings"></div>
+            <span class="demo-note">Каждая запись приходит и на почту: имя, почта, телефон и комментарий.</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ANKETA -->
+<section id="anketa" class="reveal">
+  <div class="wrap form-grid">
+    <div>
+      <span class="label">Анкета клиента</span>
+      <h2>Расскажите о себе <em>до встречи</em></h2>
+      <p class="lead">Анкета помогает подготовить сеанс, и читаю её только я, до сеанса и без передачи третьим лицам.</p>
+      <ol class="steps-list">
+        <li>Вы записываетесь на сеанс и оплачиваете его</li>
+        <li>Заполняете анкету за десять минут</li>
+        <li>Я готовлюсь и пишу вам накануне сеанса</li>
+      </ol>
+    </div>
+    <form class="panel" id="aForm" novalidate>
+      <div class="two-col">
+        <div class="field"><label for="fName">Имя и возраст</label><input id="fName" placeholder="Например, Мария, 34"></div>
+        <div class="field"><label for="fMail">Почта</label><input id="fMail" type="email" placeholder="name@mail.ru"></div>
+      </div>
+      <div class="field"><label for="fType">Какой сеанс вас интересует</label><select id="fType"></select></div>
+      <div class="field"><label for="fReq">С каким запросом вы приходите</label><textarea id="fReq" placeholder="Своими словами: что беспокоит, что хотелось бы понять"></textarea></div>
+      <div class="field"><span class="fl">Опыт гипноза или медитаций</span>
+        <div class="radios"><label><input type="radio" name="exp" value="no" checked><span>Не было</span></label><label><input type="radio" name="exp" value="some"><span>Немного</span></label><label><input type="radio" name="exp" value="yes"><span>Регулярно</span></label></div>
+      </div>
+      <div class="field"><span class="fl">Состояние здоровья (отметьте, если есть)</span>
+        <div class="radios"><label><input type="checkbox" name="h"><span>Эпилепсия</span></label><label><input type="checkbox" name="h"><span>Психиатрический диагноз</span></label><label><input type="checkbox" name="h"><span>Беременность</span></label><label><input type="checkbox" name="h"><span>Принимаю препараты</span></label></div>
+      </div>
+      <label class="consent"><input type="checkbox" id="fOk"><span>Согласна на обработку персональных данных и понимаю, что сеанс не заменяет лечение.</span></label>
+      <button class="btn" type="submit">Отправить анкету</button>
+      <div class="err" id="fErr" role="alert"></div>
+      <div class="ok-box" id="fDone" role="status"><h3>Анкета отправлена</h3>Спасибо, я прочитаю её до сеанса и напишу вам на почту.</div>
+    </form>
+  </div>
+</section>
+
+<!-- SHOP -->
+<section id="shop" class="alt reveal">
+  <div class="wrap">
+    <div class="sec-head">
+      <span class="label">Гайды и практики</span>
+      <h2>Забрать с собой <em>и вернуться к себе</em></h2>
+      <p class="lead">После оплаты файл или ссылка на доступ приходит на почту автоматически, а файлы вы загружаете на сайт сами.</p>
+    </div>
+    <div class="shop-title"><h3>Гайды (PDF)</h3><span class="note" style="margin:0">Высылаются на почту сразу после оплаты</span></div>
+    <div class="shop" id="guides"></div>
+    <div class="shop-title"><h3>Медитативные практики</h3><span class="note" style="margin:0">Видео и аудио, ссылка на доступ на почту</span></div>
+    <div class="shop" id="meds" style="margin-bottom:0"></div>
+  </div>
+</section>
+
+<!-- GIFT -->
+<section id="gift" class="reveal">
+  <div class="wrap gift-grid">
+    <div>
+      <span class="label">Подарочный сертификат</span>
+      <h2>Подарок, который <em>возвращает к себе</em></h2>
+      <p class="lead" style="margin-bottom:26px">Сертификат на любую сумму: после оплаты ему присваивается номер, а сам сертификат и чек приходят на почту.</p>
+      <div class="field"><span class="fl">Сумма</span>
+        <div class="amounts" id="gAmts"></div>
+      </div>
+      <div class="two-col">
+        <div class="field"><label for="gTo">Для кого</label><input id="gTo" placeholder="Имя получательницы" maxlength="30"></div>
+        <div class="field"><label for="gMail">Ваша почта</label><input id="gMail" type="email" placeholder="name@mail.ru"></div>
+      </div>
+      <div class="field"><label for="gWish">Пожелание</label><input id="gWish" placeholder="Например: Время для себя" maxlength="60"></div>
+      <button class="btn" type="button" id="gBuy">Купить сертификат</button>
+      <span class="demo-note">В демо без оплаты. Возврат сертификата оформляется запросом в личной переписке.</span>
+    </div>
+    <div class="gcard" aria-label="Предпросмотр сертификата">
+      <div class="gcard-in">
+        <svg class="moon"><use href="#moon"/></svg>
+        <div class="brand">Алина Ветрова</div>
+        <h3>Подарочный сертификат</h3>
+        <div class="sum" id="gSum">5 000 руб.</div>
+        <div class="to" id="gToView">для самого близкого человека</div>
+        <div class="wish" id="gWishView">«Время для себя»</div>
+        <span class="num" id="gNum">№ АВ-2026-0000</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- REVIEWS -->
+<section id="reviews" class="alt reveal">
+  <div class="wrap">
+    <div class="sec-head center">
+      <span class="label">Отзывы</span>
+      <h2>Что говорят <em>после сеансов</em></h2>
+      <p class="lead">Отзывы клиентов появятся здесь с их согласия, а пока тексты примерные.</p>
+    </div>
+    <div class="reviews">
+      <article class="rev"><div class="stars" aria-label="5 из 5">★★★★★</div><p>Шла со страхом, а ушла с ощущением, что меня наконец услышали, очень бережно и без давления.</p><div class="who"><b>Марина, 36 лет</b>Регрессия <span class="pill-ex">пример отзыва</span></div></article>
+      <article class="rev"><div class="stars" aria-label="5 из 5">★★★★★</div><p>МАК-сеанс стал для меня мягким входом, и за час я поняла то, о чём думала несколько лет.</p><div class="who"><b>Ксения, 29 лет</b>МАК-сеанс <span class="pill-ex">пример отзыва</span></div></article>
+      <article class="rev"><div class="stars" aria-label="5 из 5">★★★★★</div><p>Заранее объяснили, как всё пройдёт, анкета помогла, а онлайн оказалось так же глубоко, как очно.</p><div class="who"><b>Татьяна, 42 года</b>Гипноз <span class="pill-ex">пример отзыва</span></div></article>
+    </div>
+  </div>
+</section>
+
+<!-- FAQ -->
+<section id="faq" class="reveal">
+  <div class="wrap">
+    <div class="sec-head center">
+      <span class="label">Частые вопросы</span>
+      <h2>Прежде чем <em>записаться</em></h2>
+    </div>
+    <div class="faq">
+      <details><summary>Это безопасно? Я не потеряю контроль?</summary><p>В гипнозе и регрессии вы всё время остаётесь в сознании и можете выйти из состояния в любой момент, а перед началом я объясняю, как всё будет, и мы договариваемся о сигнале «стоп» на случай, если станет некомфортно.</p></details>
+
+      <details><summary>Как проходит сеанс онлайн?</summary><p>Встреча идёт по видеосвязи, вам понадобятся тихая комната, наушники и около двух часов без отвлечений, а ссылку на встречу вы получите в письме после записи.</p></details>
+
+      <details><summary>Как понять, какой сеанс мне нужен?</summary><p>Если вы не уверены, начните с МАК-сеанса или напишите мне, и я бесплатно подскажу формат под ваш запрос.</p></details>
+
+      <details><summary>Что делать, если я не смогу прийти?</summary><p>Отмену и перенос мы согласуем в личной переписке, а контакты для связи придут вам в подтверждении записи.</p></details>
+
+      <details><summary>Как приходят гайды и практики?</summary><p>Файл или ссылка приходят на указанную почту сразу после оплаты, и если письма нет, проверьте папку «Спам» или напишите мне.</p></details>
+
+      <details><summary>Можно ли вернуть оплату?</summary><p>Условия возврата описаны в оферте, а запрос на возврат нужно прислать мне в личные сообщения.</p></details>
+
+      <details><summary>Сеанс заменяет лечение?</summary><p>Нет, это психологическая и практическая поддержка, а не медицинская услуга, поэтому при наличии диагноза участие стоит обсудить с лечащим врачом.</p></details>
+    </div>
+  </div>
+</section>
+
+<!-- DEV -->
+<section class="alt reveal" id="dev" style="padding:clamp(56px,8vw,90px) 0">
+  <div class="wrap">
+    <div class="sec-head" style="margin-bottom:32px">
+      <span class="label">Для хозяйки сайта</span>
+      <h2>Что вы получите и <em>что, если сменится разработчик</em></h2>
+    </div>
+    <div class="dev-grid">
+      <div class="dev"><h3>Три недели до запуска</h3><p>Неделя на дизайн и структуру, неделя на запись, оплату и кабинет, неделя на тесты, наполнение и запуск.</p></div>
+      <div class="dev"><h3>Ваш стиль</h3><p>Оттенки и настроение вашего подарочного сертификата: глубокий фон, золото, мягкая люксовость, а макет мы согласуем до вёрстки.</p></div>
+      <div class="dev"><h3>Преемственность</h3><p>Я передаю доступы и исходники на ваши аккаунты и пишу инструкцию, поэтому любой другой разработчик продолжит работу без потери данных.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- LEGAL -->
+<section id="legal" class="paper reveal">
+  <div class="wrap legal-grid">
+    <div>
+      <span class="label">Юридическая информация</span>
+      <h2>Оферта и <em>документы</em></h2>
+      <p class="lead" style="margin-bottom:22px">Все документы всегда под рукой, как требуют эквайринг и онлайн-чеки.</p>
+      <div class="ltabs" id="lTabs"></div>
+    </div>
+    <div class="ldoc" id="lDoc"></div>
+  </div>
+</section>
+
+<!-- CONTACTS -->
+<section id="contacts" class="reveal">
+  <div class="wrap contacts">
+    <div>
+      <span class="label">Контакты</span>
+      <h2>Давайте <em>познакомимся</em></h2>
+      <p class="lead">Если что-то непонятно, напишите, я отвечаю в течение дня.</p>
+      <ul class="clist">
+        <li><svg><use href="#i-phone"/></svg><div><small>Телефон</small><a href="tel:+79000000000">+7 (900) 000-00-00</a></div></li>
+        <li><svg><use href="#i-chat"/></svg><div><small>Мессенджеры</small><a href="#contacts">Telegram и WhatsApp: @vetrova_demo</a></div></li>
+        <li><svg><use href="#i-mail"/></svg><div><small>Почта</small><a href="mailto:hello@example.ru">hello@example.ru</a></div></li>
+        <li><svg><use href="#i-pin"/></svg><div><small>Где принимаю</small><span style="font-size:18px">Онлайн и в кабинете, ваш город</span></div></li>
+      </ul>
+    </div>
+    <div class="cta-card">
+      <svg><use href="#moon"/></svg>
+      <h3>Первый шаг самый тихий</h3>
+      <p>Выберите дату, а остальное я возьму на себя.</p>
+      <a class="btn" href="#booking">Записаться на сеанс</a>
+    </div>
+  </div>
+</section>
+
+</main>
+
+<footer>
+  <div class="wrap">
+    <div class="row">
+      <div>© 2026 Алина Ветрова. Все права защищены.</div>
+      <div><a href="#legal">Оферта</a> · <a href="#legal">Политика конфиденциальности</a></div>
+    </div>
+    <div class="demo">Демо-версия, подготовлено для заказа на FL.ru. Тексты и фото заменим на ваши</div>
+  </div>
+</footer>
+
+<dialog id="dlg" aria-labelledby="dTitle">
+  <button class="dclose" type="button" aria-label="Закрыть" onclick="dlg.close()">&times;</button>
+  <h3 id="dTitle"></h3>
+  <p id="dDesc" style="color:var(--muted);margin-bottom:16px;font-size:15px"></p>
+  <div id="dBody">
+    <div class="field"><label for="dMail">Почта для файла и чека</label><input id="dMail" type="email" placeholder="name@mail.ru"></div>
+    <button class="btn" type="button" id="dPay">Оплатить</button>
+    <span class="demo-note">В демо без оплаты. В рабочей версии откроется страница эквайринга.</span>
+    <div class="err" id="dErr" role="alert"></div>
+  </div>
+  <div class="ok-box" id="dOk" role="status"></div>
+</dialog>
+
+<script>
+const $=s=>document.querySelector(s);
+const fmt=n=>Number(n).toLocaleString('ru-RU').replace(/ /g,' ')+' руб.';
+const esc=s=>String(s).replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+function toggleMenu(){const m=$('#mob');m.classList.toggle('open');document.body.style.overflow=m.classList.contains('open')?'hidden':''}
+
+const TYPES={
+  mak:{name:'МАК-сеанс',min:60,price:4500,icon:'i-mak',desc:'Метафорические ассоциативные карты: вы вытягиваете карты, и вместе мы читаем образы. Самый мягкий вход в работу с подсознанием.',who:'Для тех, кто в начале пути или не уверен в запросе',how:'Беседа, карты, разбор образов, итоговая мысль'},
+  hyp:{name:'Гипноз',min:90,price:6500,icon:'i-hyp',desc:'Мягкий разговорный гипноз для работы с тревогой, усталостью, страхами и внутренними запретами. Вы в сознании и в безопасности.',who:'Для тех, кого беспокоят тревога, напряжение, повторяющиеся сценарии',how:'Беседа, погружение, работа с состоянием, возвращение'},
+  reg:{name:'Регрессия в прошлые жизни',min:120,price:9000,icon:'i-reg',desc:'Погружение в образы и истории, которые могут объяснить повторяющиеся ситуации. Вы сами проходите путь, а я сопровождаю.',who:'Для тех, кто готов к глубокой работе с образами',how:'Беседа, погружение, путешествие, интеграция'},
+  soul:{name:'Общение с душами ушедших',min:120,price:9500,icon:'i-soul',desc:'Бережная встреча с образом близкого человека, который ушёл. Помогает проститься, сказать несказанное и отпустить вину.',who:'Для тех, кто переживает утрату',how:'Подготовка, диалог, прощание, поддержка после сеанса'},
+  chan:{name:'Ченнелинг (ясновидение)',min:60,price:7000,icon:'i-eye',desc:'Сеанс получения образов и сообщений по вашему вопросу. Подходит, чтобы увидеть ситуацию с другой стороны.',who:'Для тех, кому нужен взгляд со стороны на конкретный вопрос',how:'Уточнение вопроса, получение образов, разбор'}
+};
+const KEYS=Object.keys(TYPES);
+const DOW=['Пн','Вт','Ср','Чт','Пт','Сб','Вс'];
+const SLOTS=['11:00','14:00','17:00','19:00'];
+const MON=[[2026,10],[2026,11],[2027,0],[2027,1],[2027,2]];
+const MN=['январь','февраль','март','апрель','май','июнь','июль','август','сентябрь','октябрь','ноябрь','декабрь'];
+const MNG=['января','февраля','марта','апреля','мая','июня','июля','августа','сентября','октября','ноября','декабря'];
+const key=(y,m,d)=>y+'-'+String(m+1).padStart(2,'0')+'-'+String(d).padStart(2,'0');
+const TODAY=key(2026,10,15);
+const hash=s=>{let h=7;for(const c of s)h=(h*31+c.charCodeAt(0))%1009;return h};
+const wd=(y,m,d)=>(new Date(y,m,d).getDay()+6)%7;
+const monIdx=k=>MON.findIndex(([y,m])=>key(y,m,1).slice(0,7)===k.slice(0,7));
+
+const open=new Set();
+function fillDefault(){
+  MON.forEach(([y,m])=>{const n=new Date(y,m+1,0).getDate();
+    for(let d=1;d<=n;d++){const k=key(y,m,d);const w=wd(y,m,d);
+      if(k>TODAY&&(w===1||w===3||w===5))open.add(k)}})
+}
+fillDefault();
+const taken=k=>SLOTS.filter((_,i)=>hash(k+i)%4===0);
+const freeSlots=k=>SLOTS.filter(s=>!taken(k).includes(s));
+const dlabel=k=>{const[y,m,d]=k.split('-').map(Number);return DOW[wd(y,m-1,d)]+', '+d+' '+MNG[m-1]};
+
+const st={type:'mak',date:null,slot:null,bm:0,am:0};
+const bookings=[
+  {name:'Анна К.',mail:'anna@example.ru',tel:'+7 912 000-11-22',com:'Первый раз, немного волнуюсь',type:'hyp',date:'2026-11-17',slot:'14:00'},
+  {name:'Ирина С.',mail:'irina@example.ru',tel:'+7 913 000-33-44',com:'Хочу разобраться с тревогой',type:'mak',date:'2026-11-19',slot:'11:00'}
+];
+
+function typeOptions(sel){sel.innerHTML=KEYS.map(k=>`<option value="${k}">${esc(TYPES[k].name)}</option>`).join('')}
+function nearest(n){const out=[];const ks=[...open].sort();for(const k of ks){if(k<=TODAY)continue;for(const s of freeSlots(k)){out.push([k,s]);if(out.length>=n)return out}}return out}
+function renderQuick(){
+  const t=TYPES[$('#qType').value];
+  $('#qMeta').textContent=t.name+' · '+t.min+' мин';$('#qPrice').textContent=fmt(t.price);
+  const n=nearest(4);
+  $('#qSlots').innerHTML=n.length?n.map(([k,s])=>`<button class="chip two" data-k="${k}" data-s="${s}">${dlabel(k)}<small>${s}</small></button>`).join(''):'<span class="note">Свободных дат пока нет, откройте их в кабинете ниже.</span>';
+}
+$('#qType').addEventListener('change',renderQuick);
+$('#qSlots').addEventListener('click',e=>{const b=e.target.closest('.chip');if(!b)return;
+  st.type=$('#qType').value;st.date=b.dataset.k;st.slot=b.dataset.s;st.bm=Math.max(0,monIdx(st.date));
+  renderBook();$('#booking').scrollIntoView({behavior:'smooth'})});
+
+function renderSessions(){
+  $('#sessGrid').innerHTML=KEYS.map(k=>{const t=TYPES[k];return `<article class="sess"><svg class="ic"><use href="#${t.icon}"/></svg><h3>${esc(t.name)}</h3><p>${esc(t.desc)}</p><dl><dt>Для кого</dt><dd>${esc(t.who)}</dd><dt>Как проходит</dt><dd>${esc(t.how)}</dd></dl><div class="foot"><div><b>${fmt(t.price)}</b><span>${t.min} минут</span></div><button class="btn sm ghost" data-pick="${k}">Записаться</button></div></article>`}).join('');
+}
+$('#sessGrid').addEventListener('click',e=>{const b=e.target.closest('[data-pick]');if(!b)return;st.type=b.dataset.pick;renderBook();$('#booking').scrollIntoView({behavior:'smooth'})});
+
+function renderCal(el,mi,mode){
+  const[y,m]=MON[mi];const n=new Date(y,m+1,0).getDate();const first=wd(y,m,1);
+  let h=DOW.map(d=>`<div class="dow">${d}</div>`).join('')+'<i></i>'.repeat(first);
+  for(let d=1;d<=n;d++){const k=key(y,m,d);const past=k<=TODAY;
+    const isOpen=open.has(k)&&freeSlots(k).length>0;
+    if(mode==='book'){h+=`<button type="button" ${isOpen?`class="free${st.date===k?' sel':''}" data-k="${k}"`:'disabled'} aria-label="${d} ${MNG[m]}${isOpen?', есть время':', нет мест'}">${d}</button>`}
+    else{h+=past?`<button type="button" disabled>${d}</button>`:`<button type="button" class="${open.has(k)?'free':'cl'}" data-k="${k}" aria-pressed="${open.has(k)}" aria-label="${d} ${MNG[m]}, ${open.has(k)?'открыт':'закрыт'}">${d}</button>`}
+  }
+  el.innerHTML=h;
+}
+function renderMonths(el,cur){el.innerHTML=MON.map(([y,m],i)=>`<button type="button" class="${i===cur?'on':''}" data-i="${i}">${MN[m]}${m===0?' '+y:''}</button>`).join('')}
+
+function renderBook(){
+  $('#bTypes').innerHTML=KEYS.map(k=>`<button type="button" class="chip${st.type===k?' on':''}" data-t="${k}">${esc(TYPES[k].name)}</button>`).join('');
+  renderMonths($('#bMonths'),st.bm);renderCal($('#bCal'),st.bm,'book');
+  const w=$('#bSlotsWrap');
+  if(st.date&&open.has(st.date)){w.hidden=false;const fs=freeSlots(st.date);if(!fs.includes(st.slot))st.slot=null;
+    $('#bSlots').innerHTML=fs.map(s=>`<button type="button" class="chip${st.slot===s?' on':''}" data-s="${s}">${s}</button>`).join('')}else{w.hidden=true;st.date=null;st.slot=null}
+  const t=TYPES[st.type];
+  $('#sType').textContent=t.name;$('#sDur').textContent=t.min+' мин';$('#sPrice').textContent=fmt(t.price);
+  $('#sDate').textContent=st.date?dlabel(st.date)+(st.slot?', '+st.slot:', выберите время'):'выберите день';
+  $('#bPay').textContent='Оплатить '+fmt(t.price);
+  $('#qType').value=st.type;renderQuick();
+}
+$('#bTypes').addEventListener('click',e=>{const b=e.target.closest('[data-t]');if(b){st.type=b.dataset.t;renderBook()}});
+$('#bMonths').addEventListener('click',e=>{const b=e.target.closest('[data-i]');if(b){st.bm=+b.dataset.i;renderBook()}});
+$('#bCal').addEventListener('click',e=>{const b=e.target.closest('[data-k]');if(b){st.date=b.dataset.k;st.slot=null;renderBook()}});
+$('#bSlots').addEventListener('click',e=>{const b=e.target.closest('[data-s]');if(b){st.slot=b.dataset.s;renderBook()}});
+
+$('#bForm').addEventListener('submit',e=>{
+  e.preventDefault();const err=$('#bErr');err.textContent='';
+  const name=$('#bName').value.trim(),mail=$('#bMail').value.trim(),tel=$('#bTel').value.trim();
+  if(!st.date||!st.slot){err.textContent='Выберите день и время.';return}
+  if(!name){err.textContent='Напишите имя.';return}
+  if(!/^\S+@\S+\.\S+$/.test(mail)){err.textContent='Проверьте почту.';return}
+  if(tel.replace(/\D/g,'').length<10){err.textContent='Укажите телефон.';return}
+  const t=TYPES[st.type];
+  bookings.unshift({name,mail,tel,com:$('#bCom').value.trim()||'без комментария',type:st.type,date:st.date,slot:st.slot,isNew:true});
+  const dateTxt=dlabel(st.date)+', '+st.slot;
+  const box=$('#bOk');box.classList.add('show');
+  box.innerHTML=`<h4>Запись подтверждена</h4>Вы записаны: ${esc(t.name)}, ${esc(dateTxt)}. Письмо отправлено на ${esc(mail)}.<div class="mail"><small>Письмо клиенту</small>Здравствуйте, ${esc(name)}! Ваша запись: ${esc(t.name)}, ${esc(dateTxt)}. Оплачено ${fmt(t.price)}, чек во вложении.<br>Связь со мной: +7 (900) 000-00-00. Отмена и перенос только в личной переписке.<br>Ссылка на видеосвязь придёт за день до сеанса.</div>`;
+  renderBookings();$('#bForm').reset();
+  box.scrollIntoView({behavior:'smooth',block:'nearest'});
+});
+
+function renderAdmin(){
+  renderMonths($('#aMonths'),st.am);renderCal($('#aCal'),st.am,'admin');
+  $('#aPrices').innerHTML=KEYS.map(k=>`<div class="price-row"><label for="pr-${k}">${esc(TYPES[k].name)}</label><input id="pr-${k}" data-p="${k}" type="number" min="0" step="100" value="${TYPES[k].price}"></div>`).join('');
+  renderBookings();
+}
+function renderBookings(){
+  $('#aBookings').innerHTML=bookings.map(b=>`<div class="bk${b.isNew?' new':''}"><b>${esc(dlabel(b.date))}, ${esc(b.slot)}</b> · ${esc(TYPES[b.type].name)}${b.isNew?' · новая':''}<br>${esc(b.name)} · ${esc(b.mail)} · ${esc(b.tel)}<br>Комментарий: ${esc(b.com)}</div>`).join('');
+}
+function refreshAll(){renderBook();renderCal($('#aCal'),st.am,'admin')}
+$('#aMonths').addEventListener('click',e=>{const b=e.target.closest('[data-i]');if(b){st.am=+b.dataset.i;renderMonths($('#aMonths'),st.am);renderCal($('#aCal'),st.am,'admin')}});
+$('#aCal').addEventListener('click',e=>{const b=e.target.closest('[data-k]');if(!b)return;const k=b.dataset.k;
+  open.has(k)?open.delete(k):open.add(k);refreshAll()});
+$('#aPrices').addEventListener('input',e=>{const i=e.target.closest('[data-p]');if(!i)return;TYPES[i.dataset.p].price=Math.max(0,parseInt(i.value)||0);
+  renderSessions();renderBook()});
+$('#aFill').addEventListener('click',()=>{fillDefault();refreshAll()});
+$('#aClear').addEventListener('click',()=>{open.clear();refreshAll()});
+
+$('#aForm').addEventListener('submit',e=>{e.preventDefault();const er=$('#fErr');er.textContent='';
+  if(!$('#fName').value.trim()||!/^\S+@\S+\.\S+$/.test($('#fMail').value.trim())){er.textContent='Укажите имя и почту.';return}
+  if(!$('#fReq').value.trim()){er.textContent='Напишите хотя бы пару слов о запросе.';return}
+  if(!$('#fOk').checked){er.textContent='Нужно ваше согласие.';return}
+  $('#fDone').classList.add('show')});
+
+const GUIDES=[
+  {id:'g1',title:'Лунный дневник: 30 дней практик',price:1200,tag:'PDF · 48 стр.',desc:'Ежедневные короткие практики и вопросы для самонаблюдения.',c:['#3A2A55','#D79BB4']},
+  {id:'g2',title:'Как подготовиться к регрессии',price:900,tag:'PDF · 22 стр.',desc:'Что делать до, во время и после сеанса, с чек-листом и вопросами к себе.',c:['#2C2140','#D4B27A']},
+  {id:'g3',title:'Письмо ушедшему: гид по прощанию',price:1500,tag:'PDF · 36 стр.',desc:'Бережные упражнения для тех, кто переживает утрату.',c:['#33263F','#EAD3A5']}
+];
+const MEDS=[
+  {id:'m1',title:'Тихая вода',price:700,tag:'Аудио · 20 мин',desc:'Практика расслабления и возвращения к телу.',c:['#2A2145','#D79BB4']},
+  {id:'m2',title:'Утренний круг',price:900,tag:'Видео · 15 мин',desc:'Мягкая практика на старт дня: дыхание и намерение.',c:['#3A2A55','#EAD3A5']},
+  {id:'m3',title:'Встреча с проводником',price:1100,tag:'Аудио · 35 мин',desc:'Направленная визуализация для встречи с внутренним помощником.',c:['#241A35','#D4B27A']}
+];
+function cover(c,i){const a=40+(i%3)*20;return `<svg viewBox="0 0 320 200" preserveAspectRatio="xMidYMid slice" aria-hidden="true"><defs><linearGradient id="cg${i}" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="${c[0]}"/><stop offset="1" stop-color="#15101F"/></linearGradient></defs><rect width="320" height="200" fill="url(#cg${i})"/><circle cx="${a+180}" cy="${70+i*6}" r="48" fill="${c[1]}" opacity=".18"/><circle cx="${a+180}" cy="${70+i*6}" r="30" fill="none" stroke="${c[1]}" stroke-width="1.2"/><path d="M${a} 150q60-50 120 0t120 0" fill="none" stroke="${c[1]}" stroke-width="1" opacity=".6"/><path d="M${a} 170q60-40 120 0t120 0" fill="none" stroke="${c[1]}" stroke-width="1" opacity=".35"/></svg>`}
+function renderShop(){
+  const card=(p,i)=>`<article class="prod"><div class="cover">${cover(p.c,i)}<span class="tag">${p.tag}</span></div><div class="body"><h4>${p.title}</h4><p>${p.desc}</p><div class="foot"><b>${fmt(p.price)}</b><button class="btn sm" type="button" data-buy="${p.id}">Купить</button></div></div></article>`;
+  $('#guides').innerHTML=GUIDES.map((p,i)=>card(p,i)).join('');
+  $('#meds').innerHTML=MEDS.map((p,i)=>card(p,i+3)).join('');
+}
+const dlg=$('#dlg');let cur=null;
+function openDlg(o){cur=o;$('#dTitle').textContent=o.title;$('#dDesc').textContent=o.desc;$('#dPay').textContent='Оплатить '+fmt(o.price);$('#dBody').hidden=false;$('#dOk').classList.remove('show');$('#dErr').textContent='';$('#dMail').value=o.mail||'';dlg.showModal()}
+document.addEventListener('click',e=>{const b=e.target.closest('[data-buy]');if(!b)return;const p=[...GUIDES,...MEDS].find(x=>x.id===b.dataset.buy);openDlg(p)});
+$('#dPay').addEventListener('click',()=>{const m=$('#dMail').value.trim();if(!/^\S+@\S+\.\S+$/.test(m)){$('#dErr').textContent='Проверьте почту.';return}
+  $('#dBody').hidden=true;const box=$('#dOk');box.classList.add('show');
+  box.innerHTML=cur.gift?`<h4>Сертификат оформлен</h4>Номер ${esc(cur.num)} присвоен. Сертификат и чек отправлены на ${esc(m)}.<div class="mail"><small>Письмо клиенту</small>Номер сертификата: ${esc(cur.num)}. Сумма ${fmt(cur.price)}. Чек во вложении. Возврат: запрос в личных сообщениях.</div>`:
+  `<h4>Оплата прошла</h4>«${esc(cur.title)}» отправлено на ${esc(m)}.<div class="mail"><small>Письмо клиенту</small>${cur.tag.startsWith('PDF')?'Файл во вложении.':'Ссылка на доступ: example.ru/practice/'+esc(cur.id)}<br>Чек сформирован через «Бизнес чеки».</div>`});
+
+const AM=[3000,5000,9000,15000];let gAmt=5000,gNum='';
+function newNum(){gNum='АВ-2026-'+String(1000+Math.floor(Math.random()*8999))}
+function renderGift(){
+  $('#gAmts').innerHTML=AM.map(a=>`<button type="button" class="chip${gAmt===a?' on':''}" data-a="${a}">${fmt(a)}</button>`).join('');
+  $('#gSum').textContent=fmt(gAmt);
+  const to=$('#gTo').value.trim();$('#gToView').textContent=to?'для '+to:'для самого близкого человека';
+  const w=$('#gWish').value.trim()||'Время для себя';$('#gWishView').textContent='«'+w+'»';$('#gNum').textContent='№ '+gNum;
+}
+$('#gAmts').addEventListener('click',e=>{const b=e.target.closest('[data-a]');if(b){gAmt=+b.dataset.a;renderGift()}});
+['#gTo','#gWish'].forEach(s=>$(s).addEventListener('input',renderGift));
+$('#gBuy').addEventListener('click',()=>openDlg({title:'Подарочный сертификат',desc:'Номер '+gNum+', сумма '+fmt(gAmt),price:gAmt,gift:true,num:gNum,mail:$('#gMail').value.trim()}));
+
+const LEGAL={
+  oferta:{t:'Договор оферты',h:`<p>Публичная оферта на оказание консультационных услуг, фрагмент для демо.</p><ol><li>Исполнитель оказывает услуги в формате и время, выбранные Заказчиком при записи.</li><li>Оплата услуги на сайте означает акцепт оферты.</li><li>Отмена и перенос согласуются в личной переписке.</li><li>Услуги не являются медицинскими и не заменяют лечение.</li></ol>`},
+  priv:{t:'Политика конфиденциальности',h:`<p>Мы собираем только данные, необходимые для записи и связи: имя, почту, телефон, содержание анкеты.</p><ol><li>Данные не передаются третьим лицам, кроме платёжного сервиса и сервиса чеков.</li><li>Анкету читает только специалист.</li><li>Вы можете запросить удаление данных, написав на почту.</li></ol>`},
+  refund:{t:'Возврат и отмена',h:`<p>Запрос на возврат присылается в личные сообщения.</p><ol><li>Сеансы: перенос или возврат по согласованию, если уведомление пришло заранее.</li><li>Цифровые товары (гайды, практики): возврат возможен до скачивания.</li><li>Подарочные сертификаты: возврат запросом в личные сообщения до использования.</li></ol>`},
+  req:{t:'Реквизиты',h:`<p>Самозанятая Ветрова Алина Андреевна (вымышленные данные для демо).</p><ol><li>ИНН: 000000000000</li><li>Почта: hello@example.ru</li><li>Телефон: +7 (900) 000-00-00</li></ol>`}
+};
+function renderLegal(k){$('#lTabs').innerHTML=Object.entries(LEGAL).map(([i,d])=>`<button type="button" class="${i===k?'on':''}" data-l="${i}">${d.t}</button>`).join('');$('#lDoc').innerHTML=`<h3>${LEGAL[k].t}</h3>${LEGAL[k].h}<div class="requis">Полный текст документа загрузит хозяйка сайта.</div>`}
+$('#lTabs').addEventListener('click',e=>{const b=e.target.closest('[data-l]');if(b)renderLegal(b.dataset.l)});
+
+['#qType','#fType'].forEach(s=>typeOptions($(s)));
+newNum();renderGift();renderLegal('oferta');renderShop();renderSessions();renderAdmin();
+(()=>{const f=nearest(1)[0];if(f)st.bm=Math.max(0,monIdx(f[0]))})();
+renderBook();
+
+const io=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('visible');io.unobserve(e.target)}}),{threshold:.06,rootMargin:'0px 0px -40px 0px'});
+document.querySelectorAll('.reveal').forEach(el=>io.observe(el));
+</script>
+</body>
+</html>
