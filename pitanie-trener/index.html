@@ -1,0 +1,237 @@
+<!doctype html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex, nofollow">
+<meta name="theme-color" content="#f5f3ee">
+<title>Контроль питания группы: таблица и Telegram-бот</title>
+<meta name="description" content="Демо системы для тренера: Google-таблица и Telegram-бот на Apps Script, без платных серверов.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:#f5f3ee; --card:#ffffff; --ink:#1d2a24; --muted:#5d6b64; --line:#e3dfd6;
+  --accent:#1f6b4f; --accent-ink:#ffffff;
+  --chat-bg:#dfe9e2; --in:#ffffff; --out:#e2f7d4; --red:#f4c7c3; --orange:#fce8b2;
+  --radius:18px;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+@media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
+body{margin:0;background:var(--bg);color:var(--ink);font:16px/1.55 Manrope,system-ui,sans-serif;-webkit-font-smoothing:antialiased}
+a{color:var(--accent)}
+.wrap{max-width:1080px;margin:0 auto;padding:0 20px}
+header.top{padding:18px 0;border-bottom:1px solid var(--line)}
+header.top .wrap{display:flex;justify-content:space-between;align-items:center;gap:12px;flex-wrap:wrap}
+.badge{font-size:13px;color:var(--muted)}
+.hero{padding:48px 20px 28px}
+.hero h1{font-size:clamp(28px,5vw,46px);line-height:1.1;margin:0 0 14px;letter-spacing:-.02em;max-width:18ch}
+.hero p.lead{font-size:18px;color:var(--muted);max-width:60ch;margin:0 0 24px}
+.cta{display:flex;flex-wrap:wrap;gap:12px}
+.btn{display:inline-flex;align-items:center;justify-content:center;min-height:48px;padding:0 22px;border-radius:999px;font-weight:700;text-decoration:none;border:2px solid var(--accent)}
+.btn.primary{background:var(--accent);color:var(--accent-ink)}
+.btn.ghost{color:var(--accent);background:transparent}
+.btn:focus-visible,.tab:focus-visible{outline:3px solid #f0a53a;outline-offset:2px}
+.facts{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-top:30px}
+.fact{background:var(--card);border:1px solid var(--line);border-radius:var(--radius);padding:16px}
+.fact b{display:block;font-size:22px}
+.fact span{color:var(--muted);font-size:14px}
+section{padding:36px 0}
+h2{font-size:clamp(22px,3.4vw,30px);margin:0 0 8px;letter-spacing:-.01em}
+.sub{color:var(--muted);margin:0 0 22px;max-width:62ch}
+.tabs{display:inline-flex;background:var(--card);border:1px solid var(--line);border-radius:999px;padding:4px;margin-bottom:20px}
+.tab{border:0;background:transparent;font:inherit;font-weight:700;padding:10px 18px;border-radius:999px;cursor:pointer;color:var(--muted);min-height:44px}
+.tab[aria-selected="true"]{background:var(--accent);color:#fff}
+.chats{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:18px}
+.chat{background:var(--chat-bg);border-radius:var(--radius);overflow:hidden;border:1px solid var(--line)}
+.chat-head{background:var(--card);padding:12px 16px;display:flex;gap:10px;align-items:center;border-bottom:1px solid var(--line)}
+.ava{width:36px;height:36px;border-radius:50%;background:var(--accent);color:#fff;display:grid;place-items:center;font-weight:800;font-size:14px;flex:none}
+.chat-head b{display:block;font-size:15px}
+.chat-head small{color:var(--muted);font-size:12px}
+.msgs{padding:14px;display:flex;flex-direction:column;gap:8px}
+.time-sep{align-self:center;background:rgba(0,0,0,.12);color:#fff;font-size:12px;padding:2px 10px;border-radius:999px}
+.m{max-width:85%;padding:9px 12px;border-radius:14px;font-size:14.5px;line-height:1.45;box-shadow:0 1px 0 rgba(0,0,0,.06)}
+.m.in{background:var(--in);align-self:flex-start;border-bottom-left-radius:4px}
+.m.out{background:var(--out);align-self:flex-end;border-bottom-right-radius:4px}
+.m small{display:block;text-align:right;color:var(--muted);font-size:11px;margin-top:2px}
+.m .fwd{display:block;color:var(--accent);font-weight:700;font-size:13px}
+.m p{margin:0 0 6px}
+.photo{display:block;height:120px;border-radius:10px;margin-bottom:6px;background:linear-gradient(135deg,#f6d9a8,#e9b77a 55%,#c98f55);position:relative}
+.photo::after{content:"фото";position:absolute;right:8px;bottom:6px;font-size:11px;color:#fff;background:rgba(0,0,0,.35);padding:1px 6px;border-radius:6px}
+.kb{display:flex;gap:6px;flex-wrap:wrap;margin-top:6px}
+.kb span{background:#eef3f0;border-radius:8px;padding:6px 10px;font-size:13px;font-weight:600}
+.cap{font-size:13px;color:var(--muted);padding:0 16px 14px;margin:0}
+[hidden]{display:none!important}
+.sheet{background:var(--card);border:1px solid var(--line);border-radius:var(--radius);overflow:hidden}
+.sheet-scroll{overflow-x:auto}
+table{border-collapse:collapse;width:100%;min-width:640px;font-size:14px}
+th,td{padding:9px 10px;border-bottom:1px solid var(--line);text-align:left;white-space:nowrap}
+th{background:#1f3a2e;color:#fff;font-weight:700;font-size:13px}
+td.num{text-align:right;font-variant-numeric:tabular-nums}
+tr.bad td{background:var(--red)}
+td.warn{background:var(--orange)}
+.legend{display:flex;gap:16px;flex-wrap:wrap;padding:12px 16px;font-size:13px;color:var(--muted)}
+.legend i{display:inline-block;width:12px;height:12px;border-radius:3px;margin-right:6px;vertical-align:-1px}
+.hint{font-size:13px;color:var(--muted);margin:10px 0 0}
+.grid2{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:14px}
+.card{background:var(--card);border:1px solid var(--line);border-radius:var(--radius);padding:18px}
+.card h3{margin:0 0 6px;font-size:17px}
+.card p{margin:0;color:var(--muted);font-size:15px}
+footer{padding:30px 0 60px;color:var(--muted);font-size:14px;border-top:1px solid var(--line);margin-top:20px}
+@media (max-width:760px){
+  .facts,.chats,.grid2{grid-template-columns:1fr}
+  .hero{padding-top:32px}
+  .tabs{display:flex}
+  .tab{flex:1}
+  .btn{flex:1 1 100%}
+}
+</style>
+</head>
+<body>
+<header class="top"><div class="wrap"><b>Контроль питания группы</b><span class="badge">демо до договора, данные вымышленные</span></div></header>
+
+<main>
+<div class="wrap hero">
+  <h1>Таблица тренера и Telegram-бот для группы до 30 человек</h1>
+  <p class="lead">Всё живёт в вашем Google-аккаунте: таблица считает КБЖУ и отмечает тех, кто пропал или вышел из коридора, а бот напоминает участникам, собирает отчёты и присылает вам сводку. Платных серверов и подписок нет.</p>
+  <div class="cta">
+    <a class="btn primary" href="https://docs.google.com/spreadsheets/d/1Pl6Uh4tOwsToHBi89xHjjH1_gxnsx7Fp48nbP-oCwFI/edit?usp=sharing" target="_blank" rel="noopener">Открыть таблицу-образец</a>
+    <a class="btn ghost" href="#bot">Как пишет бот</a>
+  </div>
+  <p class="hint">Таблица открывается на просмотр. Чтобы потрогать выпадающие списки, сделайте копию: «Файл → Создать копию».</p>
+  <div class="facts">
+    <div class="fact"><b>11 листов</b><span>участники, справочник, дневник, замеры, сводка, меню, назначения, журнал бота, тексты, настройки</span></div>
+    <div class="fact"><b>0 руб. в месяц</b><span>Google Sheets и Apps Script бесплатны, бот работает на них же</span></div>
+    <div class="fact"><b>7 рабочих дней</b><span>до запуска на 3-5 участниках с видеоинструкцией</span></div>
+  </div>
+</div>
+
+<section id="bot"><div class="wrap">
+  <h2>Как пишет бот</h2>
+  <p class="sub">Тексты и время напоминаний лежат на листе «Тексты бота», вы правите их сами. Ниже переписка в двух чатах: у участника и у вас.</p>
+  <div class="tabs" role="tablist" aria-label="Чей чат показать">
+    <button class="tab" role="tab" id="t-part" aria-controls="p-part" aria-selected="true">Участник</button>
+    <button class="tab" role="tab" id="t-coach" aria-controls="p-coach" aria-selected="false" tabindex="-1">Тренер</button>
+  </div>
+
+  <div id="p-part" role="tabpanel" aria-labelledby="t-part" class="chats">
+    <div class="chat">
+      <div class="chat-head"><div class="ava">П</div><div><b>Питание с тренером</b><small>бот</small></div></div>
+      <div class="msgs">
+        <span class="time-sep">14 ноября</span>
+        <div class="m in">Доброе утро, Анна! Не забудьте отправить завтрак: фото или текст с граммами.<small>08:30</small></div>
+        <div class="m out"><span class="photo" role="img" aria-label="Фото завтрака"></span>завтрак: омлет с овощами<small>09:12</small></div>
+        <div class="m in">Принято, отчёт у тренера.<small>09:12</small></div>
+        <div class="m out">ужин рыба на пару, перекус яблоко<small>19:30</small></div>
+        <div class="m in">Принято. Хорошего вечера!<small>19:30</small></div>
+      </div>
+      <p class="cap">Отчёт текстом или фото уходит тренеру и записывается на лист «Отчёты».</p>
+    </div>
+    <div class="chat">
+      <div class="chat-head"><div class="ava">П</div><div><b>Питание с тренером</b><small>бот</small></div></div>
+      <div class="msgs">
+        <span class="time-sep">воскресенье, 15 ноября</span>
+        <div class="m in"><p>Ваше меню на неделю с 16.11, вариант 1.</p>
+<p><b>Пн:</b> сырники запечённые, чечевичный суп, индейка с рисом и брокколи, протеиновый батончик</p>
+<p><b>Вт:</b> шакшука, индейка с рисом и брокколи, салат с тунцом, творог 5%</p>
+<p><b>Ср:</b> гречневая каша с молоком, суп куриный с лапшой, тефтели в томатном соусе, йогурт</p>
+<p>Остальные дни в следующем сообщении.</p><small>18:00</small></div>
+        <span class="time-sep">12 ноября</span>
+        <div class="m in">Игорь, от вас нет отчёта уже 2 дня. Всё в порядке? Напишите пару слов.<small>12:00</small></div>
+      </div>
+      <p class="cap">Меню рассылается по воскресеньям тем, кому вариант назначен на листе «Назначения».</p>
+    </div>
+  </div>
+
+  <div id="p-coach" role="tabpanel" aria-labelledby="t-coach" class="chats" hidden>
+    <div class="chat">
+      <div class="chat-head"><div class="ava">Т</div><div><b>Отчёты группы</b><small>ваш чат с ботом</small></div></div>
+      <div class="msgs">
+        <span class="time-sep">14 ноября</span>
+        <div class="m in"><span class="fwd">Анна Кузнецова, фото</span><span class="photo" role="img" aria-label="Пересланное фото"></span>завтрак: омлет с овощами<small>09:12</small></div>
+        <div class="m in"><span class="fwd">Екатерина Морозова, текст</span>обед плов с курицей 1 порция, + банан<small>13:40</small></div>
+        <div class="m in"><span class="fwd">Екатерина Морозова, фото</span><span class="photo" role="img" aria-label="Пересланное фото"></span>ужин + десерт, сорвалась(<small>20:15</small></div>
+      </div>
+      <p class="cap">Каждый отчёт приходит с именем участника.</p>
+    </div>
+    <div class="chat">
+      <div class="chat-head"><div class="ava">Т</div><div><b>Отчёты группы</b><small>ваш чат с ботом</small></div></div>
+      <div class="msgs">
+        <span class="time-sep">14 ноября</span>
+        <div class="m in"><p><b>Сводка на 14.11</b></p><p>Активных: 5<br>Без отчёта больше 2 дней: Игорь Соколов (4 дня)<br>Вне коридора: Екатерина Морозова, +21% к цели за неделю</p><div class="kb"><span>Открыть сводку</span></div><small>22:00</small></div>
+        <span class="time-sep">воскресенье, 15 ноября</span>
+        <div class="m in">На неделю с 16.11 нет меню у: Дмитрий Волков (Группа В). Назначьте вариант на листе «Назначения» до 18:00.<small>12:00</small></div>
+      </div>
+      <p class="cap">Сводка приходит вечером, напоминание о неназначенном меню за 6 часов до рассылки.</p>
+    </div>
+  </div>
+</div></section>
+
+<section><div class="wrap">
+  <h2>Лист «Сводка» в таблице</h2>
+  <p class="sub">Так выглядит главный лист тренера в образце. Цифры считаются формулами из «Дневника» и «Замеров», красная строка появляется сама.</p>
+  <div class="sheet">
+    <div class="sheet-scroll">
+      <table>
+        <thead><tr><th>Участник</th><th>Цель, ккал</th><th>Среднее за 7 дн.</th><th>Отклонение</th><th>Последний отчёт</th><th>Вес со старта</th><th>Меню</th><th>Статус</th></tr></thead>
+        <tbody>
+          <tr><td>Анна Кузнецова</td><td class="num">1 500</td><td class="num">1 453</td><td class="num">-3%</td><td>14.11</td><td class="num">-1,2 кг</td><td>Вариант 1</td><td>В норме</td></tr>
+          <tr><td>Мария Лебедева</td><td class="num">1 700</td><td class="num">1 768</td><td class="num">+4%</td><td>14.11</td><td class="num">-0,8 кг</td><td>Вариант 1</td><td>В норме</td></tr>
+          <tr class="bad"><td>Игорь Соколов</td><td class="num">2 200</td><td class="num">2 099</td><td class="num">-5%</td><td>10.11</td><td class="num">-1,1 кг</td><td>Вариант 3</td><td>Нет отчёта 4 дн.</td></tr>
+          <tr class="bad"><td>Екатерина Морозова</td><td class="num">1 600</td><td class="num">1 929</td><td class="num">+21%</td><td>14.11</td><td class="num">+0,1 кг</td><td>Вариант 2</td><td>Вне коридора +21%</td></tr>
+          <tr><td>Дмитрий Волков</td><td class="num">2 000</td><td class="num">2 021</td><td class="num">+1%</td><td>13.11</td><td class="num">-0,9 кг</td><td class="warn">не назначено</td><td>В норме</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="legend"><span><i style="background:var(--red)"></i>нет отчёта больше 2 дней или калории вне коридора ±10%</span><span><i style="background:var(--orange)"></i>меню на неделю не назначено</span></div>
+  </div>
+</div></section>
+
+<section><div class="wrap">
+  <h2>Остальные листы образца</h2>
+  <div class="grid2">
+    <div class="card"><h3>Дневник со списками</h3><p>Выбираете участника и блюдо из справочника, вводите граммы или порции, калории и БЖУ подставляются сами.</p></div>
+    <div class="card"><h3>Замеры</h3><p>Вес и обхваты, разница с прошлым замером и со стартом считается для каждого участника отдельно.</p></div>
+    <div class="card"><h3>Меню на 4 варианта</h3><p>Блюда меняются выпадающим списком, калории по дням считаются. Блюдо, которое стояло в тот же день и приём за последние 2-4 недели, подсвечивается.</p></div>
+    <div class="card"><h3>Назначения</h3><p>Вариант меню назначается группе или конкретному участнику, личное назначение важнее группового.</p></div>
+  </div>
+</div></section>
+
+<section><div class="wrap">
+  <h2>Как это устроено</h2>
+  <div class="grid2">
+    <div class="card"><h3>Google Таблица</h3><p>Вся логика в формулах, таблицу можно открыть с телефона и поправить руками. Её владелец вы.</p></div>
+    <div class="card"><h3>Apps Script</h3><p>Скрипт внутри той же таблицы принимает сообщения бота и по расписанию шлёт напоминания и сводку. Работает на бесплатных квотах Google.</p></div>
+    <div class="card"><h3>Telegram-бот</h3><p>Создаётся на ваш аккаунт через BotFather, токен хранится в настройках скрипта, а не в таблице.</p></div>
+    <div class="card"><h3>Передача</h3><p>Видеоинструкция для тренера, тест на 3-5 участниках, правки в рамках ТЗ.</p></div>
+  </div>
+</div></section>
+</main>
+
+<footer><div class="wrap">Ольга Сохнева. Демо собрано под заказ, участники и цифры вымышленные. В рабочей версии дата сводки берётся сегодняшняя, а отчёты пишет бот.</div></footer>
+
+<script>
+(function(){
+  var tabs=[].slice.call(document.querySelectorAll('[role="tab"]'));
+  function select(t){
+    tabs.forEach(function(x){
+      var on=x===t;
+      x.setAttribute('aria-selected',on?'true':'false');
+      x.tabIndex=on?0:-1;
+      document.getElementById(x.getAttribute('aria-controls')).hidden=!on;
+    });
+  }
+  tabs.forEach(function(t,i){
+    t.addEventListener('click',function(){select(t)});
+    t.addEventListener('keydown',function(e){
+      if(e.key==='ArrowRight'||e.key==='ArrowLeft'){
+        var n=tabs[(i+(e.key==='ArrowRight'?1:tabs.length-1))%tabs.length];select(n);n.focus();
+      }
+    });
+  });
+})();
+</script>
+</body>
+</html>
