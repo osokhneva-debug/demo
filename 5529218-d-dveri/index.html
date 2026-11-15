@@ -1,0 +1,738 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="robots" content="noindex, nofollow">
+<title>Притвор - фабрика межкомнатных дверей (демо)</title>
+<meta name="description" content="Межкомнатные двери собственного производства: эмаль, шпон, скрытые двери. Соберите дверь онлайн и получите цену комплекта. Изготовление 14 рабочих дней.">
+<meta name="theme-color" content="#F3F0EA">
+<meta property="og:title" content="Притвор - межкомнатные двери собственного производства">
+<meta property="og:description" content="Соберите дверь онлайн: модель, покрытие, стекло, короб. Цена комплекта сразу.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700&family=Unbounded:wght@400;500;600&display=swap" rel="stylesheet">
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"Organization","name":"Фабрика дверей Притвор (демо)","description":"Производство межкомнатных дверей","address":{"@type":"PostalAddress","addressLocality":"Ульяновск","streetAddress":"ул. Столярная, 14"}}
+</script>
+<style>
+:root{
+  --bg:#F3F0EA; --bg-alt:#E9E4DA; --paper:#FBFAF7;
+  --accent:#9C5B2E; --accent-light:#C98B5A; --accent-ink:#7E4520;
+  --dark:#1E1C19; --dark-card:#2A2723;
+  --text:#23211D; --muted:#6A645B; --sage:#A7B3A0;
+  --line:rgba(35,33,29,.12);
+  --h:'Unbounded','Manrope',system-ui,sans-serif;
+  --b:'Manrope',system-ui,-apple-system,'Segoe UI',sans-serif;
+  --ease:cubic-bezier(.34,1.56,.64,1);
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth;-webkit-text-size-adjust:100%}
+body{font-family:var(--b);background:var(--bg);color:var(--text);font-size:16px;line-height:1.65;-webkit-font-smoothing:antialiased;overflow-x:hidden}
+body::after{content:'';position:fixed;inset:0;z-index:9998;pointer-events:none;opacity:.025;background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E")}
+a{color:inherit}
+button,input,select,textarea{font:inherit;color:inherit}
+a,button,input,select,textarea,label{touch-action:manipulation}
+:focus-visible{outline:2px solid var(--accent);outline-offset:3px;border-radius:6px}
+h1,h2,h3{font-family:var(--h);font-weight:500;text-wrap:balance;letter-spacing:-.02em}
+h2{font-size:clamp(26px,3.6vw,44px);line-height:1.12}
+h3{font-size:18px;line-height:1.3;font-weight:500}
+.wrap{max-width:1180px;margin:0 auto;padding:0 32px}
+.sec{padding:clamp(72px,10vw,128px) 0;position:relative}
+.label{font-size:12px;font-weight:700;letter-spacing:.18em;text-transform:uppercase;color:var(--accent)}
+.lead{color:var(--muted);font-size:17px;max-width:560px}
+.head{display:flex;justify-content:space-between;align-items:end;gap:32px;margin-bottom:48px;flex-wrap:wrap}
+.head h2{margin-top:14px;max-width:720px}
+.skip{position:absolute;left:-9999px;top:8px;background:var(--dark);color:#fff;padding:10px 16px;border-radius:10px;z-index:200}
+.skip:focus{left:12px}
+
+.btn{position:relative;overflow:hidden;display:inline-flex;align-items:center;justify-content:center;gap:10px;padding:16px 26px;border-radius:12px;border:0;cursor:pointer;font-weight:600;font-size:15px;text-decoration:none;background:var(--accent);color:#fff;box-shadow:0 4px 16px rgba(156,91,46,.25);transition:transform .35s var(--ease),box-shadow .35s,background .3s}
+.btn:hover{transform:translateY(-2px);box-shadow:0 8px 28px rgba(156,91,46,.35);background:var(--accent-ink)}
+.btn::after{content:'';position:absolute;top:0;left:-60%;width:40%;height:100%;background:linear-gradient(90deg,transparent,rgba(255,255,255,.16),transparent);transform:skewX(-20deg);transition:left .6s}
+.btn:hover::after{left:120%}
+.btn.ghost{background:transparent;color:var(--text);box-shadow:inset 0 0 0 1.5px var(--line)}
+.btn.ghost:hover{background:var(--paper)}
+.btn svg{width:18px;height:18px}
+
+/* header */
+.top{position:sticky;top:0;z-index:100;background:rgba(243,240,234,.86);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);border-bottom:1px solid var(--line)}
+.top .wrap{display:flex;align-items:center;justify-content:space-between;height:68px;gap:24px}
+.logo{display:flex;align-items:center;gap:10px;text-decoration:none;font-family:var(--h);font-weight:600;font-size:18px;letter-spacing:-.01em}
+.logo small{display:block;font-family:var(--b);font-weight:500;font-size:11px;color:var(--muted);letter-spacing:.02em;margin-top:2px}
+.logo svg{width:26px;height:34px;flex:none}
+.nav{display:flex;gap:26px;font-size:14px;font-weight:500}
+.nav a{text-decoration:none;color:var(--muted);transition:color .2s}
+.nav a:hover{color:var(--text)}
+.top-r{display:flex;align-items:center;gap:18px}
+.phone{font-weight:700;text-decoration:none;font-size:15px;white-space:nowrap}
+.top .btn{padding:11px 18px;font-size:14px}
+.burger{display:none;width:44px;height:44px;border:0;background:transparent;cursor:pointer;border-radius:10px}
+.burger span{display:block;width:22px;height:2px;background:var(--text);margin:5px auto;transition:transform .3s}
+.mnav{position:fixed;inset:0;z-index:150;background:var(--dark);color:#fff;padding:96px 28px 32px;display:flex;flex-direction:column;gap:20px;transform:translateX(100%);transition:transform .45s cubic-bezier(.2,.8,.2,1);visibility:hidden}
+.mnav.open{transform:none;visibility:visible}
+.mnav a{font-family:var(--h);font-size:24px;text-decoration:none}
+.mnav .x{position:absolute;top:16px;right:18px;width:44px;height:44px;background:none;border:0;color:#fff;font-size:30px;cursor:pointer}
+
+/* hero */
+.hero{padding:clamp(36px,5vw,64px) 0 clamp(64px,8vw,104px);position:relative;overflow:hidden}
+.hero::before{content:'';position:absolute;inset:0;pointer-events:none;background:radial-gradient(ellipse 45% 55% at 12% 20%,rgba(156,91,46,.08),transparent 70%),radial-gradient(ellipse 40% 50% at 90% 80%,rgba(167,179,160,.18),transparent 70%)}
+.hero-grid{display:grid;grid-template-columns:minmax(0,.9fr) minmax(0,1.1fr);gap:56px;align-items:center;position:relative}
+.eyebrow{display:inline-flex;align-items:center;gap:10px;font-size:13px;font-weight:600;color:var(--muted);margin-bottom:22px}
+.eyebrow i{width:8px;height:8px;border-radius:50%;background:var(--sage);box-shadow:0 0 0 4px rgba(167,179,160,.3)}
+.hero h1{font-size:clamp(30px,4.3vw,54px);line-height:1.08;letter-spacing:-.03em}
+.hero h1 em{font-style:normal;color:var(--accent)}
+.hero .sub{margin-top:22px;font-size:18px;color:var(--muted);max-width:480px}
+.facts{display:grid;grid-template-columns:repeat(3,auto);gap:28px;margin-top:36px;padding-top:28px;border-top:1px solid var(--line);max-width:500px}
+.facts b{display:block;font-family:var(--h);font-weight:500;font-size:24px;letter-spacing:-.02em}
+.facts span{font-size:13px;color:var(--muted);line-height:1.4;display:block;margin-top:4px}
+
+/* configurator */
+.cfg{background:var(--paper);border-radius:22px;box-shadow:0 1px 3px rgba(0,0,0,.04),0 18px 60px rgba(60,40,20,.10);padding:26px;display:grid;grid-template-columns:minmax(0,200px) minmax(0,1fr);gap:28px;border:1px solid rgba(255,255,255,.7)}
+.stage{position:relative;border-radius:16px;background:linear-gradient(180deg,#E7E1D6 0%,#DDD5C8 82%,#B9A994 82%,#A89782 100%);aspect-ratio:200/330;display:flex;align-items:flex-end;justify-content:center;overflow:hidden}
+.stage .doorbox{width:68%;margin-bottom:18%;filter:drop-shadow(0 10px 16px rgba(50,35,20,.18))}
+.stage .doorbox svg{display:block;width:100%;height:auto}
+.stage .dim{position:absolute;top:10px;left:10px;font-size:11px;font-weight:600;color:var(--muted);background:rgba(251,250,247,.8);padding:3px 8px;border-radius:100px}
+.cfg-r{min-width:0;display:flex;flex-direction:column;gap:16px}
+.cfg-title{display:flex;justify-content:space-between;align-items:baseline;gap:12px}
+.cfg-title h2{font-size:20px;letter-spacing:-.01em}
+.cfg-title span{font-size:12px;color:var(--muted);font-weight:600}
+.grp-l{font-size:12px;font-weight:700;color:var(--muted);letter-spacing:.06em;text-transform:uppercase;margin-bottom:8px;display:flex;justify-content:space-between;gap:8px}
+.grp-l output{text-transform:none;letter-spacing:0;color:var(--text);font-weight:600}
+.chips{display:flex;flex-wrap:wrap;gap:6px}
+.chip{border:1.5px solid var(--line);background:transparent;padding:8px 12px;border-radius:10px;font-size:14px;font-weight:600;cursor:pointer;transition:border-color .2s,background .2s,transform .3s var(--ease)}
+.chip:hover{border-color:rgba(35,33,29,.35)}
+.chip[aria-pressed="true"]{background:var(--dark);border-color:var(--dark);color:#fff}
+.chip:disabled{opacity:.4;cursor:not-allowed}
+.sw{display:flex;gap:9px;flex-wrap:wrap}
+.sw button{width:36px;height:36px;border-radius:50%;border:2px solid var(--paper);box-shadow:0 0 0 1.5px var(--line);cursor:pointer;transition:transform .3s var(--ease),box-shadow .2s}
+.sw button:hover{transform:scale(1.08)}
+.sw button[aria-pressed="true"]{box-shadow:0 0 0 2px var(--accent)}
+.price{margin-top:auto;padding-top:16px;border-top:1px dashed var(--line);display:flex;justify-content:space-between;align-items:end;gap:16px;flex-wrap:wrap}
+.price small{display:block;font-size:12px;color:var(--muted);font-weight:600}
+.price b{font-family:var(--h);font-weight:500;font-size:30px;letter-spacing:-.02em;white-space:nowrap}
+.price .term{font-size:13px;color:var(--muted)}
+.cfg .btn{width:100%}
+.cfg-note{font-size:12.5px;color:var(--muted);line-height:1.45}
+
+/* models */
+.models{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:24px}
+.model{background:var(--paper);border-radius:18px;padding:22px;display:grid;grid-template-columns:110px minmax(0,1fr);gap:22px;align-items:center;box-shadow:0 1px 3px rgba(0,0,0,.04),0 4px 24px rgba(0,0,0,.05);transition:transform .4s var(--ease),box-shadow .3s}
+.model:hover{transform:translateY(-5px);box-shadow:0 4px 8px rgba(0,0,0,.04),0 16px 48px rgba(0,0,0,.1)}
+.model .pic{aspect-ratio:240/480;background:var(--bg-alt);border-radius:12px;display:flex;align-items:center;justify-content:center;padding:12px 16px}
+.model .pic svg{width:100%;height:auto;display:block}
+.model h3{font-size:19px}
+.model p{font-size:14px;color:var(--muted);margin:6px 0 12px;line-height:1.5}
+.model .from{font-weight:700;font-size:15px}
+.model .from span{font-weight:500;color:var(--muted);font-size:13px}
+.model button{margin-top:12px;background:none;border:0;padding:6px 0;color:var(--accent);font-weight:700;font-size:14px;cursor:pointer;display:inline-flex;gap:6px;align-items:center}
+.model button:hover{color:var(--accent-ink)}
+
+/* finishes */
+.alt{background:var(--bg-alt)}
+.fin{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:20px}
+.fcard{background:var(--paper);border-radius:18px;overflow:hidden;box-shadow:0 1px 3px rgba(0,0,0,.04),0 4px 24px rgba(0,0,0,.05)}
+.fcard .tex{height:120px;position:relative}
+.fcard .body{padding:22px 22px 26px}
+.fcard p{font-size:14px;color:var(--muted);margin-top:8px;line-height:1.55}
+.fcard ul{list-style:none;margin-top:14px;font-size:13.5px;display:grid;gap:6px}
+.fcard li{display:flex;gap:8px}
+.fcard li::before{content:'';width:5px;height:5px;border-radius:50%;background:var(--accent);margin-top:9px;flex:none}
+.tex-enamel{background:linear-gradient(135deg,#F4F1EB 0 25%,#A7B3A0 25% 50%,#3B3D3F 50% 75%,#D8CBB8 75%)}
+.tex-oak{background:repeating-linear-gradient(92deg,#C79A6B 0 7px,#BC8D5E 7px 9px,#CFA676 9px 19px,#B98A5B 19px 21px)}
+.tex-walnut{background:repeating-linear-gradient(88deg,#6E4A32 0 6px,#5E3E29 6px 8px,#7A553B 8px 17px,#5A3B27 17px 19px)}
+.tex-primer{background:#ECEAE4;background-image:linear-gradient(45deg,rgba(0,0,0,.03) 25%,transparent 25% 75%,rgba(0,0,0,.03) 75%),linear-gradient(45deg,rgba(0,0,0,.03) 25%,transparent 25% 75%,rgba(0,0,0,.03) 75%);background-size:16px 16px;background-position:0 0,8px 8px}
+.tex .tag{position:absolute;left:14px;bottom:12px;font-size:11px;font-weight:700;background:rgba(251,250,247,.92);padding:4px 10px;border-radius:100px}
+.ral{margin-top:28px;display:flex;gap:6px;flex-wrap:wrap;align-items:center}
+.ral i{width:30px;height:30px;border-radius:8px;display:block;box-shadow:inset 0 0 0 1px rgba(0,0,0,.06)}
+.ral span{font-size:14px;color:var(--muted);margin-left:10px}
+
+/* constructions */
+.cons{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:20px}
+.con{border:1px solid var(--line);border-radius:18px;padding:26px;background:transparent;transition:transform .4s var(--ease),border-color .3s,background .3s}
+.con:hover{transform:translateY(-4px);border-color:rgba(156,91,46,.4);background:var(--paper)}
+.con svg{width:64px;height:84px;display:block;margin-bottom:18px}
+.con p{font-size:14px;color:var(--muted);margin-top:8px;line-height:1.55}
+.con .pr{margin-top:14px;font-size:14px;font-weight:700}
+
+/* production */
+.dark{background:var(--dark);color:#EDE8DF}
+.dark .lead{color:#B3AB9F}
+.dark .label{color:var(--accent-light)}
+.stats{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:1px;background:rgba(255,255,255,.08);border-radius:18px;overflow:hidden;margin-bottom:56px}
+.stat{background:var(--dark-card);padding:30px 26px}
+.stat b{font-family:var(--h);font-weight:500;font-size:clamp(30px,3.4vw,42px);letter-spacing:-.03em;color:#fff;display:block}
+.stat span{font-size:14px;color:#B3AB9F;display:block;margin-top:6px;line-height:1.45}
+.steps{display:grid;grid-template-columns:repeat(6,minmax(0,1fr));gap:16px;counter-reset:s}
+.step{border-top:1px solid rgba(255,255,255,.14);padding-top:18px;position:relative}
+.step::before{counter-increment:s;content:'0' counter(s);font-family:var(--h);font-size:13px;color:var(--accent-light);display:block;margin-bottom:12px}
+.step h3{font-size:15px;color:#fff}
+.step p{font-size:13.5px;color:#B3AB9F;margin-top:8px;line-height:1.5}
+.step .d{display:inline-block;margin-top:10px;font-size:12px;font-weight:700;color:#EDE8DF;background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.1);padding:3px 10px;border-radius:100px}
+
+/* projects */
+.projects{display:grid;grid-template-columns:1.25fr 1fr 1fr;gap:24px}
+.proj{border-radius:18px;overflow:hidden;background:var(--paper);box-shadow:0 1px 3px rgba(0,0,0,.04),0 4px 24px rgba(0,0,0,.05)}
+.proj .scene{aspect-ratio:4/3;overflow:hidden}
+.proj .scene svg{width:100%;height:100%;display:block;transition:transform .6s cubic-bezier(.2,.8,.2,1)}
+.proj:hover .scene svg{transform:scale(1.04)}
+.proj .body{padding:20px 22px 24px}
+.proj .meta{font-size:12px;font-weight:700;color:var(--accent);letter-spacing:.06em;text-transform:uppercase}
+.proj h3{margin-top:8px;font-size:17px}
+.proj p{font-size:14px;color:var(--muted);margin-top:6px;line-height:1.5}
+
+/* partners */
+.partners{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:24px}
+.pcard{background:var(--paper);border-radius:18px;padding:32px;display:flex;flex-direction:column;box-shadow:0 1px 3px rgba(0,0,0,.04),0 4px 24px rgba(0,0,0,.05)}
+.pcard .who{font-size:12px;font-weight:700;color:var(--accent);letter-spacing:.1em;text-transform:uppercase}
+.pcard h3{margin-top:10px;font-size:20px}
+.pcard ul{list-style:none;margin:18px 0 24px;display:grid;gap:10px;font-size:15px}
+.pcard li{display:flex;gap:10px;line-height:1.45}
+.pcard li svg{width:18px;height:18px;flex:none;margin-top:2px;color:var(--accent)}
+.pcard .btn{margin-top:auto}
+
+/* reviews */
+.revs{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:24px}
+.rev{border-radius:18px;padding:30px;background:var(--paper);border:1px solid var(--line);display:flex;flex-direction:column;gap:16px}
+.rev .ex{align-self:flex-start;font-size:11px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--muted);border:1px dashed rgba(35,33,29,.25);padding:3px 10px;border-radius:100px}
+.rev q{quotes:none;font-size:16px;line-height:1.6}
+.rev .who{display:flex;gap:12px;align-items:center;margin-top:auto;font-size:14px}
+.rev .ava{width:40px;height:40px;border-radius:50%;display:grid;place-items:center;font-weight:700;color:#fff;font-size:14px;flex:none}
+.rev .who small{display:block;color:var(--muted);font-size:12.5px}
+
+/* delivery */
+.deliv{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:48px;align-items:start}
+.ptable{background:var(--paper);border-radius:18px;padding:8px 26px;box-shadow:0 1px 3px rgba(0,0,0,.04),0 4px 24px rgba(0,0,0,.05)}
+.prow{display:flex;justify-content:space-between;gap:16px;padding:16px 0;border-bottom:1px solid var(--line);font-size:15px}
+.prow:last-child{border-bottom:0}
+.prow b{white-space:nowrap}
+.prow span small{display:block;color:var(--muted);font-size:13px}
+.dsteps{display:grid;gap:22px;margin-top:32px}
+.dstep{display:grid;grid-template-columns:44px minmax(0,1fr);gap:16px}
+.dstep i{width:44px;height:44px;border-radius:12px;background:var(--paper);display:grid;place-items:center;color:var(--accent)}
+.dstep i svg{width:22px;height:22px}
+.dstep p{font-size:14px;color:var(--muted);margin-top:4px;line-height:1.5}
+
+/* faq */
+.faq{max-width:840px}
+.qa{border-bottom:1px solid var(--line)}
+.qa button{width:100%;text-align:left;background:none;border:0;padding:22px 0;display:flex;justify-content:space-between;gap:24px;cursor:pointer;font-size:17px;font-weight:600}
+.qa button i{width:28px;height:28px;flex:none;border-radius:50%;border:1.5px solid var(--line);position:relative;transition:transform .35s var(--ease),background .3s}
+.qa button i::before,.qa button i::after{content:'';position:absolute;left:50%;top:50%;width:11px;height:1.5px;background:var(--text);transform:translate(-50%,-50%)}
+.qa button i::after{transform:translate(-50%,-50%) rotate(90deg)}
+.qa.open button i{transform:rotate(45deg);background:var(--paper)}
+.qa .a{max-height:0;overflow:hidden;transition:max-height .45s cubic-bezier(.2,.8,.2,1)}
+.qa .a p{padding:0 0 22px;color:var(--muted);max-width:720px}
+
+/* form */
+.order{display:grid;grid-template-columns:minmax(0,.9fr) minmax(0,1.1fr);gap:56px;align-items:start}
+.contact{margin-top:32px;display:grid;gap:18px;font-size:15px}
+.contact div{display:grid;grid-template-columns:22px minmax(0,1fr);gap:12px}
+.contact svg{width:20px;height:20px;color:var(--accent-light);margin-top:3px}
+.contact small{display:block;color:#B3AB9F;font-size:13px}
+.contact a{text-decoration:none;font-weight:600}
+form.f{background:var(--dark-card);border:1px solid rgba(255,255,255,.08);border-radius:20px;padding:32px;display:grid;gap:16px}
+.f .row2{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+.f label{display:grid;gap:6px;font-size:13px;font-weight:600;color:#B3AB9F}
+.f input,.f textarea,.f select{background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.14);border-radius:12px;padding:14px 16px;font-size:16px;color:#fff;transition:border-color .2s,background .2s;width:100%}
+.f input:focus,.f textarea:focus,.f select:focus{outline:none;border-color:var(--accent-light);background:rgba(255,255,255,.08)}
+.f textarea{min-height:92px;resize:vertical;line-height:1.5}
+.f select option{color:var(--text)}
+.f .seg{display:flex;gap:8px;flex-wrap:wrap}
+.f .seg label{display:flex;align-items:center;gap:8px;border:1px solid rgba(255,255,255,.14);padding:10px 14px;border-radius:10px;color:#EDE8DF;cursor:pointer;font-size:14px}
+.f .seg input{width:auto;accent-color:var(--accent-light)}
+.f .fine{font-size:12.5px;color:#8E877C;line-height:1.5}
+.f .ok{display:none;background:rgba(167,179,160,.14);border:1px solid rgba(167,179,160,.35);color:#DDE5D8;padding:14px 16px;border-radius:12px;font-size:14px}
+.f.sent .ok{display:block}
+
+footer{background:#171512;color:#8E877C;padding:48px 0 40px;font-size:14px}
+footer .wrap{display:grid;gap:22px}
+footer .fr{display:flex;justify-content:space-between;gap:24px;flex-wrap:wrap;align-items:center}
+footer .logo{color:#EDE8DF}
+footer .demo{border-top:1px solid rgba(255,255,255,.08);padding-top:22px;color:#B3AB9F}
+footer .demo b{color:#EDE8DF;font-weight:600}
+
+.reveal{opacity:0;transform:translateY(28px);transition:opacity .7s ease,transform .7s cubic-bezier(.2,.8,.2,1)}
+.reveal.visible{opacity:1;transform:none}
+
+@media (max-width:1100px){
+  .nav{display:none}
+  .burger{display:block}
+  .hero-grid{grid-template-columns:1fr;gap:36px}
+  .models{grid-template-columns:repeat(2,minmax(0,1fr))}
+  .fin,.cons{grid-template-columns:repeat(2,minmax(0,1fr))}
+  .steps{grid-template-columns:repeat(3,minmax(0,1fr));row-gap:32px}
+  .stats{grid-template-columns:repeat(2,minmax(0,1fr))}
+  .projects{grid-template-columns:1fr 1fr}
+  .projects .proj:first-child{grid-column:1/-1}
+  .partners,.revs{grid-template-columns:1fr}
+  .deliv,.order{grid-template-columns:1fr}
+}
+@media (max-width:768px){
+  .wrap{padding:0 18px}
+  .top .wrap{height:60px}
+  .top .btn,.phone{display:none}
+  .hero{padding-top:22px}
+  .eyebrow{margin-bottom:12px;font-size:12px}
+  .hero h1{font-size:27px;line-height:1.14}
+  .hero .sub{font-size:16px;margin-top:12px}
+  .facts{display:none}
+  .cfg{grid-template-columns:118px minmax(0,1fr);gap:16px;padding:16px;border-radius:18px}
+  .cfg-r{display:contents}
+  .cfg-top{grid-column:2;grid-row:1;display:flex;flex-direction:column;gap:12px;min-width:0}
+  .stage{grid-column:1;grid-row:1;align-self:start}
+  .cfg-rest{grid-column:1/-1;display:flex;flex-direction:column;gap:14px}
+  .cfg-title h2{font-size:16px}
+  .cfg-title span{display:none}
+  .sw{gap:7px}
+  .sw button{width:30px;height:30px}
+  .price{padding-top:10px;margin-top:0}
+  .price b{font-size:24px}
+  .chip{padding:8px 11px;font-size:13.5px}
+  .models,.fin,.cons,.projects,.stats{grid-template-columns:1fr}
+  .model{grid-template-columns:92px minmax(0,1fr);padding:18px;gap:18px}
+  .steps{grid-template-columns:1fr 1fr}
+  .stat{padding:22px 20px}
+  .f .row2{grid-template-columns:1fr}
+  form.f{padding:22px}
+  .btn{width:100%}
+  .pcard{padding:24px}
+  .qa button{font-size:16px}
+}
+@media (min-width:769px){.cfg-top,.cfg-rest{display:flex;flex-direction:column;gap:16px}}
+@media (prefers-reduced-motion:reduce){
+  *,*::before,*::after{transition:none!important;animation:none!important;scroll-behavior:auto!important}
+  .reveal{opacity:1;transform:none}
+}
+</style>
+</head>
+<body>
+<a class="skip" href="#main">К содержимому</a>
+
+<header class="top">
+  <div class="wrap">
+    <a class="logo" href="#main" aria-label="Притвор, на главную">
+      <svg viewBox="0 0 26 34" aria-hidden="true"><rect x="1" y="1" width="24" height="32" rx="1.5" fill="none" stroke="#23211D" stroke-width="2"/><path d="M5 5h13l3 2v22l-3 2H5z" fill="#9C5B2E"/><circle cx="16" cy="18" r="1.4" fill="#FBFAF7"/></svg>
+      <span>Притвор<small>фабрика дверей</small></span>
+    </a>
+    <nav class="nav" aria-label="Разделы">
+      <a href="#modeli">Модели</a><a href="#pokrytiya">Покрытия</a><a href="#konstrukcii">Скрытые и раздвижные</a><a href="#proizvodstvo">Производство</a><a href="#partneram">Партнёрам</a><a href="#dostavka">Доставка и монтаж</a>
+    </nav>
+    <div class="top-r">
+      <a class="phone" href="tel:+78422000000">+7 (8422) 00-00-00</a>
+      <a class="btn" href="#zayavka">Вызвать замерщика</a>
+      <button class="burger" type="button" aria-label="Открыть меню" aria-expanded="false" onclick="toggleMenu()"><span></span><span></span><span></span></button>
+    </div>
+  </div>
+</header>
+<nav class="mnav" id="mnav" aria-label="Меню">
+  <button class="x" type="button" aria-label="Закрыть меню" onclick="closeMenu()">×</button>
+  <a href="#modeli" onclick="closeMenu()">Модели</a>
+  <a href="#pokrytiya" onclick="closeMenu()">Покрытия</a>
+  <a href="#konstrukcii" onclick="closeMenu()">Скрытые и раздвижные</a>
+  <a href="#proizvodstvo" onclick="closeMenu()">Производство</a>
+  <a href="#proekty" onclick="closeMenu()">Проекты</a>
+  <a href="#partneram" onclick="closeMenu()">Партнёрам</a>
+  <a href="#dostavka" onclick="closeMenu()">Доставка и монтаж</a>
+  <a href="#zayavka" onclick="closeMenu()">Заявка на расчёт</a>
+</nav>
+
+<main id="main">
+<section class="hero" id="konfigurator">
+  <div class="wrap hero-grid">
+    <div>
+      <div class="eyebrow"><i></i>Своё производство в Ульяновске с 2009 года</div>
+      <h1>Межкомнатные двери <em>под ваш интерьер</em> прямо с фабрики</h1>
+      <p class="sub">Соберите дверь: модель, покрытие, стекло и короб. Цена комплекта считается сразу, изготовим за 14 рабочих дней.</p>
+      <div class="facts">
+        <div><b>14 дней</b><span>от замера до готовой двери</span></div>
+        <div><b>5 лет</b><span>гарантии на полотно и покрытие</span></div>
+        <div><b>2 000+</b><span>оттенков эмали по RAL и NCS</span></div>
+      </div>
+    </div>
+
+    <div class="cfg" aria-label="Конфигуратор двери">
+      <div class="stage">
+        <span class="dim" id="dim">800 × 2000 мм</span>
+        <div class="doorbox" id="heroDoor"></div>
+      </div>
+      <div class="cfg-r">
+        <div class="cfg-top">
+          <div class="cfg-title"><h2 id="cfgName">Ритм, эмаль шалфей</h2><span>соберите свою</span></div>
+          <div>
+            <div class="grp-l">Покрытие <output id="finName">Эмаль шалфей</output></div>
+            <div class="sw" id="swFinish" role="group" aria-label="Покрытие"></div>
+          </div>
+          <div class="price" aria-live="polite">
+            <div><small>Комплект под ключ</small><b id="total">0 руб.</b></div>
+            <div class="term">Изготовление 14 дней</div>
+          </div>
+        </div>
+        <div class="cfg-rest">
+          <div>
+            <div class="grp-l">Модель</div>
+            <div class="chips" id="chModel" role="group" aria-label="Модель"></div>
+          </div>
+          <div>
+            <div class="grp-l">Стекло <output id="glassNote"></output></div>
+            <div class="chips" id="chGlass" role="group" aria-label="Стекло"></div>
+          </div>
+          <div>
+            <div class="grp-l">Ширина полотна, мм</div>
+            <div class="chips" id="chWidth" role="group" aria-label="Ширина"></div>
+          </div>
+          <div>
+            <div class="grp-l">Короб</div>
+            <div class="chips" id="chFrame" role="group" aria-label="Короб"></div>
+          </div>
+          <button class="btn" type="button" id="toOrder">Получить точный расчёт
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></button>
+          <p class="cfg-note">В комплекте полотно, короб, наличники, петли, замок и ручка. Точную цену назовёт замерщик после выезда.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="sec" id="modeli" style="padding-top:clamp(40px,6vw,72px)">
+  <div class="wrap">
+    <div class="head reveal">
+      <div><div class="label">Модели</div><h2>Шесть коллекций, любая в нужном цвете и размере</h2></div>
+      <p class="lead">Цена указана за полотно 800 × 2000 мм в белой эмали. Нажмите «Собрать», и модель откроется в конфигураторе.</p>
+    </div>
+    <div class="models" id="modelsGrid"></div>
+  </div>
+</section>
+
+<section class="sec alt" id="pokrytiya">
+  <div class="wrap">
+    <div class="head reveal">
+      <div><div class="label">Покрытия и цвета</div><h2>Эмаль, натуральный шпон или под покраску</h2></div>
+      <p class="lead">Красим в собственной камере, поэтому подберём цвет под образец обоев, краски стен или плитки.</p>
+    </div>
+    <div class="fin">
+      <article class="fcard reveal"><div class="tex tex-enamel"><span class="tag">от 0 руб. к цене</span></div><div class="body"><h3>Эмаль</h3><p>Матовая или шелковисто-матовая, 6 слоёв с промежуточной шлифовкой.</p><ul><li>2 000+ оттенков RAL и NCS</li><li>Не желтеет, моется</li></ul></div></article>
+      <article class="fcard reveal"><div class="tex tex-oak"><span class="tag">+4 800 руб.</span></div><div class="body"><h3>Шпон дуба</h3><p>Натуральный шпон под матовым маслом-воском, рисунок подбираем на всю квартиру.</p><ul><li>Натуральный, беленый, копчёный</li><li>Совпадает с паркетом</li></ul></div></article>
+      <article class="fcard reveal"><div class="tex tex-walnut"><span class="tag">+6 200 руб.</span></div><div class="body"><h3>Шпон ореха</h3><p>Американский орех для тёмных интерьеров и кабинетов.</p><ul><li>Сочетается с латунью</li><li>Ручная подборка листа</li></ul></div></article>
+      <article class="fcard reveal"><div class="tex tex-primer"><span class="tag">-1 500 руб.</span></div><div class="body"><h3>Под покраску</h3><p>Загрунтованное полотно, чтобы покрасить вместе со стенами на объекте.</p><ul><li>Для скрытых дверей</li><li>Удобно дизайнерам и прорабам</li></ul></div></article>
+    </div>
+    <div class="ral reveal" aria-label="Популярные оттенки эмали">
+      <i style="background:#F4F1EB"></i><i style="background:#E6DFD3"></i><i style="background:#D8CBB8"></i><i style="background:#B9AE9C"></i><i style="background:#A7B3A0"></i><i style="background:#7D8B7A"></i><i style="background:#9DA9B3"></i><i style="background:#5C6B78"></i><i style="background:#3B3D3F"></i><i style="background:#262422"></i>
+      <span>Самые частые оттенки этого года</span>
+    </div>
+  </div>
+</section>
+
+<section class="sec" id="konstrukcii">
+  <div class="wrap">
+    <div class="head reveal">
+      <div><div class="label">Конструкции</div><h2>Скрытые, раздвижные, двустворчатые и до потолка</h2></div>
+      <p class="lead">Не только распашные двери: делаем системы, под которые обычно ищут отдельного подрядчика.</p>
+    </div>
+    <div class="cons">
+      <article class="con reveal">
+        <svg viewBox="0 0 64 84" fill="none" stroke="#23211D" stroke-width="1.6" aria-hidden="true"><rect x="2" y="2" width="60" height="80" fill="#E9E4DA" stroke="none"/><rect x="14" y="10" width="36" height="72" stroke-dasharray="3 3"/><circle cx="44" cy="48" r="1.6" fill="#9C5B2E" stroke="none"/></svg>
+        <h3>Скрытая дверь</h3><p>Алюминиевый короб в плоскости стены, без наличников. Красим в цвет стены.</p><div class="pr">от 32 900 руб.</div>
+      </article>
+      <article class="con reveal">
+        <svg viewBox="0 0 64 84" fill="none" stroke="#23211D" stroke-width="1.6" aria-hidden="true"><path d="M2 6h60"/><rect x="6" y="10" width="30" height="72" fill="#D8CBB8"/><rect x="28" y="10" width="30" height="72"/><path d="M40 46h10M46 42l4 4-4 4" stroke="#9C5B2E"/></svg>
+        <h3>Раздвижная и в пенал</h3><p>Полотно уходит в стену или едет вдоль неё. Скрытый механизм с доводчиком.</p><div class="pr">от 28 400 руб.</div>
+      </article>
+      <article class="con reveal">
+        <svg viewBox="0 0 64 84" fill="none" stroke="#23211D" stroke-width="1.6" aria-hidden="true"><rect x="4" y="4" width="56" height="78"/><path d="M32 4v78"/><rect x="9" y="10" width="18" height="30" fill="#E9E4DA"/><rect x="37" y="10" width="18" height="30" fill="#E9E4DA"/><circle cx="28" cy="48" r="1.5" fill="#9C5B2E" stroke="none"/><circle cx="36" cy="48" r="1.5" fill="#9C5B2E" stroke="none"/></svg>
+        <h3>Двустворчатая</h3><p>Для гостиной и проёмов от 1 200 мм. Створки разной ширины по запросу.</p><div class="pr">от 39 800 руб.</div>
+      </article>
+      <article class="con reveal">
+        <svg viewBox="0 0 64 84" fill="none" stroke="#23211D" stroke-width="1.6" aria-hidden="true"><path d="M2 2h60"/><rect x="16" y="2" width="32" height="80" fill="#A7B3A0" stroke="none"/><path d="M8 6v74M5 9l3-3 3 3M5 77l3 3 3-3" stroke="#9C5B2E"/></svg>
+        <h3>До потолка</h3><p>Полотна высотой до 3 000 мм без верхней перемычки, проём визуально выше.</p><div class="pr">от 34 600 руб.</div>
+      </article>
+    </div>
+  </div>
+</section>
+
+<section class="sec dark" id="proizvodstvo">
+  <div class="wrap">
+    <div class="head reveal">
+      <div><div class="label">Собственное производство</div><h2>Дверь делается на одной фабрике от раскроя до упаковки</h2></div>
+      <p class="lead">Без посредников и перекупленных полотен, поэтому отвечаем за геометрию, покрытие и срок.</p>
+    </div>
+    <div class="stats reveal">
+      <div class="stat"><b data-count="6800">0</b><span>м² цеха и покрасочная камера в Ульяновске</span></div>
+      <div class="stat"><b data-count="1400">0</b><span>дверей в месяц выпускаем сейчас</span></div>
+      <div class="stat"><b>14 дней</b><span>изготовление стандартного заказа</span></div>
+      <div class="stat"><b>5 лет</b><span>гарантия на полотно, короб и покрытие</span></div>
+    </div>
+    <div class="steps">
+      <div class="step reveal"><h3>Замер</h3><p>Мастер измеряет проёмы и стены, сверяет с дизайн-проектом.</p><span class="d">день 1</span></div>
+      <div class="step reveal"><h3>Чертёж</h3><p>Согласуем модели, открывание и фурнитуру, фиксируем цену.</p><span class="d">день 2</span></div>
+      <div class="step reveal"><h3>Раскрой и ЧПУ</h3><p>Фрезеруем рисунок полотна и пазы под скрытые петли.</p><span class="d">дни 3-6</span></div>
+      <div class="step reveal"><h3>Покраска</h3><p>Грунт, 6 слоёв эмали, шлифовка между слоями.</p><span class="d">дни 7-12</span></div>
+      <div class="step reveal"><h3>Контроль</h3><p>Проверяем геометрию, цвет по эталону, упаковываем.</p><span class="d">день 13</span></div>
+      <div class="step reveal"><h3>Монтаж</h3><p>Привозим и ставим своей бригадой, убираем мусор.</p><span class="d">день 14</span></div>
+    </div>
+  </div>
+</section>
+
+<section class="sec" id="proekty">
+  <div class="wrap">
+    <div class="head reveal">
+      <div><div class="label">Проекты</div><h2>Как наши двери выглядят в квартирах клиентов</h2></div>
+      <p class="lead">Примеры для демо. На сайте здесь будут ваши фото объектов с описанием моделей.</p>
+    </div>
+    <div class="projects" id="projGrid"></div>
+  </div>
+</section>
+
+<section class="sec alt" id="partneram">
+  <div class="wrap">
+    <div class="head reveal">
+      <div><div class="label">Партнёрам</div><h2>Дизайнерам, застройщикам и дилерам</h2></div>
+      <p class="lead">Отдельные условия для тех, кто приводит объекты или продаёт наши двери.</p>
+    </div>
+    <div class="partners">
+      <article class="pcard reveal"><div class="who">Дизайнерам</div><h3>Двери под ваш проект</h3>
+        <ul>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M5 12l5 5 9-10"/></svg>3D-модели всех коллекций для визуализаций</li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M5 12l5 5 9-10"/></svg>Выкраска эмали в ваш цвет за 3 дня</li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M5 12l5 5 9-10"/></svg>Вознаграждение за каждый объект</li>
+        </ul><a class="btn ghost" href="#zayavka">Получить 3D-модели</a></article>
+      <article class="pcard reveal"><div class="who">Застройщикам</div><h3>Поставка на дом целиком</h3>
+        <ul>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M5 12l5 5 9-10"/></svg>Объекты от 50 дверей, график по секциям</li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M5 12l5 5 9-10"/></svg>Работаем по договору с НДС</li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M5 12l5 5 9-10"/></svg>Монтаж своими бригадами</li>
+        </ul><a class="btn ghost" href="#zayavka">Запросить КП</a></article>
+      <article class="pcard reveal"><div class="who">Дилерам</div><h3>Салон с нашими дверями</h3>
+        <ul>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M5 12l5 5 9-10"/></svg>Оптовые цены и выставочные образцы</li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M5 12l5 5 9-10"/></svg>Доставка в регионы от 10 дверей</li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M5 12l5 5 9-10"/></svg>Конфигуратор с вашими ценами на сайт салона</li>
+        </ul><a class="btn ghost" href="#zayavka">Стать дилером</a></article>
+    </div>
+  </div>
+</section>
+
+<section class="sec" id="otzyvy">
+  <div class="wrap">
+    <div class="head reveal">
+      <div><div class="label">Отзывы</div><h2>Что говорят после установки</h2></div>
+    </div>
+    <div class="revs">
+      <article class="rev reveal"><span class="ex">пример отзыва</span><q>Заказывали 7 дверей «Плато» в шалфее под скрытый короб. Цвет попал в стены с первой выкраски, замерщик сам заметил, что один проём завален на 8 мм.</q><div class="who"><span class="ava" style="background:#7D8B7A">АК</span><div>Анна К.<small>трёхкомнатная квартира, Ульяновск</small></div></div></article>
+      <article class="rev reveal"><span class="ex">пример отзыва</span><q>Веду с фабрикой уже четвёртый объект. Удобно, что дают 3D-модели и красят в любой NCS, а сроки соблюдают без напоминаний.</q><div class="who"><span class="ava" style="background:#9C5B2E">МС</span><div>Мария С.<small>дизайнер интерьера</small></div></div></article>
+      <article class="rev reveal"><span class="ex">пример отзыва</span><q>Ставили раздвижную дверь в пенал между кухней и гостиной. Идёт тихо, доводчик работает, бригада всё убрала за собой.</q><div class="who"><span class="ava" style="background:#5C6B78">ДВ</span><div>Дмитрий В.<small>частный дом, Димитровград</small></div></div></article>
+    </div>
+  </div>
+</section>
+
+<section class="sec alt" id="dostavka">
+  <div class="wrap deliv">
+    <div class="reveal">
+      <div class="label">Доставка, замер и монтаж</div>
+      <h2 style="margin-top:14px">Привезём и установим своей бригадой</h2>
+      <div class="dsteps">
+        <div class="dstep"><i><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path d="M4 20V4h16v16M4 9h16M9 4v5"/></svg></i><div><h3>Бесплатный замер при заказе</h3><p>Мастер приезжает с образцами покрытий, на месте проверяет проёмы и стены.</p></div></div>
+        <div class="dstep"><i><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path d="M2 7h12v9H2zM14 10h4l3 3v3h-7"/><circle cx="6" cy="17.5" r="1.8"/><circle cx="17" cy="17.5" r="1.8"/></svg></i><div><h3>Доставка в согласованный день</h3><p>Двери едут в заводской упаковке, разгрузка и подъём на этаж включены.</p></div></div>
+        <div class="dstep"><i><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path d="M12 3l8 4v5c0 5-3.5 8-8 9-4.5-1-8-4-8-9V7z"/><path d="M8.5 12l2.5 2.5 4.5-5"/></svg></i><div><h3>Гарантия 5 лет на монтаж</h3><p>Если дверь начнёт задевать или скрипеть, приедем и отрегулируем бесплатно.</p></div></div>
+      </div>
+    </div>
+    <div class="ptable reveal" role="table" aria-label="Цены на услуги">
+      <div class="prow" role="row"><span role="cell">Замер<small>бесплатно при заказе от 3 дверей</small></span><b role="cell">1 000 руб.</b></div>
+      <div class="prow" role="row"><span role="cell">Доставка по Ульяновску<small>с подъёмом на этаж</small></span><b role="cell">1 500 руб.</b></div>
+      <div class="prow" role="row"><span role="cell">Установка распашной двери<small>с наличниками и фурнитурой</small></span><b role="cell">3 500 руб.</b></div>
+      <div class="prow" role="row"><span role="cell">Установка скрытой двери<small>до чистовой отделки стен</small></span><b role="cell">6 500 руб.</b></div>
+      <div class="prow" role="row"><span role="cell">Раздвижная система в пенал<small>монтаж кассеты и полотна</small></span><b role="cell">9 000 руб.</b></div>
+      <div class="prow" role="row"><span role="cell">Отправка в регионы<small>транспортной компанией в обрешётке</small></span><b role="cell">по тарифу ТК</b></div>
+    </div>
+  </div>
+</section>
+
+<section class="sec" id="faq">
+  <div class="wrap">
+    <div class="head reveal"><div><div class="label">Вопросы</div><h2>Частые вопросы перед заказом</h2></div></div>
+    <div class="faq">
+      <div class="qa reveal"><button type="button" aria-expanded="false">Можно ли сделать дверь нестандартного размера?<i aria-hidden="true"></i></button><div class="a"><p>Да, все двери делаем под заказ: ширина от 400 до 1 200 мм, высота до 3 000 мм. Нестандартный размер не удорожает дверь, если ширина в пределах 900 мм.</p></div></div>
+      <div class="qa reveal"><button type="button" aria-expanded="false">Когда вызывать замерщика, если ремонт ещё идёт?<i aria-hidden="true"></i></button><div class="a"><p>После штукатурки и стяжки. Для скрытых дверей ещё раньше: короб ставится до финишной отделки стен, мы подскажем бригаде, на каком этапе.</p></div></div>
+      <div class="qa reveal"><button type="button" aria-expanded="false">Подберёте цвет под мои стены?<i aria-hidden="true"></i></button><div class="a"><p>Да. Пришлите код краски или привезите образец, сделаем выкраску на фрагменте полотна за 3 рабочих дня и покажем до запуска всего заказа.</p></div></div>
+      <div class="qa reveal"><button type="button" aria-expanded="false">Как платить?<i aria-hidden="true"></i></button><div class="a"><p>Предоплата 50% при заключении договора, остаток перед доставкой. Принимаем карту, перевод и безналичный расчёт для юрлиц.</p></div></div>
+      <div class="qa reveal"><button type="button" aria-expanded="false">Есть ли шоурум, где можно потрогать двери?<i aria-hidden="true"></i></button><div class="a"><p>Да, при фабрике: 40 дверей в сборе, все покрытия и фурнитура. Записываться не обязательно, но лучше позвонить, чтобы технолог был на месте.</p></div></div>
+    </div>
+  </div>
+</section>
+
+<section class="sec dark" id="zayavka">
+  <div class="wrap order">
+    <div class="reveal">
+      <div class="label">Заявка на расчёт</div>
+      <h2 style="margin-top:14px">Пришлите план или список проёмов, посчитаем за день</h2>
+      <p class="lead" style="margin-top:18px">Технолог перезвонит, уточнит модели и запишет на замер в удобное время.</p>
+      <div class="contact">
+        <div><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path d="M12 21s7-6.2 7-12a7 7 0 10-14 0c0 5.8 7 12 7 12z"/><circle cx="12" cy="9" r="2.5"/></svg><span>Шоурум и фабрика: Ульяновск, ул. Столярная, 14<small>пн-сб 9:00-19:00</small></span></div>
+        <div><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path d="M5 4h4l2 5-2.5 1.5a11 11 0 005 5L15 13l5 2v4a2 2 0 01-2 2A16 16 0 013 6a2 2 0 012-2"/></svg><span><a href="tel:+78422000000">+7 (8422) 00-00-00</a><small>звонок и мессенджеры</small></span></div>
+        <div><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="M3 7l9 6 9-6"/></svg><span><a href="mailto:zakaz@pritvor.example">zakaz@pritvor.example</a><small>планы и дизайн-проекты</small></span></div>
+      </div>
+    </div>
+    <form class="f reveal" id="orderForm" novalidate>
+      <div class="row2">
+        <label>Имя<input name="name" autocomplete="name" placeholder="Как к вам обращаться"></label>
+        <label>Телефон<input name="phone" type="tel" autocomplete="tel" placeholder="+7 (___) ___-__-__"></label>
+      </div>
+      <div class="seg" role="radiogroup" aria-label="Кто вы">
+        <label><input type="radio" name="who" checked> Делаю ремонт</label>
+        <label><input type="radio" name="who"> Дизайнер</label>
+        <label><input type="radio" name="who"> Застройщик или дилер</label>
+      </div>
+      <label>Что нужно<textarea name="msg" id="msg" placeholder="Например: 6 дверей в эмали, одна скрытая в ванную"></textarea></label>
+      <label>План квартиры или дизайн-проект<input type="file" name="plan" accept=".pdf,.jpg,.png,.dwg"></label>
+      <button class="btn" type="submit">Отправить на расчёт</button>
+      <div class="ok" role="status">Спасибо! В демо заявка никуда не уходит, на рабочем сайте она придёт вам в почту и в Telegram.</div>
+      <p class="fine">Нажимая кнопку, вы соглашаетесь на обработку персональных данных.</p>
+    </form>
+  </div>
+</section>
+</main>
+
+<footer>
+  <div class="wrap">
+    <div class="fr">
+      <a class="logo" href="#main" aria-label="Притвор, наверх">
+        <svg viewBox="0 0 26 34" aria-hidden="true"><rect x="1" y="1" width="24" height="32" rx="1.5" fill="none" stroke="#EDE8DF" stroke-width="2"/><path d="M5 5h13l3 2v22l-3 2H5z" fill="#C98B5A"/><circle cx="16" cy="18" r="1.4" fill="#171512"/></svg>
+        <span>Притвор<small>фабрика межкомнатных дверей</small></span>
+      </a>
+      <span>© 2026 Притвор, Ульяновск</span>
+    </div>
+    <p class="demo">Это главная страница, и когда мы её утвердим, в том же стиле сверстаем каталог, карточку модели, страницу покрытий, раздел для партнёров и контакты. <b>Демо-версия, подготовлено для заказа на FL.ru. Тексты и фото заменим на ваши.</b></p>
+  </div>
+</footer>
+
+<script>
+var MODELS={
+  plato:{n:'Плато',d:'Гладкое полотно без рисунка, кромка в цвет.',p:14900,glass:false},
+  ritm:{n:'Ритм',d:'Горизонтальная фрезеровка, 4 тонких паза.',p:17900,glass:false},
+  kant:{n:'Кант',d:'Вертикальная стеклянная вставка со смещением.',p:21400,glass:true},
+  klassika:{n:'Классика',d:'Две филёнки, верхняя под стекло.',p:23900,glass:true},
+  arka:{n:'Арка',d:'Верхняя филёнка с аркой и стеклом.',p:25900,glass:true},
+  loft:{n:'Лофт',d:'Стекло в тонкой раме с двумя перемычками.',p:27900,glass:true}
+};
+var FIN={
+  white:{n:'Эмаль белая',c:'#F4F1EB',p:0},
+  sage:{n:'Эмаль шалфей',c:'#A7B3A0',p:2600},
+  cashmere:{n:'Эмаль кашемир',c:'#D8CBB8',p:2600},
+  graphite:{n:'Эмаль графит',c:'#3B3D3F',p:2600},
+  oak:{n:'Шпон дуба',c:'#C79A6B',p:4800,wood:1},
+  walnut:{n:'Шпон ореха',c:'#6E4A32',p:6200,wood:1}
+};
+var GLASS={none:{n:'Без стекла',p:0},satin:{n:'Сатин',p:1800,c:'#E6ECEE'},bronze:{n:'Бронза',p:2400,c:'#8A7158'},clear:{n:'Прозрачное',p:2100,c:'#CFE0E6'}};
+var WIDTHS=[600,700,800,900];
+var FRAMES={std:{n:'С наличником',p:6900},hidden:{n:'Скрытый',p:12800}};
+var KIT=3600;
+var st={model:'ritm',fin:'sage',glass:'none',w:800,frame:'std'};
+var uid=0;
+
+function shade(hex,k){var n=parseInt(hex.slice(1),16),r=n>>16,g=n>>8&255,b=n&255;
+  function f(x){return Math.max(0,Math.min(255,Math.round(k<0?x*(1+k):x+(255-x)*k)))}
+  return '#'+((1<<24)+(f(r)<<16)+(f(g)<<8)+f(b)).toString(16).slice(1)}
+
+function doorSVG(c){
+  var id='d'+(uid++),F=FIN[c.fin],M=MODELS[c.model],G=GLASS[c.glass];
+  var L=24,T=24,W=192,H=456;
+  var fill=F.wood?'url(#w'+id+')':F.c, dk=shade(F.c,-.18), dark=F.c==='#3B3D3F'||F.c==='#6E4A32';
+  var glassFill=M.glass&&c.glass!=='none'?G.c:null;
+  var s='<svg viewBox="0 0 240 480" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Дверь '+M.n+', '+F.n+'"><defs>';
+  s+='<linearGradient id="l'+id+'" x1="0" x2="1"><stop offset="0" stop-color="#fff" stop-opacity=".14"/><stop offset=".5" stop-color="#fff" stop-opacity="0"/><stop offset="1" stop-color="#000" stop-opacity=".06"/></linearGradient>';
+  s+='<linearGradient id="g'+id+'" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#fff" stop-opacity=".45"/><stop offset=".45" stop-color="#fff" stop-opacity="0"/><stop offset="1" stop-color="#fff" stop-opacity=".18"/></linearGradient>';
+  if(F.wood){s+='<pattern id="w'+id+'" width="36" height="480" patternUnits="userSpaceOnUse"><rect width="36" height="480" fill="'+F.c+'"/><path d="M6 0C9 120 3 260 7 480M17 0C14 150 20 300 16 480M28 0C31 100 25 330 29 480" stroke="'+shade(F.c,-.16)+'" stroke-width="1.4" fill="none" opacity=".55"/><path d="M11 0C13 200 9 320 12 480" stroke="'+shade(F.c,.18)+'" stroke-width="2" fill="none" opacity=".5"/></pattern>'}
+  s+='</defs>';
+  if(c.frame==='std'){s+='<rect x="4" y="4" width="232" height="476" fill="'+fill+'"/><rect x="4" y="4" width="232" height="476" fill="none" stroke="'+dk+'" stroke-opacity=".5"/><rect x="'+(L-3)+'" y="'+(T-3)+'" width="'+(W+6)+'" height="'+(H+3)+'" fill="'+shade(F.c,-.28)+'" opacity=".55"/>'}
+  else{s+='<rect x="'+(L-2)+'" y="'+(T-2)+'" width="'+(W+4)+'" height="'+(H+2)+'" fill="#2a2622" opacity=".55"/>'}
+  s+='<rect x="'+L+'" y="'+T+'" width="'+W+'" height="'+H+'" fill="'+fill+'"/>';
+  var gr='stroke="'+dk+'" stroke-width="2" fill="none"';
+  function glassRect(x,y,w,h){var r='<rect x="'+x+'" y="'+y+'" width="'+w+'" height="'+h+'" fill="'+(glassFill||fill)+'"/>';if(glassFill)r+='<rect x="'+x+'" y="'+y+'" width="'+w+'" height="'+h+'" fill="url(#g'+id+')"/>';return r+'<rect x="'+x+'" y="'+y+'" width="'+w+'" height="'+h+'" '+gr+'/>'}
+  if(c.model==='ritm'){for(var i=1;i<=4;i++){var y=T+H*i/5;s+='<line x1="'+(L+18)+'" x2="'+(L+W-18)+'" y1="'+y+'" y2="'+y+'" stroke="'+dk+'" stroke-width="2.5"/><line x1="'+(L+18)+'" x2="'+(L+W-18)+'" y1="'+(y+2.5)+'" y2="'+(y+2.5)+'" stroke="#fff" stroke-opacity=".25" stroke-width="1"/>'}}
+  if(c.model==='kant'){var gx=L+W*.62;s+=glassFill?glassRect(gx,T+34,22,H-68):'<rect x="'+gx+'" y="'+(T+34)+'" width="22" height="'+(H-68)+'" '+gr+'/>'}
+  if(c.model==='klassika'){s+=glassRect(L+26,T+30,W-52,H*.44);if(!glassFill){s+='<rect x="'+(L+32)+'" y="'+(T+36)+'" width="'+(W-64)+'" height="'+(H*.44-12)+'" '+gr+' stroke-opacity=".5"/>'}s+='<rect x="'+(L+26)+'" y="'+(T+H*.44+54)+'" width="'+(W-52)+'" height="'+(H*.44-30)+'" '+gr+'/><rect x="'+(L+32)+'" y="'+(T+H*.44+60)+'" width="'+(W-64)+'" height="'+(H*.44-42)+'" '+gr+' stroke-opacity=".5"/>'}
+  if(c.model==='arka'){var ax=L+30,aw=W-60,ay=T+40,ah=H*.48;var p='M'+ax+' '+(ay+ah)+'V'+(ay+aw/2)+'A'+aw/2+' '+aw/2+' 0 0 1 '+(ax+aw)+' '+(ay+aw/2)+'V'+(ay+ah)+'Z';s+='<path d="'+p+'" fill="'+(glassFill||fill)+'"/>'+(glassFill?'<path d="'+p+'" fill="url(#g'+id+')"/>':'')+'<path d="'+p+'" '+gr+'/><rect x="'+ax+'" y="'+(ay+ah+30)+'" width="'+aw+'" height="'+(H-ah-100)+'" '+gr+'/>'}
+  if(c.model==='loft'){var fx=L+16,fw=W-32,fy=T+16,fh=H-32;s+=glassRect(fx,fy,fw,fh);s+='<rect x="'+fx+'" y="'+(fy+fh/3-4)+'" width="'+fw+'" height="8" fill="'+fill+'"/><rect x="'+fx+'" y="'+(fy+fh*2/3-4)+'" width="'+fw+'" height="8" fill="'+fill+'"/><rect x="'+fx+'" y="'+fy+'" width="'+fw+'" height="'+fh+'" '+gr+'/>'}
+  s+='<rect x="'+L+'" y="'+T+'" width="'+W+'" height="'+H+'" fill="url(#l'+id+')"/>';
+  var hx=L+W-24,hy=T+H*.53,hc=dark?'#B08D57':'#2B2A28';
+  s+='<rect x="'+(hx-4)+'" y="'+(hy-8)+'" width="8" height="16" rx="4" fill="'+hc+'"/><rect x="'+(hx-30)+'" y="'+(hy-3)+'" width="32" height="6" rx="3" fill="'+hc+'"/>';
+  return s+'</svg>';
+}
+
+function fmt(n){return n.toString().replace(/\B(?=(\d{3})+(?!\d))/g,' ')}
+function total(c){var M=MODELS[c.model];return M.p+FIN[c.fin].p+(M.glass?GLASS[c.glass].p:0)+(c.w===900?2200:0)+FRAMES[c.frame].p+KIT}
+function chip(v,lbl,on,dis){return '<button type="button" class="chip" data-v="'+v+'" aria-pressed="'+on+'"'+(dis?' disabled':'')+'>'+lbl+'</button>'}
+function render(){
+  var M=MODELS[st.model];if(!M.glass)st.glass='none';
+  document.getElementById('heroDoor').innerHTML=doorSVG(st);
+  document.getElementById('cfgName').textContent=M.n+', '+FIN[st.fin].n.toLowerCase();
+  document.getElementById('finName').textContent=FIN[st.fin].n;
+  document.getElementById('total').textContent=fmt(total(st))+' руб.';
+  document.getElementById('dim').textContent=st.w+' × 2000 мм';
+  document.getElementById('glassNote').textContent=M.glass?'':'в этой модели нет';
+  var h='',k;for(k in MODELS)h+=chip(k,MODELS[k].n,k===st.model);document.getElementById('chModel').innerHTML=h;
+  h='';for(k in GLASS)h+=chip(k,GLASS[k].n,k===st.glass,!M.glass&&k!=='none');document.getElementById('chGlass').innerHTML=h;
+  h='';WIDTHS.forEach(function(w){h+=chip(w,w,w===st.w)});document.getElementById('chWidth').innerHTML=h;
+  h='';for(k in FRAMES)h+=chip(k,FRAMES[k].n,k===st.frame);document.getElementById('chFrame').innerHTML=h;
+  h='';for(k in FIN)h+='<button type="button" data-v="'+k+'" aria-label="'+FIN[k].n+'" aria-pressed="'+(k===st.fin)+'" style="background:'+(FIN[k].wood?'repeating-linear-gradient(95deg,'+FIN[k].c+' 0 4px,'+shade(FIN[k].c,-.14)+' 4px 6px)':FIN[k].c)+'"></button>';document.getElementById('swFinish').innerHTML=h;
+}
+function bind(id,key,num){document.getElementById(id).addEventListener('click',function(e){var b=e.target.closest('button');if(!b||b.disabled)return;st[key]=num?+b.dataset.v:b.dataset.v;render()})}
+bind('chModel','model');bind('chGlass','glass');bind('chWidth','w',1);bind('chFrame','frame');bind('swFinish','fin');
+render();
+
+document.getElementById('toOrder').addEventListener('click',function(){
+  var M=MODELS[st.model];
+  document.getElementById('msg').value='Дверь «'+M.n+'», '+FIN[st.fin].n.toLowerCase()+(M.glass&&st.glass!=='none'?', стекло '+GLASS[st.glass].n.toLowerCase():'')+', '+st.w+' × 2000 мм, короб: '+FRAMES[st.frame].n.toLowerCase()+'. Предварительно '+fmt(total(st))+' руб. Количество: ';
+  document.getElementById('zayavka').scrollIntoView({behavior:'smooth'});
+  setTimeout(function(){document.querySelector('#orderForm input[name=name]').focus({preventScroll:true})},700);
+});
+
+/* catalog */
+(function(){var g=document.getElementById('modelsGrid'),h='';
+  var fins={plato:'white',ritm:'cashmere',kant:'graphite',klassika:'white',arka:'sage',loft:'oak'};
+  var gl={kant:'satin',klassika:'satin',arka:'satin',loft:'bronze'};
+  for(var k in MODELS){var M=MODELS[k],c={model:k,fin:fins[k],glass:gl[k]||'none',w:800,frame:'std'};
+    h+='<article class="model reveal"><div class="pic">'+doorSVG(c)+'</div><div><h3>'+M.n+'</h3><p>'+M.d+'</p><div class="from">от '+fmt(M.p)+' руб. <span>за полотно</span></div><button type="button" data-m="'+k+'" data-f="'+fins[k]+'" data-g="'+(gl[k]||'none')+'">Собрать в конфигураторе <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" aria-hidden="true"><path d="M12 19V5M6 11l6-6 6 6"/></svg></button></div></article>'}
+  g.innerHTML=h;
+  g.addEventListener('click',function(e){var b=e.target.closest('button[data-m]');if(!b)return;st.model=b.dataset.m;st.fin=b.dataset.f;st.glass=b.dataset.g;render();document.getElementById('konfigurator').scrollIntoView({behavior:'smooth'})});
+})();
+
+/* projects */
+(function(){
+  var P=[
+    {wall:'#E3DDD2',floor:'#B48E68',c:{model:'plato',fin:'sage',glass:'none',w:800,frame:'hidden'},m:'ЖК «Северный парк» · 7 дверей',t:'Скрытые двери «Плато» в цвет стен',d:'Шалфей по NCS S 3010-G30Y, алюминиевый короб, двери до потолка в коридоре.',art:'#7D8B7A'},
+    {wall:'#D9D4CB',floor:'#8D6A4C',c:{model:'loft',fin:'graphite',glass:'satin',w:800,frame:'std'},m:'Квартира-студия · 3 двери',t:'«Лофт» графит в кухню-гостиную',d:'Сатинированное стекло пропускает свет в тёмный коридор.',art:'#9C5B2E'},
+    {wall:'#EEE8DE',floor:'#C9A57E',c:{model:'klassika',fin:'oak',glass:'none',w:700,frame:'std'},m:'Частный дом · 12 дверей',t:'«Классика» в шпоне дуба',d:'Шпон подобран под паркет, латунная фурнитура.',art:'#5C6B78'}
+  ];
+  var h='';P.forEach(function(p,i){
+    var door=doorSVG(p.c).replace('<svg ','<svg x="'+(i===1?250:200)+'" y="40" width="130" height="260" preserveAspectRatio="xMidYMax meet" ');
+    var ox=i===0?60:40;
+    var deco=i===1?'<rect x="40" y="150" width="150" height="8" rx="2" fill="#3B3D3F"/><rect x="50" y="158" width="6" height="94" fill="#3B3D3F"/><rect x="174" y="158" width="6" height="94" fill="#3B3D3F"/><circle cx="115" cy="80" r="26" fill="none" stroke="#3B3D3F" stroke-width="2"/><path d="M115 106v44" stroke="#3B3D3F" stroke-width="2"/>'
+      :'<rect x="'+ox+'" y="70" width="90" height="70" fill="'+p.art+'" opacity=".85"/><rect x="'+ox+'" y="70" width="90" height="70" fill="none" stroke="'+shade(p.wall,.5)+'" stroke-width="5"/><path d="M'+(ox-20)+' 252c6-40 10-70 24-90M'+(ox-8)+' 252c-2-30 6-55 20-72M'+ox+' 252c8-24 20-40 34-50" stroke="#6F7E68" stroke-width="3" fill="none"/><rect x="'+(ox-24)+'" y="228" width="40" height="26" rx="3" fill="'+shade(p.wall,-.25)+'"/>';
+    var scene='<svg viewBox="0 0 400 300" preserveAspectRatio="xMidYMid slice" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">'+
+      '<rect width="400" height="300" fill="'+p.wall+'"/><rect y="258" width="400" height="42" fill="'+p.floor+'"/><rect y="252" width="400" height="8" fill="'+shade(p.wall,.4)+'"/>'+deco+door+'</svg>';
+    h+='<article class="proj reveal"><div class="scene">'+scene+'</div><div class="body"><div class="meta">'+p.m+'</div><h3>'+p.t+'</h3><p>'+p.d+'</p></div></article>'});
+  document.getElementById('projGrid').innerHTML=h;
+})();
+
+/* faq */
+document.querySelectorAll('.qa button').forEach(function(b){b.addEventListener('click',function(){var q=b.parentElement,a=q.querySelector('.a'),o=q.classList.toggle('open');b.setAttribute('aria-expanded',o);a.style.maxHeight=o?a.scrollHeight+'px':'0'})});
+
+/* form */
+document.getElementById('orderForm').addEventListener('submit',function(e){e.preventDefault();this.classList.add('sent')});
+
+/* menu */
+function toggleMenu(){var m=document.getElementById('mnav'),o=!m.classList.contains('open');m.classList.toggle('open',o);document.querySelector('.burger').setAttribute('aria-expanded',o);document.body.style.overflow=o?'hidden':''}
+function closeMenu(){document.getElementById('mnav').classList.remove('open');document.querySelector('.burger').setAttribute('aria-expanded',false);document.body.style.overflow=''}
+
+/* reveal + counters */
+(function(){
+  var els=document.querySelectorAll('.reveal');
+  if(!('IntersectionObserver' in window)){els.forEach(function(e){e.classList.add('visible')});return}
+  var io=new IntersectionObserver(function(en){en.forEach(function(x){if(x.isIntersecting){x.target.classList.add('visible');io.unobserve(x.target)}})},{threshold:.08,rootMargin:'0px 0px -60px 0px'});
+  els.forEach(function(e,i){e.style.transitionDelay=((i%3)*.1)+'s';io.observe(e)});
+  var cio=new IntersectionObserver(function(en){en.forEach(function(x){if(!x.isIntersecting)return;var el=x.target,n=+el.dataset.count,v=0,step=n/35;cio.unobserve(el);var t=setInterval(function(){v+=step;if(v>=n){v=n;clearInterval(t)}el.textContent=fmt(Math.round(v))},25)})},{threshold:.4});
+  document.querySelectorAll('[data-count]').forEach(function(e){cio.observe(e)});
+})();
+</script>
+</body>
+</html>
