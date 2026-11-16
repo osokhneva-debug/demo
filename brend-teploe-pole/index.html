@@ -52,7 +52,7 @@ section{padding:64px 0}
 .view{display:none}
 .view.on{display:block;animation:fade .5s ease}
 @keyframes fade{from{opacity:0;transform:translateY(10px)}to{opacity:1;transform:none}}
-.hero{display:grid;grid-template-columns:1.05fr 1fr;gap:40px;align-items:center;padding:64px 0 48px}
+.hero{display:grid;grid-template-columns:1.05fr 1fr;gap:40px;align-items:center;padding:64px 20px 48px}
 .arch{position:relative;aspect-ratio:4/5;max-height:560px;margin-left:auto;width:100%;max-width:470px;border-radius:240px 240px 26px 26px;border:1px solid rgba(212,172,110,.4);padding:14px}
 .arch-in{position:relative;height:100%;border-radius:226px 226px 18px 18px;overflow:hidden;background:radial-gradient(ellipse 80% 60% at 50% 30%,#5a4636,#2b1f17 70%)}
 .arch-in .p{position:absolute;bottom:13%;transition:transform .6s cubic-bezier(.34,1.56,.64,1)}
@@ -129,6 +129,10 @@ footer{border-top:1px solid var(--line);padding:30px 0 44px;color:var(--muted);f
 @media (max-width:900px){
   .hero,.offer,.detail.on,.cms{grid-template-columns:1fr}
   .arch{max-width:340px;margin:0 auto}
+  .arch-in .p{transform:scale(.62);transform-origin:bottom center}
+  .arch:hover .p{transform:scale(.62) translateY(-8px)}
+  .arch-in .p:nth-of-type(2){left:-6%!important}.arch-in .p:nth-of-type(3){left:24%!important}.arch-in .p:nth-of-type(4){left:52%!important}
+  .hero{padding:40px 20px 32px}
   .grid3,.grid3.two,.recipe,.shops{grid-template-columns:1fr}
   .products{grid-template-columns:repeat(2,1fr)}
   .strip,.steps,.nutr{grid-template-columns:repeat(2,1fr)}
