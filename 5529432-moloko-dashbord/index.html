@@ -1,0 +1,424 @@
+<!doctype html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex, nofollow">
+<title>Молочное производство</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+:root {
+  color-scheme: light;
+  --bg: #f4f5f2;
+  --surface: #fcfcfb;
+  --border: #e4e3de;
+  --grid: #ecebe6;
+  --text: #0b0b0b;
+  --text-2: #52514e;
+  --text-3: #6b6a65;
+  --farm-1: #2a78d6;
+  --farm-2: #eb6834;
+  --part-sale: #1baf7a;
+  --part-calf: #6250d6;
+  --part-can: #8f8e88;
+  --good: #0f7a3a;
+  --bad: #b3261e;
+  --accent-bg: #e8f0fb;
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    color-scheme: dark;
+    --bg: #121211;
+    --surface: #1a1a19;
+    --border: #2c2c2a;
+    --grid: #262624;
+    --text: #f0efec;
+    --text-2: #c3c2b7;
+    --text-3: #9a998f;
+    --farm-1: #3987e5;
+    --farm-2: #d95926;
+    --part-sale: #199e70;
+    --part-calf: #9085e9;
+    --part-can: #77766f;
+    --good: #5cc98a;
+    --bad: #f08a82;
+    --accent-bg: #1c2a3d;
+  }
+}
+:root[data-theme="dark"] {
+  color-scheme: dark;
+  --bg: #121211;
+  --surface: #1a1a19;
+  --border: #2c2c2a;
+  --grid: #262624;
+  --text: #f0efec;
+  --text-2: #c3c2b7;
+  --text-3: #9a998f;
+  --farm-1: #3987e5;
+  --farm-2: #d95926;
+  --part-sale: #199e70;
+  --part-calf: #9085e9;
+  --part-can: #77766f;
+  --good: #5cc98a;
+  --bad: #f08a82;
+  --accent-bg: #1c2a3d;
+}
+* { box-sizing: border-box; }
+html, body { margin: 0; }
+body {
+  background: var(--bg);
+  color: var(--text);
+  font: 15px/1.45 Inter, system-ui, -apple-system, "Segoe UI", sans-serif;
+  -webkit-font-smoothing: antialiased;
+}
+.wrap { max-width: 1440px; margin: 0 auto; padding: 24px 24px 48px; }
+.demo-note {
+  display: flex; gap: 10px; align-items: center; flex-wrap: wrap;
+  background: var(--accent-bg); color: var(--text-2);
+  border-radius: 10px; padding: 10px 14px; font-size: 13px; margin-bottom: 20px;
+}
+.demo-note b { color: var(--text); font-weight: 600; }
+header.top { display: flex; justify-content: space-between; align-items: flex-end; gap: 16px; flex-wrap: wrap; margin-bottom: 18px; }
+h1 { font-size: 26px; line-height: 1.2; margin: 0 0 4px; font-weight: 700; letter-spacing: -0.01em; }
+.sub { color: var(--text-2); font-size: 14px; margin: 0; }
+.fresh { display: inline-flex; align-items: center; gap: 6px; color: var(--text-3); font-size: 13px; margin-top: 6px; }
+.dot { width: 8px; height: 8px; border-radius: 50%; background: var(--good); flex: none; }
+.filters { display: flex; gap: 10px; flex-wrap: wrap; align-items: center; }
+.seg { display: inline-flex; background: var(--surface); border: 1px solid var(--border); border-radius: 10px; padding: 3px; }
+.seg button {
+  border: 0; background: transparent; color: var(--text-2); font: inherit; font-size: 14px;
+  padding: 7px 14px; border-radius: 7px; cursor: pointer; min-height: 36px;
+}
+.seg button[aria-pressed="true"] { background: var(--text); color: var(--surface); font-weight: 500; }
+.seg button:focus-visible, select:focus-visible, summary:focus-visible { outline: 2px solid var(--farm-1); outline-offset: 2px; }
+select {
+  font: inherit; font-size: 14px; color: var(--text); background: var(--surface);
+  border: 1px solid var(--border); border-radius: 10px; padding: 8px 12px; min-height: 42px;
+}
+.kpis { display: grid; grid-template-columns: repeat(6, minmax(0, 1fr)); gap: 12px; margin-bottom: 16px; }
+.kpi { background: var(--surface); border: 1px solid var(--border); border-radius: 12px; padding: 14px 16px; min-width: 0; }
+.kpi .lbl { color: var(--text-2); font-size: 13px; }
+.kpi .val { font-size: 26px; font-weight: 700; letter-spacing: -0.01em; margin: 2px 0 2px; font-variant-numeric: tabular-nums; white-space: nowrap; }
+.kpi .val small { font-size: 15px; font-weight: 500; color: var(--text-2); margin-left: 3px; }
+.kpi .meta { color: var(--text-3); font-size: 12.5px; font-variant-numeric: tabular-nums; }
+.delta { font-weight: 600; }
+.delta.up { color: var(--good); } .delta.down { color: var(--bad); }
+.grid { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 12px; }
+.card { background: var(--surface); border: 1px solid var(--border); border-radius: 12px; padding: 16px 16px 12px; min-width: 0; }
+.card h2 { font-size: 15px; font-weight: 600; margin: 0 0 2px; }
+.card .hint { color: var(--text-3); font-size: 12.5px; margin: 0 0 10px; min-height: 18px; }
+.chart { position: relative; height: 220px; }
+.legend { display: flex; gap: 14px; flex-wrap: wrap; margin-top: 8px; font-size: 12.5px; color: var(--text-2); }
+.legend span { display: inline-flex; align-items: center; gap: 6px; }
+.legend i { width: 10px; height: 10px; border-radius: 3px; display: inline-block; }
+.how { margin-top: 20px; background: var(--surface); border: 1px solid var(--border); border-radius: 12px; padding: 18px 20px; }
+.how h2 { font-size: 16px; margin: 0 0 12px; }
+.steps { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 12px; }
+.step { border-left: 3px solid var(--farm-1); padding: 2px 0 2px 12px; font-size: 14px; color: var(--text-2); }
+.step b { display: block; color: var(--text); font-weight: 600; margin-bottom: 2px; }
+details.table { margin-top: 12px; background: var(--surface); border: 1px solid var(--border); border-radius: 12px; }
+details.table summary { cursor: pointer; padding: 14px 18px; font-weight: 600; font-size: 14px; }
+.tscroll { overflow-x: auto; padding: 0 18px 16px; }
+table { border-collapse: collapse; width: 100%; font-size: 13px; font-variant-numeric: tabular-nums; }
+th, td { text-align: right; padding: 6px 10px; border-bottom: 1px solid var(--grid); white-space: nowrap; }
+th:first-child, td:first-child, th:nth-child(2), td:nth-child(2) { text-align: left; }
+th { color: var(--text-2); font-weight: 500; }
+footer { color: var(--text-3); font-size: 12.5px; margin-top: 18px; }
+@media (max-width: 1280px) {
+  .kpis { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+  .grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+}
+@media (max-width: 720px) {
+  .wrap { padding: 16px 16px 40px; }
+  h1 { font-size: 21px; }
+  .kpis { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 10px; }
+  .kpi { padding: 12px; }
+  .kpi .val { font-size: 21px; }
+  .grid { grid-template-columns: minmax(0, 1fr); }
+  .steps { grid-template-columns: minmax(0, 1fr); }
+  .filters { width: 100%; }
+  .seg { width: 100%; }
+  .seg button { flex: 1; padding: 7px 6px; }
+  select { width: 100%; }
+}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <div class="demo-note"><b>Демо</b> Данные условные. На ваших выгрузках дашборд выглядит так же и обновляется сам.</div>
+
+  <header class="top">
+    <div>
+      <h1>Молочное производство, <span id="monthName">ноябрь 2026</span></h1>
+      <p class="sub" id="subline"></p>
+      <div class="fresh"><span class="dot" aria-hidden="true"></span><span>Обновлено 16.11.2026 в 09:00 из выгрузки «Надои_16.11.xlsx»</span></div>
+    </div>
+    <div class="filters">
+      <div class="seg" role="group" aria-label="Ферма">
+        <button type="button" data-farm="all" aria-pressed="true">Обе фермы</button>
+        <button type="button" data-farm="m" aria-pressed="false">Мрясово</button>
+        <button type="button" data-farm="a" aria-pressed="false">Абдулово</button>
+      </div>
+      <select id="month" aria-label="Месяц">
+        <option value="11">Ноябрь 2026</option>
+        <option value="10">Октябрь 2026</option>
+      </select>
+    </div>
+  </header>
+
+  <section class="kpis" id="kpis" aria-label="Итоги месяца"></section>
+
+  <section class="grid">
+    <article class="card"><h2>Валовой надой по дням, л</h2><p class="hint">Всё молоко, полученное за день</p><div class="chart"><canvas id="cGross"></canvas></div><div class="legend farms"></div></article>
+    <article class="card"><h2>Выручка по дням с НДС, руб.</h2><p class="hint">Сданное молоко × цена дня</p><div class="chart"><canvas id="cRev"></canvas></div><div class="legend farms"></div></article>
+    <article class="card"><h2>Цена за литр с НДС, руб.</h2><p class="hint">Цена закупщика по дням</p><div class="chart"><canvas id="cPrice"></canvas></div><div class="legend farms"></div></article>
+    <article class="card"><h2>Средняя жирность, %</h2><p class="hint">По данным лаборатории закупщика</p><div class="chart"><canvas id="cFat"></canvas></div><div class="legend farms"></div></article>
+    <article class="card"><h2>Надой на одну корову в день, л</h2><p class="hint">Валовой надой ÷ коров на дойке</p><div class="chart"><canvas id="cPerCow"></canvas></div><div class="legend farms"></div></article>
+    <article class="card"><h2>Поголовье коров на дойке</h2><p class="hint">Голов на конец дня</p><div class="chart"><canvas id="cCows"></canvas></div><div class="legend farms"></div></article>
+    <article class="card"><h2>Куда ушло молоко, л</h2><p class="hint">Распределение валового надоя за месяц</p><div class="chart"><canvas id="cSplit"></canvas></div><div class="legend" id="splitLegend"></div></article>
+    <article class="card"><h2>Передано телятам по дням, л</h2><p class="hint">Выпойка молодняка</p><div class="chart"><canvas id="cCalf"></canvas></div><div class="legend farms"></div></article>
+  </section>
+
+  <details class="table">
+    <summary>Данные таблицей по дням</summary>
+    <div class="tscroll"><table id="tbl"></table></div>
+  </details>
+
+  <section class="how" aria-label="Как обновляется дашборд">
+    <h2>Откуда берутся цифры: 4 шага от Excel до графиков</h2>
+    <div class="steps">
+      <div class="step"><b>1. Выгрузка</b>Excel из учётной программы кладётся в папку на Google Диске, с компьютера или телефона.</div>
+      <div class="step"><b>2. Разбор</b>Раз в час скрипт забирает новый файл и дописывает строки в таблицу-архив. Повторная выгрузка дублей не даёт.</div>
+      <div class="step"><b>3. Дашборд</b>Страница по постоянной ссылке читает таблицу при каждом открытии и показывает свежие цифры.</div>
+      <div class="step"><b>4. Контроль</b>Если в файле ошибка или выгрузки нет больше суток, приходит письмо на почту.</div>
+    </div>
+  </section>
+
+  <footer>Папка, таблица, скрипт и страница работают в Google-аккаунте заказчика, хостинг и абонентская плата не нужны.</footer>
+</div>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.1/chart.umd.min.js"></script>
+<script>
+(function () {
+  // ---------- synthetic data (deterministic) ----------
+  function rng(seed) { return function () { seed = (seed * 16807) % 2147483647; return (seed - 1) / 2147483646; }; }
+  var FARMS = {
+    m: { name: 'Мрясово', color: '--farm-1' },
+    a: { name: 'Абдулово', color: '--farm-2' }
+  };
+  function makeMonth(month) {
+    var r = rng(month * 97 + 13);
+    var n = (s) => (r() - 0.5) * 2 * s;
+    var days = month === 11 ? { m: 15, a: 16 } : { m: 31, a: 31 };
+    var out = { m: [], a: [] };
+    var cowsM = month === 11 ? 492 : 486, cowsA = month === 11 ? 372 : 366;
+    for (var d = 1; d <= days.m; d++) {
+      if (d === 2 || d === 8 || d === 10) cowsM += Math.round(r() * 8 - 1);
+      if (d === 8) cowsM += 6;
+      var cows = cowsM + Math.round(n(2));
+      var perCow = (month === 11 ? 35.0 : 34.4) + n(1.1) - (d === 8 ? 1.6 : 0);
+      var gross = Math.round(cows * perCow);
+      var price = month === 11 ? (d < 6 ? 45.5 : d < 9 ? 46.2 : 46.2 - (d - 8) * 0.38) + n(0.12) : 45.2 + n(0.25);
+      var fat = month === 11 ? (d < 9 ? 3.72 : 3.72 - (d - 8) * 0.045) + n(0.04) : 3.74 + n(0.05);
+      var calf = Math.round(month === 11 ? 1150 + n(330) + (d === 2 ? 620 : 0) : 1080 + n(300));
+      var can = Math.round(48 + n(10));
+      out.m.push(row(d, cows, gross, calf, can, price, fat));
+    }
+    for (var e = 1; e <= days.a; e++) {
+      if (e === 3 || e === 4) cowsA += 4;
+      if (e === 6) cowsA -= 18;
+      if (e === 10) cowsA += 6;
+      var cowsa = cowsA + Math.round(n(2));
+      var pc = (month === 11 ? 26.9 : 26.2) + n(0.8) + e * 0.03;
+      var g = Math.round(cowsa * pc);
+      var p = month === 11 ? 47.4 + Math.min(e, 4) * 0.12 + n(0.35) : 46.9 + n(0.3);
+      var f = (month === 11 ? 4.06 + (e % 5 === 0 ? 0.06 : 0) : 4.05) + n(0.03);
+      var c = Math.round(720 + n(60));
+      var cn = Math.round(30 + n(8));
+      out.a.push(row(e, cowsa, g, c, cn, p, f));
+    }
+    return out;
+  }
+  function row(d, cows, gross, calf, can, price, fat) {
+    var sold = gross - calf - can;
+    price = Math.round(price * 100) / 100;
+    return { d: d, cows: cows, gross: gross, calf: calf, can: can, sold: sold,
+      price: price, fat: Math.round(fat * 100) / 100, rev: Math.round(sold * price),
+      perCow: Math.round(gross / cows * 100) / 100 };
+  }
+  var DATA = { 11: makeMonth(11), 10: makeMonth(10) };
+
+  // ---------- helpers ----------
+  var nf = new Intl.NumberFormat('ru-RU');
+  var nf2 = new Intl.NumberFormat('ru-RU', { minimumFractionDigits: 2, maximumFractionDigits: 2 });
+  function css(v) { return getComputedStyle(document.documentElement).getPropertyValue(v).trim(); }
+  function sum(a, k) { return a.reduce((s, x) => s + x[k], 0); }
+  function wavg(a, k, w) { var ws = sum(a, w); return ws ? a.reduce((s, x) => s + x[k] * x[w], 0) / ws : 0; }
+  var state = { farm: 'all', month: 11 };
+  function farmsOn() { return state.farm === 'all' ? ['m', 'a'] : [state.farm]; }
+
+  function totals(month, keys) {
+    var rows = keys.flatMap(k => DATA[month][k]);
+    var gross = sum(rows, 'gross'), sold = sum(rows, 'sold'), rev = sum(rows, 'rev'), calf = sum(rows, 'calf');
+    return { gross, sold, rev, calf, price: sold ? rev / sold : 0, fat: wavg(rows, 'fat', 'sold'),
+      perCowDay: rows.length ? gross / sum(rows, 'cows') : 0, days: Math.max(...keys.map(k => DATA[month][k].length)) };
+  }
+
+  // ---------- KPI tiles ----------
+  function delta(cur, prev, decimals, unit) {
+    if (state.month !== 11) return '';
+    var diff = cur - prev;
+    var cls = diff >= 0 ? 'up' : 'down';
+    var sign = diff >= 0 ? '+' : '−';
+    var txt = decimals ? nf2.format(Math.abs(diff)) : nf.format(Math.round(Math.abs(diff)));
+    return '<span class="delta ' + cls + '">' + sign + txt + (unit || '') + '</span> к октябрю';
+  }
+  function renderKpis() {
+    var keys = farmsOn(), t = totals(state.month, keys), o = totals(10, keys);
+    var per = k => totals(state.month, [k]);
+    var split = keys.length === 2;
+    var m = split ? per('m') : null, a = split ? per('a') : null;
+    var tiles = [
+      ['Валовой надой', nf.format(t.gross), 'л', split ? 'Мрясово ' + nf.format(m.gross) + ' · Абдулово ' + nf.format(a.gross) : 'за ' + t.days + ' дн.'],
+      ['Сдано на продажу', nf.format(t.sold), 'л', (t.sold / t.gross * 100).toFixed(1).replace('.', ',') + ' % от валового'],
+      ['Выручка с НДС', nf.format(t.rev), 'руб.', split ? 'Мрясово ' + nf.format(m.rev) + ' · Абдулово ' + nf.format(a.rev) : 'за ' + t.days + ' дн.'],
+      ['Средняя цена', nf2.format(t.price), 'руб./л', delta(t.price, o.price, 2, ' руб.') || 'выручка ÷ сданное молоко'],
+      ['Средняя жирность', nf2.format(t.fat), '%', split ? 'Мрясово ' + nf2.format(m.fat) + ' · Абдулово ' + nf2.format(a.fat) : (delta(t.fat, o.fat, 2, ' п.п.') || 'взвешено по сданному')],
+      ['Надой на корову', nf2.format(t.perCowDay), 'л/день', delta(t.perCowDay, o.perCowDay, 2, ' л') || 'в среднем за месяц']
+    ];
+    document.getElementById('kpis').innerHTML = tiles.map(x =>
+      '<div class="kpi"><div class="lbl">' + x[0] + '</div><div class="val">' + x[1] + '<small>' + x[2] + '</small></div><div class="meta">' + x[3] + '</div></div>'
+    ).join('');
+  }
+
+  // ---------- charts ----------
+  var charts = {};
+  function baseOpts(yFmt, beginZero) {
+    var grid = css('--grid'), t3 = css('--text-3');
+    return {
+      responsive: true, maintainAspectRatio: false, animation: false,
+      interaction: { mode: 'index', intersect: false },
+      plugins: {
+        legend: { display: false },
+        tooltip: {
+          backgroundColor: css('--surface'), titleColor: css('--text'), bodyColor: css('--text-2'),
+          borderColor: css('--border'), borderWidth: 1, padding: 10, boxPadding: 4, usePointStyle: true,
+          callbacks: {
+            title: items => items[0].label + ' ' + (state.month === 11 ? 'ноября' : 'октября'),
+            label: c => ' ' + c.dataset.label + ': ' + yFmt(c.parsed.y)
+          }
+        }
+      },
+      scales: {
+        x: { grid: { display: false }, border: { color: grid }, ticks: { color: t3, font: { size: 11 }, maxRotation: 0, autoSkipPadding: 6 } },
+        y: { beginAtZero: !!beginZero, grid: { color: grid }, border: { display: false },
+             ticks: { color: t3, font: { size: 11 }, maxTicksLimit: 6, callback: v => yFmt(v, true) } }
+      }
+    };
+  }
+  function labels() { var n = Math.max(...farmsOn().map(k => DATA[state.month][k].length)); return Array.from({ length: n }, (_, i) => String(i + 1)); }
+  function lineSets(key) {
+    return farmsOn().map(k => ({
+      label: FARMS[k].name, data: DATA[state.month][k].map(r => r[key]),
+      borderColor: css(FARMS[k].color), backgroundColor: css(FARMS[k].color),
+      borderWidth: 2, pointRadius: state.month === 11 ? 3 : 0, pointHoverRadius: 5,
+      pointBorderColor: css('--surface'), pointBorderWidth: 1.5, tension: 0.25
+    }));
+  }
+  function barSets(key) {
+    return farmsOn().map(k => ({
+      label: FARMS[k].name, data: DATA[state.month][k].map(r => r[key]),
+      backgroundColor: css(FARMS[k].color), borderRadius: { topLeft: 4, topRight: 4 }, borderSkipped: 'bottom',
+      maxBarThickness: 14, categoryPercentage: 0.78, barPercentage: 0.9
+    }));
+  }
+  var fmtThou = v => v >= 1000 ? nf.format(Math.round(v / 100) / 10) + ' тыс.' : nf.format(Math.round(v));
+  var fmtL = (v, axis) => axis ? fmtThou(v) : nf.format(Math.round(v)) + ' л';
+  var fmtRub = (v, axis) => axis ? (v >= 1000 ? nf.format(Math.round(v / 1000)) + ' тыс.' : String(v)) : nf.format(Math.round(v)) + ' руб.';
+
+  function make(id, type, datasets, opts) {
+    if (charts[id]) charts[id].destroy();
+    if (!opts.scales.y.beginAtZero) {
+      // keep a calm axis: at least ±4 % of the mean around the data, so day-to-day noise does not look like jumps
+      var vals = datasets.flatMap(d => d.data), lo = Math.min(...vals), hi = Math.max(...vals), mid = (lo + hi) / 2;
+      var half = Math.max((hi - lo) / 2 * 1.15, mid * 0.04);
+      opts.scales.y.suggestedMin = mid - half; opts.scales.y.suggestedMax = mid + half;
+    }
+    charts[id] = new Chart(document.getElementById(id), { type: type, data: { labels: labels(), datasets: datasets }, options: opts });
+  }
+  function renderCharts() {
+    make('cGross', 'line', lineSets('gross'), baseOpts(fmtL, true));
+    make('cRev', 'bar', barSets('rev'), baseOpts(fmtRub, true));
+    make('cPrice', 'line', lineSets('price'), baseOpts((v, a) => a ? nf.format(v) : nf2.format(v) + ' руб.'));
+    make('cFat', 'line', lineSets('fat'), baseOpts((v, a) => a ? nf.format(v) : nf2.format(v) + ' %'));
+    make('cPerCow', 'line', lineSets('perCow'), baseOpts((v, a) => a ? nf.format(v) : nf2.format(v) + ' л'));
+    make('cCows', 'line', lineSets('cows'), baseOpts((v, a) => a ? nf.format(v) : nf.format(v) + ' гол.'));
+    make('cCalf', 'bar', barSets('calf'), baseOpts(fmtL, true));
+
+    var keys = farmsOn();
+    var parts = [['sold', 'Сдано', '--part-sale'], ['calf', 'Телятам', '--part-calf'], ['can', 'Столовая', '--part-can']];
+    var sOpts = baseOpts(fmtL, true);
+    sOpts.indexAxis = 'y';
+    sOpts.interaction = { mode: 'nearest', intersect: true };
+    sOpts.plugins.tooltip.callbacks = {
+      title: items => items[0].label,
+      label: c => {
+        var tot = sum(DATA[state.month][keys[c.dataIndex]], 'gross');
+        return ' ' + c.dataset.label + ': ' + nf.format(c.parsed.x) + ' л (' + (c.parsed.x / tot * 100).toFixed(1).replace('.', ',') + ' %)';
+      }
+    };
+    sOpts.scales = {
+      x: { stacked: true, beginAtZero: true, grid: { color: css('--grid') }, border: { display: false },
+           ticks: { color: css('--text-3'), font: { size: 11 }, maxTicksLimit: 5, callback: v => fmtThou(v) } },
+      y: { stacked: true, grid: { display: false }, border: { color: css('--grid') }, ticks: { color: css('--text-2'), font: { size: 12 } } }
+    };
+    if (charts.cSplit) charts.cSplit.destroy();
+    charts.cSplit = new Chart(document.getElementById('cSplit'), {
+      type: 'bar',
+      data: {
+        labels: keys.map(k => FARMS[k].name),
+        datasets: parts.map(p => ({
+          label: p[1], data: keys.map(k => sum(DATA[state.month][k], p[0])),
+          backgroundColor: css(p[2]), borderColor: css('--surface'), borderWidth: { right: 2 }, borderSkipped: false,
+          borderRadius: p[0] === 'can' ? { topRight: 4, bottomRight: 4 } : 0, maxBarThickness: 46
+        }))
+      },
+      options: sOpts
+    });
+    document.getElementById('splitLegend').innerHTML = parts.map(p => '<span><i style="background:' + css(p[2]) + '"></i>' + p[1] + '</span>').join('');
+    document.querySelectorAll('.legend.farms').forEach(el => {
+      el.innerHTML = farmsOn().map(k => '<span><i style="background:' + css(FARMS[k].color) + '"></i>' + FARMS[k].name + '</span>').join('');
+    });
+  }
+
+  // ---------- table + text ----------
+  function renderTable() {
+    var rows = farmsOn().flatMap(k => DATA[state.month][k].map(r => Object.assign({ farm: FARMS[k].name }, r)));
+    rows.sort((x, y) => x.d - y.d || x.farm.localeCompare(y.farm));
+    var head = '<tr><th>День</th><th>Ферма</th><th>Коров</th><th>Валовой, л</th><th>Сдано, л</th><th>Телятам, л</th><th>Столовая, л</th><th>Цена, руб./л</th><th>Жирность, %</th><th>Выручка, руб.</th></tr>';
+    document.getElementById('tbl').innerHTML = '<thead>' + head + '</thead><tbody>' + rows.map(r =>
+      '<tr><td>' + r.d + '</td><td>' + r.farm + '</td><td>' + r.cows + '</td><td>' + nf.format(r.gross) + '</td><td>' + nf.format(r.sold) +
+      '</td><td>' + nf.format(r.calf) + '</td><td>' + nf.format(r.can) + '</td><td>' + nf2.format(r.price) + '</td><td>' + nf2.format(r.fat) +
+      '</td><td>' + nf.format(r.rev) + '</td></tr>').join('') + '</tbody>';
+  }
+  function renderText() {
+    var mName = state.month === 11 ? 'ноября' : 'октября';
+    document.getElementById('monthName').textContent = state.month === 11 ? 'ноябрь 2026' : 'октябрь 2026';
+    document.getElementById('subline').textContent = farmsOn().map(k => FARMS[k].name + ': 1-' + DATA[state.month][k].length + ' ' + mName).join(' · ');
+  }
+  function render() { renderText(); renderKpis(); if (window.Chart) renderCharts(); renderTable(); }
+
+  document.querySelectorAll('.seg button').forEach(b => b.addEventListener('click', () => {
+    state.farm = b.dataset.farm;
+    document.querySelectorAll('.seg button').forEach(x => x.setAttribute('aria-pressed', String(x === b)));
+    render();
+  }));
+  document.getElementById('month').addEventListener('change', e => { state.month = +e.target.value; render(); });
+  if (window.matchMedia) window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', () => window.Chart && renderCharts());
+  if (window.Chart) Chart.defaults.font.family = 'Inter, system-ui, sans-serif';
+  render();
+})();
+</script>
+</body>
+</html>
