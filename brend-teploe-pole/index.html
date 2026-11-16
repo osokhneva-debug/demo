@@ -1,0 +1,381 @@
+<!doctype html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex, nofollow">
+<meta name="theme-color" content="#f7f2e9">
+<title>«Тёплое поле» - каши, гранола и крупы</title>
+<meta name="description" content="Демо сайта продуктового бренда: линейки и карточки товаров, о качестве, рецепты, где купить, контакты и кабинет управления. Бренд вымышленный.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,700;9..144,800&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:#f7f2e9; --card:#fff; --ink:#231f1a; --muted:#6b6358; --line:#e6dccd;
+  --green:#2f6b3a; --green-soft:#e2eedf; --honey:#d99a2b; --honey-soft:#f8ead0; --berry:#a8344a; --berry-soft:#f5dde2;
+  --r:20px;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+@media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}*{transition:none!important;animation:none!important}}
+body{margin:0;background:var(--bg);color:var(--ink);font:16px/1.6 Inter,system-ui,sans-serif;-webkit-font-smoothing:antialiased}
+a{color:inherit}
+.wrap{max-width:1160px;margin:0 auto;padding:0 20px}
+.demo-bar{background:var(--ink);color:#f7f2e9;font-size:13px;text-align:center;padding:8px 16px}
+header.top{position:sticky;top:0;z-index:20;background:rgba(247,242,233,.94);backdrop-filter:blur(8px);border-bottom:1px solid var(--line)}
+header.top .wrap{display:flex;align-items:center;justify-content:space-between;gap:16px;min-height:64px}
+.logo{display:flex;align-items:center;gap:10px;font-family:Fraunces,serif;font-weight:800;font-size:22px;text-decoration:none}
+.logo i{width:34px;height:34px;border-radius:50%;background:var(--honey);display:grid;place-items:center;font-style:normal;color:#fff;font-size:18px}
+nav.main{display:flex;gap:4px;flex-wrap:wrap}
+nav.main a{text-decoration:none;font-weight:500;font-size:15px;padding:8px 12px;border-radius:10px;color:var(--muted)}
+nav.main a[aria-current="page"]{background:var(--green-soft);color:var(--green)}
+nav.main a:hover{color:var(--ink)}
+nav.main a:focus-visible,.btn:focus-visible,button:focus-visible,input:focus-visible,select:focus-visible,textarea:focus-visible{outline:3px solid var(--honey);outline-offset:2px}
+.menu-btn{display:none;border:1px solid var(--line);background:#fff;border-radius:10px;padding:8px 12px;font:inherit;font-weight:600}
+h1,h2,h3{font-family:Fraunces,serif;letter-spacing:-.02em;line-height:1.1;text-wrap:balance}
+h1{font-size:clamp(36px,6vw,64px);margin:0 0 16px}
+h2{font-size:clamp(28px,4vw,42px);margin:0 0 14px}
+h3{font-size:22px;margin:0 0 8px}
+.lead{font-size:18px;color:var(--muted);max-width:620px;margin:0 0 24px}
+.btn{display:inline-flex;align-items:center;gap:8px;border:0;border-radius:14px;padding:14px 22px;font:600 16px Inter,sans-serif;cursor:pointer;text-decoration:none;transition:transform .25s,box-shadow .25s}
+.btn.primary{background:var(--green);color:#fff;box-shadow:0 6px 18px rgba(47,107,58,.25)}
+.btn.ghost{background:#fff;border:1px solid var(--line);color:var(--ink)}
+.btn:hover{transform:translateY(-2px)}
+section{padding:56px 0}
+.view{display:none}
+.view.on{display:block;animation:fade .4s ease}
+@keyframes fade{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:none}}
+.hero{display:grid;grid-template-columns:1.1fr 1fr;gap:40px;align-items:center;padding:56px 0 40px}
+.packs{position:relative;height:420px}
+.pack{position:absolute;bottom:0;width:150px;border-radius:14px 14px 10px 10px;box-shadow:0 18px 40px rgba(35,31,26,.18);display:flex;flex-direction:column;justify-content:flex-end;padding:14px;color:#fff;transition:transform .4s}
+.pack b{font-family:Fraunces,serif;font-size:19px;line-height:1.1}
+.pack small{opacity:.9;font-size:12px}
+.pack::before{content:"";position:absolute;top:14px;left:14px;right:14px;height:60px;border-radius:50%;background:rgba(255,255,255,.18)}
+.pack .tag{position:absolute;top:18px;left:0;right:0;text-align:center;font-family:Fraunces,serif;font-weight:800;font-size:13px;letter-spacing:.04em}
+.packs:hover .pack{transform:translateY(-6px)}
+.strip{display:grid;grid-template-columns:repeat(4,1fr);gap:16px;margin-top:8px}
+.stat{background:#fff;border:1px solid var(--line);border-radius:var(--r);padding:18px}
+.stat b{display:block;font-family:Fraunces,serif;font-size:32px;color:var(--green)}
+.stat span{color:var(--muted);font-size:14px}
+.grid3{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
+.card{background:var(--card);border:1px solid var(--line);border-radius:var(--r);padding:22px;transition:transform .3s,box-shadow .3s}
+.card:hover{transform:translateY(-4px);box-shadow:0 14px 36px rgba(35,31,26,.08)}
+.line-card{cursor:pointer;text-align:left;font:inherit;color:inherit;width:100%}
+.swatch{height:120px;border-radius:14px;margin-bottom:14px;display:flex;align-items:flex-end;gap:8px;padding:12px}
+.mini{width:42px;border-radius:8px 8px 6px 6px;box-shadow:0 6px 14px rgba(0,0,0,.15)}
+.muted{color:var(--muted)}
+.chips{display:flex;gap:8px;flex-wrap:wrap;margin:0 0 20px}
+.chip{border:1px solid var(--line);background:#fff;border-radius:999px;padding:8px 14px;font:500 14px Inter,sans-serif;cursor:pointer}
+.chip[aria-pressed="true"]{background:var(--ink);color:#fff;border-color:var(--ink)}
+.products{display:grid;grid-template-columns:repeat(4,1fr);gap:16px}
+.prod{background:#fff;border:1px solid var(--line);border-radius:18px;overflow:hidden;cursor:pointer;text-align:left;font:inherit;color:inherit;padding:0;transition:transform .3s,box-shadow .3s}
+.prod:hover{transform:translateY(-4px);box-shadow:0 14px 30px rgba(35,31,26,.1)}
+.prod .ph{height:150px;display:grid;place-items:center}
+.prod .ph i{width:70px;height:104px;border-radius:10px 10px 8px 8px;box-shadow:0 10px 22px rgba(0,0,0,.18)}
+.prod .t{padding:14px}
+.prod .t b{display:block;font-size:15px;line-height:1.3}
+.badge{display:inline-block;font-size:12px;font-weight:600;border-radius:999px;padding:2px 9px;margin-top:6px}
+.badge.new{background:var(--berry-soft);color:var(--berry)}
+.detail{display:none;margin-top:24px;background:#fff;border:1px solid var(--line);border-radius:var(--r);padding:24px;grid-template-columns:200px 1fr;gap:28px}
+.detail.on{display:grid}
+.detail .big{height:240px;border-radius:16px;display:grid;place-items:center}
+.detail .big i{width:110px;height:164px;border-radius:12px;box-shadow:0 14px 30px rgba(0,0,0,.2)}
+.nutr{display:grid;grid-template-columns:repeat(4,1fr);gap:10px;margin:14px 0}
+.nutr div{background:var(--bg);border-radius:12px;padding:10px;text-align:center}
+.nutr b{display:block;font-family:Fraunces,serif;font-size:22px}
+.nutr span{font-size:12px;color:var(--muted)}
+.bar{height:10px;border-radius:99px;background:var(--line);overflow:hidden;margin:6px 0 14px}
+.bar i{display:block;height:100%;background:var(--green);border-radius:99px;width:0;transition:width 1.2s ease}
+.steps{display:grid;grid-template-columns:repeat(4,1fr);gap:16px;counter-reset:s}
+.steps .card{counter-increment:s;position:relative;padding-top:46px}
+.steps .card::before{content:counter(s);position:absolute;top:16px;left:22px;width:26px;height:26px;border-radius:50%;background:var(--honey);color:#fff;font-weight:700;display:grid;place-items:center;font-size:14px}
+.recipe{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
+.recipe .img{height:150px;border-radius:14px;margin-bottom:12px;display:grid;place-items:center;font-size:46px}
+.meta{display:flex;gap:12px;font-size:13px;color:var(--muted);margin-top:8px}
+.shops{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
+.shop{display:flex;align-items:center;justify-content:space-between;gap:12px;background:#fff;border:1px solid var(--line);border-radius:16px;padding:18px;text-decoration:none}
+.shop b{font-size:17px}
+.shop span{font-size:13px;color:var(--muted)}
+.shop em{font-style:normal;font-weight:600;color:var(--green)}
+form.contact{display:grid;gap:12px;max-width:520px}
+label{font-weight:600;font-size:14px;display:grid;gap:6px}
+input,select,textarea{font:inherit;border:1px solid var(--line);border-radius:12px;padding:12px;background:#fff;color:var(--ink)}
+.ok{display:none;background:var(--green-soft);color:var(--green);border-radius:12px;padding:12px;font-weight:600}
+.cms{display:grid;grid-template-columns:240px 1fr;border:1px solid var(--line);border-radius:var(--r);overflow:hidden;background:#fff}
+.cms aside{background:#2a2621;color:#e9e2d6;padding:18px;display:grid;align-content:start;gap:4px}
+.cms aside b{font-family:Fraunces,serif;font-size:18px;margin-bottom:10px}
+.cms aside button{all:unset;cursor:pointer;padding:9px 12px;border-radius:10px;font-size:14px}
+.cms aside button[aria-pressed="true"]{background:rgba(255,255,255,.12)}
+.cms .pane{padding:22px;display:grid;gap:14px}
+.cms table{width:100%;border-collapse:collapse;font-size:14px}
+.cms td,.cms th{text-align:left;padding:9px 6px;border-bottom:1px solid var(--line)}
+.row2{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+.offer{background:var(--ink);color:#f7f2e9;border-radius:var(--r);padding:28px;display:grid;grid-template-columns:1.2fr 1fr;gap:24px;align-items:center}
+.offer h2{color:#fff}
+.offer ul{margin:0;padding-left:20px;color:#d9d0c2}
+footer{border-top:1px solid var(--line);padding:28px 0 40px;color:var(--muted);font-size:14px}
+@media (max-width:900px){
+  .hero,.offer,.detail.on,.cms{grid-template-columns:1fr}
+  .packs{height:300px}
+  .pack{width:110px}
+  .grid3,.recipe,.shops{grid-template-columns:1fr}
+  .products{grid-template-columns:repeat(2,1fr)}
+  .strip,.steps,.nutr{grid-template-columns:repeat(2,1fr)}
+  .menu-btn{display:block}
+  nav.main{display:none;position:absolute;top:64px;left:0;right:0;background:var(--bg);border-bottom:1px solid var(--line);padding:10px 16px;flex-direction:column}
+  nav.main.open{display:flex}
+  .btn{width:100%;justify-content:center}
+  .row2{grid-template-columns:1fr}
+}
+</style>
+</head>
+<body>
+<div class="demo-bar">Демо под заказ Kwork: бренд «Тёплое поле», товары и магазины вымышленные. Разделы переключаются в меню, как страницы будущего сайта.</div>
+<header class="top">
+  <div class="wrap">
+    <a class="logo" href="#home"><i>✿</i>Тёплое поле</a>
+    <button class="menu-btn" aria-expanded="false" aria-controls="nav">Меню</button>
+    <nav class="main" id="nav">
+      <a href="#home">Главная</a>
+      <a href="#products">Продукция</a>
+      <a href="#quality">О качестве</a>
+      <a href="#recipes">Рецепты</a>
+      <a href="#where">Где купить</a>
+      <a href="#contacts">Контакты</a>
+      <a href="#admin">Кабинет</a>
+    </nav>
+  </div>
+</header>
+
+<main>
+<!-- Главная -->
+<div class="view" id="v-home">
+  <div class="wrap hero">
+    <div>
+      <p class="muted" style="font-weight:600;letter-spacing:.06em;text-transform:uppercase;font-size:13px;margin:0 0 10px">Каши, гранола и крупы из Алтая</p>
+      <h1>Завтрак, который готовится за 3 минуты и не стыдно за состав</h1>
+      <p class="lead">Цельные злаки, ягоды и мёд без сахарного сиропа. Три линейки для дома, офиса и дороги.</p>
+      <div style="display:flex;gap:12px;flex-wrap:wrap">
+        <a class="btn primary" href="#products">Смотреть продукцию</a>
+        <a class="btn ghost" href="#where">Где купить</a>
+      </div>
+    </div>
+    <div class="packs" aria-label="Упаковки бренда">
+      <div class="pack" style="left:2%;height:250px;background:#2f6b3a"><span class="tag">ТЁПЛОЕ ПОЛЕ</span><b>Овсяная с черникой</b><small>Каша · 6 порций</small></div>
+      <div class="pack" style="left:31%;height:310px;background:#d99a2b;z-index:2"><span class="tag">ТЁПЛОЕ ПОЛЕ</span><b>Гранола мёд и орехи</b><small>350 г</small></div>
+      <div class="pack" style="left:60%;height:270px;background:#a8344a"><span class="tag">ТЁПЛОЕ ПОЛЕ</span><b>Ягодный микс</b><small>Новинка · 300 г</small></div>
+    </div>
+  </div>
+  <div class="wrap">
+    <div class="strip">
+      <div class="stat"><b data-count="27">0</b><span>продуктов в трёх линейках</span></div>
+      <div class="stat"><b data-count="0" data-suffix=" г">0</b><span>добавленного сахара в кашах</span></div>
+      <div class="stat"><b data-count="12" data-suffix=" лет">0</b><span>собираем зерно у одних полей</span></div>
+      <div class="stat"><b data-count="9">0</b><span>магазинов и маркетплейсов</span></div>
+    </div>
+  </div>
+  <section><div class="wrap">
+    <h2>Линейки бренда</h2>
+    <div class="grid3" id="lines"></div>
+  </div></section>
+  <section style="padding-top:0"><div class="wrap">
+    <div class="card" style="display:flex;justify-content:space-between;align-items:center;gap:20px;flex-wrap:wrap;background:var(--honey-soft);border-color:transparent">
+      <div><h3>Новинка: ягодный микс без сахара</h3><p class="muted" style="margin:0">Черника, клюква и брусника с алтайских болот, сушка при 40 °C.</p></div>
+      <a class="btn primary" href="#products" data-open="berry">Подробнее</a>
+    </div>
+  </div></section>
+</div>
+
+<!-- Продукция -->
+<div class="view" id="v-products"><section><div class="wrap">
+  <h2>Продукция</h2>
+  <p class="lead">Выберите линейку, затем товар: откроется карточка с составом и пищевой ценностью.</p>
+  <div class="chips" id="chips" role="group" aria-label="Линейки"></div>
+  <div class="products" id="grid"></div>
+  <div class="detail" id="detail" aria-live="polite"></div>
+</div></section></div>
+
+<!-- О качестве -->
+<div class="view" id="v-quality"><section><div class="wrap">
+  <h2>О качестве</h2>
+  <p class="lead">Меньше слов, больше цифр: что происходит с зерном от поля до пачки.</p>
+  <div class="steps">
+    <div class="card"><h3>Поле</h3><p class="muted">Овёс и гречиха с 1 400 га у партнёров в Алтайском крае, без десикации.</p></div>
+    <div class="card"><h3>Очистка</h3><p class="muted">Три ступени очистки и оптический сортировщик убирают 99,8% примесей.</p></div>
+    <div class="card"><h3>Хлопья</h3><p class="muted">Пропариваем и плющим так, чтобы каша готовилась за 3 минуты без варки.</p></div>
+    <div class="card"><h3>Упаковка</h3><p class="muted">Дой-пак с зип-замком: хлопья не впитывают влагу 12 месяцев.</p></div>
+  </div>
+  <div class="grid3" style="margin-top:28px">
+    <div class="card"><h3>Состав</h3><p class="muted" style="margin:0">Цельные злаки в каше</p><div class="bar"><i data-w="86"></i></div><p class="muted" style="margin:0">Ягоды и фрукты</p><div class="bar"><i data-w="11" style="background:var(--berry)"></i></div><p class="muted" style="margin:0">Мёд и специи</p><div class="bar"><i data-w="3" style="background:var(--honey)"></i></div></div>
+    <div class="card"><h3>Лаборатория</h3><p class="muted">Каждая партия проходит проверку на влажность, микотоксины и тяжёлые металлы. Протоколы прикладываем к поставке.</p></div>
+    <div class="card"><h3>Сертификаты</h3><p class="muted">Декларации ЕАЭС, ISO 22000 на производстве, маркировка «Честный знак» для всей линейки.</p></div>
+  </div>
+</div></section></div>
+
+<!-- Рецепты -->
+<div class="view" id="v-recipes"><section><div class="wrap">
+  <h2>Рецепты</h2>
+  <p class="lead">Рецепты привязаны к товарам: из карточки продукта видно, что из него приготовить.</p>
+  <div class="recipe" id="recipes"></div>
+</div></section></div>
+
+<!-- Где купить -->
+<div class="view" id="v-where"><section><div class="wrap">
+  <h2>Где купить</h2>
+  <p class="lead">Кнопки ведут на страницу бренда на площадке. Список магазинов меняется в кабинете.</p>
+  <div class="shops" id="shops"></div>
+</div></section></div>
+
+<!-- Контакты -->
+<div class="view" id="v-contacts"><section><div class="wrap">
+  <h2>Контакты</h2>
+  <div class="grid3" style="grid-template-columns:1fr 1fr">
+    <div>
+      <p><b>Для покупателей:</b> вопросы о составе и качестве</p>
+      <p><b>Для сетей и дистрибьюторов:</b> прайс и условия поставки</p>
+      <p class="muted">Барнаул, ул. Примерная, 1 (адрес демо) · +7 900 000-00-00 (номер демо)</p>
+    </div>
+    <form class="contact" id="form">
+      <label>Имя<input required name="n" autocomplete="name"></label>
+      <label>Тема<select name="t"><option>Вопрос о продукте</option><option>Оптовые поставки</option><option>Сотрудничество</option></select></label>
+      <label>Сообщение<textarea rows="4" name="m" required></textarea></label>
+      <button class="btn primary" type="submit">Отправить</button>
+      <div class="ok" id="ok" role="status">Готово: в рабочем сайте заявка придёт вам на почту или в Telegram.</div>
+    </form>
+  </div>
+</div></section></div>
+
+<!-- Кабинет -->
+<div class="view" id="v-admin"><section><div class="wrap">
+  <h2>Кабинет управления</h2>
+  <p class="lead">Так вы будете менять сайт без программиста. Добавьте товар ниже: он сразу появится в разделе «Продукция».</p>
+  <div class="cms">
+    <aside>
+      <b>Тёплое поле · кабинет</b>
+      <button aria-pressed="true">Товары</button>
+      <button>Линейки</button>
+      <button>Рецепты</button>
+      <button>Новости</button>
+      <button>Где купить</button>
+      <button>Страницы и разделы</button>
+    </aside>
+    <div class="pane">
+      <form id="add" class="row2">
+        <label>Название<input name="name" required value="Гречневая каша с белыми грибами"></label>
+        <label>Линейка<select name="line" id="add-line"></select></label>
+        <label>Вес<input name="w" value="250 г"></label>
+        <label>Цвет упаковки<select name="c"><option value="#6b4f2a">Коричневый</option><option value="#2f6b3a">Зелёный</option><option value="#a8344a">Ягодный</option></select></label>
+        <label style="grid-column:1/-1">Описание<textarea name="d" rows="2">Ядрица с сушёными белыми грибами и луком, готовится за 5 минут.</textarea></label>
+        <div style="grid-column:1/-1;display:flex;gap:10px;flex-wrap:wrap"><button class="btn primary" type="submit">Опубликовать товар</button><span class="ok" id="add-ok" role="status" style="align-self:center">Товар на сайте: откройте «Продукция».</span></div>
+      </form>
+      <table aria-label="Товары"><thead><tr><th>Товар</th><th>Линейка</th><th>Статус</th></tr></thead><tbody id="tbl"></tbody></table>
+    </div>
+  </div>
+
+  <div class="offer" style="margin-top:40px">
+    <div>
+      <h2>Что будет в рабочем сайте</h2>
+      <ul>
+        <li>страницы из вашего ТЗ: главная, линейки и карточки товаров, о качестве, рецепты, где купить, контакты;</li>
+        <li>кабинет: товары, рецепты, новости, магазины и новые разделы добавляете сами;</li>
+        <li>фото ваших упаковок и фирменные цвета вместо нарисованных пачек;</li>
+        <li>SEO-основа: адрес, заголовок и описание у каждой страницы, карта сайта, разметка товаров и рецептов;</li>
+        <li>адаптив под телефоны, планшеты и популярные браузеры, лёгкая анимация.</li>
+      </ul>
+    </div>
+    <div>
+      <p style="margin:0 0 8px;color:#d9d0c2">Этапы</p>
+      <p style="margin:0 0 6px"><b>1.</b> Дизайн главной и карточки товара на ваших материалах, 4 дня</p>
+      <p style="margin:0 0 6px"><b>2.</b> Все страницы и кабинет, 7 дней</p>
+      <p style="margin:0"><b>3.</b> Наполнение, SEO и запуск на вашем домене, 3 дня</p>
+    </div>
+  </div>
+</div></section></div>
+</main>
+
+<footer><div class="wrap">Демо собрано под заказ «Создание сайта-визитки продуктового бренда». Бренд, товары, цифры и магазины вымышленные.</div></footer>
+
+<script>
+const LINES=[
+ {id:"kasha",name:"Каши за 3 минуты",desc:"Хлопья с ягодами и специями, заливаются кипятком.",bg:"var(--green-soft)",cols:["#2f6b3a","#3f7f4a","#5a8f5e"]},
+ {id:"granola",name:"Гранола",desc:"Запечённые хлопья с мёдом и орехами.",bg:"var(--honey-soft)",cols:["#d99a2b","#c4851d","#e3ae4e"]},
+ {id:"krupy",name:"Крупы",desc:"Гречка, овёс и полба для домашней кухни.",bg:"#efe6d8",cols:["#6b4f2a","#8a6a3c","#a3824f"]}
+];
+let PRODUCTS=[
+ {id:"oat",line:"kasha",name:"Овсяная каша с черникой",w:"6 порций по 40 г",c:"#2f6b3a",d:"Овсяные хлопья, сушёная черника, корица. Без сахара.",k:[358,11,6,62]},
+ {id:"buck",line:"kasha",name:"Гречневая с яблоком",w:"6 порций по 40 г",c:"#3f7f4a",d:"Гречневые хлопья, яблоко, ваниль.",k:[341,12,3,66]},
+ {id:"berry",line:"kasha",name:"Ягодный микс",w:"300 г",c:"#a8344a",d:"Черника, клюква и брусника, сушка при 40 °C.",k:[312,4,2,70],isNew:true},
+ {id:"g1",line:"granola",name:"Гранола мёд и орехи",w:"350 г",c:"#d99a2b",d:"Овёс, мёд, фундук и миндаль, запечено небольшими партиями.",k:[452,10,18,58]},
+ {id:"g2",line:"granola",name:"Гранола шоколад и вишня",w:"350 г",c:"#7a3b2a",d:"Овёс, какао, вишня, тёмный шоколад 70%.",k:[461,9,19,60]},
+ {id:"k1",line:"krupy",name:"Гречка ядрица",w:"800 г",c:"#6b4f2a",d:"Алтайская гречка первого сорта.",k:[313,13,3,62]},
+ {id:"k2",line:"krupy",name:"Полба цельная",w:"700 г",c:"#8a6a3c",d:"Древний сорт пшеницы, варится 25 минут.",k:[338,15,2,64]},
+ {id:"k3",line:"krupy",name:"Овсянка долгой варки",w:"900 г",c:"#a3824f",d:"Цельные хлопья толщиной 0,8 мм.",k:[352,12,6,60]}
+];
+const RECIPES=[
+ {e:"🫐",t:"Овсяноблин с черникой",p:"oat",m:"10 минут · 2 порции",bg:"var(--berry-soft)"},
+ {e:"🍯",t:"Йогурт-боул с гранолой",p:"g1",m:"3 минуты · 1 порция",bg:"var(--honey-soft)"},
+ {e:"🥘",t:"Гречка по-купечески",p:"k1",m:"35 минут · 4 порции",bg:"#efe6d8"},
+ {e:"🥣",t:"Ночная овсянка в банке",p:"k3",m:"5 минут вечером · 1 порция",bg:"var(--green-soft)"},
+ {e:"🍪",t:"Печенье из гранолы",p:"g2",m:"25 минут · 12 штук",bg:"#f1e1d8"},
+ {e:"🥗",t:"Тёплый салат с полбой",p:"k2",m:"30 минут · 3 порции",bg:"#e9efe0"}
+];
+const SHOPS=[["Ozon","маркетплейс","доставка за 1-2 дня"],["Wildberries","маркетплейс","пункты выдачи"],["Яндекс Маркет","маркетплейс","экспресс-доставка"],["Перекрёсток","сеть магазинов","120 магазинов"],["ВкусВилл","сеть магазинов","линейка каш"],["Фирменный магазин","Барнаул","вся продукция"]];
+const $=s=>document.querySelector(s);
+let curLine="all";
+
+function renderLines(){
+ $("#lines").innerHTML=LINES.map(l=>`<button class="card line-card" data-line="${l.id}"><div class="swatch" style="background:${l.bg}">${l.cols.map((c,i)=>`<i class="mini" style="background:${c};height:${60+i*14}px"></i>`).join("")}</div><h3>${l.name}</h3><p class="muted" style="margin:0">${l.desc}</p><p style="margin:10px 0 0;font-weight:600;color:var(--green)">${PRODUCTS.filter(p=>p.line===l.id).length} товаров →</p></button>`).join("");
+ $("#lines").querySelectorAll("[data-line]").forEach(b=>b.onclick=()=>{curLine=b.dataset.line;location.hash="products"});
+}
+function renderChips(){
+ const all=[{id:"all",name:"Все"}].concat(LINES);
+ $("#chips").innerHTML=all.map(l=>`<button class="chip" aria-pressed="${l.id===curLine}" data-l="${l.id}">${l.name}</button>`).join("");
+ $("#chips").querySelectorAll("button").forEach(b=>b.onclick=()=>{curLine=b.dataset.l;renderChips();renderGrid()});
+}
+function renderGrid(){
+ const list=PRODUCTS.filter(p=>curLine==="all"||p.line===curLine);
+ $("#grid").innerHTML=list.map(p=>`<button class="prod" data-p="${p.id}"><div class="ph" style="background:${LINES.find(l=>l.id===p.line).bg}"><i style="background:${p.c}"></i></div><div class="t"><b>${p.name}</b><span class="muted" style="font-size:13px">${p.w}</span>${p.isNew?'<br><span class="badge new">Новинка</span>':""}</div></button>`).join("");
+ $("#grid").querySelectorAll(".prod").forEach(b=>b.onclick=()=>openProduct(b.dataset.p));
+}
+function openProduct(id){
+ const p=PRODUCTS.find(x=>x.id===id); if(!p) return;
+ const r=RECIPES.filter(x=>x.p===id);
+ const L=LINES.find(l=>l.id===p.line);
+ $("#detail").innerHTML=`<div class="big" style="background:${L.bg}"><i style="background:${p.c}"></i></div><div><p class="muted" style="margin:0 0 4px">${L.name}</p><h3 style="font-size:28px">${p.name}</h3><p>${p.d}</p><div class="nutr"><div><b>${p.k[0]}</b><span>ккал</span></div><div><b>${p.k[1]} г</b><span>белки</span></div><div><b>${p.k[2]} г</b><span>жиры</span></div><div><b>${p.k[3]} г</b><span>углеводы</span></div></div><p class="muted" style="margin:0 0 12px">На 100 г продукта · ${p.w}</p>${r.length?`<p style="margin:0 0 12px"><b>Рецепт:</b> ${r.map(x=>x.t).join(", ")}</p>`:""}<a class="btn primary" href="#where">Где купить</a></div>`;
+ $("#detail").classList.add("on");
+ $("#detail").scrollIntoView({behavior:matchMedia("(prefers-reduced-motion:reduce)").matches?"auto":"smooth",block:"nearest"});
+}
+function renderRecipes(){
+ $("#recipes").innerHTML=RECIPES.map(r=>{const p=PRODUCTS.find(x=>x.id===r.p);return `<div class="card"><div class="img" style="background:${r.bg}" aria-hidden="true">${r.e}</div><h3>${r.t}</h3><p class="muted" style="margin:0">Из продукта: ${p.name}</p><div class="meta"><span>${r.m}</span></div></div>`}).join("");
+}
+function renderShops(){
+ $("#shops").innerHTML=SHOPS.map(s=>`<a class="shop" href="#where" onclick="return false"><div><b>${s[0]}</b><br><span>${s[1]} · ${s[2]}</span></div><em>Перейти →</em></a>`).join("");
+}
+function renderAdmin(){
+ $("#add-line").innerHTML=LINES.map(l=>`<option value="${l.id}">${l.name}</option>`).join("");
+ $("#tbl").innerHTML=PRODUCTS.slice().reverse().map(p=>`<tr><td>${p.name}</td><td>${LINES.find(l=>l.id===p.line).name}</td><td>${p.isNew?"Новинка":"Опубликован"}</td></tr>`).join("");
+}
+$("#add").onsubmit=e=>{e.preventDefault();const f=new FormData(e.target);const id="u"+Date.now();PRODUCTS.push({id,line:f.get("line"),name:f.get("name"),w:f.get("w"),c:f.get("c"),d:f.get("d"),k:[330,12,3,64],isNew:true});renderAdmin();renderLines();renderGrid();$("#add-ok").style.display="inline-block"};
+$("#form").onsubmit=e=>{e.preventDefault();$("#ok").style.display="block"};
+document.querySelectorAll("[data-open]").forEach(a=>a.addEventListener("click",()=>setTimeout(()=>openProduct(a.dataset.open),50)));
+
+const counted=new Set();
+function animate(view){
+ view.querySelectorAll("[data-count]").forEach(el=>{if(counted.has(el))return;counted.add(el);const n=+el.dataset.count,suf=el.dataset.suffix||"";let i=0;const step=Math.max(1,Math.ceil(n/35));const t=setInterval(()=>{i=Math.min(n,i+step);el.textContent=i+suf;if(i>=n)clearInterval(t)},25);if(n===0)el.textContent="0"+suf});
+ view.querySelectorAll(".bar i").forEach(b=>setTimeout(()=>b.style.width=b.dataset.w+"%",60));
+}
+function route(){
+ const h=(location.hash||"#home").slice(1); const v=document.getElementById("v-"+h)?h:"home";
+ document.querySelectorAll(".view").forEach(x=>x.classList.toggle("on",x.id==="v-"+v));
+ document.querySelectorAll("nav.main a").forEach(a=>{if(a.getAttribute("href")==="#"+v)a.setAttribute("aria-current","page");else a.removeAttribute("aria-current")});
+ if(v==="products"){renderChips();renderGrid()}
+ $("#nav").classList.remove("open");$(".menu-btn").setAttribute("aria-expanded","false");
+ window.scrollTo(0,0); animate(document.getElementById("v-"+v));
+}
+$(".menu-btn").onclick=()=>{const o=$("#nav").classList.toggle("open");$(".menu-btn").setAttribute("aria-expanded",o)};
+window.addEventListener("hashchange",route);
+renderLines();renderRecipes();renderShops();renderAdmin();route();
+</script>
+</body>
+</html>
