@@ -1,0 +1,452 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex, nofollow">
+<meta name="theme-color" content="#14213d">
+<title>Northline - business services for growing teams</title>
+<meta name="description" content="Demo of a multi-page website for a service company: services, service pages with order forms, pricing, about, case studies, FAQ and contacts. The company is fictional.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,600&family=Manrope:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:#f7f4ee; --paper:#fffdf9; --ink:#14213d; --ink2:#3b4660; --muted:#6b7385; --line:#e3ddd2;
+  --accent:#e0603a; --accent-d:#b9472a; --accent-soft:#fbe5dc; --sage:#dfe8df; --sky:#e2e8f3; --sand:#f1e7d3;
+  --r:18px;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth;touch-action:manipulation}
+@media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}*{transition:none!important;animation:none!important}}
+body{margin:0;background:var(--bg);color:var(--ink);font:16px/1.6 Manrope,system-ui,sans-serif;-webkit-font-smoothing:antialiased}
+a{color:inherit}
+h1,h2,h3{font-family:Fraunces,Georgia,serif;font-weight:600;line-height:1.12;margin:0 0 .5em;letter-spacing:-.01em}
+h1{font-size:clamp(38px,5.6vw,66px)}
+h2{font-size:clamp(28px,3.4vw,42px)}
+h3{font-size:22px}
+p{margin:0 0 1em}
+.skip{position:absolute;left:-9999px}.skip:focus{left:16px;top:8px;z-index:99;background:var(--ink);color:#fff;padding:8px 12px;border-radius:8px}
+:focus-visible{outline:3px solid var(--accent);outline-offset:2px;border-radius:6px}
+.wrap{max-width:1160px;margin:0 auto;padding:0 20px}
+.demo-bar{background:var(--ink);color:#d6dbe6;font-size:13px;text-align:center;padding:8px 16px}
+header.top{position:sticky;top:0;z-index:20;background:rgba(247,244,238,.92);backdrop-filter:blur(10px);border-bottom:1px solid var(--line)}
+header.top .wrap{display:flex;align-items:center;justify-content:space-between;gap:16px;min-height:68px}
+.logo{display:flex;align-items:center;gap:10px;text-decoration:none;font-family:Fraunces,serif;font-size:22px;font-weight:600}
+.logo i{width:28px;height:28px;border-radius:8px;background:var(--ink);position:relative;display:inline-block}
+.logo i:after{content:"";position:absolute;left:6px;right:6px;top:13px;height:3px;background:var(--accent);border-radius:2px}
+nav.main{display:flex;gap:4px;align-items:center}
+nav.main a{text-decoration:none;padding:8px 12px;border-radius:10px;font-weight:500;color:var(--ink2);font-size:15px}
+nav.main a:hover{background:var(--paper)}
+nav.main a[aria-current=page]{color:var(--ink);background:var(--paper);box-shadow:inset 0 0 0 1px var(--line)}
+.menu-btn{display:none;background:none;border:1px solid var(--line);border-radius:10px;padding:10px 14px;font:inherit;font-weight:600;color:var(--ink);min-height:44px}
+.btn{display:inline-flex;align-items:center;gap:8px;background:var(--accent);color:#fff;text-decoration:none;border:0;border-radius:12px;padding:13px 20px;font:inherit;font-weight:700;cursor:pointer;min-height:48px;transition:background .2s,transform .2s}
+.btn:hover{background:var(--accent-d);transform:translateY(-1px)}
+.btn.ghost{background:transparent;color:var(--ink);box-shadow:inset 0 0 0 1.5px var(--ink)}
+.btn.ghost:hover{background:var(--ink);color:#fff}
+.btn.sm{padding:9px 14px;min-height:40px;font-size:14px}
+.view{display:none;animation:fade .35s ease}
+.view.on{display:block}
+@keyframes fade{from{opacity:0;transform:translateY(6px)}to{opacity:1;transform:none}}
+section{padding:72px 0}
+.eyebrow{text-transform:uppercase;letter-spacing:.12em;font-size:12.5px;font-weight:700;color:var(--accent-d);margin-bottom:12px}
+.lead{font-size:19px;color:var(--ink2);max-width:600px}
+.hero{display:grid;grid-template-columns:1.1fr .9fr;gap:48px;align-items:center;padding:64px 0 56px}
+.hero-art{position:relative;aspect-ratio:1/1;max-width:460px;justify-self:end;width:100%}
+.panel{position:absolute;background:var(--paper);border-radius:var(--r);box-shadow:0 18px 40px rgba(20,33,61,.12);padding:18px}
+.panel small{color:var(--muted);font-size:12.5px;display:block}
+.panel b{font-size:26px;font-family:Fraunces,serif}
+.p1{left:0;top:6%;width:62%}
+.p2{right:0;top:34%;width:54%;background:var(--ink);color:#fff}.p2 small{color:#aeb7cb}
+.p3{left:10%;bottom:4%;width:64%}
+.bar{height:8px;border-radius:4px;background:var(--line);margin-top:10px;overflow:hidden}.bar span{display:block;height:100%;background:var(--accent);border-radius:4px}
+.blob{position:absolute;inset:12% 8% 10% 14%;border-radius:40% 60% 55% 45%;background:var(--sand)}
+.chips{display:flex;flex-wrap:wrap;gap:8px;margin-top:22px}
+.chip{background:var(--paper);border:1px solid var(--line);border-radius:999px;padding:6px 12px;font-size:14px;color:var(--ink2)}
+.logos{display:flex;flex-wrap:wrap;gap:28px;align-items:center;color:var(--muted);font-weight:700;letter-spacing:.06em;font-size:14px;padding:22px 0;border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
+.grid{display:grid;gap:20px}
+.g4{grid-template-columns:repeat(4,1fr)}.g3{grid-template-columns:repeat(3,1fr)}.g2{grid-template-columns:repeat(2,1fr)}
+.card{background:var(--paper);border:1px solid var(--line);border-radius:var(--r);padding:26px;display:flex;flex-direction:column;gap:6px;transition:transform .2s,box-shadow .2s}
+a.card{text-decoration:none}
+a.card:hover{transform:translateY(-3px);box-shadow:0 14px 30px rgba(20,33,61,.09)}
+.ico{width:46px;height:46px;border-radius:12px;display:grid;place-items:center;margin-bottom:10px}
+.card .more{margin-top:auto;padding-top:12px;font-weight:700;color:var(--accent-d);font-size:15px}
+.muted{color:var(--muted)}
+.steps{counter-reset:s}
+.step{position:relative;padding-left:56px}
+.step:before{counter-increment:s;content:counter(s);position:absolute;left:0;top:0;width:40px;height:40px;border-radius:50%;background:var(--ink);color:#fff;display:grid;place-items:center;font-weight:700}
+.band{background:var(--ink);color:#fff;border-radius:28px;padding:48px;display:grid;grid-template-columns:1.3fr .7fr;gap:28px;align-items:center}
+.band p{color:#c9d0de}
+.stat b{display:block;font-family:Fraunces,serif;font-size:44px;line-height:1}
+.stat span{color:var(--muted);font-size:14.5px}
+.page-head{padding:56px 0 8px}
+.crumbs{font-size:14px;color:var(--muted);margin-bottom:14px}.crumbs a{color:var(--muted)}
+.svc-layout{display:grid;grid-template-columns:1fr 420px;gap:40px;align-items:start;padding:24px 0 72px}
+.list{list-style:none;padding:0;margin:0 0 1.2em}.list li{padding:8px 0 8px 30px;position:relative;border-bottom:1px dashed var(--line)}
+.list li:before{content:"";position:absolute;left:2px;top:15px;width:14px;height:8px;border-left:2.5px solid var(--accent);border-bottom:2.5px solid var(--accent);transform:rotate(-45deg)}
+.pkgs{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin:12px 0 28px}
+.pkg{border:1px solid var(--line);border-radius:14px;padding:16px;background:var(--paper)}
+.pkg b{font-family:Fraunces,serif;font-size:24px;display:block}
+form.order{background:var(--paper);border:1px solid var(--line);border-radius:22px;padding:26px;position:sticky;top:90px;box-shadow:0 18px 40px rgba(20,33,61,.07)}
+.prog{display:flex;gap:6px;margin:4px 0 20px}.prog span{flex:1;height:5px;border-radius:3px;background:var(--line)}.prog span.on{background:var(--accent)}
+.fs{display:none}.fs.on{display:block}
+label{display:block;font-weight:600;font-size:14.5px;margin:14px 0 6px}
+input,select,textarea{width:100%;font:inherit;font-size:16px;padding:12px 14px;border:1.5px solid var(--line);border-radius:12px;background:#fff;color:var(--ink);min-height:48px}
+input:focus,select:focus,textarea:focus{border-color:var(--ink);outline:none}
+.opts{display:grid;gap:8px}
+.opt{display:flex;gap:12px;align-items:flex-start;border:1.5px solid var(--line);border-radius:12px;padding:12px 14px;cursor:pointer;font-weight:500;margin:0}
+.opt input{width:auto;min-height:0;margin-top:4px;accent-color:var(--accent)}
+.opt:has(input:checked){border-color:var(--accent);background:var(--accent-soft)}
+.opt small{display:block;color:var(--muted);font-weight:400}
+.form-nav{display:flex;justify-content:space-between;gap:10px;margin-top:20px}
+.total{display:flex;justify-content:space-between;align-items:baseline;margin-top:16px;padding-top:14px;border-top:1px solid var(--line)}
+.total b{font-family:Fraunces,serif;font-size:26px}
+.ok{display:none;text-align:center;padding:20px 0}.ok.on{display:block}
+.price-table{width:100%;border-collapse:collapse;background:var(--paper);border-radius:var(--r);overflow:hidden;border:1px solid var(--line)}
+.price-table th,.price-table td{padding:14px 18px;text-align:left;border-bottom:1px solid var(--line);font-size:15.5px}
+.price-table th{background:var(--sand);font-weight:700}
+.tier{position:relative}
+.tier.hl{background:var(--ink);color:#fff;border-color:var(--ink)}.tier.hl .muted{color:#b8c1d4}.tier.hl .list li{border-color:rgba(255,255,255,.15)}
+.tier .price{font-family:Fraunces,serif;font-size:44px;line-height:1;margin:8px 0}
+.tag{position:absolute;top:-12px;right:20px;background:var(--accent);color:#fff;font-size:12px;font-weight:700;padding:4px 10px;border-radius:999px}
+details{background:var(--paper);border:1px solid var(--line);border-radius:14px;padding:16px 20px;margin-bottom:10px}
+summary{cursor:pointer;font-weight:700;list-style:none;display:flex;justify-content:space-between;gap:12px}
+summary:after{content:"+";font-size:22px;line-height:1;color:var(--accent-d)}
+details[open] summary:after{content:"-"}
+details p{margin:12px 0 0;color:var(--ink2)}
+.case{display:grid;grid-template-columns:200px 1fr;gap:24px;align-items:center}
+.case .num{font-family:Fraunces,serif;font-size:46px;line-height:1}
+.ph{border:1.5px dashed var(--line);border-radius:var(--r);padding:24px;color:var(--muted);background:transparent}
+.map{border-radius:var(--r);min-height:300px;background:repeating-linear-gradient(0deg,transparent 0 38px,rgba(20,33,61,.06) 38px 40px),repeating-linear-gradient(90deg,transparent 0 38px,rgba(20,33,61,.06) 38px 40px),var(--sky);position:relative}
+.map:after{content:"";position:absolute;left:52%;top:44%;width:22px;height:22px;border-radius:50% 50% 50% 0;background:var(--accent);transform:rotate(-45deg)}
+footer{background:var(--ink);color:#c9d0de;padding:48px 0 36px;font-size:15px}
+footer .grid{grid-template-columns:1.4fr 1fr 1fr 1fr}
+footer a{text-decoration:none;display:block;padding:3px 0}
+footer h4{color:#fff;margin:0 0 10px;font-size:15px}
+.fine{border-top:1px solid rgba(255,255,255,.12);margin-top:32px;padding-top:18px;font-size:13.5px;color:#9aa4b9}
+.toast{position:fixed;left:50%;bottom:24px;transform:translateX(-50%) translateY(120px);background:var(--ink);color:#fff;padding:12px 18px;border-radius:12px;font-size:14.5px;transition:transform .3s;z-index:50;max-width:calc(100% - 32px)}
+.toast.on{transform:translateX(-50%) translateY(0)}
+@media (max-width:980px){
+  .hero,.svc-layout,.band{grid-template-columns:1fr}
+  .hero-art{justify-self:center;max-width:380px}
+  .g4{grid-template-columns:repeat(2,1fr)}.g3{grid-template-columns:1fr}
+  form.order{position:static}
+  footer .grid{grid-template-columns:1fr 1fr}
+}
+@media (max-width:760px){
+  .menu-btn{display:block}
+  nav.main{display:none;position:absolute;top:68px;left:0;right:0;background:var(--bg);border-bottom:1px solid var(--line);padding:10px 16px 16px;flex-direction:column;align-items:stretch}
+  nav.main.open{display:flex}
+  nav.main a{padding:12px}
+  section{padding:52px 0}
+  .g4,.g2,.pkgs{grid-template-columns:1fr}
+  .band{padding:30px 22px}
+  .case{grid-template-columns:1fr;gap:8px}
+  .price-table th,.price-table td{padding:10px 12px;font-size:14.5px}
+  .hide-m{display:none}
+}
+</style>
+</head>
+<body>
+<div class="demo-bar">Демо под заказ Kwork «Многостраничный сайт»: компания Northline и все цифры вымышленные. Страницы переключаются в меню, формы заказа работают по шагам.</div>
+<a class="skip" href="#main">Skip to content</a>
+<header class="top">
+  <div class="wrap">
+    <a class="logo" href="#home"><i aria-hidden="true"></i>Northline</a>
+    <button class="menu-btn" aria-expanded="false" aria-controls="nav">Menu</button>
+    <nav class="main" id="nav">
+      <a href="#services">Services</a>
+      <a href="#pricing">Pricing</a>
+      <a href="#cases">Case studies</a>
+      <a href="#about">About</a>
+      <a href="#faq">FAQ</a>
+      <a href="#contact">Contact</a>
+      <a class="btn sm" href="#order" style="color:#fff">Get a quote</a>
+    </nav>
+  </div>
+</header>
+
+<main id="main">
+
+<!-- HOME -->
+<div class="view" id="v-home">
+  <div class="wrap hero">
+    <div>
+      <p class="eyebrow">Back office for companies of 5 to 200 people</p>
+      <h1>Your accounting, HR and IT handled by one team</h1>
+      <p class="lead">Northline takes the routine work off your desk so you can sell and grow. Pick a service, send a short order form and get a fixed quote within one working day.</p>
+      <div style="display:flex;gap:12px;flex-wrap:wrap">
+        <a class="btn" href="#order">Get a quote in 2 minutes</a>
+        <a class="btn ghost" href="#services">See all services</a>
+      </div>
+      <div class="chips"><span class="chip">Fixed monthly price</span><span class="chip">Personal manager</span><span class="chip">Start in 5 days</span></div>
+    </div>
+    <div class="hero-art" aria-hidden="true">
+      <div class="blob"></div>
+      <div class="panel p1"><small>Payroll for October</small><b>48 employees</b><div class="bar"><span style="width:100%"></span></div><small style="margin-top:6px">Sent on time</small></div>
+      <div class="panel p2"><small>Open IT tickets</small><b>2</b><small>average response 14 min</small></div>
+      <div class="panel p3"><small>Monthly close</small><b>Day 4</b><div class="bar"><span style="width:72%"></span></div></div>
+    </div>
+  </div>
+  <div class="wrap"><div class="logos" aria-label="Client logos placeholder"><span>YOUR CLIENT</span><span>LOGOS</span><span>GO HERE</span><span class="hide-m">MAX 6</span><span class="hide-m">GRAYSCALE</span></div></div>
+
+  <section><div class="wrap">
+    <p class="eyebrow">Services</p>
+    <h2>Four services, one contract</h2>
+    <div class="grid g4" id="home-svcs" style="margin-top:28px"></div>
+  </div></section>
+
+  <section style="padding-top:0"><div class="wrap grid g2" style="align-items:center;gap:48px">
+    <div>
+      <p class="eyebrow">How it works</p>
+      <h2>From order form to first report in a week</h2>
+    </div>
+    <div class="grid steps" style="gap:22px">
+      <div class="step"><h3>Send the order form</h3><p class="muted">Three short steps: service, company size, contacts.</p></div>
+      <div class="step"><h3>Get a fixed quote</h3><p class="muted">Within one working day, with a start date.</p></div>
+      <div class="step"><h3>Meet your manager</h3><p class="muted">A 30-minute call to collect access and documents.</p></div>
+      <div class="step"><h3>We start</h3><p class="muted">First report on the agreed day, every month.</p></div>
+    </div>
+  </div></section>
+
+  <section style="padding-top:0"><div class="wrap grid g3" style="text-align:left">
+    <div class="stat"><b>340+</b><span>companies served since 2016</span></div>
+    <div class="stat"><b>1 day</b><span>to get a fixed quote</span></div>
+    <div class="stat"><b>96%</b><span>clients renew after the first year</span></div>
+  </div></section>
+
+  <section style="padding-top:0"><div class="wrap">
+    <div class="band">
+      <div><h2>Not sure which service you need?</h2><p>Tell us what takes too much of your time. We will suggest a package and a price, no obligation.</p></div>
+      <div><a class="btn" href="#order">Start the order form</a></div>
+    </div>
+  </div></section>
+</div>
+
+<!-- SERVICES -->
+<div class="view" id="v-services">
+  <div class="wrap page-head">
+    <div class="crumbs"><a href="#home">Home</a> / Services</div>
+    <h1>Services</h1>
+    <p class="lead">Each service has its own page with packages and an order form. You can combine any of them in one contract.</p>
+  </div>
+  <section style="padding-top:32px"><div class="wrap grid g2" id="svc-list"></div></section>
+</div>
+
+<!-- SERVICE PAGE (template) -->
+<div class="view" id="v-service">
+  <div class="wrap page-head">
+    <div class="crumbs"><a href="#home">Home</a> / <a href="#services">Services</a> / <span id="s-crumb"></span></div>
+    <p class="eyebrow" id="s-eyebrow"></p>
+    <h1 id="s-title"></h1>
+    <p class="lead" id="s-lead"></p>
+  </div>
+  <div class="wrap svc-layout">
+    <div>
+      <h2 style="font-size:28px">What is included</h2>
+      <ul class="list" id="s-list"></ul>
+      <h2 style="font-size:28px;margin-top:28px">Packages</h2>
+      <div class="pkgs" id="s-pkgs"></div>
+      <div class="ph">Client reviews for this service go here: we will move your real reviews from the current site.</div>
+    </div>
+    <form class="order" id="svc-form" novalidate></form>
+  </div>
+</div>
+
+<!-- ORDER (general form) -->
+<div class="view" id="v-order">
+  <div class="wrap page-head">
+    <div class="crumbs"><a href="#home">Home</a> / Get a quote</div>
+    <h1>Get a fixed quote</h1>
+    <p class="lead">Three short steps. We reply within one working day.</p>
+  </div>
+  <div class="wrap" style="max-width:640px;padding-bottom:72px"><form class="order" id="main-form" novalidate style="position:static"></form></div>
+</div>
+
+<!-- PRICING -->
+<div class="view" id="v-pricing">
+  <div class="wrap page-head">
+    <div class="crumbs"><a href="#home">Home</a> / Pricing</div>
+    <h1>Pricing</h1>
+    <p class="lead">Monthly prices without VAT. The final quote depends on the number of employees and transactions.</p>
+  </div>
+  <section style="padding-top:32px"><div class="wrap">
+    <div class="grid g3">
+      <div class="card tier"><h3>Start</h3><p class="muted">Up to 10 people</p><div class="price">$490</div><p class="muted">per month</p><ul class="list"><li>Bookkeeping</li><li>Payroll</li><li>Monthly report</li></ul><a class="btn ghost" href="#order">Choose Start</a></div>
+      <div class="card tier hl"><span class="tag">Most chosen</span><h3>Grow</h3><p class="muted">11 to 50 people</p><div class="price">$1,290</div><p class="muted">per month</p><ul class="list"><li>Everything in Start</li><li>HR documents</li><li>IT support, 8 hours</li><li>Personal manager</li></ul><a class="btn" href="#order">Choose Grow</a></div>
+      <div class="card tier"><h3>Scale</h3><p class="muted">51 to 200 people</p><div class="price">from $2,900</div><p class="muted">per month</p><ul class="list"><li>Everything in Grow</li><li>Unlimited IT tickets</li><li>Quarterly audit</li></ul><a class="btn ghost" href="#order">Request a quote</a></div>
+    </div>
+    <h2 style="font-size:28px;margin:56px 0 18px">Single services</h2>
+    <table class="price-table" id="price-rows"><thead><tr><th>Service</th><th>From</th><th class="hide-m">Unit</th></tr></thead><tbody></tbody></table>
+  </div></section>
+</div>
+
+<!-- CASES -->
+<div class="view" id="v-cases">
+  <div class="wrap page-head">
+    <div class="crumbs"><a href="#home">Home</a> / Case studies</div>
+    <h1>Case studies</h1>
+    <p class="lead">Short stories with one number each. On the real site these will be your projects.</p>
+  </div>
+  <section style="padding-top:32px"><div class="wrap grid" style="gap:16px">
+    <div class="card case"><div class="num">-38%</div><div><h3>Logistics company, 64 people</h3><p class="muted" style="margin:0">Moved bookkeeping and payroll to Northline, cut back-office costs by 38% in the first year.</p></div></div>
+    <div class="card case"><div class="num">4 days</div><div><h3>Design studio, 18 people</h3><p class="muted" style="margin:0">Monthly close went from 12 to 4 working days after we set up the reporting calendar.</p></div></div>
+    <div class="card case"><div class="num">0</div><div><h3>Clinic network, 120 people</h3><p class="muted" style="margin:0">Zero missed tax deadlines in three years of outsourced accounting and HR.</p></div></div>
+    <div class="ph">A case page can open as a full story with photos and a client quote, one per project.</div>
+  </div></section>
+</div>
+
+<!-- ABOUT -->
+<div class="view" id="v-about">
+  <div class="wrap page-head">
+    <div class="crumbs"><a href="#home">Home</a> / About</div>
+    <h1>About Northline</h1>
+    <p class="lead">A team of 42 accountants, HR specialists and engineers. We have run back offices for small and mid-size companies since 2016.</p>
+  </div>
+  <section style="padding-top:32px"><div class="wrap grid g3">
+    <div class="card"><h3>One contract</h3><p class="muted">Accounting, HR and IT under one agreement and one invoice.</p></div>
+    <div class="card"><h3>One manager</h3><p class="muted">One person knows your company and answers within two hours.</p></div>
+    <div class="card"><h3>Fixed price</h3><p class="muted">The monthly price is agreed before we start and changes only with your headcount.</p></div>
+  </div></section>
+  <section style="padding-top:0"><div class="wrap">
+    <h2>Team</h2>
+    <div class="grid g4" id="team" style="margin-top:24px"></div>
+  </div></section>
+</div>
+
+<!-- FAQ -->
+<div class="view" id="v-faq">
+  <div class="wrap page-head">
+    <div class="crumbs"><a href="#home">Home</a> / FAQ</div>
+    <h1>Questions and answers</h1>
+  </div>
+  <section style="padding-top:24px"><div class="wrap" style="max-width:780px" id="faq-list"></div></section>
+</div>
+
+<!-- CONTACT -->
+<div class="view" id="v-contact">
+  <div class="wrap page-head">
+    <div class="crumbs"><a href="#home">Home</a> / Contact</div>
+    <h1>Contact us</h1>
+  </div>
+  <section style="padding-top:24px"><div class="wrap grid g2" style="gap:32px">
+    <div>
+      <p class="lead">Call, write or drop by. For a quote the order form is faster.</p>
+      <p><b>Phone</b><br><a href="#" data-demo>+1 000 000 0000</a></p>
+      <p><b>Email</b><br><a href="#" data-demo>hello@northline.example</a></p>
+      <p><b>Office</b><br>12 Harbour Street, Floor 3<br>Mon-Fri, 9:00-18:00</p>
+      <a class="btn" href="#order">Get a quote</a>
+    </div>
+    <div class="map" role="img" aria-label="Map placeholder"></div>
+  </div></section>
+</div>
+
+</main>
+
+<footer>
+  <div class="wrap">
+    <div class="grid">
+      <div><a class="logo" href="#home" style="color:#fff"><i aria-hidden="true" style="background:#fff"></i>Northline</a><p style="margin-top:12px">Accounting, HR and IT for growing teams.</p></div>
+      <div><h4>Services</h4><div id="foot-svcs"></div></div>
+      <div><h4>Company</h4><a href="#about">About</a><a href="#cases">Case studies</a><a href="#pricing">Pricing</a><a href="#faq">FAQ</a></div>
+      <div><h4>Contact</h4><a href="#contact">Office</a><a href="#order">Get a quote</a></div>
+    </div>
+    <div class="fine">Demo built for a Kwork order. Northline, its services, prices and numbers are fictional; forms do not send data.</div>
+  </div>
+</footer>
+<div class="toast" id="toast" role="status" aria-live="polite"></div>
+
+<script>
+const SVCS=[
+ {id:"accounting",name:"Accounting",bg:"var(--sand)",ic:"#b9472a",short:"Bookkeeping, taxes and monthly reports.",
+  lead:"We keep your books, file taxes on time and send a clear monthly report you can read in five minutes.",
+  inc:["Daily bookkeeping in your system","Tax returns and filings","Monthly P&L and cash-flow report","Annual close and audit support"],
+  pk:[["Start","$290","up to 100 transactions"],["Grow","$590","up to 400 transactions"],["Scale","$1,100","up to 1,500 transactions"]],from:"$290",unit:"per month"},
+ {id:"payroll",name:"Payroll & HR",bg:"var(--sage)",ic:"#3f6b4a",short:"Payroll, contracts and HR documents.",
+  lead:"Salaries paid on time, contracts and HR documents in order, one contact for every employee question.",
+  inc:["Monthly payroll and payslips","Employment contracts and changes","Leave and sick-day tracking","Onboarding and offboarding paperwork"],
+  pk:[["Start","$12","per employee"],["Grow","$10","per employee, 20+"],["Scale","$8","per employee, 80+"]],from:"$8",unit:"per employee"},
+ {id:"it",name:"IT support",bg:"var(--sky)",ic:"#2b4a8a",short:"Helpdesk, laptops, accounts and security.",
+  lead:"A helpdesk your team can reach in a chat, plus laptops, accounts and backups set up the same way for everyone.",
+  inc:["Helpdesk in chat and email","New laptop and account setup","Backups and security checks","Software licences management"],
+  pk:[["Basic","$390","8 hours a month"],["Standard","$790","20 hours a month"],["Full","$1,500","unlimited tickets"]],from:"$390",unit:"per month"},
+ {id:"legal",name:"Legal documents",bg:"var(--accent-soft)",ic:"#b9472a",short:"Contracts, NDAs and company paperwork.",
+  lead:"Templates and reviews for the documents a small company signs every week.",
+  inc:["Client and supplier contracts","NDAs and service agreements","Company changes and filings","Review of incoming contracts in 48 hours"],
+  pk:[["Single","$150","one document"],["Pack","$600","five documents"],["Retainer","$900","per month"]],from:"$150",unit:"per document"}
+];
+const SIZES=["1-10","11-50","51-200","200+"];
+const FAQ=[
+ ["How fast can you start?","Usually within 5 working days after the contract. Payroll can start from the next pay date."],
+ ["Do we need to change our accounting software?","No. We work in the system you already use or help you choose one."],
+ ["Can we order just one service?","Yes. Every service has its own order form and price, and you can add others later."],
+ ["How do you handle access to our data?","Access is personal for each specialist, logged, and removed when the contract ends."],
+ ["What if we grow?","The price follows your headcount; you move to the next package without a new contract."],
+ ["Is there a minimum term?","Three months for the first contract, then month to month."]
+];
+const TEAM=[["Anna R.","Head of accounting"],["Mark T.","Payroll lead"],["Sofia L.","HR specialist"],["David K.","IT support lead"]];
+const icon=c=>`<svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="${c}" stroke-width="2" stroke-linecap="round" aria-hidden="true"><rect x="4" y="4" width="16" height="16" rx="4"/><path d="M8 12h8M12 8v8"/></svg>`;
+const $=s=>document.querySelector(s);
+
+$("#home-svcs").innerHTML=SVCS.map(s=>`<a class="card" href="#service/${s.id}"><div class="ico" style="background:${s.bg}">${icon(s.ic)}</div><h3>${s.name}</h3><p class="muted" style="margin:0">${s.short}</p><span class="more">From ${s.from} →</span></a>`).join("");
+$("#svc-list").innerHTML=SVCS.map(s=>`<a class="card" href="#service/${s.id}"><div class="ico" style="background:${s.bg}">${icon(s.ic)}</div><h3>${s.name}</h3><p class="muted">${s.lead}</p><span class="more">Open service page and order form →</span></a>`).join("");
+$("#price-rows tbody").innerHTML=SVCS.map(s=>`<tr><td><a href="#service/${s.id}">${s.name}</a></td><td>${s.from}</td><td class="hide-m">${s.unit}</td></tr>`).join("");
+$("#foot-svcs").innerHTML=SVCS.map(s=>`<a href="#service/${s.id}">${s.name}</a>`).join("");
+$("#faq-list").innerHTML=FAQ.map(([q,a])=>`<details><summary>${q}</summary><p>${a}</p></details>`).join("");
+$("#team").innerHTML=TEAM.map(([n,r],i)=>`<div class="card" style="align-items:flex-start"><div style="width:64px;height:64px;border-radius:50%;background:${["var(--sand)","var(--sage)","var(--sky)","var(--accent-soft)"][i]};display:grid;place-items:center;font-family:Fraunces,serif;font-size:24px">${n[0]}</div><h3 style="margin-top:8px;font-size:19px">${n}</h3><p class="muted" style="margin:0">${r}</p></div>`).join("")+`<div class="ph" style="grid-column:1/-1">Real team photos go here.</div>`;
+
+function toast(t){const el=$("#toast");el.textContent=t;el.classList.add("on");clearTimeout(toast.t);toast.t=setTimeout(()=>el.classList.remove("on"),2600)}
+document.addEventListener("click",e=>{if(e.target.closest("[data-demo]")){e.preventDefault();toast("This is a demo: contacts are not real.")}});
+
+function buildForm(form,fixed){
+  const svcPick=fixed?`<p class="muted" style="margin:0">Service: <b style="color:var(--ink)">${fixed.name}</b></p><label>Package</label><div class="opts">${fixed.pk.map((p,i)=>`<label class="opt"><input type="radio" name="pkg" value="${i}" ${i===1?"checked":""}><span>${p[0]} · ${p[1]}<small>${p[2]}</small></span></label>`).join("")}</div>`
+   :`<label>What do you need?</label><div class="opts">${SVCS.map((s,i)=>`<label class="opt"><input type="checkbox" name="svc" value="${i}" ${i===0?"checked":""}><span>${s.name}<small>from ${s.from} ${s.unit}</small></span></label>`).join("")}</div>`;
+  form.innerHTML=`<h3 style="margin-bottom:4px">${fixed?"Order "+fixed.name.toLowerCase():"Your request"}</h3><p class="muted" style="font-size:14px;margin:0">Step <span class="sn">1</span> of 3</p>
+  <div class="prog"><span class="on"></span><span></span><span></span></div>
+  <div class="fs on">${svcPick}</div>
+  <div class="fs"><label for="${form.id}-size">Company size</label><select id="${form.id}-size" name="size">${SIZES.map(s=>`<option>${s} people</option>`).join("")}</select>
+   <label for="${form.id}-start">When should we start?</label><select id="${form.id}-start"><option>As soon as possible</option><option>Next month</option><option>Just comparing prices</option></select>
+   <label for="${form.id}-note">Anything we should know?</label><textarea id="${form.id}-note" rows="3" placeholder="Current software, deadlines, questions"></textarea></div>
+  <div class="fs"><label for="${form.id}-name">Your name</label><input id="${form.id}-name" autocomplete="name" required>
+   <label for="${form.id}-mail">Work email</label><input id="${form.id}-mail" type="email" autocomplete="email" required>
+   <label for="${form.id}-co">Company</label><input id="${form.id}-co" autocomplete="organization">
+   <div class="total"><span class="muted">Estimated from</span><b class="est"></b></div></div>
+  <div class="ok"><h3>Thank you!</h3><p class="muted">This is a demo, so nothing was sent. On the real site the request goes to your email and CRM.</p></div>
+  <div class="form-nav"><button type="button" class="btn ghost sm back" hidden>Back</button><button type="button" class="btn next" style="margin-left:auto">Next</button></div>`;
+  let step=0;const fs=form.querySelectorAll(".fs"),bars=form.querySelectorAll(".prog span");
+  const est=()=>{if(fixed){const p=fixed.pk[+(form.querySelector("[name=pkg]:checked")||{value:0}).value];return p[1]+" "+p[2]}
+    const picked=[...form.querySelectorAll("[name=svc]:checked")].map(i=>SVCS[i.value].name);return picked.length?picked.length+" service"+(picked.length>1?"s":""):"choose a service"};
+  const show=()=>{fs.forEach((f,i)=>f.classList.toggle("on",i===step));bars.forEach((b,i)=>b.classList.toggle("on",i<=step));
+    form.querySelector(".sn").textContent=step+1;form.querySelector(".back").hidden=step===0;form.querySelector(".next").textContent=step===2?"Send request":"Next";form.querySelector(".est").textContent=est()};
+  form.querySelector(".back").onclick=()=>{step--;show()};
+  form.querySelector(".next").onclick=()=>{
+    if(step===0&&!fixed&&!form.querySelector("[name=svc]:checked")){toast("Choose at least one service");return}
+    if(step===2){const n=form.querySelector(`#${form.id}-name`),m=form.querySelector(`#${form.id}-mail`);
+      if(!n.value.trim()){n.focus();toast("Please enter your name");return}
+      if(!/^\S+@\S+\.\S+$/.test(m.value)){m.focus();toast("Please enter a valid email");return}
+      fs.forEach(f=>f.classList.remove("on"));form.querySelector(".form-nav").hidden=true;form.querySelector(".prog").hidden=true;form.querySelector(".ok").classList.add("on");return}
+    step++;show()};
+  show();
+}
+buildForm($("#main-form"));
+
+const btn=$(".menu-btn"),nav=$("#nav");
+btn.onclick=()=>{const o=nav.classList.toggle("open");btn.setAttribute("aria-expanded",o)};
+function route(){
+  const h=(location.hash||"#home").slice(1);let [page,arg]=h.split("/");
+  if(page==="main")return;
+  if(!document.getElementById("v-"+page))page="home";
+  if(page==="service"){const s=SVCS.find(x=>x.id===arg)||SVCS[0];
+    $("#s-crumb").textContent=s.name;$("#s-eyebrow").textContent="Service";$("#s-title").textContent=s.name;$("#s-lead").textContent=s.lead;
+    $("#s-list").innerHTML=s.inc.map(i=>`<li>${i}</li>`).join("");
+    $("#s-pkgs").innerHTML=s.pk.map(p=>`<div class="pkg"><span class="muted" style="font-size:14px">${p[0]}</span><b>${p[1]}</b><span class="muted" style="font-size:14px">${p[2]}</span></div>`).join("");
+    buildForm($("#svc-form"),s);document.title=s.name+" - Northline"}
+  else document.title=page==="home"?"Northline - business services for growing teams":page[0].toUpperCase()+page.slice(1)+" - Northline";
+  document.querySelectorAll(".view").forEach(v=>v.classList.toggle("on",v.id==="v-"+page));
+  nav.querySelectorAll("a").forEach(a=>a.toggleAttribute("aria-current",a.getAttribute("href")==="#"+(page==="service"?"services":page))&&a.setAttribute("aria-current","page"));
+  nav.classList.remove("open");btn.setAttribute("aria-expanded","false");window.scrollTo(0,0);
+}
+window.addEventListener("hashchange",route);route();
+</script>
+</body>
+</html>
