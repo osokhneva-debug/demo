@@ -17,6 +17,7 @@
   --r:18px;
 }
 *{box-sizing:border-box}
+[hidden]{display:none!important}
 html{scroll-behavior:smooth;touch-action:manipulation}
 @media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}*{transition:none!important;animation:none!important}}
 body{margin:0;background:var(--bg);color:var(--ink);font:16px/1.6 Manrope,system-ui,sans-serif;-webkit-font-smoothing:antialiased}
@@ -401,7 +402,7 @@ document.addEventListener("click",e=>{if(e.target.closest("[data-demo]")){e.prev
 function buildForm(form,fixed){
   const svcPick=fixed?`<p class="muted" style="margin:0">Service: <b style="color:var(--ink)">${fixed.name}</b></p><label>Package</label><div class="opts">${fixed.pk.map((p,i)=>`<label class="opt"><input type="radio" name="pkg" value="${i}" ${i===1?"checked":""}><span>${p[0]} · ${p[1]}<small>${p[2]}</small></span></label>`).join("")}</div>`
    :`<label>What do you need?</label><div class="opts">${SVCS.map((s,i)=>`<label class="opt"><input type="checkbox" name="svc" value="${i}" ${i===0?"checked":""}><span>${s.name}<small>from ${s.from} ${s.unit}</small></span></label>`).join("")}</div>`;
-  form.innerHTML=`<h3 style="margin-bottom:4px">${fixed?"Order "+fixed.name.toLowerCase():"Your request"}</h3><p class="muted" style="font-size:14px;margin:0">Step <span class="sn">1</span> of 3</p>
+  form.innerHTML=`<h3 style="margin-bottom:4px">${fixed?"Order "+fixed.name:"Your request"}</h3><p class="muted" style="font-size:14px;margin:0">Step <span class="sn">1</span> of 3</p>
   <div class="prog"><span class="on"></span><span></span><span></span></div>
   <div class="fs on">${svcPick}</div>
   <div class="fs"><label for="${form.id}-size">Company size</label><select id="${form.id}-size" name="size">${SIZES.map(s=>`<option>${s} people</option>`).join("")}</select>
