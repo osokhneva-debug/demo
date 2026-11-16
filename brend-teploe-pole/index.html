@@ -4,137 +4,149 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="robots" content="noindex, nofollow">
-<meta name="theme-color" content="#f7f2e9">
+<meta name="theme-color" content="#1e1611">
 <title>«Тёплое поле» - каши, гранола и крупы</title>
 <meta name="description" content="Демо сайта продуктового бренда: линейки и карточки товаров, о качестве, рецепты, где купить, контакты и кабинет управления. Бренд вымышленный.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,700;9..144,800&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400&family=Marck+Script&family=Manrope:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 <style>
 :root{
-  --bg:#f7f2e9; --card:#fff; --ink:#231f1a; --muted:#6b6358; --line:#e6dccd;
-  --green:#2f6b3a; --green-soft:#e2eedf; --honey:#d99a2b; --honey-soft:#f8ead0; --berry:#a8344a; --berry-soft:#f5dde2;
-  --r:20px;
+  --bg:#1e1611; --bg2:#241a14; --card:rgba(74,53,38,.42); --ink:#f4e8d6; --muted:#cdb89c; --line:rgba(212,172,110,.22);
+  --gold:#d4ac6e; --gold-l:#f3dcaa; --gold-d:#8a6331; --green:#7fa06a; --berry:#c0566b;
+  --goldgrad:linear-gradient(135deg,#f3dcaa,#c99a58 55%,#e9c98e);
+  --r:22px;
 }
 *{box-sizing:border-box}
-html{scroll-behavior:smooth}
+html{scroll-behavior:smooth;touch-action:manipulation}
 @media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}*{transition:none!important;animation:none!important}}
-body{margin:0;background:var(--bg);color:var(--ink);font:16px/1.6 Inter,system-ui,sans-serif;-webkit-font-smoothing:antialiased}
+body{margin:0;background:radial-gradient(ellipse 70% 50% at 80% 0%,rgba(212,172,110,.12),transparent 60%),var(--bg);color:var(--ink);font:16px/1.65 Manrope,system-ui,sans-serif;-webkit-font-smoothing:antialiased}
 a{color:inherit}
-.wrap{max-width:1160px;margin:0 auto;padding:0 20px}
-.demo-bar{background:var(--ink);color:#f7f2e9;font-size:13px;text-align:center;padding:8px 16px}
-header.top{position:sticky;top:0;z-index:20;background:rgba(247,242,233,.94);backdrop-filter:blur(8px);border-bottom:1px solid var(--line)}
-header.top .wrap{display:flex;align-items:center;justify-content:space-between;gap:16px;min-height:64px}
-.logo{display:flex;align-items:center;gap:10px;font-family:Fraunces,serif;font-weight:800;font-size:22px;text-decoration:none}
-.logo i{width:34px;height:34px;border-radius:50%;background:var(--honey);display:grid;place-items:center;font-style:normal;color:#fff;font-size:18px}
-nav.main{display:flex;gap:4px;flex-wrap:wrap}
-nav.main a{text-decoration:none;font-weight:500;font-size:15px;padding:8px 12px;border-radius:10px;color:var(--muted)}
-nav.main a[aria-current="page"]{background:var(--green-soft);color:var(--green)}
+.skip{position:absolute;left:-9999px}.skip:focus{left:16px;top:8px;z-index:99;background:var(--gold-l);color:var(--bg);padding:8px 12px;border-radius:8px}
+.wrap{max-width:1180px;margin:0 auto;padding:0 20px}
+.demo-bar{background:#0f0b08;color:var(--muted);font-size:12.5px;text-align:center;padding:8px 16px;letter-spacing:.02em}
+header.top{position:sticky;top:0;z-index:20;background:rgba(30,22,17,.88);backdrop-filter:blur(10px);border-bottom:1px solid var(--line)}
+header.top .wrap{display:flex;align-items:center;justify-content:space-between;gap:16px;min-height:68px}
+.logo{display:flex;flex-direction:column;text-decoration:none;line-height:1}
+.logo b{font-family:"Cormorant Garamond",serif;font-weight:500;font-size:26px;letter-spacing:.01em}
+.logo small{font-size:10.5px;letter-spacing:.22em;text-transform:uppercase;color:var(--gold);margin-top:4px}
+nav.main{display:flex;gap:2px;flex-wrap:wrap}
+nav.main a{text-decoration:none;font-weight:500;font-size:14px;padding:8px 12px;border-radius:999px;color:var(--muted)}
+nav.main a[aria-current="page"]{color:var(--bg);background:var(--goldgrad)}
 nav.main a:hover{color:var(--ink)}
-nav.main a:focus-visible,.btn:focus-visible,button:focus-visible,input:focus-visible,select:focus-visible,textarea:focus-visible{outline:3px solid var(--honey);outline-offset:2px}
-.menu-btn{display:none;border:1px solid var(--line);background:#fff;border-radius:10px;padding:8px 12px;font:inherit;font-weight:600}
-h1,h2,h3{font-family:Fraunces,serif;letter-spacing:-.02em;line-height:1.1;text-wrap:balance}
-h1{font-size:clamp(36px,6vw,64px);margin:0 0 16px}
-h2{font-size:clamp(28px,4vw,42px);margin:0 0 14px}
-h3{font-size:22px;margin:0 0 8px}
-.lead{font-size:18px;color:var(--muted);max-width:620px;margin:0 0 24px}
-.btn{display:inline-flex;align-items:center;gap:8px;border:0;border-radius:14px;padding:14px 22px;font:600 16px Inter,sans-serif;cursor:pointer;text-decoration:none;transition:transform .25s,box-shadow .25s}
-.btn.primary{background:var(--green);color:#fff;box-shadow:0 6px 18px rgba(47,107,58,.25)}
-.btn.ghost{background:#fff;border:1px solid var(--line);color:var(--ink)}
+a:focus-visible,.btn:focus-visible,button:focus-visible,input:focus-visible,select:focus-visible,textarea:focus-visible{outline:2px solid var(--gold-l);outline-offset:3px}
+.menu-btn{display:none;border:1px solid var(--line);background:transparent;color:var(--ink);border-radius:999px;padding:8px 16px;font:inherit;font-weight:600}
+h1,h2,h3{font-family:"Cormorant Garamond",serif;font-weight:500;letter-spacing:-.01em;line-height:1.05;text-wrap:balance}
+h1{font-size:clamp(44px,7vw,86px);margin:0 0 18px}
+h1 .script{display:block;font-family:"Marck Script",cursive;font-size:.62em;color:var(--ink);margin-bottom:6px}
+h1 .gold,h2 .gold{background:linear-gradient(180deg,#f8e7c2 0%,#d4a865 55%,#b98a4c 100%);-webkit-background-clip:text;background-clip:text;color:transparent}
+h2{font-size:clamp(34px,4.6vw,56px);margin:0 0 14px}
+h3{font-size:26px;margin:0 0 8px}
+.eyebrow{font-size:12px;letter-spacing:.24em;text-transform:uppercase;color:var(--gold);font-weight:600;margin:0 0 14px}
+.lead{font-size:18px;color:var(--muted);max-width:620px;margin:0 0 26px}
+.btn{display:inline-flex;align-items:center;gap:8px;border:0;border-radius:999px;padding:15px 28px;font:600 14px Manrope,sans-serif;letter-spacing:.04em;cursor:pointer;text-decoration:none;transition:transform .3s cubic-bezier(.34,1.56,.64,1),box-shadow .3s}
+.btn.primary{background:var(--goldgrad);color:#1e1611;box-shadow:0 8px 28px rgba(212,172,110,.25)}
+.btn.ghost{background:transparent;border:1px solid rgba(212,172,110,.45);color:var(--ink)}
 .btn:hover{transform:translateY(-2px)}
-section{padding:56px 0}
+section{padding:64px 0}
 .view{display:none}
-.view.on{display:block;animation:fade .4s ease}
-@keyframes fade{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:none}}
-.hero{display:grid;grid-template-columns:1.1fr 1fr;gap:40px;align-items:center;padding:56px 0 40px}
-.packs{position:relative;height:420px}
-.pack{position:absolute;bottom:0;width:150px;border-radius:14px 14px 10px 10px;box-shadow:0 18px 40px rgba(35,31,26,.18);display:flex;flex-direction:column;justify-content:flex-end;padding:14px;color:#fff;transition:transform .4s}
-.pack b{font-family:Fraunces,serif;font-size:19px;line-height:1.1}
-.pack small{opacity:.9;font-size:12px}
-.pack::before{content:"";position:absolute;top:14px;left:14px;right:14px;height:60px;border-radius:50%;background:rgba(255,255,255,.18)}
-.pack .tag{position:absolute;top:18px;left:0;right:0;text-align:center;font-family:Fraunces,serif;font-weight:800;font-size:13px;letter-spacing:.04em}
-.packs:hover .pack{transform:translateY(-6px)}
-.strip{display:grid;grid-template-columns:repeat(4,1fr);gap:16px;margin-top:8px}
-.stat{background:#fff;border:1px solid var(--line);border-radius:var(--r);padding:18px}
-.stat b{display:block;font-family:Fraunces,serif;font-size:32px;color:var(--green)}
+.view.on{display:block;animation:fade .5s ease}
+@keyframes fade{from{opacity:0;transform:translateY(10px)}to{opacity:1;transform:none}}
+.hero{display:grid;grid-template-columns:1.05fr 1fr;gap:40px;align-items:center;padding:64px 0 48px}
+.arch{position:relative;aspect-ratio:4/5;max-height:560px;margin-left:auto;width:100%;max-width:470px;border-radius:240px 240px 26px 26px;border:1px solid rgba(212,172,110,.4);padding:14px}
+.arch-in{position:relative;height:100%;border-radius:226px 226px 18px 18px;overflow:hidden;background:radial-gradient(ellipse 80% 60% at 50% 30%,#5a4636,#2b1f17 70%)}
+.arch-in .p{position:absolute;bottom:13%;transition:transform .6s cubic-bezier(.34,1.56,.64,1)}
+.arch:hover .p{transform:translateY(-8px)}
+.arch-in .table{position:absolute;left:0;right:0;bottom:0;height:16%;background:linear-gradient(180deg,#6b5038,#3a2a1e)}
+.grain{position:absolute;inset:0;pointer-events:none}
+.strip{display:grid;grid-template-columns:repeat(4,1fr);gap:16px}
+.stat{background:var(--card);border:1px solid var(--line);border-radius:var(--r);padding:22px}
+.stat b{display:block;font-family:"Cormorant Garamond",serif;font-weight:600;font-size:44px;line-height:1;background:linear-gradient(180deg,#f8e7c2,#c99a58);-webkit-background-clip:text;background-clip:text;color:transparent}
 .stat span{color:var(--muted);font-size:14px}
 .grid3{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
-.card{background:var(--card);border:1px solid var(--line);border-radius:var(--r);padding:22px;transition:transform .3s,box-shadow .3s}
-.card:hover{transform:translateY(-4px);box-shadow:0 14px 36px rgba(35,31,26,.08)}
+.card{background:var(--card);border:1px solid var(--line);border-radius:var(--r);padding:26px;transition:transform .35s cubic-bezier(.34,1.56,.64,1),border-color .3s}
+.card:hover{transform:translateY(-5px);border-color:rgba(212,172,110,.5)}
 .line-card{cursor:pointer;text-align:left;font:inherit;color:inherit;width:100%}
-.swatch{height:120px;border-radius:14px;margin-bottom:14px;display:flex;align-items:flex-end;gap:8px;padding:12px}
-.mini{width:42px;border-radius:8px 8px 6px 6px;box-shadow:0 6px 14px rgba(0,0,0,.15)}
+.swatch{height:170px;border-radius:16px;margin-bottom:18px;display:flex;align-items:flex-end;justify-content:center;gap:4px;padding-bottom:10px;background:radial-gradient(ellipse at 50% 20%,#5a4636,#2b1f17)}
 .muted{color:var(--muted)}
-.chips{display:flex;gap:8px;flex-wrap:wrap;margin:0 0 20px}
-.chip{border:1px solid var(--line);background:#fff;border-radius:999px;padding:8px 14px;font:500 14px Inter,sans-serif;cursor:pointer}
-.chip[aria-pressed="true"]{background:var(--ink);color:#fff;border-color:var(--ink)}
+.chips{display:flex;gap:8px;flex-wrap:wrap;margin:0 0 24px}
+.chip{border:1px solid var(--line);background:transparent;color:var(--ink);border-radius:999px;padding:9px 16px;font:500 14px Manrope,sans-serif;cursor:pointer}
+.chip[aria-pressed="true"]{background:var(--goldgrad);color:#1e1611;border-color:transparent}
 .products{display:grid;grid-template-columns:repeat(4,1fr);gap:16px}
-.prod{background:#fff;border:1px solid var(--line);border-radius:18px;overflow:hidden;cursor:pointer;text-align:left;font:inherit;color:inherit;padding:0;transition:transform .3s,box-shadow .3s}
-.prod:hover{transform:translateY(-4px);box-shadow:0 14px 30px rgba(35,31,26,.1)}
-.prod .ph{height:150px;display:grid;place-items:center}
-.prod .ph i{width:70px;height:104px;border-radius:10px 10px 8px 8px;box-shadow:0 10px 22px rgba(0,0,0,.18)}
-.prod .t{padding:14px}
-.prod .t b{display:block;font-size:15px;line-height:1.3}
-.badge{display:inline-block;font-size:12px;font-weight:600;border-radius:999px;padding:2px 9px;margin-top:6px}
-.badge.new{background:var(--berry-soft);color:var(--berry)}
-.detail{display:none;margin-top:24px;background:#fff;border:1px solid var(--line);border-radius:var(--r);padding:24px;grid-template-columns:200px 1fr;gap:28px}
+.prod{background:var(--card);border:1px solid var(--line);border-radius:20px;overflow:hidden;cursor:pointer;text-align:left;font:inherit;color:inherit;padding:0;transition:transform .35s cubic-bezier(.34,1.56,.64,1),border-color .3s}
+.prod:hover{transform:translateY(-5px);border-color:rgba(212,172,110,.5)}
+.prod .ph{height:190px;display:flex;align-items:flex-end;justify-content:center;padding-bottom:12px;background:radial-gradient(ellipse at 50% 25%,#5a4636,#2b1f17)}
+.prod .t{padding:16px}
+.prod .t b{display:block;font-family:"Cormorant Garamond",serif;font-size:21px;font-weight:600;line-height:1.15}
+.badge{display:inline-block;font-size:11px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;border-radius:999px;padding:3px 10px;margin-top:8px;background:var(--goldgrad);color:#1e1611}
+.detail{display:none;margin-top:26px;background:var(--card);border:1px solid var(--line);border-radius:var(--r);padding:26px;grid-template-columns:260px 1fr;gap:30px}
 .detail.on{display:grid}
-.detail .big{height:240px;border-radius:16px;display:grid;place-items:center}
-.detail .big i{width:110px;height:164px;border-radius:12px;box-shadow:0 14px 30px rgba(0,0,0,.2)}
-.nutr{display:grid;grid-template-columns:repeat(4,1fr);gap:10px;margin:14px 0}
-.nutr div{background:var(--bg);border-radius:12px;padding:10px;text-align:center}
-.nutr b{display:block;font-family:Fraunces,serif;font-size:22px}
+.detail .big{height:300px;border-radius:18px;display:flex;align-items:flex-end;justify-content:center;padding-bottom:18px;background:radial-gradient(ellipse at 50% 25%,#5a4636,#2b1f17)}
+.nutr{display:grid;grid-template-columns:repeat(4,1fr);gap:10px;margin:16px 0}
+.nutr div{background:rgba(0,0,0,.22);border:1px solid var(--line);border-radius:14px;padding:12px;text-align:center}
+.nutr b{display:block;font-family:"Cormorant Garamond",serif;font-size:28px;color:var(--gold-l)}
 .nutr span{font-size:12px;color:var(--muted)}
-.bar{height:10px;border-radius:99px;background:var(--line);overflow:hidden;margin:6px 0 14px}
-.bar i{display:block;height:100%;background:var(--green);border-radius:99px;width:0;transition:width 1.2s ease}
+.bar{height:8px;border-radius:99px;background:rgba(255,255,255,.08);overflow:hidden;margin:8px 0 16px}
+.bar i{display:block;height:100%;background:var(--goldgrad);border-radius:99px;width:0;transition:width 1.4s ease}
 .steps{display:grid;grid-template-columns:repeat(4,1fr);gap:16px;counter-reset:s}
-.steps .card{counter-increment:s;position:relative;padding-top:46px}
-.steps .card::before{content:counter(s);position:absolute;top:16px;left:22px;width:26px;height:26px;border-radius:50%;background:var(--honey);color:#fff;font-weight:700;display:grid;place-items:center;font-size:14px}
+.steps .card{counter-increment:s;position:relative;padding-top:58px}
+.steps .card::before{content:"0" counter(s);position:absolute;top:18px;left:26px;font-family:"Cormorant Garamond",serif;font-size:30px;color:var(--gold)}
 .recipe{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
-.recipe .img{height:150px;border-radius:14px;margin-bottom:12px;display:grid;place-items:center;font-size:46px}
-.meta{display:flex;gap:12px;font-size:13px;color:var(--muted);margin-top:8px}
+.recipe .img{height:180px;border-radius:16px;margin-bottom:16px;display:grid;place-items:center;background:radial-gradient(circle at 50% 45%,#6b5038,#2b1f17 70%)}
+.meta{display:flex;gap:12px;font-size:13px;color:var(--gold);margin-top:10px;letter-spacing:.04em}
 .shops{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
-.shop{display:flex;align-items:center;justify-content:space-between;gap:12px;background:#fff;border:1px solid var(--line);border-radius:16px;padding:18px;text-decoration:none}
-.shop b{font-size:17px}
+.shop{display:flex;align-items:center;justify-content:space-between;gap:12px;background:var(--card);border:1px solid var(--line);border-radius:18px;padding:20px;text-decoration:none;transition:border-color .3s,transform .3s}
+.shop:hover{border-color:rgba(212,172,110,.55);transform:translateY(-3px)}
+.shop b{font-family:"Cormorant Garamond",serif;font-size:24px;font-weight:600}
 .shop span{font-size:13px;color:var(--muted)}
-.shop em{font-style:normal;font-weight:600;color:var(--green)}
+.shop em{font-style:normal;font-weight:600;color:var(--gold-l);font-size:14px}
 form.contact{display:grid;gap:12px;max-width:520px}
-label{font-weight:600;font-size:14px;display:grid;gap:6px}
-input,select,textarea{font:inherit;border:1px solid var(--line);border-radius:12px;padding:12px;background:#fff;color:var(--ink)}
-.ok{display:none;background:var(--green-soft);color:var(--green);border-radius:12px;padding:12px;font-weight:600}
-.cms{display:grid;grid-template-columns:240px 1fr;border:1px solid var(--line);border-radius:var(--r);overflow:hidden;background:#fff}
-.cms aside{background:#2a2621;color:#e9e2d6;padding:18px;display:grid;align-content:start;gap:4px}
-.cms aside b{font-family:Fraunces,serif;font-size:18px;margin-bottom:10px}
+label{font-weight:600;font-size:13px;letter-spacing:.03em;display:grid;gap:6px;color:var(--muted)}
+input,select,textarea{font:inherit;border:1px solid var(--line);border-radius:14px;padding:13px;background:rgba(0,0,0,.25);color:var(--ink)}
+select option{background:#2b1f17}
+.ok{display:none;background:rgba(127,160,106,.18);color:#cfe3c2;border:1px solid rgba(127,160,106,.4);border-radius:14px;padding:12px;font-weight:600}
+.cms{display:grid;grid-template-columns:240px 1fr;border:1px solid var(--line);border-radius:var(--r);overflow:hidden;background:#f6efe4;color:#2b1f17}
+.cms aside{background:#160f0b;color:#e9dcc6;padding:20px;display:grid;align-content:start;gap:4px}
+.cms aside b{font-family:"Cormorant Garamond",serif;font-size:21px;margin-bottom:12px}
 .cms aside button{all:unset;cursor:pointer;padding:9px 12px;border-radius:10px;font-size:14px}
-.cms aside button[aria-pressed="true"]{background:rgba(255,255,255,.12)}
-.cms .pane{padding:22px;display:grid;gap:14px}
+.cms aside button[aria-pressed="true"]{background:rgba(212,172,110,.18);color:var(--gold-l)}
+.cms .pane{padding:24px;display:grid;gap:16px}
+.cms label{color:#5a4636}
+.cms input,.cms select,.cms textarea{background:#fff;color:#2b1f17;border-color:#e2d6c3}
+.cms select option{background:#fff}
+.cms .btn.primary{box-shadow:none}
+.cms .ok{background:#e4efdc;color:#2f5a2f;border-color:#c9dcbc}
 .cms table{width:100%;border-collapse:collapse;font-size:14px}
-.cms td,.cms th{text-align:left;padding:9px 6px;border-bottom:1px solid var(--line)}
+.cms td,.cms th{text-align:left;padding:10px 6px;border-bottom:1px solid #e6dccd}
+.grid3.two{grid-template-columns:1fr 1fr}
 .row2{display:grid;grid-template-columns:1fr 1fr;gap:12px}
-.offer{background:var(--ink);color:#f7f2e9;border-radius:var(--r);padding:28px;display:grid;grid-template-columns:1.2fr 1fr;gap:24px;align-items:center}
-.offer h2{color:#fff}
-.offer ul{margin:0;padding-left:20px;color:#d9d0c2}
-footer{border-top:1px solid var(--line);padding:28px 0 40px;color:var(--muted);font-size:14px}
+.offer{background:linear-gradient(180deg,rgba(74,53,38,.6),rgba(42,30,23,.6));border:1px solid var(--line);border-radius:var(--r);padding:32px;display:grid;grid-template-columns:1.2fr 1fr;gap:28px;align-items:start}
+.offer ul{margin:0;padding-left:20px;color:var(--muted)}
+.offer li{margin-bottom:6px}
+.price-row{display:flex;justify-content:space-between;gap:12px;padding:12px 0;border-bottom:1px solid var(--line)}
+.price-row b{color:var(--gold-l);white-space:nowrap}
+footer{border-top:1px solid var(--line);padding:30px 0 44px;color:var(--muted);font-size:14px}
 @media (max-width:900px){
   .hero,.offer,.detail.on,.cms{grid-template-columns:1fr}
-  .packs{height:300px}
-  .pack{width:110px}
-  .grid3,.recipe,.shops{grid-template-columns:1fr}
+  .arch{max-width:340px;margin:0 auto}
+  .grid3,.grid3.two,.recipe,.shops{grid-template-columns:1fr}
   .products{grid-template-columns:repeat(2,1fr)}
   .strip,.steps,.nutr{grid-template-columns:repeat(2,1fr)}
   .menu-btn{display:block}
-  nav.main{display:none;position:absolute;top:64px;left:0;right:0;background:var(--bg);border-bottom:1px solid var(--line);padding:10px 16px;flex-direction:column}
+  nav.main{display:none;position:absolute;top:68px;left:0;right:0;background:var(--bg);border-bottom:1px solid var(--line);padding:12px 16px;flex-direction:column}
   nav.main.open{display:flex}
   .btn{width:100%;justify-content:center}
   .row2{grid-template-columns:1fr}
+  .stat b{font-size:36px}
 }
 </style>
 </head>
 <body>
 <div class="demo-bar">Демо под заказ Kwork: бренд «Тёплое поле», товары и магазины вымышленные. Разделы переключаются в меню, как страницы будущего сайта.</div>
+<a class="skip" href="#main">К содержимому</a>
 <header class="top">
   <div class="wrap">
-    <a class="logo" href="#home"><i>✿</i>Тёплое поле</a>
+    <a class="logo" href="#home"><b>Тёплое поле</b><small>каши · гранола · крупы</small></a>
     <button class="menu-btn" aria-expanded="false" aria-controls="nav">Меню</button>
     <nav class="main" id="nav">
       <a href="#home">Главная</a>
@@ -148,23 +160,26 @@ footer{border-top:1px solid var(--line);padding:28px 0 40px;color:var(--muted);f
   </div>
 </header>
 
-<main>
+<main id="main">
 <!-- Главная -->
 <div class="view" id="v-home">
   <div class="wrap hero">
     <div>
-      <p class="muted" style="font-weight:600;letter-spacing:.06em;text-transform:uppercase;font-size:13px;margin:0 0 10px">Каши, гранола и крупы из Алтая</p>
-      <h1>Завтрак, который готовится за 3 минуты и не стыдно за состав</h1>
-      <p class="lead">Цельные злаки, ягоды и мёд без сахарного сиропа. Три линейки для дома, офиса и дороги.</p>
+      <p class="eyebrow">Алтай · цельные злаки · без сахарного сиропа</p>
+      <h1><span class="script">Завтрак с поля</span><span class="gold">за три минуты</span></h1>
+      <p class="lead">Каши, гранола и крупы из зерна, которое мы двенадцать лет собираем у одних и тех же полей. Три линейки для дома, офиса и дороги.</p>
       <div style="display:flex;gap:12px;flex-wrap:wrap">
         <a class="btn primary" href="#products">Смотреть продукцию</a>
         <a class="btn ghost" href="#where">Где купить</a>
       </div>
     </div>
-    <div class="packs" aria-label="Упаковки бренда">
-      <div class="pack" style="left:2%;height:250px;background:#2f6b3a"><span class="tag">ТЁПЛОЕ ПОЛЕ</span><b>Овсяная с черникой</b><small>Каша · 6 порций</small></div>
-      <div class="pack" style="left:31%;height:310px;background:#d99a2b;z-index:2"><span class="tag">ТЁПЛОЕ ПОЛЕ</span><b>Гранола мёд и орехи</b><small>350 г</small></div>
-      <div class="pack" style="left:60%;height:270px;background:#a8344a"><span class="tag">ТЁПЛОЕ ПОЛЕ</span><b>Ягодный микс</b><small>Новинка · 300 г</small></div>
+    <div class="arch" aria-label="Упаковки бренда">
+      <div class="arch-in">
+        <div class="table"></div>
+        <div class="p" style="left:6%" data-pack="#3f6b3a|Овсяная|с черникой"></div>
+        <div class="p" style="left:33%;z-index:2" data-pack="#b8862f|Гранола|мёд и орехи|big"></div>
+        <div class="p" style="left:60%" data-pack="#8f2f43|Ягодный|микс"></div>
+      </div>
     </div>
   </div>
   <div class="wrap">
@@ -176,12 +191,12 @@ footer{border-top:1px solid var(--line);padding:28px 0 40px;color:var(--muted);f
     </div>
   </div>
   <section><div class="wrap">
-    <h2>Линейки бренда</h2>
+    <p class="eyebrow">Ассортимент</p><h2>Три линейки, <span class="gold">27 продуктов</span></h2>
     <div class="grid3" id="lines"></div>
   </div></section>
   <section style="padding-top:0"><div class="wrap">
-    <div class="card" style="display:flex;justify-content:space-between;align-items:center;gap:20px;flex-wrap:wrap;background:var(--honey-soft);border-color:transparent">
-      <div><h3>Новинка: ягодный микс без сахара</h3><p class="muted" style="margin:0">Черника, клюква и брусника с алтайских болот, сушка при 40 °C.</p></div>
+    <div class="card" style="display:flex;justify-content:space-between;align-items:center;gap:20px;flex-wrap:wrap">
+      <div><h3><span class="badge" style="margin:0 10px 0 0;vertical-align:middle">Новинка</span>Ягодный микс без сахара</h3><p class="muted" style="margin:0">Черника, клюква и брусника с алтайских болот, сушка при 40 °C.</p></div>
       <a class="btn primary" href="#products" data-open="berry">Подробнее</a>
     </div>
   </div></section>
@@ -189,7 +204,7 @@ footer{border-top:1px solid var(--line);padding:28px 0 40px;color:var(--muted);f
 
 <!-- Продукция -->
 <div class="view" id="v-products"><section><div class="wrap">
-  <h2>Продукция</h2>
+  <p class="eyebrow">Продукция</p><h2>Выберите <span class="gold">линейку</span></h2>
   <p class="lead">Выберите линейку, затем товар: откроется карточка с составом и пищевой ценностью.</p>
   <div class="chips" id="chips" role="group" aria-label="Линейки"></div>
   <div class="products" id="grid"></div>
@@ -198,7 +213,7 @@ footer{border-top:1px solid var(--line);padding:28px 0 40px;color:var(--muted);f
 
 <!-- О качестве -->
 <div class="view" id="v-quality"><section><div class="wrap">
-  <h2>О качестве</h2>
+  <p class="eyebrow">О качестве</p><h2>От поля <span class="gold">до пачки</span></h2>
   <p class="lead">Меньше слов, больше цифр: что происходит с зерном от поля до пачки.</p>
   <div class="steps">
     <div class="card"><h3>Поле</h3><p class="muted">Овёс и гречиха с 1 400 га у партнёров в Алтайском крае, без десикации.</p></div>
@@ -215,22 +230,22 @@ footer{border-top:1px solid var(--line);padding:28px 0 40px;color:var(--muted);f
 
 <!-- Рецепты -->
 <div class="view" id="v-recipes"><section><div class="wrap">
-  <h2>Рецепты</h2>
+  <p class="eyebrow">Рецепты</p><h2>Что приготовить <span class="gold">сегодня</span></h2>
   <p class="lead">Рецепты привязаны к товарам: из карточки продукта видно, что из него приготовить.</p>
   <div class="recipe" id="recipes"></div>
 </div></section></div>
 
 <!-- Где купить -->
 <div class="view" id="v-where"><section><div class="wrap">
-  <h2>Где купить</h2>
+  <p class="eyebrow">Где купить</p><h2>Рядом с домом <span class="gold">и онлайн</span></h2>
   <p class="lead">Кнопки ведут на страницу бренда на площадке. Список магазинов меняется в кабинете.</p>
   <div class="shops" id="shops"></div>
 </div></section></div>
 
 <!-- Контакты -->
 <div class="view" id="v-contacts"><section><div class="wrap">
-  <h2>Контакты</h2>
-  <div class="grid3" style="grid-template-columns:1fr 1fr">
+  <p class="eyebrow">Контакты</p><h2>Напишите <span class="gold">нам</span></h2>
+  <div class="grid3 two">
     <div>
       <p><b>Для покупателей:</b> вопросы о составе и качестве</p>
       <p><b>Для сетей и дистрибьюторов:</b> прайс и условия поставки</p>
@@ -248,7 +263,7 @@ footer{border-top:1px solid var(--line);padding:28px 0 40px;color:var(--muted);f
 
 <!-- Кабинет -->
 <div class="view" id="v-admin"><section><div class="wrap">
-  <h2>Кабинет управления</h2>
+  <p class="eyebrow">Кабинет управления</p><h2>Сайт, который вы меняете <span class="gold">сами</span></h2>
   <p class="lead">Так вы будете менять сайт без программиста. Добавьте товар ниже: он сразу появится в разделе «Продукция».</p>
   <div class="cms">
     <aside>
@@ -265,7 +280,7 @@ footer{border-top:1px solid var(--line);padding:28px 0 40px;color:var(--muted);f
         <label>Название<input name="name" required value="Гречневая каша с белыми грибами"></label>
         <label>Линейка<select name="line" id="add-line"></select></label>
         <label>Вес<input name="w" value="250 г"></label>
-        <label>Цвет упаковки<select name="c"><option value="#6b4f2a">Коричневый</option><option value="#2f6b3a">Зелёный</option><option value="#a8344a">Ягодный</option></select></label>
+        <label>Цвет упаковки<select name="c"><option value="#6b4f2a">Коричневый</option><option value="#3f6b3a">Зелёный</option><option value="#8f2f43">Ягодный</option></select></label>
         <label style="grid-column:1/-1">Описание<textarea name="d" rows="2">Ядрица с сушёными белыми грибами и луком, готовится за 5 минут.</textarea></label>
         <div style="grid-column:1/-1;display:flex;gap:10px;flex-wrap:wrap"><button class="btn primary" type="submit">Опубликовать товар</button><span class="ok" id="add-ok" role="status" style="align-self:center">Товар на сайте: откройте «Продукция».</span></div>
       </form>
@@ -273,22 +288,26 @@ footer{border-top:1px solid var(--line);padding:28px 0 40px;color:var(--muted);f
     </div>
   </div>
 
-  <div class="offer" style="margin-top:40px">
+  <div class="offer" style="margin-top:44px">
     <div>
-      <h2>Что будет в рабочем сайте</h2>
+      <p class="eyebrow">Под ваш бренд</p>
+      <h2 style="font-size:clamp(30px,4vw,44px)">Что будет в рабочем сайте</h2>
       <ul>
-        <li>страницы из вашего ТЗ: главная, линейки и карточки товаров, о качестве, рецепты, где купить, контакты;</li>
-        <li>кабинет: товары, рецепты, новости, магазины и новые разделы добавляете сами;</li>
-        <li>фото ваших упаковок и фирменные цвета вместо нарисованных пачек;</li>
-        <li>SEO-основа: адрес, заголовок и описание у каждой страницы, карта сайта, разметка товаров и рецептов;</li>
-        <li>адаптив под телефоны, планшеты и популярные браузеры, лёгкая анимация.</li>
+        <li>все страницы из ТЗ: главная с позиционированием и упаковками, линейки и карточки товаров, о качестве, рецепты, где купить, контакты;</li>
+        <li>кабинет: товары, линейки, рецепты, новости, магазины, новые страницы и разделы без программиста;</li>
+        <li>фото ваших упаковок, фирменные цвета и шрифты вместо нарисованных пачек;</li>
+        <li>инфографика вместо длинного текста, анимация появления и наведения;</li>
+        <li>SEO: адреса, заголовки и описания страниц, разметка товаров и рецептов для поиска, карта сайта, подключение Яндекс Вебмастера и Метрики;</li>
+        <li>адаптив под телефоны, планшеты и компьютеры, проверка в Chrome, Safari, Яндекс Браузере и Edge.</li>
       </ul>
     </div>
     <div>
-      <p style="margin:0 0 8px;color:#d9d0c2">Этапы</p>
-      <p style="margin:0 0 6px"><b>1.</b> Дизайн главной и карточки товара на ваших материалах, 4 дня</p>
-      <p style="margin:0 0 6px"><b>2.</b> Все страницы и кабинет, 7 дней</p>
-      <p style="margin:0"><b>3.</b> Наполнение, SEO и запуск на вашем домене, 3 дня</p>
+      <p class="eyebrow">Этапы и стоимость</p>
+      <div class="price-row"><span>1. Дизайн главной и карточки товара на ваших материалах</span><b>45 000 руб.</b></div>
+      <div class="price-row"><span>2. Все страницы, анимации и кабинет управления</span><b>85 000 руб.</b></div>
+      <div class="price-row"><span>3. Наполнение, SEO, запуск на вашем домене, обучение работе в кабинете</span><b>35 000 руб.</b></div>
+      <div class="price-row" style="border:0"><span><b style="color:var(--ink)">Итого, 18 рабочих дней</b></span><b>165 000 руб.</b></div>
+      <p class="muted" style="font-size:14px;margin:8px 0 0">Каждый этап оплачивается после того, как вы приняли предыдущий.</p>
     </div>
   </div>
 </div></section></div>
@@ -303,29 +322,51 @@ const LINES=[
  {id:"krupy",name:"Крупы",desc:"Гречка, овёс и полба для домашней кухни.",bg:"#efe6d8",cols:["#6b4f2a","#8a6a3c","#a3824f"]}
 ];
 let PRODUCTS=[
- {id:"oat",line:"kasha",name:"Овсяная каша с черникой",w:"6 порций по 40 г",c:"#2f6b3a",d:"Овсяные хлопья, сушёная черника, корица. Без сахара.",k:[358,11,6,62]},
+ {id:"oat",line:"kasha",name:"Овсяная каша с черникой",w:"6 порций по 40 г",c:"#3f6b3a",d:"Овсяные хлопья, сушёная черника, корица. Без сахара.",k:[358,11,6,62]},
  {id:"buck",line:"kasha",name:"Гречневая с яблоком",w:"6 порций по 40 г",c:"#3f7f4a",d:"Гречневые хлопья, яблоко, ваниль.",k:[341,12,3,66]},
- {id:"berry",line:"kasha",name:"Ягодный микс",w:"300 г",c:"#a8344a",d:"Черника, клюква и брусника, сушка при 40 °C.",k:[312,4,2,70],isNew:true},
- {id:"g1",line:"granola",name:"Гранола мёд и орехи",w:"350 г",c:"#d99a2b",d:"Овёс, мёд, фундук и миндаль, запечено небольшими партиями.",k:[452,10,18,58]},
+ {id:"berry",line:"kasha",name:"Ягодный микс",w:"300 г",c:"#8f2f43",d:"Черника, клюква и брусника, сушка при 40 °C.",k:[312,4,2,70],isNew:true},
+ {id:"g1",line:"granola",name:"Гранола мёд и орехи",w:"350 г",c:"#b8862f",d:"Овёс, мёд, фундук и миндаль, запечено небольшими партиями.",k:[452,10,18,58]},
  {id:"g2",line:"granola",name:"Гранола шоколад и вишня",w:"350 г",c:"#7a3b2a",d:"Овёс, какао, вишня, тёмный шоколад 70%.",k:[461,9,19,60]},
  {id:"k1",line:"krupy",name:"Гречка ядрица",w:"800 г",c:"#6b4f2a",d:"Алтайская гречка первого сорта.",k:[313,13,3,62]},
  {id:"k2",line:"krupy",name:"Полба цельная",w:"700 г",c:"#8a6a3c",d:"Древний сорт пшеницы, варится 25 минут.",k:[338,15,2,64]},
  {id:"k3",line:"krupy",name:"Овсянка долгой варки",w:"900 г",c:"#a3824f",d:"Цельные хлопья толщиной 0,8 мм.",k:[352,12,6,60]}
 ];
 const RECIPES=[
- {e:"🫐",t:"Овсяноблин с черникой",p:"oat",m:"10 минут · 2 порции",bg:"var(--berry-soft)"},
- {e:"🍯",t:"Йогурт-боул с гранолой",p:"g1",m:"3 минуты · 1 порция",bg:"var(--honey-soft)"},
- {e:"🥘",t:"Гречка по-купечески",p:"k1",m:"35 минут · 4 порции",bg:"#efe6d8"},
- {e:"🥣",t:"Ночная овсянка в банке",p:"k3",m:"5 минут вечером · 1 порция",bg:"var(--green-soft)"},
- {e:"🍪",t:"Печенье из гранолы",p:"g2",m:"25 минут · 12 штук",bg:"#f1e1d8"},
- {e:"🥗",t:"Тёплый салат с полбой",p:"k2",m:"30 минут · 3 порции",bg:"#e9efe0"}
+ {k:"berry",e:"🫐",t:"Овсяноблин с черникой",p:"oat",m:"10 минут · 2 порции",bg:"var(--berry-soft)"},
+ {k:"honey",e:"🍯",t:"Йогурт-боул с гранолой",p:"g1",m:"3 минуты · 1 порция",bg:"var(--honey-soft)"},
+ {k:"grain",e:"🥘",t:"Гречка по-купечески",p:"k1",m:"35 минут · 4 порции",bg:"#efe6d8"},
+ {k:"grain",e:"🥣",t:"Ночная овсянка в банке",p:"k3",m:"5 минут вечером · 1 порция",bg:"var(--green-soft)"},
+ {k:"honey",e:"🍪",t:"Печенье из гранолы",p:"g2",m:"25 минут · 12 штук",bg:"#f1e1d8"},
+ {k:"green",e:"🥗",t:"Тёплый салат с полбой",p:"k2",m:"30 минут · 3 порции",bg:"#e9efe0"}
 ];
 const SHOPS=[["Ozon","маркетплейс","доставка за 1-2 дня"],["Wildberries","маркетплейс","пункты выдачи"],["Яндекс Маркет","маркетплейс","экспресс-доставка"],["Перекрёсток","сеть магазинов","120 магазинов"],["ВкусВилл","сеть магазинов","линейка каш"],["Фирменный магазин","Барнаул","вся продукция"]];
+let PID=0;
+function pouch(color,t1,t2,h){
+ const id="g"+(PID++), w=Math.round(h*0.68);
+ return `<svg width="${w}" height="${h}" viewBox="0 0 136 200" aria-hidden="true">
+ <defs><linearGradient id="${id}" x1="0" x2="1"><stop offset="0" stop-color="${color}" stop-opacity=".78"/><stop offset=".35" stop-color="${color}"/><stop offset=".7" stop-color="${color}"/><stop offset="1" stop-color="#000" stop-opacity=".55"/></linearGradient>
+ <linearGradient id="${id}s" x1="0" x2="1"><stop offset="0" stop-color="#fff" stop-opacity="0"/><stop offset=".5" stop-color="#fff" stop-opacity=".22"/><stop offset="1" stop-color="#fff" stop-opacity="0"/></linearGradient></defs>
+ <ellipse cx="68" cy="196" rx="62" ry="5" fill="#000" opacity=".35"/>
+ <path d="M10 18 Q68 8 126 18 L130 186 Q68 196 6 186 Z" fill="url(#${id})"/>
+ <rect x="10" y="16" width="116" height="9" rx="3" fill="#000" opacity=".18"/>
+ <path d="M22 30 L30 182" stroke="url(#${id}s)" stroke-width="16" opacity=".7"/>
+ <rect x="30" y="98" width="76" height="52" rx="26" fill="#e9d6b0"/>
+ <g fill="#c99a58">${Array.from({length:22},(_,i)=>`<ellipse cx="${38+(i*13)%62}" cy="${108+Math.floor(i/5)*9+(i%2)*3}" rx="4.2" ry="2.4" transform="rotate(${(i*37)%90} ${38+(i*13)%62} ${108+Math.floor(i/5)*9})"/>`).join("")}</g>
+ <text x="68" y="48" text-anchor="middle" font-family="Cormorant Garamond,serif" font-size="11" letter-spacing="2.2" fill="#f3dcaa">ТЁПЛОЕ ПОЛЕ</text>
+ <text x="68" y="74" text-anchor="middle" font-family="Cormorant Garamond,serif" font-weight="600" font-size="19" fill="#fff">${t1}</text>
+ <text x="68" y="90" text-anchor="middle" font-family="Manrope,sans-serif" font-size="9.5" fill="#fff" opacity=".85">${t2||""}</text>
+ <text x="68" y="172" text-anchor="middle" font-family="Manrope,sans-serif" font-size="8" letter-spacing="1.5" fill="#f3dcaa">БЕЗ САХАРА</text>
+ </svg>`;
+}
+function bowl(kind){
+ const c={berry:"#8f2f43",honey:"#c99a58",grain:"#8a6a3c",green:"#5f7f4a"}[kind]||"#c99a58";
+ return `<svg width="150" height="120" viewBox="0 0 150 120" aria-hidden="true"><ellipse cx="75" cy="108" rx="60" ry="7" fill="#000" opacity=".3"/><path d="M12 52 Q75 62 138 52 Q132 104 75 106 Q18 104 12 52Z" fill="#efe3cf"/><ellipse cx="75" cy="52" rx="63" ry="14" fill="#d9c2a0"/><ellipse cx="75" cy="50" rx="56" ry="10" fill="#e9d6b0"/>${Array.from({length:14},(_,i)=>`<circle cx="${34+(i*23)%82}" cy="${45+(i%3)*4}" r="${3+(i%3)}" fill="${c}"/>`).join("")}<path d="M100 20 q8 -12 0 -18 M112 24 q8 -12 0 -18" stroke="#cdb89c" stroke-width="2" fill="none" opacity=".5"/></svg>`;
+}
 const $=s=>document.querySelector(s);
 let curLine="all";
 
 function renderLines(){
- $("#lines").innerHTML=LINES.map(l=>`<button class="card line-card" data-line="${l.id}"><div class="swatch" style="background:${l.bg}">${l.cols.map((c,i)=>`<i class="mini" style="background:${c};height:${60+i*14}px"></i>`).join("")}</div><h3>${l.name}</h3><p class="muted" style="margin:0">${l.desc}</p><p style="margin:10px 0 0;font-weight:600;color:var(--green)">${PRODUCTS.filter(p=>p.line===l.id).length} товаров →</p></button>`).join("");
+ $("#lines").innerHTML=LINES.map(l=>`<button class="card line-card" data-line="${l.id}"><div class="swatch">${PRODUCTS.filter(p=>p.line===l.id).slice(0,3).map((p,i)=>pouch(p.c,p.name.split(" ")[0],"",[118,140,126][i])).join("")}</div><h3>${l.name}</h3><p class="muted" style="margin:0">${l.desc}</p><p style="margin:10px 0 0;font-weight:600;color:var(--green)">${PRODUCTS.filter(p=>p.line===l.id).length} товаров →</p></button>`).join("");
  $("#lines").querySelectorAll("[data-line]").forEach(b=>b.onclick=()=>{curLine=b.dataset.line;location.hash="products"});
 }
 function renderChips(){
@@ -335,19 +376,19 @@ function renderChips(){
 }
 function renderGrid(){
  const list=PRODUCTS.filter(p=>curLine==="all"||p.line===curLine);
- $("#grid").innerHTML=list.map(p=>`<button class="prod" data-p="${p.id}"><div class="ph" style="background:${LINES.find(l=>l.id===p.line).bg}"><i style="background:${p.c}"></i></div><div class="t"><b>${p.name}</b><span class="muted" style="font-size:13px">${p.w}</span>${p.isNew?'<br><span class="badge new">Новинка</span>':""}</div></button>`).join("");
+ $("#grid").innerHTML=list.map(p=>`<button class="prod" data-p="${p.id}"><div class="ph">${pouch(p.c,p.name.split(" ")[0],p.name.split(" ").slice(1,3).join(" "),160)}</div><div class="t"><b>${p.name}</b><span class="muted" style="font-size:13px">${p.w}</span>${p.isNew?'<br><span class="badge new">Новинка</span>':""}</div></button>`).join("");
  $("#grid").querySelectorAll(".prod").forEach(b=>b.onclick=()=>openProduct(b.dataset.p));
 }
 function openProduct(id){
  const p=PRODUCTS.find(x=>x.id===id); if(!p) return;
  const r=RECIPES.filter(x=>x.p===id);
  const L=LINES.find(l=>l.id===p.line);
- $("#detail").innerHTML=`<div class="big" style="background:${L.bg}"><i style="background:${p.c}"></i></div><div><p class="muted" style="margin:0 0 4px">${L.name}</p><h3 style="font-size:28px">${p.name}</h3><p>${p.d}</p><div class="nutr"><div><b>${p.k[0]}</b><span>ккал</span></div><div><b>${p.k[1]} г</b><span>белки</span></div><div><b>${p.k[2]} г</b><span>жиры</span></div><div><b>${p.k[3]} г</b><span>углеводы</span></div></div><p class="muted" style="margin:0 0 12px">На 100 г продукта · ${p.w}</p>${r.length?`<p style="margin:0 0 12px"><b>Рецепт:</b> ${r.map(x=>x.t).join(", ")}</p>`:""}<a class="btn primary" href="#where">Где купить</a></div>`;
+ $("#detail").innerHTML=`<div class="big">${pouch(p.c,p.name.split(" ")[0],p.name.split(" ").slice(1,3).join(" "),250)}</div><div><p class="muted" style="margin:0 0 4px">${L.name}</p><h3 style="font-size:28px">${p.name}</h3><p>${p.d}</p><div class="nutr"><div><b>${p.k[0]}</b><span>ккал</span></div><div><b>${p.k[1]} г</b><span>белки</span></div><div><b>${p.k[2]} г</b><span>жиры</span></div><div><b>${p.k[3]} г</b><span>углеводы</span></div></div><p class="muted" style="margin:0 0 12px">На 100 г продукта · ${p.w}</p>${r.length?`<p style="margin:0 0 12px"><b>Рецепт:</b> ${r.map(x=>x.t).join(", ")}</p>`:""}<a class="btn primary" href="#where">Где купить</a></div>`;
  $("#detail").classList.add("on");
  $("#detail").scrollIntoView({behavior:matchMedia("(prefers-reduced-motion:reduce)").matches?"auto":"smooth",block:"nearest"});
 }
 function renderRecipes(){
- $("#recipes").innerHTML=RECIPES.map(r=>{const p=PRODUCTS.find(x=>x.id===r.p);return `<div class="card"><div class="img" style="background:${r.bg}" aria-hidden="true">${r.e}</div><h3>${r.t}</h3><p class="muted" style="margin:0">Из продукта: ${p.name}</p><div class="meta"><span>${r.m}</span></div></div>`}).join("");
+ $("#recipes").innerHTML=RECIPES.map(r=>{const p=PRODUCTS.find(x=>x.id===r.p);return `<div class="card"><div class="img">${bowl(r.k)}</div><h3>${r.t}</h3><p class="muted" style="margin:0">Из продукта: ${p.name}</p><div class="meta"><span>${r.m}</span></div></div>`}).join("");
 }
 function renderShops(){
  $("#shops").innerHTML=SHOPS.map(s=>`<a class="shop" href="#where" onclick="return false"><div><b>${s[0]}</b><br><span>${s[1]} · ${s[2]}</span></div><em>Перейти →</em></a>`).join("");
@@ -375,6 +416,7 @@ function route(){
 }
 $(".menu-btn").onclick=()=>{const o=$("#nav").classList.toggle("open");$(".menu-btn").setAttribute("aria-expanded",o)};
 window.addEventListener("hashchange",route);
+document.querySelectorAll("[data-pack]").forEach(el=>{const [c,a,b,big]=el.dataset.pack.split("|");el.innerHTML=pouch(c,a,b,big?300:250)});
 renderLines();renderRecipes();renderShops();renderAdmin();route();
 </script>
 </body>
