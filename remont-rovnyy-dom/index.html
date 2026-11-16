@@ -308,7 +308,7 @@ function svcPage(t){return ()=>`<div class="wrap page-head"><div class="crumbs">
  <div class="svc-top"><div><h1>{{H1}}</h1><p class="lead">${t.lead}</p><div class="price" style="font-size:28px">от ${rub(t.price)} <small>за м² работ</small></div><p class="muted">Срок ${t.term} для квартиры 50 м².</p><div style="display:flex;gap:12px;flex-wrap:wrap"><a class="btn" href="#calc">Рассчитать</a><button class="btn ghost" type="button" data-quiz>Пройти тест</button></div></div>
  <div class="card"><h3>Что входит</h3><ul class="list">${t.inc.map(i=>`<li>${i}</li>`).join("")}</ul></div></div></div>
  <section style="padding-top:36px"><div class="wrap">${calcBlock(t.id)}</div></section>
- <section style="padding-top:0"><div class="wrap"><h2>Наши работы: ${t.full.toLowerCase()}</h2><div class="works" style="margin-top:20px">${workCards(D.works.filter(w=>w.type===t.id))||'<p class="muted">Пока нет работ этого вида.</p>'}</div></div></section>
+ <section style="padding-top:0"><div class="wrap"><h2>Наши работы: ${t.full.toLowerCase()}</h2><div class="works" style="margin-top:20px">${workCards(D.works.filter(w=>w.type===t.id).slice().reverse())||'<p class="muted">Пока нет работ этого вида.</p>'}</div></div></section>
  <section style="padding-top:0"><div class="wrap"><h2>Как проходит ремонт</h2>${steps}</div></section>`}
 D.types.forEach(t=>P[t.slug]=svcPage(t));
 P.raboty=()=>`<div class="wrap page-head"><div class="crumbs"><a href="${BASE}">Главная</a> / Выполненные работы</div><h1>{{H1}}</h1><p class="lead">Квартиры, которые мы сдали за последний год. Новые работы добавляются в Кабинете.</p></div>
@@ -360,7 +360,7 @@ function quizStep(){const i=qa.length;$("#quiz-bar").style.width=(i/(Q.length+1)
  const st=qa[1],t=st===0||qa[3]===1?T("key"):st===1?T("kap"):T("kosm"),area=[35,55,85,110][qa[2]];
  $("#quiz-step").textContent="Готово";$("#quiz-title").textContent="Вам подойдёт: "+t.full.toLowerCase();
  $("#quiz-bar").style.width="100%";
- $("#quiz-body").innerHTML=`<div class="summary">${Q.map((q,k)=>`<div><span class="muted">${q[0]}</span><b style="text-align:right">${q[1][qa[k]]}</b></div>`).join("")}<div><span class="muted">Примерно</span><b>${rub(t.price*area*0.9)} - ${rub(t.price*area*1.15)}</b></div></div><p class="muted" style="font-size:14px">Оставьте телефон: пришлём подборку работ и точную цену после замера.</p><form id="quiz-form" novalidate>${leadFields("qf")}<button class="btn dark" style="width:100%;margin-top:14px">Получить расчёт</button></form>`;
+ $("#quiz-body").innerHTML=`<div class="summary">${Q.map((q,k)=>`<div><span class="muted">${q[0]}</span><b style="text-align:right">${q[1][qa[k]]}</b></div>`).join("")}<div><span class="muted">Примерно</span><b>от ${rub(Math.round(t.price*area*0.9/10000)*10000)} до ${rub(Math.round(t.price*area*1.15/10000)*10000)}</b></div></div><p class="muted" style="font-size:14px">Оставьте телефон: пришлём подборку работ и точную цену после замера.</p><form id="quiz-form" novalidate>${leadFields("qf")}<button class="btn dark" style="width:100%;margin-top:14px">Получить расчёт</button></form>`;
  $("#quiz-form").onsubmit=e=>{e.preventDefault();if(!checkLead("qf"))return;$("#quiz-body").innerHTML=`<h3>Спасибо!</h3><p class="muted">Это демо, ответы никуда не ушли. На сайте они придут вам вместе с телефоном клиента.</p><button class="btn dark" type="button" data-close>Закрыть</button>`}}
 document.addEventListener("click",e=>{if(e.target.closest("[data-quiz]")){qa=[];quizStep();$("#quiz").showModal()}
  if(e.target.closest("[data-close]"))e.target.closest("dialog").close();
